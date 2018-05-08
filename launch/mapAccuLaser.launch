@@ -1,0 +1,19 @@
+<launch>
+
+  <node pkg="learned_map" type="mapAccuLaser" name="mapAccuLaser" output="screen">
+  
+  <param name="inputFilterName" value="/home/yh/mine_ws/src/test_detection/cfg/inputFilters.yaml"/>
+  <param name="rangeFilter" value="0.1"/>
+
+  <param name="isFirstTime" value="false"/>
+  <param name="wholeMapName" value="/home/yh/mapModel/12.18/wholeMap_s20.vtk"/> 
+  <param name="icpFileName" value="/media/yh/YH/DataSet/YQ21/2017_03_09/2017_03_09_drive_0005_sync/icp/icp.txt"/> 
+  <param name="velodyneDirName" value="/media/yh/YH/DataSet/YQ21/2017_03_09/2017_03_09_drive_0005_sync/velodyne_points/data/"/> 
+  <param name="totalICPnum" value="11665"/>
+  <param name="maxSession" value="21"/>
+  <param name="saveVTKname" value="/home/yh/mapModel/12.18/wholeMap_s21.vtk"/>
+  <param name="savePnumsName" value="/home/yh/mapModel/12.18/wholeMap_s21.txt"/>
+
+
+  </node>
+</launch>

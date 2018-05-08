@@ -1,0 +1,9 @@
+<launch>
+
+  <node pkg="learned_map" type="saveAllCRFFeatures" name="saveAllCRFFeatures" output="screen">
+
+	<param name="loadMapName" value="/home/yh/mapModel/05.07/Train_Test/test_cloud.vtk"/>
+	<param name="saveFileName" value="/home/yh/mapModel/05.07/add_prob/testCRFFeatures.txt"/>
+	
+  </node>
+</launch>

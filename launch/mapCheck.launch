@@ -1,0 +1,14 @@
+<launch>
+
+  <node pkg="learned_map" type="mapCheck" name="mapCheck" output="screen">
+
+  <param name="loadMapName" value="/home/yh/mapModel/12.25/wholeMap_s10.vtk"/>
+  <!--param name="loadMapName" value="/home/yh/slide.vtk"/-->
+  <param name="loadTrajName" value="/home/yh/mapModel/12.25/icp_0301.txt"/>
+  <param name="mapLength" value="10560"/>
+  <param name="staticInt" value="200"/> 	
+
+
+  </node>
+<node pkg="rviz" type="rviz" name="rviz" args="-d $(find learned_map)/cfg/mapCheck.rviz" output="screen"/>
+</launch>

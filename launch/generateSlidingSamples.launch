@@ -1,0 +1,23 @@
+<launch>
+
+  <node pkg="learned_map" type="generateSlidingSamples" name="generateSlidingSamples" output="screen">
+
+	<param name="loadMapName" value="/home/yh/mapModel/01.11/test.vtk"/>
+	<param name="loadTrajName" value="/home/yh/mapModel/12.25/icp_0301.txt"/>
+	<param name="saveNodeDirName" value="/home/yh/mapModel/03.03/Node/"/>
+	<param name="saveEdgeDirName" value="/home/yh/mapModel/03.03/Edge/"/>
+	<param name="saveXYZDirName" value="/home/yh/mapModel/03.03/XYZ/"/>
+	<param name="mapLength" value="10560"/>
+	
+	<param name="endIndex" value="10000"/>	
+	<param name="startIndex" value="0"/>
+	<param name="windowLength" value="50"/>
+	<param name="seperateCnt" value="25"/>
+	
+	<param name="kSearchMap" value="100"/>
+	<param name="searchRangeMax" value="0.2"/>
+
+
+
+  </node>
+</launch>

@@ -1,0 +1,14 @@
+<launch>
+
+  <node pkg="learned_map" type="generateOtherFeatures" name="generateOtherFeatures" output="screen">
+
+  <param name="loadMapName" value="/home/yh/mapModel/12.25/saveTestMap.vtk"/>
+  <param name="loadTrajName" value="/home/yh/mapModel/12.25/icp_0301.txt"/>
+  <param name="saveCloudName" value="/home/yh/test.vtk"/>
+  <param name="mapLength" value="10560"/>
+
+  <param name="roadDNA" value="100"/>
+
+
+  </node>
+</launch>

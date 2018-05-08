@@ -1,0 +1,15 @@
+<launch>
+
+  <node pkg="learned_map" type="labelLaser" name="labelLaser" output="screen">
+
+  	<param name="loadMapName" value="/home/yh/mapModel/12.25/wholeMap_s2.vtk"/> 
+  	<param name="icpFileName" value="/media/yh/YH/DataSet/YQ21/2017_03_09/2017_03_09_drive_0001_sync/icp/icp.txt"/> 
+    <param name="velodyneDirName" value="/media/yh/YH/DataSet/YQ21/2017_03_09/2017_03_09_drive_0001_sync/velodyne_points/data/"/> 
+  	<param name="totalICPnum" value="100"/>
+    <param name="saveTxtDirName" value="/media/yh/YH/test_01.04/"/>
+  	<param name="horizontalResRad" value="0.0035"/>
+
+
+
+  </node>
+</launch>

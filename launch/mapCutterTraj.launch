@@ -1,0 +1,19 @@
+<launch>
+
+  <node pkg="learned_map" type="mapCutterTraj" name="mapCutterTraj" output="screen">
+
+	<param name="loadMapName" value="/home/yh/mapModel/01.11/test.vtk"/>
+	<param name="loadTrajName" value="/home/yh/mapModel/12.25/icp_0301.txt"/>
+	<param name="saveTrainName" value="/home/yh/mapModel/05.06/Train_Test/train_cloud.vtk"/>
+	<param name="saveTestName" value="/home/yh/mapModel/05.06/Train_Test/test_cloud.vtk"/>
+
+	<param name="mapLength" value="10560"/>	
+	<param name="cutPoint0" value="100"/>	
+	<param name="cutPoint1" value="7000"/>	
+	<param name="cutPoint2" value="7001"/>	
+	<param name="cutPoint3" value="10000"/>	
+
+
+  </node>
+
+</launch>

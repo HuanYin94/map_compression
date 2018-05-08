@@ -1,0 +1,21 @@
+<launch>
+
+  <node pkg="learned_map" type="mapFeater" name="mapFeater" output="screen">
+
+  <param name="loadMapName" value="/home/yh/mapModel/12.25/wholeMap_s9_session.vtk"/>
+  <!--param name="loadMapName" value="/home/yh/wholeMap.vtk"/-->
+  <param name="trajICPName" value="/media/yh/YH/DataSet/YQ21/2017_03_07/2017_03_07_drive_0001_sync/icp/icp.txt"/>
+  <param name="totalICPnum" value="10650"/>
+  
+  <!--Eigen Values of PCL-NDT/-->
+  <param name="kSearch" value="10"/>
+  <param name="saveFileName" value="/home/yh/mapModel/12.25/wholeMap_s9_features.txt"/>
+
+  <!--Eigen Values of PCL-NDT/-->
+  <param name="voxelSize" value="1"/>
+  <param name="minPointsPerVoxel" value="5"/>
+  <param name="minRatio" value="0.1"/>
+  <param name="saveVTKName" value="/home/yh/mapModel/12.25/wholeMap_s5_eval.vtk"/>
+
+  </node>
+</launch>

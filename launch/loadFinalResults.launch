@@ -1,0 +1,10 @@
+<launch>
+
+  <node pkg="learned_map" type="loadFinalResults" name="loadFinalResults" output="screen">
+
+	<param name="loadResultName" value="/home/yh/mapModel/05.07/final.txt"/>
+	<param name="loadMapName" value="/home/yh/mapModel/05.07/Train_Test/test_cloud.vtk"/>
+	<param name="saveCloudName" value="/home/yh/mapModel/05.07/final.vtk"/>
+	
+  </node>
+</launch>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package>
+  <name>learned_map</name>
+  <version>0.0.1</version>
+  <description>The learned map compression package</description>
+
+  <maintainer email="zjuyinhuan@gmail.com">Huan Yin</maintainer>
+
+
+  <license>ZJU</license>
+
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roscpp</build_depend>
+  <run_depend>roscpp</run_depend>
+
+</package>

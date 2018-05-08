@@ -1,0 +1,17 @@
+<launch>
+
+  <node pkg="learned_map" type="savePointNetFeatures" name="savePointNetFeatures" output="screen">
+
+	<param name="loadMapName" value="/home/yh/mapModel/01.11/test.vtk"/>
+	<param name="loadTrajName" value="/home/yh/mapModel/12.25/icp_0301.txt"/>
+	<param name="savePointsDirName" value="/home/yh/mapModel/04.26/points/"/>
+	<param name="mapLength" value="10560"/>
+	
+	<!--start is the center of the sliding map-->
+	<param name="endIndex" value="10000"/>	
+	<param name="startIndex" value="200"/>
+	<param name="windowLength" value="200"/>
+	<param name="seperateCnt" value="50"/>
+	
+  </node>
+</launch>
