@@ -174,7 +174,7 @@ void sessionFilter::process()
     cout<<"Salient Size:  "<<salientCloud.features.cols()<<endl;
 
     // save
-    salientCloud.save(saveMapName);
+    mapCloud.save(saveMapName);
     cout<<"saved"<<endl;
 
 }

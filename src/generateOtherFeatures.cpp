@@ -43,6 +43,7 @@ public:
     string loadMapName;
     string loadTrajName;
     string saveCloudName;
+    string saveFeaturesName;
 
     DP mapCloud;
     DP trajCloud;
@@ -69,7 +70,8 @@ Generation::Generation(ros::NodeHandle& n):
     loadTrajName(getParam<string>("loadTrajName", ".")),
     mapLength(getParam<int>("mapLength", 0)),
     saveCloudName(getParam<string>("saveCloudName", ".")),
-    roadDNA(getParam<int>("roadDNA", 0))
+    roadDNA(getParam<int>("roadDNA", 0)),
+    saveFeaturesName(getParam<string>("saveFeaturesName", "."))
 {
     // load
     mapCloud = DP::load(loadMapName);
@@ -106,13 +108,15 @@ void Generation::process()
     /// continue the CRF
 
     //add new descriptors
-    mapCloud.addDescriptor("Curvity", PM::Matrix::Zero(1, mapCloud.features.cols()));
+    mapCloud.addDescriptor("Range", PM::Matrix::Zero(1, mapCloud.features.cols()));
+    mapCloud.addDescriptor("Height", PM::Matrix::Zero(1, mapCloud.features.cols()));
+    mapCloud.addDescriptor("Orientation", PM::Matrix::Zero(1, mapCloud.features.cols()));
 
     int rowLineSalient = mapCloud.getDescriptorStartingRow("salient");
     int rowLineRange = mapCloud.getDescriptorStartingRow("Range");
     int rowLineHeight = mapCloud.getDescriptorStartingRow("Height");
+    int rowLineOrientation = mapCloud.getDescriptorStartingRow("Orientation");
     int rowLineNormal = mapCloud.getDescriptorStartingRow("normals");
-    int rowLineProb = mapCloud.getDescriptorStartingRow("probabilityStatic");
     int rowLineIntensity = mapCloud.getDescriptorStartingRow("intensity");
 
 
@@ -127,47 +131,35 @@ void Generation::process()
     }
     trajCloud.conservativeResize(mapLength);
 
-    /*
-     * // stupid calculation
-    mapFilters.apply(trajCloud);
-
-    int rowLineNormalTraj = trajCloud.getDescriptorStartingRow("normals");
-
-    // smooth process
-    // Average normals
-    // small test
+    //Ort:Traj   ;   Oritentation:MapCloud;  diff-descritors
+    trajCloud.addDescriptor("Ort", PM::Matrix::Zero(1, trajCloud.features.cols()));
+    int rowLineOrt = trajCloud.getDescriptorStartingRow("Ort");
+    int indexStart;
+    int indexEnd;
     for(int t=0; t<trajCloud.features.cols(); t++)
     {
-        vector<double> normal_x_v;
-        vector<double> normal_y_v;
-        vector<double> normal_z_v;
-        for(int n=t-20; n<t+20; n++)
+        indexStart = 9999999;
+        indexEnd = -9999999;
+        for(int n=t-roadDNA; n<=t+roadDNA; n++)
         {
             if(n<0 || n>=mapLength)
                 continue;
-
-            // pushing
-            normal_x_v.push_back(trajCloud.getDescriptorViewByName("normals")(0, n));
-            normal_y_v.push_back(trajCloud.getDescriptorViewByName("normals")(1, n));
-            normal_z_v.push_back(trajCloud.getDescriptorViewByName("normals")(2, n));
-
+            if(n<indexStart)
+                indexStart = n;
+            if(n>indexEnd)
+                indexEnd = n;
         }
 
-        //Averaging
-        double meanNX = std::accumulate(std::begin(normal_x_v), std::end(normal_x_v), 0.0) / normal_x_v.size();
-        double meanNY = std::accumulate(std::begin(normal_y_v), std::end(normal_y_v), 0.0) / normal_y_v.size();
-        double meanNZ = std::accumulate(std::begin(normal_z_v), std::end(normal_z_v), 0.0) / normal_z_v.size();
-        //giving
-        trajCloud.descriptors(rowLineNormalTraj,t) = meanNX;
-        trajCloud.descriptors(rowLineNormalTraj+1,t) = meanNY;
-        trajCloud.descriptors(rowLineNormalTraj+2,t) = meanNZ;
+        double X = abs(trajCloud.features(0,indexStart) - trajCloud.features(0,indexEnd));
+        double Y = abs(trajCloud.features(1,indexStart) - trajCloud.features(1,indexEnd));
+
+        double ort = std::atan(X/Y)/3.1416926537*180;
+        trajCloud.descriptors(rowLineOrt, t) = ort;
 
     }
 
-
     // temp save
-    trajCloud.save("/home/yh/mapModel/05.08/traj_cloud.vtk");
-    */
+    //trajCloud.save("/home/yh/mapModel/05.09/traj_cloud.vtk");
 
     cout<<"start"<<endl;
 
@@ -184,14 +176,40 @@ void Generation::process()
     for(int m=0; m<mapCloud.features.cols(); m++)
     {
         // Range and Height are calculated
+        // R & H features
+        double Range = sqrt(matches_Traj.dists(0,m));
+        double Height = abs(mapCloud.features(2, m) - trajCloud.features(2, matches_Traj.ids(0,m)));
 
-        // curvity of the road
+        // road direction
+        double Orientation = trajCloud.descriptors(rowLineOrt, matches_Traj.ids(0,m));
 
+        //save the descriptors
+        {
+            mapCloud.descriptors(rowLineRange, m)=Range;
+            mapCloud.descriptors(rowLineHeight, m)=Height;
+            mapCloud.descriptors(rowLineOrientation, m)=Orientation;
+        }
 
     }
 
     // finally
     mapCloud.save(saveCloudName);
+
+    ofstream saver(saveFeaturesName);
+    for(int m=0; m<mapCloud.features.cols(); m++)
+    {
+        saver<<mapCloud.descriptors(rowLineNormal,m)<<"   "
+               <<mapCloud.descriptors(rowLineNormal+1,m)<<"   "
+                 <<mapCloud.descriptors(rowLineNormal+2,m)<<"   "
+                   <<mapCloud.descriptors(rowLineIntensity,m)<<"   "
+                     <<mapCloud.descriptors(rowLineRange,m)<<"   "
+                        <<mapCloud.descriptors(rowLineHeight,m)<<"   "
+                          <<mapCloud.descriptors(rowLineOrientation,m)<<"   "
+                            <<mapCloud.descriptors(rowLineSalient,m)<<endl;
+        saver.flush();
+    }
+    saver.close();
+    cout<<"FINISHED"<<endl;
 
 }
 

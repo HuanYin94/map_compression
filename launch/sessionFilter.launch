@@ -2,11 +2,11 @@
 
   <node pkg="learned_map" type="sessionFilter" name="sessionFilter" output="screen">
 
-  <param name="loadMapName" value="/home/yh/mapModel/12.25/wholeMap_s9_session.vtk"/>
-  <param name="saveMapName" value="/home/yh/mapModel/01.24/salient_72749.vtk"/>
-  <param name="staticInt" value="200"/> 
+  <param name="loadMapName" value="/home/yh/mapModel/12.25/wholeMap_s10.vtk"/>
+  <param name="saveMapName" value="/home/yh/mapModel/05.09/salient.vtk"/>
+  <param name="staticInt" value="280"/> 
 
-  <param name="ifCluster" value="false"/>
+  <param name="ifCluster" value="true"/>
   <param name="rangeSearch" value="3"/>	
   <param name="minStaticPoints" value="5"/>
   <param name="kSearch" value="20"/>
