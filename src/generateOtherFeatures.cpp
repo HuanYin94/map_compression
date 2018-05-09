@@ -194,7 +194,7 @@ void Generation::process()
 
     // finally
     mapCloud.save(saveCloudName);
-
+    /*
     ofstream saver(saveFeaturesName);
     for(int m=0; m<mapCloud.features.cols(); m++)
     {
@@ -209,8 +209,9 @@ void Generation::process()
         saver.flush();
     }
     saver.close();
-    cout<<"FINISHED"<<endl;
+    */
 
+    cout<<"FINISHED"<<endl;
 }
 
 

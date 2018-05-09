@@ -115,8 +115,8 @@ ${catkin_LIBRARIES}
 ${libpointmatcher_LIBRARIES}
 )
 
-add_executable(saveAllCRFFeatures src/saveAllCRFFeatures.cpp)
-target_link_libraries(saveAllCRFFeatures
+add_executable(saveAllFeatures src/saveAllFeatures.cpp)
+target_link_libraries(saveAllFeatures
 ${catkin_LIBRARIES}
 ${libpointmatcher_LIBRARIES}
 )

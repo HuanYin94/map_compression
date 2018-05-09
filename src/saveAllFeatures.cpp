@@ -69,39 +69,22 @@ void Saver::process()
     int rowLineSalient = mapCloud.getDescriptorStartingRow("salient");
     int rowLineRange = mapCloud.getDescriptorStartingRow("Range");
     int rowLineHeight = mapCloud.getDescriptorStartingRow("Height");
-    int rowLineBin0 = mapCloud.getDescriptorStartingRow("Bin0");
-    int rowLineBin1 = mapCloud.getDescriptorStartingRow("Bin1");
-    int rowLineBin2 = mapCloud.getDescriptorStartingRow("Bin2");
-    int rowLineBin3 = mapCloud.getDescriptorStartingRow("Bin3");
-
-    // get view by name
+    int rowLineOrientation = mapCloud.getDescriptorStartingRow("Orientation");
     int rowLineNormal = mapCloud.getDescriptorStartingRow("normals");
-
     int rowLineIntensity = mapCloud.getDescriptorStartingRow("intensity");
-    int rowLineProb = mapCloud.getDescriptorStartingRow("probabilityStatic");
 
 
     ofstream savePoints(saveFileName);
-    for(int i=0; i<mapCloud.features.cols(); i++)
+    for(int m=0; m<mapCloud.features.cols(); m++)
     {
-        /*
-        savePoints<<mapCloud.descriptors(rowLineBin0, i)<<"   "
-                    <<mapCloud.descriptors(rowLineBin1, i)<<"   "
-                      <<mapCloud.descriptors(rowLineBin2, i)<<"   "
-                        <<mapCloud.descriptors(rowLineBin3, i)<<"   "
-                          <<mapCloud.descriptors(rowLineRange, i)<<"   "
-                            <<mapCloud.descriptors(rowLineHeight, i)<<"   "
-            c                  <<mapCloud.descriptors(rowLineSalient, i)<<endl;
-        */
-
-        savePoints<<mapCloud.getDescriptorViewByName("normals")(0, i)<<"   "<<
-               mapCloud.getDescriptorViewByName("normals")(1, i)<<"   "<<
-               mapCloud.getDescriptorViewByName("normals")(2, i)<<"   "<<
-               mapCloud.descriptors(rowLineIntensity, i)<<"   "<<
-               mapCloud.descriptors(rowLineProb, i)<<"   "<<
-               mapCloud.descriptors(rowLineRange, i)<<"   "<<
-               mapCloud.descriptors(rowLineHeight, i)<<"   "<<
-               mapCloud.descriptors(rowLineSalient, i)<<"   "<<endl;
+        savePoints<<mapCloud.descriptors(rowLineNormal,m)<<"   "
+               <<mapCloud.descriptors(rowLineNormal+1,m)<<"   "
+                 <<mapCloud.descriptors(rowLineNormal+2,m)<<"   "
+                   <<mapCloud.descriptors(rowLineIntensity,m)<<"   "
+                     <<mapCloud.descriptors(rowLineRange,m)<<"   "
+                        <<mapCloud.descriptors(rowLineHeight,m)<<"   "
+                          <<mapCloud.descriptors(rowLineOrientation,m)<<"   "
+                            <<mapCloud.descriptors(rowLineSalient,m)<<endl;
 
 
         savePoints.flush();
