@@ -72,19 +72,21 @@ void Saver::process()
     int rowLineOrientation = mapCloud.getDescriptorStartingRow("Orientation");
     int rowLineNormal = mapCloud.getDescriptorStartingRow("normals");
     int rowLineIntensity = mapCloud.getDescriptorStartingRow("intensity");
+    int rowLineDensities = mapCloud.getDescriptorStartingRow("densities");
 
 
     ofstream savePoints(saveFileName);
     for(int m=0; m<mapCloud.features.cols(); m++)
     {
         savePoints<<mapCloud.descriptors(rowLineNormal,m)<<"   "
-               <<mapCloud.descriptors(rowLineNormal+1,m)<<"   "
-                 <<mapCloud.descriptors(rowLineNormal+2,m)<<"   "
-                   <<mapCloud.descriptors(rowLineIntensity,m)<<"   "
-                     <<mapCloud.descriptors(rowLineRange,m)<<"   "
-                        <<mapCloud.descriptors(rowLineHeight,m)<<"   "
-                          <<mapCloud.descriptors(rowLineOrientation,m)<<"   "
-                            <<mapCloud.descriptors(rowLineSalient,m)<<endl;
+                <<mapCloud.descriptors(rowLineNormal+1,m)<<"   "
+                <<mapCloud.descriptors(rowLineNormal+2,m)<<"   "
+                <<mapCloud.descriptors(rowLineIntensity,m)<<"   "
+                <<mapCloud.descriptors(rowLineDensities,m)<<"   "
+                <<mapCloud.descriptors(rowLineRange,m)<<"   "
+                <<mapCloud.descriptors(rowLineHeight,m)<<"   "
+                <<mapCloud.descriptors(rowLineOrientation,m)<<"   "
+                <<mapCloud.descriptors(rowLineSalient,m)<<endl;
 
 
         savePoints.flush();

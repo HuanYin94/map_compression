@@ -2,8 +2,8 @@
 
   <node pkg="learned_map" type="saveAllFeatures" name="saveAllFeatures" output="screen">
 
-	<param name="loadMapName" value="/home/yh/mapModel/05.09/Train_Test/test_cloud.vtk"/>
-	<param name="saveFileName" value="/home/yh/mapModel/05.09/Train_Test/testCRFFeatures.txt"/>
+	<param name="loadMapName" value="/home/yh/mapModel/05.17/Train_Test/test_cloud.vtk"/>
+	<param name="saveFileName" value="/home/yh/mapModel/05.17/Train_Test/testCRFFeatures.txt"/>
 	
   </node>
 </launch>

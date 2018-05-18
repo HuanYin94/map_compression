@@ -1,0 +1,8 @@
+<launch>
+
+  <node pkg="learned_map" type="errorDistribution" name="errorDistribution" output="screen">
+
+  <param name="loadMapName" value="/home/yh/mapModel/05.18/05_18_final_test.vtk"/>
+
+  </node>
+</launch>

@@ -2,9 +2,9 @@
 
   <node pkg="learned_map" type="loadFinalResults" name="loadFinalResults" output="screen">
 
-	<param name="loadResultName" value="/home/yh/mapModel/05.07/final.txt"/>
-	<param name="loadMapName" value="/home/yh/mapModel/05.07/Train_Test/test_cloud.vtk"/>
-	<param name="saveCloudName" value="/home/yh/mapModel/05.07/final.vtk"/>
+	<param name="loadResultName" value="/home/yh/mapModel/05.18/05_18_PC.txt"/>
+	<param name="loadMapName" value="/home/yh/mapModel/05.17/Train_Test/test_cloud.vtk"/>
+	<param name="saveCloudName" value="/home/yh/mapModel/05.18/05_18_final_test.vtk"/>
 	
   </node>
 </launch>

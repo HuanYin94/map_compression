@@ -50,6 +50,7 @@ public:
 
     int mapLength;
     int roadDNA;
+    int maxDensity;
 
     vector<vector<double>> initPoses;
 
@@ -71,7 +72,8 @@ Generation::Generation(ros::NodeHandle& n):
     mapLength(getParam<int>("mapLength", 0)),
     saveCloudName(getParam<string>("saveCloudName", ".")),
     roadDNA(getParam<int>("roadDNA", 0)),
-    saveFeaturesName(getParam<string>("saveFeaturesName", "."))
+    saveFeaturesName(getParam<string>("saveFeaturesName", ".")),
+    maxDensity(getParam<int>("maxDensity", 0))
 {
     // load
     mapCloud = DP::load(loadMapName);
@@ -118,7 +120,7 @@ void Generation::process()
     int rowLineOrientation = mapCloud.getDescriptorStartingRow("Orientation");
     int rowLineNormal = mapCloud.getDescriptorStartingRow("normals");
     int rowLineIntensity = mapCloud.getDescriptorStartingRow("intensity");
-
+    int rowLineDensity = mapCloud.getDescriptorStartingRow("densities");
 
     // turn poses to a DP::CLOUD
     // feature-rows: x, y, z, directly
@@ -154,7 +156,8 @@ void Generation::process()
         double Y = abs(trajCloud.features(1,indexStart) - trajCloud.features(1,indexEnd));
 
         double ort = std::atan(X/Y)/3.1416926537*180;
-        trajCloud.descriptors(rowLineOrt, t) = ort;
+        double ortNorm = ort / 90;
+        trajCloud.descriptors(rowLineOrt, t) = ortNorm;  // normalization of the orientation
 
     }
 
@@ -182,6 +185,10 @@ void Generation::process()
 
         // road direction
         double Orientation = trajCloud.descriptors(rowLineOrt, matches_Traj.ids(0,m));
+
+        //densities re-filter, sth. is tool large
+        if(mapCloud.descriptors(rowLineDensity, m) > maxDensity)
+            mapCloud.descriptors(rowLineDensity, m) = maxDensity;
 
         //save the descriptors
         {

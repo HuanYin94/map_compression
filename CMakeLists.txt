@@ -133,3 +133,16 @@ ${catkin_LIBRARIES}
 ${libpointmatcher_LIBRARIES}
 )
 
+add_executable(errorDistribution src/errorDistribution.cpp)
+target_link_libraries(errorDistribution
+${catkin_LIBRARIES}
+${libpointmatcher_LIBRARIES}
+)
+
+
+
+
+
+
+
+
