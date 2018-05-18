@@ -2,9 +2,9 @@
 
   <node pkg="learned_map" type="loadFinalResults" name="loadFinalResults" output="screen">
 
-	<param name="loadResultName" value="/home/yh/mapModel/05.18/05_18_PC.txt"/>
-	<param name="loadMapName" value="/home/yh/mapModel/05.17/Train_Test/test_cloud.vtk"/>
-	<param name="saveCloudName" value="/home/yh/mapModel/05.18/05_18_final_test.vtk"/>
+	<param name="loadResultName" value="/home/yh/mapModel/05.18/Tianjin/result.txt"/>
+	<param name="loadMapName" value="/home/yh/mapModel/05.18/Tianjin/wholeMap_features_tianjin.vtk"/>
+	<param name="saveCloudName" value="/home/yh/mapModel/05.18/Tianjin/detection_result.vtk"/>
 	
   </node>
 </launch>
