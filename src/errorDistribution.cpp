@@ -39,10 +39,13 @@ public:
     ros::NodeHandle& n;
 
     string loadMapName;
+    string saveDisName;
 
     DP mapCloud;
     DP salientCloud;
     DP salientResultsCloud;
+
+    shared_ptr<NNS> distanceNNS;
 
     void process();
 
@@ -53,13 +56,12 @@ errorDistribution::~errorDistribution()
 
 errorDistribution::errorDistribution(ros::NodeHandle& n):
     n(n),
-    loadMapName(getParam<string>("loadMapName", "."))
+    loadMapName(getParam<string>("loadMapName", ".")),
+    saveDisName(getParam<string>("saveDisName", "."))
 {
 
     // load
     mapCloud = DP::load(loadMapName);
-
-    cout<<"JUST SHOW"<<endl;
 
     // process
     this->process();
@@ -68,7 +70,55 @@ errorDistribution::errorDistribution(ros::NodeHandle& n):
 
 void errorDistribution::process()
 {
+    int rowLineSalient = mapCloud.getDescriptorStartingRow("salient");
+    int rowLineSalientResults = mapCloud.getDescriptorStartingRow("salient_results");
 
+    // saliency
+    int cntSalient = 0;
+    salientCloud = mapCloud.createSimilarEmpty();
+    for(int s=0; s<mapCloud.features.cols(); s++)
+    {
+        if(mapCloud.descriptors(rowLineSalient, s) == 1)
+        {
+            salientCloud.setColFrom(cntSalient, mapCloud, s);
+            cntSalient++;
+        }
+    }
+    salientCloud.conservativeResize(cntSalient);
+
+    //detection of saliency
+    int cntSalientResults = 0;
+    salientResultsCloud = mapCloud.createSimilarEmpty();
+    for(int sr=0; sr<mapCloud.features.cols(); sr++)
+    {
+        if(mapCloud.descriptors(rowLineSalientResults, sr) == 1)
+        {
+            salientResultsCloud.setColFrom(cntSalientResults, mapCloud, sr);
+            cntSalientResults++;
+        }
+    }
+    salientResultsCloud.conservativeResize(cntSalientResults);
+
+    cout<<"salient count:   "<<salientCloud.features.cols()<<endl;
+    cout<<"results count:   "<<salientResultsCloud.features.cols()<<endl;
+
+    // kd-tree on libnabo
+    distanceNNS.reset(NNS::create(salientCloud.features, salientCloud.features.rows(), NNS::KDTREE_LINEAR_HEAP, NNS::TOUCH_STATISTICS));
+    PM::Matches matches_NNS(
+        Matches::Dists(1, salientResultsCloud.features.cols()),
+        Matches::Ids(1, salientResultsCloud.features.cols())
+    );
+    distanceNNS->knn(salientResultsCloud.features, matches_NNS.ids, matches_NNS.dists, 1, 0, NNS::ALLOW_SELF_MATCH);
+
+    // savings
+    ofstream saveTxt(saveDisName);
+
+    for(int m=0; m<salientResultsCloud.features.cols(); m++)
+    {
+        saveTxt<<sqrt(matches_NNS.dists(0,m))<<endl;
+        saveTxt.flush();
+    }
+    saveTxt.close();
 
 }
 
