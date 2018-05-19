@@ -2,8 +2,12 @@
 
   <node pkg="learned_map" type="DBSCANFilter" name="DBSCANFilter" output="screen">
 
-  <param name="loadMapName" value="/home/yh/mapModel/05.18/05_18_final_test.vtk"/>
-　 <param name="saveCloudName" value="/home/yh/mapModel/05.18/saveCloudName.txt"/>
+  <param name="loadMapName" value="/home/yh/mapModel/05.18/Tianjin/detection_result.vtk"/>
+　 <param name="saveCloudName" value="/home/yh/mapModel/05.18/Tianjin/DBSCAN_result.vtk"/>
+	
+  <param name="kSearch" value="100"/>
+  <param name="minPoints" value="66"/>
+  <param name="e" value="1.2"/>
 
   </node>
 </launch>

@@ -45,10 +45,16 @@ public:
     DP salientCloud;
     DP salientResultsCloud;
 
+    int kSearch;
+    int minPoints;
+    double e;
+
     shared_ptr<NNS> distanceNNS;
 
     void process();
 
+    vector<int> intersection(vector<int> a, vector<int> b);
+    vector<int> deletion(vector<int> a, vector<int> b);
 };
 
 DBSCAN::~DBSCAN()
@@ -57,7 +63,10 @@ DBSCAN::~DBSCAN()
 DBSCAN::DBSCAN(ros::NodeHandle& n):
     n(n),
     loadMapName(getParam<string>("loadMapName", ".")),
-    saveCloudName(getParam<string>("saveCloudName", "."))
+    saveCloudName(getParam<string>("saveCloudName", ".")),
+    minPoints(getParam<int>("minPoints", 0)),
+    e(getParam<double>("e", 0)),
+    kSearch(getParam<int>("kSearch", 0))
 {
 
     // load
@@ -85,18 +94,169 @@ void DBSCAN::process()
     }
     salientResultsCloud.conservativeResize(cntSalientResults);
 
-    cout<<"salient count:   "<<salientCloud.features.cols()<<endl;
-    cout<<"results count:   "<<salientResultsCloud.features.cols()<<endl;
+    cout<<"salient results count:   "<<salientResultsCloud.features.cols()<<endl;
 
     // kd-tree on libnabo
-    distanceNNS.reset(NNS::create(salientCloud.features, salientCloud.features.rows(), NNS::KDTREE_LINEAR_HEAP, NNS::TOUCH_STATISTICS));
+    distanceNNS.reset(NNS::create(salientResultsCloud.features, salientResultsCloud.features.rows(), NNS::KDTREE_LINEAR_HEAP, NNS::TOUCH_STATISTICS));
     PM::Matches matches_NNS(
-        Matches::Dists(1, salientResultsCloud.features.cols()),
-        Matches::Ids(1, salientResultsCloud.features.cols())
+        Matches::Dists(kSearch, salientResultsCloud.features.cols()),
+        Matches::Ids(kSearch, salientResultsCloud.features.cols())
     );
-    distanceNNS->knn(salientResultsCloud.features, matches_NNS.ids, matches_NNS.dists, 1, 0, NNS::ALLOW_SELF_MATCH);
+    distanceNNS->knn(salientResultsCloud.features, matches_NNS.ids, matches_NNS.dists, kSearch, 0); // not NNS::ALLOW_SELF_MATCH
+
+    // find the seed points
+    // index of the pointCloud
+    vector<int> seedVector;
+    int cnt;
+    for(int p=0; p<salientResultsCloud.features.cols(); p++)
+    {
+        cnt=0;
+        for(int N=0; N<kSearch; N++)
+        {
+            if(sqrt(matches_NNS.dists(N,p)) < e)
+                cnt++;
+        }
+
+        if(cnt>=minPoints)
+            seedVector.push_back(p);
+    }
+
+    cout<<"seed num:    "<<seedVector.size()<<endl;
+
+    // clustering
+    int clusterNum = 0;
+    vector<int> unvisitVector;
+    for(int i=0; i<salientResultsCloud.features.cols(); i++)
+    {
+        unvisitVector.push_back(i);
+    }
+    vector<int> unvisitVector_old;
+
+    // loop in loop
+
+    vector<vector<int>> clusteredIndex;
+    vector<int> queueVector;
+    vector<int> neighbors;
+
+    while(seedVector.size()>0)
+    {
+        cout<<"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"<<endl;
+        cout<<"processing seed:   "<<seedVector.at(0)<<endl;
+
+        // copy
+        unvisitVector_old.assign(unvisitVector.begin(), unvisitVector.end());
+        cout<<"copy finished"<<endl;
+
+        queueVector.push_back(seedVector.at(0));
+        cout<<"queueing"<<endl;
+
+        //remove
+        vector<int>::iterator iter_=std::find(unvisitVector.begin(), unvisitVector.end(), seedVector.at(0));
+        unvisitVector.erase(iter_);
+        cout<<"removed"<<endl;
+
+        while(queueVector.size()>0)
+        {
+            int core = queueVector.at(0);
+            vector<int>::iterator iter=std::find(queueVector.begin(), queueVector.end(), core);
+            queueVector.erase(iter);
+
+            vector<int>::iterator result = std::find(seedVector.begin(), seedVector.end(), core);
+
+            // it's a seed
+            if(result != seedVector.end())
+            {
+                cout<<"--------------------------------"<<endl;
+                cout<<"result value:    "<<*result<<endl;
+                // get it's neighbors!
+                for(int N=0; N<kSearch; N++)
+                {
+                    if(sqrt(matches_NNS.dists(N,*result)) < e)
+                    {
+                        neighbors.push_back(matches_NNS.ids(N,*result));
+                    }
+                }
+
+                cout<<"unvisit size:    "<<unvisitVector.size()<<endl;
+                cout<<"neighbors size:    "<<neighbors.size()<<endl;
+
+                vector<int> delta(this->intersection(neighbors, unvisitVector));
+                neighbors.clear();
+                // give the delta to Queueing
+                queueVector.insert(queueVector.end(), delta.begin(), delta.end());
+
+                // reset
+                cout<<"delta size:    "<<delta.size()<<endl;
+                vector<int> tempVector = this->deletion(unvisitVector, delta);
+                cout<<"here00"<<endl;
+                unvisitVector.clear();
+                unvisitVector.assign(tempVector.begin(), tempVector.end());
+                cout<<"here01"<<endl;
+
+            }
+
+        }
+
+        clusterNum++;
+
+        vector<int> C(this->deletion(unvisitVector_old, unvisitVector));
+        clusteredIndex.push_back(C);
+
+        vector<int> CC(this->deletion(seedVector, C));
+        seedVector.clear();
+        seedVector.assign(CC.begin(), CC.end());
+
+        cout<<"num of C:    "<<clusterNum<<"    seed num:   "<<seedVector.size()<<endl;
+    }
+
 
 }
+
+vector<int> DBSCAN::intersection(vector<int> a, vector<int> b)
+{
+    vector<int> resultVector(0);
+
+//    std::sort(a.begin(), a.end());
+//    std::sort(b.begin(), b.end());
+
+//    auto iter = std::set_intersection(a.begin(), a.end(), b.begin(), b.end(), resultVector.begin());
+//    resultVector.resize(iter-resultVector.begin());
+
+    for(int bb=0; bb<b.size(); bb++)
+    {
+        vector<int>::iterator result = std::find(a.begin(), a.end(), b.at(bb));
+        if(result != a.end())
+            resultVector.push_back(*result);
+    }
+
+    return resultVector;
+}
+
+vector<int> DBSCAN::deletion(vector<int> a, vector<int> b)
+{
+
+    vector<int> resultVector(0);
+
+    if(b.size()==0 || a.size()==0)
+        return a;
+
+//    std::sort(a.begin(), a.end());
+//    std::sort(b.begin(), b.end());
+
+//    auto iter = std::set_difference(a.begin(), a.end(), b.begin(), b.end(), resultVector.begin());
+//    resultVector.resize(iter-resultVector.begin());
+
+    for(int aa=0; aa<a.size(); aa++)
+    {
+        vector<int>::iterator result = std::find(b.begin(), b.end(), a.at(aa));
+        if(result == b.end())
+            resultVector.push_back(*result);
+    }
+
+    return resultVector;
+
+}
+
 
 int main(int argc, char **argv)
 {
