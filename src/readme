@@ -16,7 +16,7 @@
 
 8. labelLaser:		label the points with session in a laser Frame according the map_session_cnt // not used
 
-9. sessionFilter:	make great session be salient! & show them // salient GET
+9. sessionFilter:	make great session be salient! & brother_cnt to filter some lonely ones //salient GET
 
 10.generateSlidingSamples:	generate samples by Sliding Window for further segmentation
 
@@ -36,4 +36,6 @@
 
 16.mapCutterTraj: 	cut the wholemap to two parts: train & test, according to the poses attached
 
+17.errorDistribution:		save the NN matched distance between the salient points and salient results
 
+18.DBSCANFilter:			DBSCAN clustering and filter the noises points for SegMatch next step

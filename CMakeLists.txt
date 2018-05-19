@@ -139,7 +139,11 @@ ${catkin_LIBRARIES}
 ${libpointmatcher_LIBRARIES}
 )
 
-
+add_executable(DBSCANFilter src/DBSCANFilter.cpp)
+target_link_libraries(DBSCANFilter
+${catkin_LIBRARIES}
+${libpointmatcher_LIBRARIES}
+)
 
 
 

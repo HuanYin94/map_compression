@@ -73,8 +73,10 @@ void Saver::process()
     int rowLineNormal = mapCloud.getDescriptorStartingRow("normals");
     int rowLineIntensity = mapCloud.getDescriptorStartingRow("intensity");
     int rowLineDensities = mapCloud.getDescriptorStartingRow("densities");
+    int rowLineSalientResults = mapCloud.getDescriptorStartingRow("salient_results");
 
-
+    // normal ones
+/*
     ofstream savePoints(saveFileName);
     for(int m=0; m<mapCloud.features.cols(); m++)
     {
@@ -92,6 +94,22 @@ void Saver::process()
         savePoints.flush();
     }
     savePoints.close();
+ */
+
+    // save the xyz only for detection results
+    ofstream savePoints(saveFileName);
+    for(int m=0; m<mapCloud.features.cols(); m++)
+    {
+        if(mapCloud.descriptors(rowLineSalientResults,m) == 1)
+            savePoints<<mapCloud.features(0,m)<<"   "
+                      <<mapCloud.features(1,m)<<"   "
+                      <<mapCloud.features(2,m)<<endl;
+
+        savePoints.flush();
+    }
+    savePoints.close();
+
+
 }
 
 int main(int argc, char **argv)

@@ -1,0 +1,9 @@
+<launch>
+
+  <node pkg="learned_map" type="DBSCANFilter" name="DBSCANFilter" output="screen">
+
+  <param name="loadMapName" value="/home/yh/mapModel/05.18/05_18_final_test.vtk"/>
+　 <param name="saveCloudName" value="/home/yh/mapModel/05.18/saveCloudName.txt"/>
+
+  </node>
+</launch>
