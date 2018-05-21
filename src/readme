@@ -4,9 +4,7 @@
 
 2. mapCheck: 		just show the map
 
-3. mapCutter:		cut the wholemap to two parts: train & test
-
-4. mapFeater: 		extract the feature of each 3D point // not used
+3. mapCompresser:		compress the map according to the saliency descriptor
 
 5. mapAccuLaserMultiple: 	accumalte laser-based experience map, with no-limit Maxsession
 
@@ -18,24 +16,16 @@
 
 9. sessionFilter:	make great session be salient! & brother_cnt to filter some lonely ones //salient GET
 
-10.generateSlidingSamples:	generate samples by Sliding Window for further segmentation
-
-11.generateCRFFeatures:		generate node features of each point node, 500000
-
-11.savePointNetFeatures:	save Points&Labels for PointNet Training
-
-11.savePointNetBinsFeatures:save Points&Labels for PointNet Training, add Bins 
-
 12.saveAllCRFFeatures:		save all features for simple classification
 
 13.randomSampleMap:			random sampling the map for comparison
 
 14.loadFinalResults:		load the detection results
 
-15.mapAccuLaser:			???
-
 16.mapCutterTraj: 	cut the wholemap to two parts: train & test, according to the poses attached
 
 17.errorDistribution:		save the NN matched distance between the salient points and salient results
 
 18.DBSCANFilter:			DBSCAN clustering and filter the noises points for SegMatch next step
+
+19.LocTest:				Test of localization on the result map

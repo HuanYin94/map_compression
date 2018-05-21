@@ -37,14 +37,8 @@ ${catkin_LIBRARIES}
 ${libpointmatcher_LIBRARIES}
 )
 
-add_executable(mapCutter src/mapCutter.cpp)
-target_link_libraries(mapCutter
-${catkin_LIBRARIES}
-${libpointmatcher_LIBRARIES}
-)
-
-add_executable(mapFeater src/mapFeater.cpp)
-target_link_libraries(mapFeater
+add_executable(mapCompresser src/mapCompresser.cpp)
+target_link_libraries(mapCompresser
 ${catkin_LIBRARIES}
 ${libpointmatcher_LIBRARIES}
 )
@@ -75,30 +69,6 @@ ${libpointmatcher_LIBRARIES}
 
 add_executable(sessionFilter src/sessionFilter.cpp)
 target_link_libraries(sessionFilter
-${catkin_LIBRARIES}
-${libpointmatcher_LIBRARIES}
-)
-
-add_executable(generateSlidingSamples src/generateSlidingSamples.cpp)
-target_link_libraries(generateSlidingSamples
-${catkin_LIBRARIES}
-${libpointmatcher_LIBRARIES}
-)
-
-add_executable(generateCRFFeatures src/generateCRFFeatures.cpp)
-target_link_libraries(generateCRFFeatures
-${catkin_LIBRARIES}
-${libpointmatcher_LIBRARIES}
-)
-
-add_executable(savePointNetFeatures src/savePointNetFeatures.cpp)
-target_link_libraries(savePointNetFeatures
-${catkin_LIBRARIES}
-${libpointmatcher_LIBRARIES}
-)
-
-add_executable(savePointNetBinsFeatures src/savePointNetBinsFeatures.cpp)
-target_link_libraries(savePointNetBinsFeatures
 ${catkin_LIBRARIES}
 ${libpointmatcher_LIBRARIES}
 )
@@ -145,7 +115,11 @@ ${catkin_LIBRARIES}
 ${libpointmatcher_LIBRARIES}
 )
 
-
+add_executable(locTest src/locTest.cpp)
+target_link_libraries(locTest
+${catkin_LIBRARIES}
+${libpointmatcher_LIBRARIES}
+)
 
 
 
