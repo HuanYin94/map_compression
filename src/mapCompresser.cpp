@@ -83,6 +83,7 @@ void mapCompresser::process()
 
     salientMap.save(saveMapName);
 
+    cout<<"Origin:  "<<mapCloud.features.cols()<<endl;
     cout<<"Saved:   "<<salientMap.features.cols()<<endl;
 }
 

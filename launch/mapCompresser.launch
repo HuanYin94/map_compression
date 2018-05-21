@@ -2,8 +2,8 @@
 
   <node pkg="learned_map" type="mapCompresser" name="mapCompresser" output="screen">
 
-  <param name="loadMapName" value="/home/yh/mapModel/01.11/test.vtk"/> 
-  <param name="saveMapName" value="/home/yh/mapModel/05.04/Train_Test/testCloud.vtk"/>
+  <param name="loadMapName" value="/home/yh/mapModel/05.18/05_18_final_test.vtk"/> 
+  <param name="saveMapName" value="/home/yh/mapModel/05.21/saliencyCloud_yq.vtk"/>
 
   </node>
 </launch>
