@@ -188,25 +188,30 @@ void DBSCAN::process()
                 // reset
                 cout<<"delta size:    "<<delta.size()<<endl;
                 vector<int> tempVector = this->deletion(unvisitVector, delta);
-                cout<<"here00"<<endl;
                 unvisitVector.clear();
                 unvisitVector.assign(tempVector.begin(), tempVector.end());
-                cout<<"here01"<<endl;
+                cout<<"unvisit new size:    "<<unvisitVector.size()<<endl;
 
             }
 
         }
 
         clusterNum++;
-
-        vector<int> C(this->deletion(unvisitVector_old, unvisitVector));
+        cout<<"unvisit old size:    "<<unvisitVector_old.size()<<endl;
+        ofstream s("/home/yh/old.txt");
+        for(int o=0;o<unvisitVector_old.size(); o++)
+            s<<unvisitVector_old.at(o)<<endl;
+        ofstream ss("/home/yh/new.txt");
+        for(int o=0;o<unvisitVector.size(); o++)
+            ss<<unvisitVector.at(o)<<endl;
+        vector<int> C = this->deletion(unvisitVector_old, unvisitVector);
         clusteredIndex.push_back(C);
 
         vector<int> CC(this->deletion(seedVector, C));
         seedVector.clear();
         seedVector.assign(CC.begin(), CC.end());
 
-        cout<<"num of C:    "<<clusterNum<<"    seed num:   "<<seedVector.size()<<endl;
+        cout<<"num of C:    "<<C.size()<<"    seed num:   "<<seedVector.size()<<endl;
     }
 
 

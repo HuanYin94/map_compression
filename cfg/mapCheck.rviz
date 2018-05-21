@@ -43,7 +43,7 @@ Visualization Manager:
         Min Value: -2.4928
         Value: false
       Axis: Z
-      Channel Name: salient_results
+      Channel Name: normal_x
       Class: rviz/PointCloud2
       Color: 255; 255; 255
       Color Transformer: Intensity
@@ -51,9 +51,9 @@ Visualization Manager:
       Enabled: true
       Invert Rainbow: false
       Max Color: 255; 255; 255
-      Max Intensity: 1
+      Max Intensity: 0.999997
       Min Color: 0; 0; 255
-      Min Intensity: 0
+      Min Intensity: -1
       Name: PointCloud2
       Position Transformer: XYZ
       Queue Size: 10
@@ -64,7 +64,7 @@ Visualization Manager:
       Topic: /mapCloud
       Unreliable: false
       Use Fixed Frame: true
-      Use rainbow: false
+      Use rainbow: true
       Value: true
     - Alpha: 1
       Autocompute Intensity Bounds: true
@@ -143,22 +143,22 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 296.27
+      Distance: 697.836
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.06
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 32.9706
-        Y: 136.16
-        Z: -154.084
+        X: -24.9762
+        Y: 25.6303
+        Z: -138.879
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 1.3848
+      Pitch: 1.3198
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.646
+      Yaw: 1.886
     Saved: ~
 Window Geometry:
   Displays:
