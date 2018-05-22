@@ -39,6 +39,8 @@ public:
     string loadTrajName;
     string icpYaml;
     string loadVeloDir;
+    string saveLocName;
+    string saveTimeName;
 
     DP mapCloud;
 
@@ -56,6 +58,8 @@ public:
     Eigen::Vector2d gnd;
     Eigen::Vector2d loc;
 
+    double deltaTime;
+
     void process(int index);
     double getLocError(Eigen::Vector2d gnd, Eigen::Vector2d loc);
 
@@ -72,7 +76,9 @@ locTest::locTest(ros::NodeHandle& n):
     startIndex(getParam<int>("startIndex", 0)),
     endIndex(getParam<int>("endIndex", 0)),
     icpYaml(getParam<string>("icpYaml", ".")),
-    loadVeloDir(getParam<string>("loadVeloDir", "."))
+    loadVeloDir(getParam<string>("loadVeloDir", ".")),
+    saveLocName(getParam<string>("saveLocName", ".")),
+    saveTimeName(getParam<string>("saveTimeName", "."))
 {
 
     // load
@@ -103,11 +109,24 @@ locTest::locTest(ros::NodeHandle& n):
     icp.loadFromYaml(ifs);
     icp.setMap(mapCloud);
 
+    ofstream saverTime(saveTimeName);
+    ofstream saverLoc(saveLocName);
+
     // process
     // from start to end
     for(int index = startIndex; index<=endIndex; index++)
     {
         this->process(index);
+
+        if(index!=startIndex)
+        {
+            saverTime<<deltaTime<<endl;
+            saverLoc<<Ticp(0,0)<<"  "<<Ticp(0,1)<<"  "<<Ticp(0,2)<<"  "<<Ticp(0,3)<<"  "
+                      <<Ticp(1,0)<<"  "<<Ticp(1,1)<<"  "<<Ticp(1,2)<<"  "<<Ticp(1,3)<<"  "
+                     <<Ticp(2,0)<<"  "<<Ticp(2,1)<<"  "<<Ticp(2,2)<<"  "<<Ticp(2,3)<<"  "
+                    <<Ticp(3,0)<<"  "<<Ticp(3,1)<<"  "<<Ticp(3,2)<<"  "<<Ticp(3,3)<<endl;
+        }
+
     }
 
 }
@@ -134,7 +153,7 @@ void locTest::process(int index)
     DP velodyneCloud = DP::load(veloName);
 
     cout<<"------------------------------------------------------------------"<<endl;
-    cout<<veloName<<endl;
+    cout<<index<<endl;
 
     // icp
 
@@ -143,7 +162,14 @@ void locTest::process(int index)
     Eigen::AngleAxisf BaseToMapAxisAngle(BaseToMapRotation);    // RotationMatrix to AxisAngle
     Tinit.block(0,0,3,3) = BaseToMapAxisAngle.toRotationMatrix();
 
+//    cout<<Tinit<<endl;
+
+    double t0 = ros::Time::now().toSec();
+
     Ticp = icp(velodyneCloud, Tinit);
+
+    double t1 = ros::Time::now().toSec();
+    deltaTime = t1-t0;
 
     Tinit = Ticp;
 
@@ -153,6 +179,7 @@ void locTest::process(int index)
     double error = this->getLocError(gnd, loc);
     cout<<"The position is away:    "<<error<<"     meters."<<endl;
 
+    // save the results outside this function
 
 }
 
@@ -169,6 +196,7 @@ int main(int argc, char **argv)
     ros::NodeHandle n;
 
     locTest loctest(n);
+    ros::spin();
 
     return 0;
 }

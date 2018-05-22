@@ -16,7 +16,7 @@ matcher:
 
 outlierFilters:
   - TrimmedDistOutlierFilter:
-     ratio: 1.0
+     ratio: 0.2
 
 errorMinimizer:
   PointToPointErrorMinimizer
