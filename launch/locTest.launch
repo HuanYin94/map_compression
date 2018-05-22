@@ -2,8 +2,8 @@
 
   <node pkg="learned_map" type="locTest" name="locTest" output="screen">
 	
-	<!--param name="loadMapName" value="/home/yh/mapModel/05.21/saliencyCloud_yq.vtk"/-->
-	<param name="loadMapName" value="/home/yh/mapModel/05.18/05_18_final_test.vtk"/>
+	<param name="loadMapName" value="/home/yh/mapModel/05.21/saliencyCloud_yq.vtk"/>
+	<!--param name="loadMapName" value="/home/yh/mapModel/05.18/05_18_final_test.vtk"/-->
 	<param name="loadTrajName" value="/home/yh/mapModel/12.25/icp_0301.txt"/>
 	<param name="loadVeloDir" value="/media/yh/YH/DataSet/YQ21/2017_03_03/2017_03_03_drive_0001_sync/velodyne_points/vtk/"/>
 	<param name="mapLength" value="10560"/>
@@ -11,10 +11,10 @@
 	<param name="startIndex" value="7310"/>
 	<param name="endIndex" value="10500"/>
 
-	<param name="icpYaml" value="$(find learned_map)/cfg/icp.yaml"/>
+	<param name="icpYaml" value="$(find learned_map)/cfg/icp_salient.yaml"/>
 
-	<param name="saveLocName" value="/home/yh/mapModel/05.21/loc_result_yq_full.txt"/>
-	<param name="saveTimeName" value="/home/yh/mapModel/05.21/loc_time_yq_full.txt"/>
+	<param name="saveLocName" value="/home/yh/mapModel/05.21/loc_result_yq_salient.txt"/>
+	<param name="saveTimeName" value="/home/yh/mapModel/05.21/loc_time_yq_salient.txt"/>
 
   </node>
 </launch>
