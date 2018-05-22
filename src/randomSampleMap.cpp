@@ -39,7 +39,6 @@ public:
     ros::NodeHandle& n;
 
     string loadMapName;
-    ros::Publisher mapCloudPub;
     string saveMapName;
 
     DP mapCloud;
@@ -62,7 +61,6 @@ randomSampleMap::randomSampleMap(ros::NodeHandle& n):
     totalPointsNum(getParam<int>("totalPointsNum", 0)),
     saveMapName(getParam<string>("saveMapName", "."))
 {
-    mapCloudPub = n.advertise<sensor_msgs::PointCloud2>("mapCloud", 2, true);
 
     // load
     mapCloud = DP::load(loadMapName);
@@ -70,18 +68,6 @@ randomSampleMap::randomSampleMap(ros::NodeHandle& n):
     // process
     this->process();
 
-    mapCloudPub.publish(PointMatcher_ros::pointMatcherCloudToRosMsg<float>(saveCloud, "global", ros::Time(0)));
-
-    this->wait();
-}
-
-void randomSampleMap::wait()
-{
-    ros::Rate r(1);
-
-    while(ros::ok())
-    {
-    }
 }
 
 void randomSampleMap::process()
@@ -104,8 +90,6 @@ void randomSampleMap::process()
 
     }
 
-    cout<<"Size:  "<<randomIndex.size()<<endl;
-
     saveCloud = mapCloud.createSimilarEmpty();
     for(int i=0; i<randomIndex.size(); i++)
     {
@@ -114,6 +98,8 @@ void randomSampleMap::process()
     saveCloud.conservativeResize(randomIndex.size());
 
     saveCloud.save(saveMapName);
+
+    cout<<"Size:  "<<randomIndex.size()<<endl;
 
 }
 

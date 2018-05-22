@@ -41,6 +41,7 @@ public:
     string loadVeloDir;
     string saveLocName;
     string saveTimeName;
+    string inputYaml;
 
     DP mapCloud;
 
@@ -51,6 +52,7 @@ public:
     vector<vector<double>> initPoses;
 
     //icp
+    PM::DataPointsFilters inputFilters;
     PM::ICPSequence icp;
     PM::TransformationParameters Ticp;
     PM::TransformationParameters Tinit;
@@ -78,11 +80,14 @@ locTest::locTest(ros::NodeHandle& n):
     icpYaml(getParam<string>("icpYaml", ".")),
     loadVeloDir(getParam<string>("loadVeloDir", ".")),
     saveLocName(getParam<string>("saveLocName", ".")),
-    saveTimeName(getParam<string>("saveTimeName", "."))
+    saveTimeName(getParam<string>("saveTimeName", ".")),
+    inputYaml(getParam<string>("inputYaml", "."))
 {
 
     // load
     mapCloud = DP::load(loadMapName);
+    ifstream inputiffilter(inputYaml);
+    inputFilters = PM::DataPointsFilters(inputiffilter);
 
     // read initial transformation
     int x, y;
@@ -151,6 +156,7 @@ void locTest::process(int index)
     ss>>str;
     string veloName = loadVeloDir + str + ".vtk";
     DP velodyneCloud = DP::load(veloName);
+    inputFilters.apply(velodyneCloud);
 
     cout<<"------------------------------------------------------------------"<<endl;
     cout<<index<<endl;

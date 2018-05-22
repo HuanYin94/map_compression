@@ -1,0 +1,10 @@
+- FixStepSamplingDataPointsFilter:
+    startStep: 1
+- SurfaceNormalDataPointsFilter:
+    knn: 10
+    epsilon: 3.33
+    keepNormals: 1
+- SimpleSensorNoiseDataPointsFilter:
+    sensorType: 0
+- ObservationDirectionDataPointsFilter
+- OrientNormalsDataPointsFilter 

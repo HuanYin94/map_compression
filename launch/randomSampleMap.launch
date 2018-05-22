@@ -2,12 +2,11 @@
 
   <node pkg="learned_map" type="randomSampleMap" name="randomSampleMap" output="screen">
 
-  <param name="loadMapName" value="/home/yh/wholeMap.vtk"/>
-  <param name="saveMapName" value="/home/yh/mapModel/01.24/random_72749_2.vtk"/>
-  <param name="keepPointsNum" value="72749"/>
-  <param name="totalPointsNum" value="500000"/>
+  <param name="loadMapName" value="/home/yh/mapModel/05.18/05_18_final_test.vtk"/>
+  <param name="saveMapName" value="/home/yh/mapModel/05.21/randomCloud_yq.vtk"/>
+  <param name="keepPointsNum" value="14144"/>
+  <param name="totalPointsNum" value="171663"/>
 
 
   </node>
-<node pkg="rviz" type="rviz" name="rviz" args="-d $(find learned_map)/cfg/randomSampleMap.rviz" output="screen"/>
 </launch>

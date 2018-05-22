@@ -10,16 +10,18 @@ referenceDataPointsFilters:
 
 matcher:
   KDTreeMatcher:
-    knn: 5
+    knn: 10
     maxDist: 1.0
     epsilon: 0.0
 
 outlierFilters:
   - TrimmedDistOutlierFilter:
      ratio: 1.0
+  - SurfaceNormalOutlierFilter:
+     maxAngle: 1.57
 
 errorMinimizer:
-  PointToPointErrorMinimizer
+  PointToPlaneErrorMinimizer
 
 transformationCheckers:
   - DifferentialTransformationChecker:
