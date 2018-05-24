@@ -197,16 +197,6 @@ void DBSCAN::process()
 
         cout<<"BEFORE SEED NUM: "<<seedVector.size()<<endl;
 
-//        for(int ss=0; ss<seedVector.size(); ss++)
-//        {
-//            cout<<"Seed:    "<<seedVector.at(ss)<<endl;
-//        }
-
-//        for(int cc=0; cc<C.size(); cc++)
-//        {
-//            cout<<"C:   "<<C.at(cc)<<endl;
-//        }
-
         vector<int> CC = this->deletion(seedVector, C);
         seedVector.clear();
         seedVector.assign(CC.begin(), CC.end());
