@@ -198,12 +198,15 @@ void DBSCAN::process()
 
         clusterNum++;
         cout<<"unvisit old size:    "<<unvisitVector_old.size()<<endl;
+
         ofstream s("/home/yh/old.txt");
         for(int o=0;o<unvisitVector_old.size(); o++)
             s<<unvisitVector_old.at(o)<<endl;
+
         ofstream ss("/home/yh/new.txt");
         for(int o=0;o<unvisitVector.size(); o++)
             ss<<unvisitVector.at(o)<<endl;
+
         vector<int> C = this->deletion(unvisitVector_old, unvisitVector);
         clusteredIndex.push_back(C);
 

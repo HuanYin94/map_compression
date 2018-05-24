@@ -3,7 +3,7 @@
   <node pkg="learned_map" type="randomSampleMap" name="randomSampleMap" output="screen">
 
   <param name="loadMapName" value="/home/yh/mapModel/05.18/05_18_final_test.vtk"/>
-  <param name="saveMapName" value="/home/yh/mapModel/05.21/randomCloud_yq.vtk"/>
+  <param name="saveMapName" value="/home/yh/mapModel/05.23/randomCloud_yq_3.vtk"/>
   <param name="keepPointsNum" value="14144"/>
   <param name="totalPointsNum" value="171663"/>
 
