@@ -123,20 +123,21 @@ void DBSCAN::process()
     while(seedVector.size()>0)
     {
         cout<<"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"<<endl;
-        cout<<"processing seed:   "<<seedVector.at(0)<<endl;
+        int randomIndex = (rand() % (seedVector.size()-0))+ 0;
+        cout<<"processing seed:   "<<seedVector.at(randomIndex)<<endl;
 
         // copy
         unvisitVector_old.clear();
         unvisitVector_old.assign(unvisitVector.begin(), unvisitVector.end());
-        cout<<"copy finished"<<endl;
+//        cout<<"copy finished"<<endl;
 
-        queueVector.push_back(seedVector.at(0));
-        cout<<"queueing"<<endl;
+        queueVector.push_back(seedVector.at(randomIndex));
+//        cout<<"queueing"<<endl;
 
         //remove
-        vector<int>::iterator iter_=std::find(unvisitVector.begin(), unvisitVector.end(), seedVector.at(0));
+        vector<int>::iterator iter_=std::find(unvisitVector.begin(), unvisitVector.end(), seedVector.at(randomIndex));
         unvisitVector.erase(iter_);
-        cout<<"removed"<<endl;
+//        cout<<"removed"<<endl;
 
         while(queueVector.size()>0)
         {
@@ -150,8 +151,8 @@ void DBSCAN::process()
             // it's a seed
             if(result != seedVector.end())
             {
-                cout<<"--------------------------------"<<endl;
-                cout<<"result value:    "<<*result<<endl;
+//                cout<<"--------------------------------"<<endl;
+//                cout<<"result value:    "<<*result<<endl;
                 // get it's neighbors!
                 for(int N=0; N<kSearch; N++)
                 {
@@ -161,30 +162,22 @@ void DBSCAN::process()
                     }
                 }
 
-                cout<<"unvisit size:    "<<unvisitVector.size()<<endl;
-                cout<<"neighbors size:    "<<neighbors.size()<<endl;
+//                cout<<"unvisit size:    "<<unvisitVector.size()<<endl;
+//                cout<<"neighbors size:    "<<neighbors.size()<<endl;
 
                 vector<int> delta = this->intersection(neighbors, unvisitVector);
                 neighbors.clear();
                 // give the delta to Queueing
                 queueVector.clear();
                 queueVector.assign(delta.begin(), delta.end());
-                cout<<"Queue Size:  "<<queueVector.size()<<endl;
+//                cout<<"Queue Size:  "<<queueVector.size()<<endl;
 
                 // reset
-                cout<<"delta size:    "<<delta.size()<<endl;
+//                cout<<"delta size:    "<<delta.size()<<endl;
                 vector<int> tempVector = this->deletion(unvisitVector, delta);
                 unvisitVector.clear();
                 unvisitVector.assign(tempVector.begin(), tempVector.end());
-                cout<<"unvisit new size:    "<<unvisitVector.size()<<endl;
-
-//                if(*result==158)
-//                {
-//                    ofstream s("/home/yh/unvisit_.txt");
-//                    for(int o=0;o<tempVector.size(); o++)
-//                        s<<tempVector.at(o)<<endl;
-//                }
-
+//                cout<<"unvisit new size:    "<<unvisitVector.size()<<endl;
             }
 
         }
@@ -193,19 +186,11 @@ void DBSCAN::process()
         cout<<"unvisit old size:    "<<unvisitVector_old.size()<<endl;
 
         vector<int> C = this->deletion(unvisitVector_old, unvisitVector);
-        clusteredIndex.push_back(C);
-
-        cout<<"BEFORE SEED NUM: "<<seedVector.size()<<endl;
-
-//        for(int ss=0; ss<seedVector.size(); ss++)
-//        {
-//            cout<<"Seed:    "<<seedVector.at(ss)<<endl;
-//        }
-
-//        for(int cc=0; cc<C.size(); cc++)
-//        {
-//            cout<<"C:   "<<C.at(cc)<<endl;
-//        }
+        // check the size
+        if(C.size() > this->minPoints)
+        {
+            clusteredIndex.push_back(C);
+        }
 
         vector<int> CC = this->deletion(seedVector, C);
         seedVector.clear();
