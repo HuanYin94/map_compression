@@ -121,6 +121,12 @@ ${catkin_LIBRARIES}
 ${libpointmatcher_LIBRARIES}
 )
 
+add_executable(mapCompare src/mapCompare.cpp)
+target_link_libraries(mapCompare
+${catkin_LIBRARIES}
+${libpointmatcher_LIBRARIES}
+)
+
 
 
 

@@ -1,0 +1,13 @@
+<launch>
+
+  <node pkg="learned_map" type="mapCompare" name="mapCompare" output="screen">
+
+  <param name="loadMapName0" value="/home/yh/mapModel/05.25/yq_DBSCAN_result.vtk"/>
+  <param name="loadMapName1" value="/home/yh/mapModel/05.21/saliencyCloud_yq.vtk"/>
+  <param name="saveIndexName" value="/home/yh/mapModel/12.25/icp_0301.txt"/>
+  <param name="saveDistsName" value="/home/yh/mapModel/12.25/icp_0301.txt"/>
+  <param name="staticInt" value="200"/> 	
+
+
+  </node>
+</launch>
