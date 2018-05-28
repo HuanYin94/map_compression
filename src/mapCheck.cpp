@@ -124,79 +124,8 @@ void mapCheck::process()
 {
     /**  CHECK TEST  **/
 
-    // find the max count
+    /**SALIENT**/
     /*
-    int max_session = 0;
-    int min_session = 21;
-
-    for(int m=0; m<mapCloud.descriptors.rows(); m++)
-        cout<<m<<"  "<<mapCloud.descriptorLabels.at(m).text<<endl;
-
-    for(int i=0; i<mapCloud.descriptors.cols(); i++)
-    {
-        if(mapCloud.descriptors(2, i) > max_session)
-            max_session = mapCloud.descriptors(1, i);
-
-        if(mapCloud.descriptors(2, i) < min_session)
-            min_session = mapCloud.descriptors(1, i);
-
-    }
-
-    cout<<"max_session:  "<<max_session<<endl;
-    cout<<"min_session:  "<<min_session<<endl;
-    */
-
-    /*
-    int rowLine = mapCloud.getDescriptorStartingRow("session");
-    staticCloud = mapCloud.createSimilarEmpty();
-    int count = 0;
-    int count1 =0;
-    int count2 =0;
-
-    for(int i=0; i<mapCloud.features.cols(); i++)
-    {
-        if(mapCloud.descriptors(rowLine, i) >= staticInt)
-        {
-            staticCloud.setColFrom(count, mapCloud, i);
-            count++;
-        }
-
-        if(mapCloud.descriptors(rowLine, i) == 1)
-            count1++;
-
-        if(mapCloud.descriptors(rowLine, i) == 2)
-            count2++;
-
-    }
-
-    staticCloud.conservativeResize(count);
-    */
-
-
-//    cout<<mapCloud.descriptors.rows()<<endl;
-//    for(int i=0; i<mapCloud.descriptors.rows(); i++)
-//    {
-//        cout<<i<<"  "<<mapCloud.descriptorLabels.at(i).text<<endl;
-//    }
-
-
-//    for(int f=0; f<mapCloud.features.rows(); f++)
-//        cout<<f<<":  "<<mapCloud.featureLabels.at(f).text<<endl;
-
-//    for(int f=0; f<mapCloud.descriptors.rows(); f++)
-//        cout<<f<<":  "<<mapCloud.descriptorLabels.at(f).text<<endl;
-
-
-    //test
-//    partCloud = mapCloud.createSimilarEmpty();
-//    int count3 = 0;
-//    for(int i=0; i<10000; i++)
-//    {
-//        partCloud.setColFrom(count3, mapCloud, i);
-//        count3 ++;
-//    }
-//    partCloud.conservativeResize(count3);
-
     int rowLine = mapCloud.getDescriptorStartingRow("salient");
     staticCloud = mapCloud.createSimilarEmpty();
     int count=0;
@@ -211,24 +140,43 @@ void mapCheck::process()
     }
 
     staticCloud.conservativeResize(count);
-    staticCloud.save("/home/yh/wholemap_salient.vtk");
+    */
+
+
+    /**SESSIONS**/
+
+    int rowLine = mapCloud.getDescriptorStartingRow("session");
+    staticCloud = mapCloud.createSimilarEmpty();
+    int count=0;
+    for(int i=0; i<mapCloud.features.cols(); i++)
+    {
+        if(mapCloud.descriptors(rowLine, i) >= staticInt)
+        {
+            staticCloud.setColFrom(count, mapCloud, i);
+            count++;
+        }
+
+    }
+
+    staticCloud.conservativeResize(count);
 
     cout<<"map num:  "<<mapCloud.features.cols()<<endl;
+//    cout<<"salient num:  "<<staticCloud.features.cols()<<endl;
     cout<<"static num:  "<<staticCloud.features.cols()<<endl;
 
-    /** find MAX **/
-    int rowLineRange = mapCloud.getDescriptorStartingRow("Range");
-    int rowLineHeight = mapCloud.getDescriptorStartingRow("Height");
+//    /** find MAX **/
+//    int rowLineRange = mapCloud.getDescriptorStartingRow("Range");
+//    int rowLineHeight = mapCloud.getDescriptorStartingRow("Height");
 
-    double rangeMax = 0;
-    double heightMax = 0;
-    for(int m=0; m<mapCloud.features.cols(); m++)
-    {
-        mapCloud.descriptors(rowLineRange, m)>rangeMax?rangeMax=mapCloud.descriptors(rowLineRange, m):rangeMax=rangeMax;
-        mapCloud.descriptors(rowLineHeight, m)>heightMax?heightMax=mapCloud.descriptors(rowLineHeight, m):heightMax=heightMax;
-    }
-    cout<<"range Max:   "<<rangeMax<<endl;
-    cout<<"height Max:  "<<heightMax<<endl;
+//    double rangeMax = 0;
+//    double heightMax = 0;
+//    for(int m=0; m<mapCloud.features.cols(); m++)
+//    {
+//        mapCloud.descriptors(rowLineRange, m)>rangeMax?rangeMax=mapCloud.descriptors(rowLineRange, m):rangeMax=rangeMax;
+//        mapCloud.descriptors(rowLineHeight, m)>heightMax?heightMax=mapCloud.descriptors(rowLineHeight, m):heightMax=heightMax;
+//    }
+//    cout<<"range Max:   "<<rangeMax<<endl;
+//    cout<<"height Max:  "<<heightMax<<endl;
 
 }
 

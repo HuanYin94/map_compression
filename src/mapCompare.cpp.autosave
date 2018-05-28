@@ -75,7 +75,7 @@ mapCompare::mapCompare(ros::NodeHandle& n):
 
 void mapCompare::process()
 {
-
+    
 
 
 

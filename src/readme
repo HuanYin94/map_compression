@@ -1,31 +1,33 @@
 # To learn what is useful in a 3D map
 
-1. mapAccuLaser: 	accumalte laser-based experience map
+mapCheck: 		just show the map
 
-2. mapCheck: 		just show the map
+mapCompresser:		compress the map according to the saliency descriptor
 
-3. mapCompresser:		compress the map according to the saliency descriptor
+mapSessioner: 	adjust the session descriptor of some points, data preprocessing, not used
 
-5. mapAccuLaserMultiple: 	accumalte laser-based experience map, with no-limit Maxsession
+labelLaser:		label the points with session in a laser Frame according the map_session_cnt // not used
 
-6. mapSessioner: 	adjust the session descriptor of some points, data preprocessing, not used
+sessionFilter:	make great session be salient! & brother_cnt to filter some lonely ones //salient GET
 
-7. mapAccuLaserRange:		accumalte laser-based experience map, consider the range distance
+saveAllCRFFeatures:		save all features for simple classification
 
-8. labelLaser:		label the points with session in a laser Frame according the map_session_cnt // not used
+randomSampleMap:			random sampling the map for comparison
 
-9. sessionFilter:	make great session be salient! & brother_cnt to filter some lonely ones //salient GET
+loadFinalResults:		load the detection results
 
-12.saveAllCRFFeatures:		save all features for simple classification
+mapCutterTraj: 	cut the wholemap to two parts: train & test, according to the poses attached
 
-13.randomSampleMap:			random sampling the map for comparison
+errorDistribution:		save the NN matched distance between the salient points and salient results
 
-14.loadFinalResults:		load the detection results
+DBSCANFilter:			DBSCAN clustering and filter the noises points for SegMatch next step
 
-16.mapCutterTraj: 	cut the wholemap to two parts: train & test, according to the poses attached
+LocTest:				Test of localization on the result map
 
-17.errorDistribution:		save the NN matched distance between the salient points and salient results
+mapAccuLaser: 		accumalte laser-based experience map, obseration-maximum limited
 
-18.DBSCANFilter:			DBSCAN clustering and filter the noises points for SegMatch next step
+mapAccuLaserMultiple: 	accumalte laser-based experience map, with no-limit Maxsession
 
-19.LocTest:				Test of localization on the result map
+mapAccuLaserRange:		accumalte laser-based experience map, consider the velocity of the robotcar, to decide the range
+
+mapComapre:				To compare the salient index and delta-distance of two experienced map cloud
