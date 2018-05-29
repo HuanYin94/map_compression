@@ -2,9 +2,9 @@
 
   <node pkg="learned_map" type="sessionFilter" name="sessionFilter" output="screen">
 
-	<param name="loadMapName" value="/home/yh/mapModel/12.25/wholeMap_s3.vtk"/>
-	<param name="saveMapName" value="/home/yh/mapModel/05.28/wholeMap_s3_salient.vtk"/>
-	<param name="staticInt" value="75"/> 
+	<param name="loadMapName" value="/home/yh/mapModel/12.25/wholeMap_s10.vtk"/>
+	<param name="saveMapName" value="/home/yh/mapModel/05.28/wholeMap_s10_salient.vtk"/>
+	<param name="staticInt" value="321"/> 
 
 	<!--If need the clustering to filter the noise points-->
 	<param name="ifCluster" value="false"/>
