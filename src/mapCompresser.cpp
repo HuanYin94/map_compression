@@ -40,6 +40,7 @@ public:
 
     string loadMapName;
     string saveMapName;
+    string desName;
 
     DP mapCloud;
 
@@ -53,7 +54,8 @@ mapCompresser::~mapCompresser()
 mapCompresser::mapCompresser(ros::NodeHandle& n):
     n(n),
     loadMapName(getParam<string>("loadMapName", ".")),
-    saveMapName(getParam<string>("saveMapName", "."))
+    saveMapName(getParam<string>("saveMapName", ".")),
+    desName(getParam<string>("desName", "."))
 {
 
     // load
@@ -66,7 +68,7 @@ mapCompresser::mapCompresser(ros::NodeHandle& n):
 void mapCompresser::process()
 {
 
-    int rowLineSalientResults = mapCloud.getDescriptorStartingRow("salient_results");
+    int rowLineSalientResults = mapCloud.getDescriptorStartingRow(desName);
 
     DP salientMap;
     int cnt = 0;

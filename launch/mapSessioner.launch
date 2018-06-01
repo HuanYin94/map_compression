@@ -2,6 +2,7 @@
 
   <node pkg="learned_map" type="mapSessioner" name="mapSessioner" output="screen">
  
+  <!--get the compressed map by the session cut directly-->
   <param name="loadMapName" value="/home/yh/mapModel/12.25/wholeMap_s9.vtk"/> 
   <param name="sessionCut" value="500"/>
   <param name="saveMapName" value="/home/yh/mapModel/12.25/wholeMap_s9_session.vtk"/>
