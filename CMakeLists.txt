@@ -127,6 +127,12 @@ ${catkin_LIBRARIES}
 ${libpointmatcher_LIBRARIES}
 )
 
+add_executable(mapSummer src/mapSummer.cpp)
+target_link_libraries(mapSummer
+${catkin_LIBRARIES}
+${libpointmatcher_LIBRARIES}
+)
+
 
 
 

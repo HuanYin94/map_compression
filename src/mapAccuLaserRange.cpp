@@ -149,6 +149,7 @@ mapAccuLaserRange::mapAccuLaserRange(ros::NodeHandle& n):
 //    velodyneCloudPub.publish(PointMatcher_ros::pointMatcherCloudToRosMsg<float>(velodyneCloud, "global", ros::Time(0)));
 
     //save nums
+    /*
     {
         int maxSession = 0;
         for(int i=0; i<mapCloud.features.cols(); i++)
@@ -172,7 +173,7 @@ mapAccuLaserRange::mapAccuLaserRange(ros::NodeHandle& n):
             saveNums<<i<<"  "<<nums(0, i-1)<<endl;
         }
     }
-
+    */
 
     //save map
     mapCloud.save(saveVTKname);

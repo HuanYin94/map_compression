@@ -2,7 +2,7 @@
 
   <node pkg="learned_map" type="mapCheck" name="mapCheck" output="screen">
 
-  <param name="loadMapName" value="/home/yh/mapModel/05.30/wholeMap_s10_compressed_5015.vtk"/>
+  <param name="loadMapName" value="/home/yh/mapModel/06.02/test_23_sum.vtk"/>
   <!--param name="loadMapName" value="/home/yh/mapModel/05.21/saliencyCloud_yq.vtk"/-->
   <param name="loadTrajName" value="/home/yh/mapModel/12.25/icp_0301.txt"/>
   <param name="mapLength" value="10560"/>

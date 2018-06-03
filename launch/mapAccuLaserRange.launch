@@ -7,15 +7,15 @@
   <param name="idealVelocity" value="0.1"/>s
 	
   <!--Whether has sesssion & label descriptors-->
-  <param name="isFirstTime" value="false"/>
+  <param name="isFirstTime" value="true"/>
 
   <!--param name="wholeMapName" value="/home/yh/wholeMap.vtk"/--> 
-  <param name="wholeMapName" value="/home/yh/mapModel/12.25/wholeMap_s9.vtk"/> 
-  <param name="icpFileName" value="/media/yh/YH/DataSet/YQ21/2017_03_07/2017_03_07_drive_0002_sync/icp/icp.txt"/> 
-  <param name="velodyneDirName" value="/media/yh/YH/DataSet/YQ21/2017_03_07/2017_03_07_drive_0002_sync/velodyne_points/data/"/> 
-  <param name="totalICPnum" value="11156"/>
-  <param name="saveVTKname" value="/home/yh/mapModel/12.25/wholeMap_s10.vtk"/>
-  <param name="savePnumsName" value="/home/yh/mapModel/12.25/wholeMap_s10.txt"/>
+  <param name="wholeMapName" value="/home/yh/mapModel/06.02/wholeMap_origin.vtk"/> 
+  <param name="icpFileName" value="/media/yh/YH/DataSet/YQ21/2017_03_07/2017_03_07_drive_0008_sync/icp/icp.txt"/> 
+  <param name="velodyneDirName" value="/media/yh/YH/DataSet/YQ21/2017_03_07/2017_03_07_drive_0008_sync/velodyne_points/data/"/> 
+  <param name="totalICPnum" value="11792"/>
+  <param name="saveVTKname" value="/home/yh/mapModel/06.02/wholeMap_s16.vtk"/>
+  <param name="savePnumsName" value=""/>
   <param name="kSearch" value="1"/>
 
 

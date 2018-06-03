@@ -2,10 +2,10 @@
 
   <node pkg="learned_map" type="randomSampleMap" name="randomSampleMap" output="screen">
 
-  <param name="loadMapName" value="/home/yh/mapModel/05.18/05_18_final_test.vtk"/>
-  <param name="saveMapName" value="/home/yh/mapModel/05.23/randomCloud_yq_3.vtk"/>
-  <param name="keepPointsNum" value="14144"/>
-  <param name="totalPointsNum" value="171663"/>
+  <param name="loadMapName" value="/home/yh/wholeMap.vtk"/>
+  <param name="saveMapName" value="/home/yh/mapModel/06.03/wholeMap_random_50110_4.vtk"/>
+  <param name="keepPointsNum" value="50110"/>
+  <param name="totalPointsNum" value="500000"/>
 
 
   </node>
