@@ -49,12 +49,6 @@ ${catkin_LIBRARIES}
 ${libpointmatcher_LIBRARIES}
 )
 
-add_executable(mapSessioner src/mapSessioner.cpp)
-target_link_libraries(mapSessioner
-${catkin_LIBRARIES}
-${libpointmatcher_LIBRARIES}
-)
-
 add_executable(mapAccuLaserRange src/mapAccuLaserRange.cpp)
 target_link_libraries(mapAccuLaserRange
 ${catkin_LIBRARIES}

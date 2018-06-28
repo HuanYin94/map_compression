@@ -2,8 +2,8 @@
 
   <node pkg="learned_map" type="mapCompare" name="mapCompare" output="screen">
 
-  <param name="loadMapName0" value="/home/yh/mapModel/05.28/wholeMap_s9_salient.vtk"/>
-  <param name="loadMapName1" value="/home/yh/mapModel/05.28/wholeMap_s10_salient.vtk"/>
+  <param name="loadMapName0" value="/home/yh/mapModel/06.02/sum_1213141516_salient.vtk"/>
+  <param name="loadMapName1" value="/home/yh/mapModel/06.02/sum_23456_salient.vtk"/>
   <!--param name="saveIndexName" value="/home/yh/mapModel/05.28/2_3_index.txt"/-->
   <!--param name="saveDistsName" value="/home/yh/mapModel/05.28/icp_0301.txt"/-->
 

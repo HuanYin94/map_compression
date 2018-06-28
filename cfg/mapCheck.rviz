@@ -40,31 +40,31 @@ Visualization Manager:
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
-        Max Value: 18.1261
-        Min Value: -2.4928
-        Value: false
+        Max Value: 21.2134
+        Min Value: -22.2348
+        Value: true
       Axis: Z
-      Channel Name: session
+      Channel Name: intensity
       Class: rviz/PointCloud2
       Color: 255; 255; 255
-      Color Transformer: Intensity
+      Color Transformer: AxisColor
       Decay Time: 0
       Enabled: true
       Invert Rainbow: false
       Max Color: 255; 255; 255
-      Max Intensity: 188
+      Max Intensity: 255
       Min Color: 0; 0; 255
-      Min Intensity: 1
+      Min Intensity: 0
       Name: PointCloud2
       Position Transformer: XYZ
       Queue Size: 10
       Selectable: false
       Size (Pixels): 3
-      Size (m): 0.2
+      Size (m): 0.1
       Style: Flat Squares
       Topic: /mapCloud
       Unreliable: false
-      Use Fixed Frame: true
+      Use Fixed Frame: false
       Use rainbow: true
       Value: true
     - Alpha: 1
@@ -100,8 +100,8 @@ Visualization Manager:
     - Alpha: 1
       Buffer Length: 10
       Class: rviz/Path
-      Color: 25; 255; 0
-      Enabled: false
+      Color: 255; 0; 0
+      Enabled: true
       Head Diameter: 0.1
       Head Length: 0.1
       Length: 1
@@ -119,7 +119,7 @@ Visualization Manager:
       Shaft Length: 0.1
       Topic: /mapPath
       Unreliable: false
-      Value: false
+      Value: true
     - Alpha: 0.5
       Cell Size: 10
       Class: rviz/Grid
@@ -162,22 +162,22 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 270.76
+      Distance: 229.824
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.06
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 43.4762
-        Y: 118.095
-        Z: -64.1202
+        X: 17.5422
+        Y: 68.5777
+        Z: -61.3504
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 1.5698
+      Pitch: 1.1348
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 1.511
+      Yaw: 4.68418
     Saved: ~
 Window Geometry:
   Displays:

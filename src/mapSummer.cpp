@@ -24,7 +24,7 @@
 using namespace std;
 using namespace PointMatcherSupport;
 
-class mapSessioner
+class mapSummer
 {
     typedef PointMatcher<float> PM;
     typedef PM::DataPoints DP;
@@ -34,76 +34,66 @@ class mapSessioner
     typedef typename NNS::SearchType NNSearchType;
 
 public:
-    mapSessioner(ros::NodeHandle &n);
-    ~mapSessioner();
+    mapSummer(ros::NodeHandle &n);
+    ~mapSummer();
     ros::NodeHandle& n;
 
-    string loadMapName;
+    string loadMapName0;
+    string loadMapName1;
     string saveMapName;
 
-    DP mapCloud;
-    int sessionCut;
+    DP mapCloud0;
+    DP mapCloud1;
 
-    void wait();
     void process();
 
 };
 
-mapSessioner::~mapSessioner()
+mapSummer::~mapSummer()
 {}
 
-mapSessioner::mapSessioner(ros::NodeHandle& n):
+mapSummer::mapSummer(ros::NodeHandle& n):
     n(n),
-    loadMapName(getParam<string>("loadMapName", ".")),
-    sessionCut(getParam<int>("sessionCut", 0)),
+    loadMapName0(getParam<string>("loadMapName0", ".")),
+    loadMapName1(getParam<string>("loadMapName1", ".")),
     saveMapName(getParam<string>("saveMapName", "."))
 {
 
     // load
-    mapCloud = DP::load(loadMapName);
+    mapCloud0 = DP::load(loadMapName0);
+    mapCloud1 = DP::load(loadMapName1);
+
+    cout<<"JUST COMPARE"<<endl;
 
     // process
     this->process();
 
-    this->wait();
 }
 
-void mapSessioner::wait()
+void mapSummer::process()
 {
-    ros::Rate r(1);
+    int rowLineSession = mapCloud0.getDescriptorStartingRow("session");
 
-    while(ros::ok())
+    DP saveSumMap = mapCloud0;
+
+    for(int m=0; m<mapCloud0.features.cols(); m++)
     {
-    }
-}
-
-void mapSessioner::process()
-{
-    /**Session Trick?**/
-
-    int rowLine = mapCloud.getDescriptorStartingRow("session");
-
-    for(int m=0; m<mapCloud.features.cols(); m++)
-    {
-        if(mapCloud.descriptors(rowLine, m) > this->sessionCut)
-        {
-            mapCloud.descriptors(rowLine, m) = this->sessionCut;
-        }
+        int s = mapCloud0.descriptors(rowLineSession, m) + mapCloud1.descriptors(rowLineSession, m);
+        saveSumMap.descriptors(rowLineSession, m) =s;
     }
 
-    mapCloud.save(this->saveMapName);
-
-    cout<<"finished"<<endl;
+    saveSumMap.save(saveMapName);
 
 }
+
 
 int main(int argc, char **argv)
 {
 
-    ros::init(argc, argv, "mapSessioner");
+    ros::init(argc, argv, "mapsummer");
     ros::NodeHandle n;
 
-    mapSessioner mapsessioner(n);
+    mapSummer mapsummer(n);
 
     // ugly code
 

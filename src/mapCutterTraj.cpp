@@ -109,7 +109,12 @@ void mapCutterTraj::process()
 
     // turn poses to a DP::CLOUD
     // feature-rows: x, y, z, directly
-    trajCloud = mapCloud.createSimilarEmpty();
+
+    //temp longer
+    DP mapCloudCloud = mapCloud;
+    mapCloudCloud.concatenate(mapCloudCloud);
+
+    trajCloud = mapCloudCloud.createSimilarEmpty();
     for(int p=0; p<mapLength; p++)
     {
         trajCloud.features(0, p) = initPoses[p][3];
@@ -126,6 +131,7 @@ void mapCutterTraj::process()
         Matches::Ids(1, mapCloud.features.cols())
     );
     featureNNSTraj->knn(mapCloud.features, matches_Traj.ids, matches_Traj.dists, 1, 0);
+
 
     DP saveTrainCloud = mapCloud.createSimilarEmpty();
     DP saveTestCloud = mapCloud.createSimilarEmpty();

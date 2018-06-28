@@ -3,7 +3,7 @@
   <node pkg="learned_map" type="locTest" name="locTest" output="screen">
 	
 	<!--param name="loadMapName" value="/home/yh/mapModel/05.21/saliencyCloud_yq.vtk"/-->
-	<param name="loadMapName" value="/home/yh/mapModel/05.23/randomCloud_yq_3.vtk"/>
+	<param name="loadMapName" value="/home/yh/mapModel/06.03/test_cloud_0.02_compressed.vtk"/>
 	<param name="loadTrajName" value="/home/yh/mapModel/12.25/icp_0301.txt"/>
 	<param name="loadVeloDir" value="/media/yh/YH/DataSet/YQ21/2017_03_03/2017_03_03_drive_0001_sync/velodyne_points/vtk/"/>
 	<param name="mapLength" value="10560"/>
@@ -14,8 +14,8 @@
 	<param name="inputYaml" value="$(find learned_map)/cfg/input_filters.yaml"/>
 	<param name="icpYaml" value="$(find learned_map)/cfg/icp.yaml"/>
 
-	<param name="saveLocName" value="/home/yh/mapModel/05.23/loc_result_yq_random_3.txt"/>
-	<param name="saveTimeName" value="/home/yh/mapModel/05.23/loc_time_yq_random_3.txt"/>
+	<param name="saveLocName" value="/home/yh/test/5_0.05.txt"/>
+	<param name="saveTimeName" value="/home/yh/test/6_0.05.txt"/>
 
   </node>
 </launch>
