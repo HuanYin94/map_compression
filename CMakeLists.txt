@@ -49,12 +49,6 @@ ${catkin_LIBRARIES}
 ${libpointmatcher_LIBRARIES}
 )
 
-add_executable(labelLaser src/labelLaser.cpp)
-target_link_libraries(labelLaser
-${catkin_LIBRARIES}
-${libpointmatcher_LIBRARIES}
-)
-
 add_executable(sessionFilter src/sessionFilter.cpp)
 target_link_libraries(sessionFilter
 ${catkin_LIBRARIES}
@@ -121,6 +115,10 @@ ${catkin_LIBRARIES}
 ${libpointmatcher_LIBRARIES}
 )
 
-
+add_executable(mapAccuLaserIndex src/mapAccuLaserIndex.cpp)
+target_link_libraries(mapAccuLaserIndex
+${catkin_LIBRARIES}
+${libpointmatcher_LIBRARIES}
+)
 
 

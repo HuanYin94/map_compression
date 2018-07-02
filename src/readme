@@ -27,3 +27,7 @@ mapAccuLaser: 		accumalte laser-based experience map, obseration-maximum limited
 mapAccuLaserRange:		accumalte laser-based experience map, consider the velocity of the robotcar, to decide the range
 
 mapComapre:				To compare the salient index and delta-distance of two experienced map cloud
+
+mapSummer:				Sum two map Cloud with salient descriptors and save tit
+
+mapAccuLaserIndex:      accumalte laser-based experience map, range limited, new one for Quardratic Programming？
