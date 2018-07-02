@@ -43,12 +43,6 @@ ${catkin_LIBRARIES}
 ${libpointmatcher_LIBRARIES}
 )
 
-add_executable(mapAccuLaserMultiple src/mapAccuLaserMultiple.cpp)
-target_link_libraries(mapAccuLaserMultiple
-${catkin_LIBRARIES}
-${libpointmatcher_LIBRARIES}
-)
-
 add_executable(mapAccuLaserRange src/mapAccuLaserRange.cpp)
 target_link_libraries(mapAccuLaserRange
 ${catkin_LIBRARIES}

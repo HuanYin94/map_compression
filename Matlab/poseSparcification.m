@@ -19,7 +19,7 @@ function [ keepIndex ] = poseSparcification( icpPose, meanDis, saveIndexFileName
     end
     
     % save the index to the file
-    dlmwrite('saveIndexFileName', keepIndex, 'delimiter', '\t');
+    dlmwrite(saveIndexFileName, keepIndex, 'delimiter', '\t');
 
 end
 
