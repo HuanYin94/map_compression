@@ -1,4 +1,4 @@
-function [ keepIndex ] = poseSparcification( icpPose, meanDis, saveIndexFileName )
+function [ keepIndex ] = poseSparsification( icpPose, meanDis, saveIndexFileName )
 %POSESPARCIFICATION Summary of this function goes here
 %   Detailed explanation goes here
     
