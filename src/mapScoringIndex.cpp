@@ -47,9 +47,10 @@ public:
     string inputFilterName;
     string saveVTKname;
     string keepIndexName;
+
     int kSearch;
     double horizontalResRad;
-
+    double limitRange;
 
     DP mapCloud;
     DP velodyneCloud;
@@ -64,8 +65,9 @@ public:
 
     vector<vector<double>> initPoses;
     shared_ptr<NNS> featureNNS;
+    vector<int> indexVector;
 
-    void process(int index);
+    void process(int indexCnt);
     DP readBin(string fileName);
     double getRangeOfPoint(double x, double y, double z);
 
@@ -85,7 +87,8 @@ mapScoringIndex::mapScoringIndex(ros::NodeHandle& n):
     saveVTKname(getParam<string>("saveVTKname", ".")),
     kSearch(getParam<int>("kSearch", 0)),
     horizontalResRad(getParam<double>("horizontalResRad", 0)),
-    keepIndexName(getParam<string>("keepIndexName", "."))
+    keepIndexName(getParam<string>("keepIndexName", ".")),
+    limitRange(getParam<double>("limitRange", 0))
 {
     mapCloudPub = n.advertise<sensor_msgs::PointCloud2>("mapCloud", 2, true);
     velodyneCloudPub = n.advertise<sensor_msgs::PointCloud2>("velodyneCloud", 2, true);
@@ -112,7 +115,7 @@ mapScoringIndex::mapScoringIndex(ros::NodeHandle& n):
     if (!in) {
         cout << "Cannot open file.\n";
     }
-    for (y = 0; y < totalICPnum; y++) {
+    for (y = 0; y < 999999; y++) {
         test.clear();
     for (x = 0; x < 16; x++) {
       in >> temp;
@@ -122,29 +125,100 @@ mapScoringIndex::mapScoringIndex(ros::NodeHandle& n):
     }
     in.close();
 
+    // read all the effective index from list in the txt
+    int l;
+    ifstream in_(keepIndexName);
+    if (!in_) {
+        cout << "Cannot open file.\n";
+    }
+    while(!in_.eof())
+    {
+        in_>>l;
+        indexVector.push_back(l);
+    }
+
     ifstream inputiffilter(inputFilterName);
     inputFilter = PM::DataPointsFilters(inputiffilter);
 
     // process
-    int index = 0;
-    lastPosition(0)=initPoses[0][3];lastPosition(1)=initPoses[0][7];lastPosition(2)=initPoses[0][11];
-    for(; index < this->totalICPnum; index++)
+    int indexCnt = 0;
+    for(; indexCnt < indexVector.size(); indexCnt++)
     {
-        this->process(index);
-        cout<<"-------------------------------------------------------"<<endl;
+        cout<<"The:  "<<indexCnt<<endl;
+        this->process(indexCnt);
     }
 
     //save map
     mapCloud.save(saveVTKname);
 
     cout<<"All Finished!"<<endl;
-
-//    this->wait();
 }
 
-void mapScoringIndex::process(int index)
+void mapScoringIndex::process(int indexCnt)
 {
+    int index = indexVector.at(indexCnt);
 
+    stringstream ss;
+    ss<<setw(10)<<setfill('0')<<index;
+    string str;
+    ss>>str;
+    string veloName = velodyneDirName + str + ".bin";
+    cout<<veloName<<endl;
+
+    velodyneCloud = readBin(veloName);
+    inputFilter.apply(velodyneCloud);
+
+    Trobot = PM::TransformationParameters::Identity(4, 4);
+    Trobot(0,0)=initPoses[index][0];Trobot(0,1)=initPoses[index][1];Trobot(0,2)=initPoses[index][2];Trobot(0,3)=initPoses[index][3];
+    Trobot(1,0)=initPoses[index][4];Trobot(1,1)=initPoses[index][5];Trobot(1,2)=initPoses[index][6];Trobot(1,3)=initPoses[index][7];
+    Trobot(2,0)=initPoses[index][8];Trobot(2,1)=initPoses[index][9];Trobot(2,2)=initPoses[index][10];Trobot(2,3)=initPoses[index][11];
+    Trobot(3,0)=initPoses[index][12];Trobot(3,1)=initPoses[index][13];Trobot(3,2)=initPoses[index][14];Trobot(3,3)=initPoses[index][15];
+
+    transformation->correctParameters(Trobot);
+
+    if(transformation->checkParameters(Trobot))
+    {
+        DP velodyneCloud_ = transformation->compute(velodyneCloud, Trobot);
+
+        PM::Matches matches_overlap(
+            Matches::Dists(kSearch, velodyneCloud_.features.cols()),
+            Matches::Ids(kSearch, velodyneCloud_.features.cols())
+        );
+
+        featureNNS->knn(velodyneCloud_.features, matches_overlap.ids, matches_overlap.dists, kSearch, 0);
+
+        for(int m=0; m<velodyneCloud_.features.cols(); m++)
+        {
+            // Points find their way: a new approach
+            // not _point
+
+            // dynamic ranging
+//            double rangeFilter s= this->getRangeOfPoint(velodyneCloud.features(0,m), velodyneCloud.features(1,m), velodyneCloud.features(2,m))
+//                                 * this->horizontalResRad;
+
+            double rangeFilter = this->limitRange;
+
+            for(int k=0; k<kSearch; k++)
+            {
+                //core: rangeFilter? && Labeling && maxSession ?
+                // rangeFilter, sqrt!!! lose before
+                if(sqrt(matches_overlap.dists(k, m)) > rangeFilter
+                   || mapCloud.descriptors(rowLineLabel, matches_overlap.ids(k, m)) == 1)
+                    continue;
+                else
+                {
+                    mapCloud.descriptors(rowLineSession, matches_overlap.ids(k, m)) = mapCloud.descriptors(rowLineSession, matches_overlap.ids(k, m)) + 1;
+                    mapCloud.descriptors(rowLineLabel, matches_overlap.ids(k, m)) = 1; // labeled
+                }
+            }
+        }
+    }
+
+    // clear mapCloud Labelled
+    for(int m=0; m<mapCloud.descriptors.cols(); m++)
+    {
+        mapCloud.descriptors(rowLineLabel, m) = 0;
+    }
 
 }
 
