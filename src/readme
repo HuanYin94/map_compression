@@ -4,8 +4,6 @@ mapCheck: 		just show the map
 
 mapCompresser:		compress the map according to the saliency descriptor
 
-labelLaser:		label the points with session in a laser Frame according the map_session_cnt // not used
-
 sessionFilter:	make great session be salient! & brother_cnt to filter some lonely ones //salient GET
 
 saveAllCRFFeatures:		save all features for simple classification
@@ -30,4 +28,4 @@ mapComapre:				To compare the salient index and delta-distance of two experience
 
 mapSummer:				Sum two map Cloud with salient descriptors and save tit
 
-mapAccuLaserIndex:      accumalte laser-based experience map, range limited, new one for Quardratic Programming？
+mapScoringIndex:      accumalte laser-based experience map, range limited, new one for Quardratic Programming？

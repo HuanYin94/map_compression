@@ -1,0 +1,23 @@
+<launch>
+
+  <node pkg="learned_map" type="mapScoringIndex" name="mapScoringIndex" output="screen">
+  
+	<param name="inputFilterName" value="/home/yh/mine_ws/src/learned_map/cfg/inputFilters.yaml"/>
+	<param name="horizontalResRad" value="0.0035"/>
+
+	<!--Whether has sesssion & label descriptors-->
+	<param name="isFirstTime" value="true"/>
+
+	<!--param name="wholeMapName" value="/home/yh/wholeMap.vtk"/--> 
+	<param name="wholeMapName" value="/home/yh/mapModel/06.02/wholeMap_origin.vtk"/> 
+	<param name="icpFileName" value="/media/yh/YH/DataSet/YQ21/2017_03_07/2017_03_07_drive_0008_sync/icp/icp.txt"/> 
+	<param name="velodyneDirName" value="/media/yh/YH/DataSet/YQ21/2017_03_07/2017_03_07_drive_0008_sync/velodyne_points/data/"/> 
+	<param name="keepIndexName" value="/home/yh/mapModel/2018/07.02/icp030001_keep.txt"/> 
+
+	<param name="saveVTKname" value="/home/yh/mapModel/06.02/wholeMap_s16.vtk"/>
+	<param name="savePnumsName" value=""/>
+	<param name="kSearch" value="1"/>
+
+
+  </node>
+</launch>

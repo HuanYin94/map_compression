@@ -26,7 +26,7 @@
 using namespace std;
 using namespace PointMatcherSupport;
 
-class mapAccuLaserRange
+class mapScoringIndex
 {
     typedef PointMatcher<float> PM;
     typedef PM::DataPoints DP;
@@ -36,24 +36,19 @@ class mapAccuLaserRange
     typedef typename NNS::SearchType NNSearchType;
 
 public:
-    mapAccuLaserRange(ros::NodeHandle &n);
-    ~mapAccuLaserRange();
+    mapScoringIndex(ros::NodeHandle &n);
+    ~mapScoringIndex();
     ros::NodeHandle& n;
 
     string wholeMapName;
     bool isFirstTime;
     string icpFileName;
     string velodyneDirName;
-    int totalICPnum;
     string inputFilterName;
     string saveVTKname;
-    string savePnumsName;
+    string keepIndexName;
     int kSearch;
     double horizontalResRad;
-    double idealVelocity;
-
-    double velocityRatio;
-    double rangeFilter;
 
 
     DP mapCloud;
@@ -71,32 +66,26 @@ public:
     shared_ptr<NNS> featureNNS;
 
     void process(int index);
-    void wait();
     DP readBin(string fileName);
-    double getTravelledDis(Eigen::Vector3d inputA, Eigen::Vector3d inputB);
-    Eigen::Vector3d lastPosition;
-    Eigen::Vector3d currentPosition;
     double getRangeOfPoint(double x, double y, double z);
 
 };
 
-mapAccuLaserRange::~mapAccuLaserRange()
+mapScoringIndex::~mapScoringIndex()
 {}
 
-mapAccuLaserRange::mapAccuLaserRange(ros::NodeHandle& n):
+mapScoringIndex::mapScoringIndex(ros::NodeHandle& n):
     n(n),
     wholeMapName(getParam<string>("wholeMapName", ".")),
     isFirstTime(getParam<bool>("isFirstTime", true)),
     icpFileName(getParam<string>("icpFileName", ".")),
     velodyneDirName(getParam<string>("velodyneDirName", ".")),
     transformation(PM::get().REG(Transformation).create("RigidTransformation")),
-    totalICPnum(getParam<int>("totalICPnum", 0)),
     inputFilterName(getParam<string>("inputFilterName", ".")),
     saveVTKname(getParam<string>("saveVTKname", ".")),
-    savePnumsName(getParam<string>("savePnumsName", ".")),
     kSearch(getParam<int>("kSearch", 0)),
     horizontalResRad(getParam<double>("horizontalResRad", 0)),
-    idealVelocity(getParam<double>("idealVelocity", 0))
+    keepIndexName(getParam<string>("keepIndexName", "."))
 {
     mapCloudPub = n.advertise<sensor_msgs::PointCloud2>("mapCloud", 2, true);
     velodyneCloudPub = n.advertise<sensor_msgs::PointCloud2>("velodyneCloud", 2, true);
@@ -145,36 +134,6 @@ mapAccuLaserRange::mapAccuLaserRange(ros::NodeHandle& n):
         cout<<"-------------------------------------------------------"<<endl;
     }
 
-//    mapCloudPub.publish(PointMatcher_ros::pointMatcherCloudToRosMsg<float>(mapCloud, "global", ros::Time(0)));
-//    velodyneCloudPub.publish(PointMatcher_ros::pointMatcherCloudToRosMsg<float>(velodyneCloud, "global", ros::Time(0)));
-
-    //save nums
-    /*
-    {
-        int maxSession = 0;
-        for(int i=0; i<mapCloud.features.cols(); i++)
-        {
-            if(mapCloud.descriptors(rowLineSession, i) > maxSession)
-                maxSession = mapCloud.descriptors(rowLineSession, i);
-        }
-
-        //then
-        PM::Matrix nums = PM::Matrix::Zero(1, maxSession);
-        int session;
-        for(int i=0; i<mapCloud.features.cols(); i++)
-        {
-            session = mapCloud.descriptors(rowLineSession, i);
-            nums(0, session-1) = nums(0, session-1) + 1;
-        }
-
-        ofstream saveNums(savePnumsName);
-        for(int i=1; i<=maxSession; i++)
-        {
-            saveNums<<i<<"  "<<nums(0, i-1)<<endl;
-        }
-    }
-    */
-
     //save map
     mapCloud.save(saveVTKname);
 
@@ -183,87 +142,13 @@ mapAccuLaserRange::mapAccuLaserRange(ros::NodeHandle& n):
 //    this->wait();
 }
 
-void mapAccuLaserRange::process(int index)
+void mapScoringIndex::process(int index)
 {
-    // loading velodyne
-    stringstream ss;
-    ss<<setw(10)<<setfill('0')<<index;
-    string str;
-    ss>>str;
-    string veloName = velodyneDirName + str + ".bin";
-    cout<<veloName<<endl;
 
-    velodyneCloud = readBin(veloName);
-    inputFilter.apply(velodyneCloud);
-
-    Trobot = PM::TransformationParameters::Identity(4, 4);
-    Trobot(0,0)=initPoses[index][0];Trobot(0,1)=initPoses[index][1];Trobot(0,2)=initPoses[index][2];Trobot(0,3)=initPoses[index][3];
-    Trobot(1,0)=initPoses[index][4];Trobot(1,1)=initPoses[index][5];Trobot(1,2)=initPoses[index][6];Trobot(1,3)=initPoses[index][7];
-    Trobot(2,0)=initPoses[index][8];Trobot(2,1)=initPoses[index][9];Trobot(2,2)=initPoses[index][10];Trobot(2,3)=initPoses[index][11];
-    Trobot(3,0)=initPoses[index][12];Trobot(3,1)=initPoses[index][13];Trobot(3,2)=initPoses[index][14];Trobot(3,3)=initPoses[index][15];
-
-    transformation->correctParameters(Trobot);
-
-    //get ratio, different point has different rangeFilter
-    // according to ther real distance
-    currentPosition(0)=initPoses[index][3];currentPosition(1)=initPoses[index][7];currentPosition(2)=initPoses[index][11];
-    velocityRatio = getTravelledDis(lastPosition, currentPosition) / this->idealVelocity;
-
-    lastPosition = currentPosition;
-
-    if(transformation->checkParameters(Trobot))
-    {
-        DP velodyneCloud_ = transformation->compute(velodyneCloud, Trobot);
-
-        PM::Matches matches_overlap(
-            Matches::Dists(kSearch, velodyneCloud_.features.cols()),
-            Matches::Ids(kSearch, velodyneCloud_.features.cols())
-        );
-
-        featureNNS->knn(velodyneCloud_.features, matches_overlap.ids, matches_overlap.dists, kSearch, 0);
-
-        for(int m=0; m<velodyneCloud_.features.cols(); m++)
-        {
-            // define the rangeFilter
-            rangeFilter = this->getRangeOfPoint(velodyneCloud.features(0,m), velodyneCloud.features(1,m), velodyneCloud.features(2,m))
-                          * this->horizontalResRad * velocityRatio;
-
-            for(int k=0; k<kSearch; k++)
-            {
-                //core: rangeFilter? && Labeling && maxSession ?
-                // rangeFilter
-                if(matches_overlap.dists(k, m) > rangeFilter
-                   || mapCloud.descriptors(rowLineLabel, matches_overlap.ids(k, m)) == 1)
-                    continue;
-                else
-                {
-                    mapCloud.descriptors(rowLineSession, matches_overlap.ids(k, m)) = mapCloud.descriptors(rowLineSession, matches_overlap.ids(k, m)) + 1;
-                    mapCloud.descriptors(rowLineLabel, matches_overlap.ids(k, m)) = 1; // labeled
-                }
-            }
-
-        }
-
-    }
-
-    // clear mapCloud Labelled
-    for(int m=0; m<mapCloud.descriptors.cols(); m++)
-    {
-        mapCloud.descriptors(rowLineLabel, m) = 0;
-    }
 
 }
 
-void mapAccuLaserRange::wait()
-{
-    ros::Rate r(1);
-
-    while(ros::ok())
-    {
-    }
-}
-
-mapAccuLaserRange::DP mapAccuLaserRange::readBin(string filename)
+mapScoringIndex::DP mapScoringIndex::readBin(string filename)
 {
     DP data;
 
@@ -306,12 +191,7 @@ mapAccuLaserRange::DP mapAccuLaserRange::readBin(string filename)
     return data;
 }
 
-double mapAccuLaserRange::getTravelledDis(Eigen::Vector3d inputA, Eigen::Vector3d inputB)
-{
-    return sqrt(pow(inputA(0)-inputB(0),2) + pow(inputA(1)-inputB(1),2) + pow(inputA(2)-inputB(2),2));
-}
-
-double mapAccuLaserRange::getRangeOfPoint(double x, double y, double z)
+double mapScoringIndex::getRangeOfPoint(double x, double y, double z)
 {
     return sqrt(pow(x,2) + pow(y,2) + pow(z,2));
 }
@@ -319,10 +199,10 @@ double mapAccuLaserRange::getRangeOfPoint(double x, double y, double z)
 int main(int argc, char **argv)
 {
 
-    ros::init(argc, argv, "mapAccuLaserIndex");
+    ros::init(argc, argv, "mapScoringIndex");
     ros::NodeHandle n;
 
-    mapAccuLaserRange mapAccuLaserrange_(n);
+    mapScoringIndex mapScoringIndex_(n);
 
     // ugly code
 

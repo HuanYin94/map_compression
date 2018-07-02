@@ -115,8 +115,8 @@ ${catkin_LIBRARIES}
 ${libpointmatcher_LIBRARIES}
 )
 
-add_executable(mapAccuLaserIndex src/mapAccuLaserIndex.cpp)
-target_link_libraries(mapAccuLaserIndex
+add_executable(mapScoringIndex src/mapScoringIndex.cpp)
+target_link_libraries(mapScoringIndex
 ${catkin_LIBRARIES}
 ${libpointmatcher_LIBRARIES}
 )
