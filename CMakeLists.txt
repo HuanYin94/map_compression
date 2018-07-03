@@ -31,20 +31,8 @@ ${catkin_LIBRARIES}
 ${libpointmatcher_LIBRARIES}
 )
 
-add_executable(mapAccuLaser src/mapAccuLaser.cpp)
-target_link_libraries(mapAccuLaser
-${catkin_LIBRARIES}
-${libpointmatcher_LIBRARIES}
-)
-
 add_executable(mapCompresser src/mapCompresser.cpp)
 target_link_libraries(mapCompresser
-${catkin_LIBRARIES}
-${libpointmatcher_LIBRARIES}
-)
-
-add_executable(mapAccuLaserRange src/mapAccuLaserRange.cpp)
-target_link_libraries(mapAccuLaserRange
 ${catkin_LIBRARIES}
 ${libpointmatcher_LIBRARIES}
 )
@@ -120,5 +108,13 @@ target_link_libraries(mapScoringIndex
 ${catkin_LIBRARIES}
 ${libpointmatcher_LIBRARIES}
 )
+
+add_executable(matchOut src/matchOut.cpp)
+target_link_libraries(matchOut
+${catkin_LIBRARIES}
+${libpointmatcher_LIBRARIES}
+)
+
+
 
 
