@@ -10,7 +10,15 @@ try:
     m = Model("compression")
 
     # Create variables
-    x = m.addVars(1, 500000, vtype=GRB.BINARY)
+    x = m.addVars(1, 2, vtype=GRB.BINARY)
+
+    # Set objective
+    m.setObjective(x[0,0]+x[0,1], GRB.MAXIMIZE)
+
+    # Add constraint
+    m.addConstr(x[0,0]+x[0,1]>=1)
+
+    m.optimze()
 
     print('Finished!')
 
