@@ -3,9 +3,9 @@
   <node pkg="learned_map" type="sessionFilter" name="sessionFilter" output="screen">
 
 	<!--Make some points salient. The total num fixed.-->
-	<param name="loadMapName" value="/home/yh/mapModel/06.02/sum_1213141516.vtk"/>
-	<param name="saveMapName" value="/home/yh/mapModel/06.02/sum_1213141516_salient.vtk"/>
-	<param name="staticInt" value="795"/> 
+	<param name="loadMapName" value="/home/yh/mapModel/2018/07.02/sessionMap030001_limit.vtk"/>
+	<param name="saveMapName" value="/home/yh/mapModel/2018/07.03/030001_salient.vtk"/>
+	<param name="staticInt" value="44"/> 
 
 	<!--If need the clustering to filter the noise points-->
 	<param name="ifCluster" value="false"/>

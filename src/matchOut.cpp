@@ -76,7 +76,8 @@ matchOut::matchOut(ros::NodeHandle& n):
     inputFilterName(getParam<string>("inputFilterName", ".")),
     keepIndexName(getParam<string>("keepIndexName", ".")),
     limitRange(getParam<double>("limitRange", 0)),
-    kSearch(getParam<int>("kSearch", 0))
+    kSearch(getParam<int>("kSearch", 0)),
+    transformation(PM::get().REG(Transformation).create("RigidTransformation"))
 {
 
     // load
@@ -139,9 +140,10 @@ void matchOut::process(int indexCnt)
     cout<<veloName<<endl;
 
     velodyneCloud = readBin(veloName);
+    DP velodyneCloudOrigin = velodyneCloud;
     inputFilter.apply(velodyneCloud);
 
-    Trobot = PM::TransformationParameters::Identity(4, 4);
+    Trobot= PM::TransformationParameters::Identity(4, 4);
     Trobot(0,0)=initPoses[index][0];Trobot(0,1)=initPoses[index][1];Trobot(0,2)=initPoses[index][2];Trobot(0,3)=initPoses[index][3];
     Trobot(1,0)=initPoses[index][4];Trobot(1,1)=initPoses[index][5];Trobot(1,2)=initPoses[index][6];Trobot(1,3)=initPoses[index][7];
     Trobot(2,0)=initPoses[index][8];Trobot(2,1)=initPoses[index][9];Trobot(2,2)=initPoses[index][10];Trobot(2,3)=initPoses[index][11];
@@ -174,7 +176,7 @@ void matchOut::process(int indexCnt)
 
         }
 
-        cout<<"Matched:  "<<matchedCnt<<";  all Points:  "<<velodyneCloud_.features.cols()<<endl;
+        cout<<"Matched:  "<<matchedCnt<<";  all Points:  "<<velodyneCloud_.features.cols()<<";  before Filter:  "<<velodyneCloudOrigin.features.cols()<<endl;
     }
 }
 

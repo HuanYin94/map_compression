@@ -2,10 +2,10 @@
 
   <node pkg="learned_map" type="matchOut" name="matchOut" output="screen">
 	
-	<param name="loadMapName" value="/home/yh/mapModel/06.03/test_cloud_0.02_compressed.vtk"/>
-	<param name="loadTrajName" value="/home/yh/mapModel/12.25/icp_0301.txt"/>
-	<param name="loadVeloDir" value="/media/yh/YH/DataSet/YQ21/2017_03_03/2017_03_03_drive_0001_sync/velodyne_points/vtk/"/>
-	<param name="keepIndexName" value="/home/yh/mapModel/2018/07.02/icp030008_keep.txt"/> 
+	<param name="loadMapName" value="/home/yh/mapModel/2018/07.03/030001_compressed.vtk"/>
+	<param name="loadTrajName" value="/home/yh/mapModel/2018/07.02/icp_0301.txt"/>
+	<param name="loadVeloDir" value="/media/yh/YH/DataSet/YQ21/2017_03_03/2017_03_03_drive_0001_sync/velodyne_points/data/"/>
+	<param name="keepIndexName" value="/home/yh/mapModel/2018/07.02/icp030001_keep.txt"/> 
 	
 	<param name="inputFilterName" value="$(find learned_map)/cfg/input_filters.yaml"/>
 	<param name="limitRange" value="0.1"/>
