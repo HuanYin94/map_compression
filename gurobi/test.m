@@ -7,21 +7,22 @@ function [result ] = test( )
 %     allZeros = zeros(6000, 500000);
 
 disp('Generating')
-% model.A = sparse(round(rand(6000,5000)));
+model.A = sparse(round(rand(50,50000)));
 
 % simulation
-a = round(rand(200, 5000));
-b = zeros(5800, 5000);
-model.A = sparse([a; b]);
-
+% a = round(rand(200, 5000));
+% b = zeros(5800, 5000);
+% model.A = sparse([a; b]);
+% 
 disp('Setting')
-model.obj = ones(1,5000);    
-% model.rhs = 2*ones(1,6000);
+model.obj = ones(1,50000);    
+
+model.rhs = 2*ones(1,50);
 
 % simulation
-aa = 2*ones(1, 200);
-bb = zeros(1, 5800);
-model.rhs = [aa,bb];
+% aa = 2*ones(1, 200);
+% bb = zeros(1, 5800);
+% model.rhs = [aa,bb];
 
 model.sense = '>';
 model.vtype = 'B';
@@ -29,7 +30,7 @@ model.modelsense = 'min';
 
 gurobi_write(model, 'test.lp');
 
-params.outputflag = 0;
+params.outputflag = 1;
 
 result = gurobi(model, params);
 
