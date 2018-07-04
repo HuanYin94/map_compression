@@ -12,6 +12,7 @@ function [ compressIndex ] = section( Dir, start, finish, totalNum, bValue )
         
         file_t = fopen(fileName);
         pointID = fscanf(file_t, '%d');
+        fclose(file_t);
        
         aRow = zeros(1, totalNum);
         for j=1:length(pointID)
