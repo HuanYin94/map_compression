@@ -2,7 +2,7 @@
 
   <node pkg="learned_map" type="genVisMatrix" name="genVisMatrix" output="screen">
 	
-	<param name="loadMapName" value="/home/yh/mapModel/2018/07.03/030001_compressed.vtk"/>
+	<param name="loadMapName" value="/home/yh/mapModel/2018/06.02/wholeMap_origin.vtk"/>
 	<param name="loadTrajName" value="/home/yh/mapModel/2018/07.02/icp_0301.txt"/>
 	<param name="loadVeloDir" value="/media/yh/YH/DataSet/YQ21/2017_03_03/2017_03_03_drive_0001_sync/velodyne_points/data/"/>
 	<param name="keepIndexName" value="/home/yh/mapModel/2018/07.02/icp030001_keep.txt"/> 

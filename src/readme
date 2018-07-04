@@ -34,6 +34,6 @@ matchOut:      			get the matched count by aligning point clouds using ground tr
 
 genVisMatrix:         generate the rows of visibility matrix A by aligning, k-search for map points
 
-
+loadProResult:       load the predicted programming results from files and save cloud
 
 

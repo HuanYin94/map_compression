@@ -120,4 +120,12 @@ target_link_libraries(genVisMatrix
 ${catkin_LIBRARIES}
 )
 
+add_executable(loadProResult src/loadProResult.cpp)
+target_link_libraries(loadProResult
+${catkin_LIBRARIES}
+)
+
+
+
+
 

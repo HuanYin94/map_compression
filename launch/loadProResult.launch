@@ -1,0 +1,11 @@
+<launch>
+
+  <node pkg="learned_map" type="loadProResult" name="loadProResult" output="screen">
+
+	<param name="loadResultDir" value="/home/yh/mapModel/2018/07.04/gurobi_compress/"/>
+	<param name="sectionNum" value="69"/>
+	<param name="loadMapName" value="/home/yh/mapModel/2018/06.02/wholeMap_origin.vtk"/>
+	<param name="saveCloudName" value="/home/yh/mapModel/2018/07.04/ILP_YQ_result.vtk"/>
+	
+  </node>
+</launch>
