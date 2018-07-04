@@ -34,7 +34,7 @@ params.outputflag = 1;
 
 result = gurobi(model, params);
 
-dlmwrite('result.txt', result.x);
+% dlmwrite('result.txt', result.x);
 
 end
 
