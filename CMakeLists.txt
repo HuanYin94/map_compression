@@ -115,8 +115,8 @@ ${catkin_LIBRARIES}
 ${libpointmatcher_LIBRARIES}
 )
 
-add_executable(test_gurobi src/test_gurobi.cpp)
-target_link_libraries(test_gurobi
+add_executable(genVisMatrix src/genVisMatrix.cpp)
+target_link_libraries(genVisMatrix
 ${catkin_LIBRARIES}
 )
 

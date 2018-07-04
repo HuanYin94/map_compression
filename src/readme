@@ -29,3 +29,11 @@ mapComapre:				To compare the salient index and delta-distance of two experience
 mapSummer:				Sum two map Cloud with salient descriptors and save tit
 
 mapScoringIndex:      accumalte laser-based experience map, range limited, new one for Quardratic Programming？
+
+matchOut:      			get the matched count by aligning point clouds using ground truth poses, 1-1 for velodyne cloud
+
+genVisMatrix:         generate the rows of visibility matrix A by aligning, k-search for map points
+
+
+
+

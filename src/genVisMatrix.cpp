@@ -24,7 +24,7 @@
 using namespace std;
 using namespace PointMatcherSupport;
 
-class matchOut
+class genVisMatrix
 {
     typedef PointMatcher<float> PM;
     typedef PM::DataPoints DP;
@@ -34,8 +34,8 @@ class matchOut
     typedef typename NNS::SearchType NNSearchType;
 
 public:
-    matchOut(ros::NodeHandle &n);
-    ~matchOut();
+    genVisMatrix(ros::NodeHandle &n);
+    ~genVisMatrix();
     ros::NodeHandle& n;
 
     string loadMapName;
@@ -50,6 +50,7 @@ public:
 
     double limitRange;
     int kSearch;
+    int rowLineLabel;
 
     vector<vector<double>> initPoses;
     PM::TransformationParameters Trobot;
@@ -60,15 +61,17 @@ public:
     // if need the inout filter? confused
     PM::DataPointsFilters inputFilters;
 
+    string saveDirName;
+
     void process(int index);
     DP readBin(string fileName);
 
 };
 
-matchOut::~matchOut()
+genVisMatrix::~genVisMatrix()
 {}
 
-matchOut::matchOut(ros::NodeHandle& n):
+genVisMatrix::genVisMatrix(ros::NodeHandle& n):
     n(n),
     loadMapName(getParam<string>("loadMapName", ".")),
     loadTrajName(getParam<string>("loadTrajName", ".")),
@@ -77,12 +80,17 @@ matchOut::matchOut(ros::NodeHandle& n):
     keepIndexName(getParam<string>("keepIndexName", ".")),
     limitRange(getParam<double>("limitRange", 0)),
     kSearch(getParam<int>("kSearch", 0)),
-    transformation(PM::get().REG(Transformation).create("RigidTransformation"))
+    transformation(PM::get().REG(Transformation).create("RigidTransformation")),
+    saveDirName(getParam<string>("saveDirName", "."))
 {
 
     // load
     mapCloud = DP::load(loadMapName);
     featureNNS.reset(NNS::create(mapCloud.features, mapCloud.features.rows() - 1, NNS::KDTREE_LINEAR_HEAP, NNS::TOUCH_STATISTICS));
+
+    mapCloud.addDescriptor("isLabel", PM::Matrix::Zero(1, mapCloud.features.cols()));
+    rowLineLabel = mapCloud.getDescriptorStartingRow("isLabel");
+
 
     // read initial transformation
     int x, y;
@@ -126,7 +134,7 @@ matchOut::matchOut(ros::NodeHandle& n):
 
 }
 
-void matchOut::process(int indexCnt)
+void genVisMatrix::process(int indexCnt)
 {
 
     int index = indexVector.at(indexCnt);
@@ -149,8 +157,13 @@ void matchOut::process(int indexCnt)
     Trobot(2,0)=initPoses[index][8];Trobot(2,1)=initPoses[index][9];Trobot(2,2)=initPoses[index][10];Trobot(2,3)=initPoses[index][11];
     Trobot(3,0)=initPoses[index][12];Trobot(3,1)=initPoses[index][13];Trobot(3,2)=initPoses[index][14];Trobot(3,3)=initPoses[index][15];
 
-
     transformation->correctParameters(Trobot);
+
+    // save the indexes to the txt
+    ofstream rowOfMatrix;
+    string fileName = saveDirName + std::to_string(indexCnt) + ".txt";
+    rowOfMatrix.open(fileName);
+    int matchedMapCnt = 0;
 
     if(transformation->checkParameters(Trobot))
     {
@@ -165,23 +178,40 @@ void matchOut::process(int indexCnt)
 
         featureNNS->knn(velodyneCloud_.features, matches_overlap.ids, matches_overlap.dists, kSearch, 0);
 
-        int matchedCnt = 0;
-
         for(int m=0; m<velodyneCloud_.features.cols(); m++)
         {
             double rangeFilter = this->limitRange;
 
-            // temp:  search the nearest one
-            if(sqrt(matches_overlap.dists(1, m)) < rangeFilter)
-                matchedCnt++;
-
+            for(int k=0; k<kSearch; k++)
+            {
+                //core: rangeFilter? && Labeling && maxSession ?
+                // rangeFilter, sqrt!!! lose before
+                if(sqrt(matches_overlap.dists(k, m)) > rangeFilter
+                   || mapCloud.descriptors(rowLineLabel, matches_overlap.ids(k, m)) == 1)
+                    continue;
+                else
+                {
+                    mapCloud.descriptors(rowLineLabel, matches_overlap.ids(k, m)) = 1; // labeled
+                    rowOfMatrix << matches_overlap.ids(k, m) << endl;
+                    matchedMapCnt++;
+                }
+            }
         }
-
-        cout<<"Matched:  "<<matchedCnt<<";  all Points:  "<<velodyneCloud_.features.cols()<<";  before Filter:  "<<velodyneCloudOrigin.features.cols()<<endl;
     }
+
+    // clear mapCloud Labelled
+    for(int m=0; m<mapCloud.descriptors.cols(); m++)
+    {
+        mapCloud.descriptors(rowLineLabel, m) = 0;
+    }
+
+    cout<<"matched map points Cnt:  "<<matchedMapCnt<<endl;
+    rowOfMatrix.close();
+    cout<<"saved~"<<endl;
+
 }
 
-matchOut::DP matchOut::readBin(string filename)
+genVisMatrix::DP genVisMatrix::readBin(string filename)
 {
     DP data;
 
@@ -227,10 +257,10 @@ matchOut::DP matchOut::readBin(string filename)
 int main(int argc, char **argv)
 {
 
-    ros::init(argc, argv, "matchOut");
+    ros::init(argc, argv, "genVisMatrix");
     ros::NodeHandle n;
 
-    matchOut matchout(n);
+    genVisMatrix genvismatrix(n);
     ros::spin();
 
     return 0;
