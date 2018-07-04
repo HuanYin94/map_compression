@@ -4,13 +4,14 @@ function [ result ] = sectionTest( Dir, start, finish )
 
     % preparation
     totalNum = 500000;
-    bValue = 50;
+    bValue = 100;
     
     disp('Loop for Generating A');
     
     visMatrix = [];
     
     for i=start:1:finish
+        i
         fileCnt = num2str(i);
         fileName = [Dir, fileCnt, '.txt'];
         
