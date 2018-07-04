@@ -13,10 +13,12 @@ try:
     x = m.addVars(1, 2, vtype=GRB.BINARY)
 
     # Set objective
-    m.setObjective(x[0,0]+x[0,1], GRB.MAXIMIZE)
+    m.setObjective(x[0,0]+x[0,1], GRB.MINIMIZE)
 
     # Add constraint
     m.addConstr(x[0,0]+x[0,1]>=1)
+
+    m.addConstr(x[0,0]+2*x[0,1]<=4)
 
     m.optimze()
 
