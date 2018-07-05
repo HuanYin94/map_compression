@@ -64,12 +64,14 @@ loadProResult::loadProResult(ros::NodeHandle& n):
     int temp;
     for (int y = 0; y < sectionNum; y++)
     {
-//        cout<<"File:  "<<y<<endl;
+        cout<<"----------------------------------------------------------"<<endl;
         string loadResultName = loadResultDir + std::to_string(y) + ".txt";
+        cout<<"File:  "<<loadResultName<<endl;
         ifstream in(loadResultName);
         while(!in.eof())
         {
             in>>temp;
+//            cout<<"index:  "<<temp<<endl;
             mapCloud.descriptors(rowLineResults, temp) = 1;
         }
         in.close();

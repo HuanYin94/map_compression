@@ -125,8 +125,8 @@ void mapCheck::process()
     /**  CHECK TEST  **/
 
     /**SALIENT**/
-    /*
-    int rowLine = mapCloud.getDescriptorStartingRow("salient");
+
+    int rowLine = mapCloud.getDescriptorStartingRow("salient_results");
     staticCloud = mapCloud.createSimilarEmpty();
     int count=0;
     for(int i=0; i<mapCloud.features.cols(); i++)
@@ -140,25 +140,25 @@ void mapCheck::process()
     }
 
     staticCloud.conservativeResize(count);
-    */
 
 
-    /**SESSIONS**/
 
-    int rowLine = mapCloud.getDescriptorStartingRow("session");
-    staticCloud = mapCloud.createSimilarEmpty();
-    int count=0;
-    for(int i=0; i<mapCloud.features.cols(); i++)
-    {
-        if(mapCloud.descriptors(rowLine, i) >= staticInt)
-        {
-            staticCloud.setColFrom(count, mapCloud, i);
-            count++;
-        }
+//    /**SESSIONS**/
 
-    }
+//    int rowLine = mapCloud.getDescriptorStartingRow("session");
+//    staticCloud = mapCloud.createSimilarEmpty();
+//    int count=0;
+//    for(int i=0; i<mapCloud.features.cols(); i++)
+//    {
+//        if(mapCloud.descriptors(rowLine, i) >= staticInt)
+//        {
+//            staticCloud.setColFrom(count, mapCloud, i);
+//            count++;
+//        }
 
-    staticCloud.conservativeResize(count);
+//    }
+
+//    staticCloud.conservativeResize(count);
 
     cout<<"map num:  "<<mapCloud.features.cols()<<endl;
 //    cout<<"salient num:  "<<staticCloud.features.cols()<<endl;
