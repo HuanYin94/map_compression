@@ -43,7 +43,7 @@ function [ compressIndex ] = section( Dir, start, finish, totalNum, bValue )
     
 %     gurobi_write(model, 'sectionTest.lp');
 
-    params.outputflag = 0;
+    params.outputflag = 1;
     
     disp('Programming...');
     result = gurobi(model, params);
