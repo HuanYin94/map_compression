@@ -64,7 +64,7 @@ loadProResult::loadProResult(ros::NodeHandle& n):
     int temp;
     for (int y = 0; y < sectionNum; y++)
     {
-        cout<<"File:  "<<y<<endl;
+//        cout<<"File:  "<<y<<endl;
         string loadResultName = loadResultDir + std::to_string(y) + ".txt";
         ifstream in(loadResultName);
         while(!in.eof())
@@ -74,6 +74,14 @@ loadProResult::loadProResult(ros::NodeHandle& n):
         }
         in.close();
     }
+
+    int predictCnt = 0;
+    for(int m=0; m<mapCloud.features.cols(); m++)
+    {
+        if(mapCloud.descriptors(rowLineResults, m) == 1)
+            predictCnt++;
+    }
+    cout<<"Predicted Cnt:  "<<predictCnt<<endl;
 
     mapCloud.save(saveCloudName);
     cout<<"Saved"<<endl;
