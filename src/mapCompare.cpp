@@ -79,8 +79,8 @@ mapCompare::mapCompare(ros::NodeHandle& n):
 void mapCompare::process()
 {
 //    int rowLineSession = mapCloud0.getDescriptorStartingRow("session");
-    int rowLineSalient = mapCloud0.getDescriptorStartingRow("salient");
-
+    int rowLineSalient0 = mapCloud0.getDescriptorStartingRow("salient");
+    int rowLineSalient1 = mapCloud1.getDescriptorStartingRow("salient");
 
     // save and anal
     vector<int> salientIndex0;
@@ -88,7 +88,7 @@ void mapCompare::process()
     int cnt0=0;
     for(int i=0; i<mapCloud0.features.cols(); i++)
     {
-        if(mapCloud0.descriptors(rowLineSalient, i) == 1)
+        if(mapCloud0.descriptors(rowLineSalient0, i) == 1)
         {
             salientCloud0.setColFrom(cnt0, mapCloud0, i);
             salientIndex0.push_back(i);
@@ -102,7 +102,7 @@ void mapCompare::process()
     int cnt1=0;
     for(int i=0; i<mapCloud1.features.cols(); i++)
     {
-        if(mapCloud1.descriptors(rowLineSalient, i) == 1)
+        if(mapCloud1.descriptors(rowLineSalient1, i) == 1)
         {
             salientCloud1.setColFrom(cnt1, mapCloud1, i);
             salientIndex1.push_back(i);
@@ -114,6 +114,8 @@ void mapCompare::process()
     //Compare, the num of same index and mean distance
 
     vector<int> samer = this->intersection(salientIndex0, salientIndex1);
+    cout<<"num of PC0:  "<<salientCloud0.features.cols()<<endl;
+    cout<<"num of PC1:  "<<salientCloud1.features.cols()<<endl;
     cout<<"Same Index:  "<<samer.size()<<endl;
 
     distanceNNS.reset(NNS::create(salientCloud0.features, salientCloud0.features.rows()-1, NNS::KDTREE_LINEAR_HEAP, NNS::TOUCH_STATISTICS));

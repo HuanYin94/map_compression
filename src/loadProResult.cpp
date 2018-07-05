@@ -56,8 +56,8 @@ loadProResult::loadProResult(ros::NodeHandle& n):
 {
     //map
     mapCloud = DP::load(loadMapName);
-    mapCloud.addDescriptor("salient_results", PM::Matrix::Zero(1, mapCloud.features.cols()));
-    int rowLineResults = mapCloud.getDescriptorStartingRow("salient_results");
+    mapCloud.addDescriptor("salient", PM::Matrix::Zero(1, mapCloud.features.cols()));
+    int rowLineResults = mapCloud.getDescriptorStartingRow("salient");
 
     //results
     // read all result files

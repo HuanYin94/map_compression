@@ -126,7 +126,7 @@ void mapCheck::process()
 
     /**SALIENT**/
 
-    int rowLine = mapCloud.getDescriptorStartingRow("salient_results");
+    int rowLine = mapCloud.getDescriptorStartingRow("salient");
     staticCloud = mapCloud.createSimilarEmpty();
     int count=0;
     for(int i=0; i<mapCloud.features.cols(); i++)
