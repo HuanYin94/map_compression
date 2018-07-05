@@ -22,7 +22,7 @@ function [  ] = loopCompress( filesDir, splitLength, totalNum, bValue, saveDir )
         compressIndex = section(filesDir, start, finish, totalNum, bValue);
         
         saveName = [saveDir, num2str(saveCnt), '.txt'];
-        dlmwrite(saveName, compressIndex);
+        dlmwrite(saveName, compressIndex, 'precision', '%d');
         
         disp('Compressed & Saved')
         saveCnt = saveCnt + 1;
