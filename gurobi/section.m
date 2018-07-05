@@ -4,8 +4,10 @@ function [ compressIndex ] = section( Dir, start, finish, totalNum, bValue )
     
     disp('Loop for Generating A');
     
-    visMatrix = [];
+    % a large sparse convisibility matrix
+    visMatrix = zeros(finish-start+1, totalNum);
     
+    rowCnt=1;
     for i=start:1:finish
         fileCnt = num2str(i);
         fileName = [Dir, fileCnt, '.txt'];
@@ -13,12 +15,11 @@ function [ compressIndex ] = section( Dir, start, finish, totalNum, bValue )
         file_t = fopen(fileName);
         pointID = fscanf(file_t, '%d');
         fclose(file_t);
-       
-        aRow = zeros(1, totalNum);
-        for j=1:length(pointID)
-            aRow(1, pointID(j)+1) = 1;   % from zero to one, c++ to Matlab
-        end
-        visMatrix = [visMatrix; aRow];
+        
+        % no loop, sub2ind
+       visMatrix(sub2ind(size(visMatrix), rowCnt*ones(1, length(pointID)), (pointID+1)')) = 1;
+        
+        rowCnt = rowCnt + 1; 
     end
    
     disp('Setting Params');
@@ -30,7 +31,7 @@ function [ compressIndex ] = section( Dir, start, finish, totalNum, bValue )
     model.vtype = 'B';
     model.modelsense = 'min';
     
-    gurobi_write(model, 'sectionTest.lp');
+%     gurobi_write(model, 'sectionTest.lp');
 
     params.outputflag = 0;
 
