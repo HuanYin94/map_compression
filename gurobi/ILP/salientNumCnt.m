@@ -17,7 +17,7 @@ function [  ] = salientNumCnt( filesDir, totalNum )
         pointID = fscanf(file_t, '%d');
         fclose(file_t);
     
-        allPoints(sub2ind(size(allPoints), ones(1, length(pointID)), (pointID+1)')) = 1;
+        allPoints(sub2ind(size(allPoints), ones(1, length(pointID)), (pointID)')) = 1;
 
     end
     
