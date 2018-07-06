@@ -2,16 +2,18 @@
 
   <node pkg="learned_map" type="genVisMatrix" name="genVisMatrix" output="screen">
 	
-	<param name="loadMapName" value="/home/yh/mapModel/2018/06.02/wholeMap_origin.vtk"/>
+	<param name="loadMapName" value="/home/yh/mapModel/2018/07.06/ILP_YQ_compressed_1.vtk"/>
 	<param name="loadTrajName" value="/home/yh/mapModel/2018/07.02/icp_0301.txt"/>
 	<param name="loadVeloDir" value="/media/yh/YH/DataSet/YQ21/2017_03_03/2017_03_03_drive_0001_sync/velodyne_points/data/"/>
 	<param name="keepIndexName" value="/home/yh/mapModel/2018/07.02/icp030001_keep.txt"/> 
 	
+	<!--No use for point cloufd filter!/-->
 	<param name="inputFilterName" value="$(find learned_map)/cfg/input_filters.yaml"/>
+
 	<param name="limitRange" value="0.1"/>
 	<param name="kSearch" value="5"/>
 
-　　　 <param name="saveDirName" value="/home/yh/mapModel/2018/07.04/visMatrix/"/>
+　　　 <param name="saveDirName" value="/home/yh/mapModel/2018/07.06/visMatrix_1/"/>
 
   </node>
 </launch>
