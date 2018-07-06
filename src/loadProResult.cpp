@@ -71,6 +71,7 @@ loadProResult::loadProResult(ros::NodeHandle& n):
         while(!in.eof())
         {
             in>>temp;
+            temp = temp - 1;
 //            cout<<"index:  "<<temp<<endl;
             mapCloud.descriptors(rowLineResults, temp) = 1;
         }
