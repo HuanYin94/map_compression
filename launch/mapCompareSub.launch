@@ -1,0 +1,14 @@
+<launch>
+
+  <node pkg="learned_map" type="mapCompareSub" name="mapCompareSub" output="screen">
+
+  <param name="loadMapName0" value="/home/yh/mapModel/2018/07.03/030001_salient.vtk"/>
+  <param name="loadMapName1" value="/home/yh/mapModel/2018/07.06/ILP_YQ_result_2.vtk"/>
+  <param name="loadOriginMapName" value="/home/yh/mapModel/2018/06.02/wholeMap_origin.vtk"/>
+  <!--param name="saveIndexName" value="/home/yh/mapModel/05.28/2_3_index.txt"/-->
+  <!--param name="saveDistsName" value="/home/yh/mapModel/05.28/icp_0301.txt"/-->
+
+
+
+  </node>
+</launch>

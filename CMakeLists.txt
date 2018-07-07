@@ -125,6 +125,13 @@ target_link_libraries(loadProResult
 ${catkin_LIBRARIES}
 )
 
+add_executable(mapCompareSub src/mapCompareSub.cpp)
+target_link_libraries(mapCompareSub
+${catkin_LIBRARIES}
+)
+
+
+
 
 
 
