@@ -1,6 +1,6 @@
 <launch>
 
-  <node pkg="learned_map" type="genVisMatrix" name="genVisMatrix" output="screen">
+  <node pkg="map_compression" type="genVisMatrix" name="genVisMatrix" output="screen">
 	
 	<param name="loadMapName" value="/home/yh/mapModel/2018/07.06/ILP_YQ_compressed_1.vtk"/>
 	<param name="loadTrajName" value="/home/yh/mapModel/2018/07.02/icp_0301.txt"/>
@@ -8,7 +8,7 @@
 	<param name="keepIndexName" value="/home/yh/mapModel/2018/07.02/icp030001_keep.txt"/> 
 	
 	<!--No use for point cloufd filter!/-->
-	<param name="inputFilterName" value="$(find learned_map)/cfg/input_filters.yaml"/>
+	<param name="inputFilterName" value="$(find map_compression)/cfg/input_filters.yaml"/>
 
 	<param name="limitRange" value="0.1"/>
 	<param name="kSearch" value="5"/>

@@ -1,6 +1,6 @@
 <launch>
 
-  <node pkg="learned_map" type="mapSummer" name="mapSummer" output="screen">
+  <node pkg="map_compression" type="mapSummer" name="mapSummer" output="screen">
 
   <param name="loadMapName0" value="/home/yh/mapModel/06.02/sum_12131415.vtk"/>
   <param name="loadMapName1" value="/home/yh/mapModel/06.02/wholeMap_s16.vtk"/>

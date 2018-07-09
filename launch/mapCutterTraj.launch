@@ -1,6 +1,6 @@
 <launch>
 
-  <node pkg="learned_map" type="mapCutterTraj" name="mapCutterTraj" output="screen">
+  <node pkg="map_compression" type="mapCutterTraj" name="mapCutterTraj" output="screen">
 
 	<param name="loadMapName" value="/home/yh/mapModel/05.30/wholeMap_s10_compressed_9974.vtk"/>
 	<param name="loadTrajName" value="/home/yh/mapModel/12.25/icp_0301.txt"/>

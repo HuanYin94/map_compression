@@ -1,6 +1,6 @@
 <launch>
 
-  <node pkg="learned_map" type="loadProResult" name="loadProResult" output="screen">
+  <node pkg="map_compression" type="loadProResult" name="loadProResult" output="screen">
 
 	<param name="loadResultDir" value="/home/yh/mapModel/2018/07.06/gurobi_compress_2/"/>
 	<param name="sectionNum" value="138"/>

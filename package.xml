@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package>
-  <name>learned_map</name>
+  <name>map_compression</name>
   <version>0.0.1</version>
-  <description>The learned map compression package</description>
+  <description>The map compression package</description>
 
   <maintainer email="zjuyinhuan@gmail.com">Huan Yin</maintainer>
 

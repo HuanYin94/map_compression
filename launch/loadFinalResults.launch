@@ -1,6 +1,6 @@
 <launch>
 
-  <node pkg="learned_map" type="loadFinalResults" name="loadFinalResults" output="screen">
+  <node pkg="map_compression" type="loadFinalResults" name="loadFinalResults" output="screen">
 
 	<param name="loadResultName" value="/home/yh/mapModel/05.18/Tianjin/result.txt"/>
 	<param name="loadMapName" value="/home/yh/mapModel/05.18/Tianjin/wholeMap_features_tianjin.vtk"/>

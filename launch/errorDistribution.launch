@@ -1,6 +1,6 @@
 <launch>
 
-  <node pkg="learned_map" type="errorDistribution" name="errorDistributicon" output="screen">
+  <node pkg="map_compression" type="errorDistribution" name="errorDistributicon" output="screen">
 
   <param name="loadMapName" value="/home/yh/mapModel/05.18/05_18_final_test.vtk"/>
 　 <param name="saveDisName" value="/home/yh/mapModel/05.18/distances.txt"/>

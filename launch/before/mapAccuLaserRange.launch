@@ -1,8 +1,8 @@
 <launch>
 
-  <node pkg="learned_map" type="mapAccuLaserRange" name="mapAccuLaserRange" output="screen">
+  <node pkg="map_compression" type="mapAccuLaserRange" name="mapAccuLaserRange" output="screen">
   
-  <param name="inputFilterName" value="/home/yh/mine_ws/src/learned_map/cfg/inputFilters.yaml"/>
+  <param name="inputFilterName" value="/home/yh/mine_ws/src/map_compression/cfg/inputFilters.yaml"/>
   <param name="horizontalResRad" value="0.0035"/>
   <param name="idealVelocity" value="0.1"/>s
 	

@@ -1,6 +1,6 @@
 <launch>
 
-  <node pkg="learned_map" type="mapCompare" name="mapCompare" output="screen">
+  <node pkg="map_compression" type="mapCompare" name="mapCompare" output="screen">
 
   <param name="loadMapName0" value="/home/yh/mapModel/2018/07.03/030001_salient.vtk"/>
   <param name="loadMapName1" value="/home/yh/mapModel/2018/07.06/ILP_YQ_result_2.vtk"/>

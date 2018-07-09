@@ -1,6 +1,6 @@
 <launch>
 
-  <node pkg="learned_map" type="mapCompresser" name="mapCompresser" output="screen">
+  <node pkg="map_compression" type="mapCompresser" name="mapCompresser" output="screen">
 	
   <!--get the compressed map by the descriptor name directly-->
   <param name="loadMapName" value="/home/yh/mapModel/2018/07.06/ILP_YQ_result_1.vtk"/> 

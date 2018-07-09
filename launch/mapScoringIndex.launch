@@ -1,8 +1,8 @@
 <launch>
 
-  <node pkg="learned_map" type="mapScoringIndex" name="mapScoringIndex" output="screen">
+  <node pkg="map_compression" type="mapScoringIndex" name="mapScoringIndex" output="screen">
   
-	<param name="inputFilterName" value="/home/yh/mine_ws/src/learned_map/cfg/inputFilters.yaml"/>
+	<param name="inputFilterName" value="/home/yh/mine_ws/src/map_compression/cfg/inputFilters.yaml"/>
 
 	<!--Whether has sesssion & label descriptors-->
 	<param name="isFirstTime" value="true"/>

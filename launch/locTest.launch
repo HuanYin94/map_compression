@@ -1,6 +1,6 @@
 <launch>
 
-  <node pkg="learned_map" type="locTest" name="locTest" output="screen">
+  <node pkg="map_compression" type="locTest" name="locTest" output="screen">
 	
 	<!--param name="loadMapName" value="/home/yh/mapModel/05.21/saliencyCloud_yq.vtk"/-->
 	<param name="loadMapName" value="/home/yh/mapModel/06.03/test_cloud_0.02_compressed.vtk"/>
@@ -11,8 +11,8 @@
 	<param name="startIndex" value="7310"/>
 	<param name="endIndex" value="10500"/>
 	
-	<param name="inputYaml" value="$(find learned_map)/cfg/input_filters.yaml"/>
-	<param name="icpYaml" value="$(find learned_map)/cfg/icp.yaml"/>
+	<param name="inputYaml" value="$(find map_compression)/cfg/input_filters.yaml"/>
+	<param name="icpYaml" value="$(find map_compression)/cfg/icp.yaml"/>
 
 	<param name="saveLocName" value="/home/yh/test/5_0.05.txt"/>
 	<param name="saveTimeName" value="/home/yh/test/6_0.05.txt"/>

@@ -1,1 +1,1 @@
-learned map compression, for journal
+map compression using three approaches, for journal

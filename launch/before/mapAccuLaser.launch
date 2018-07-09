@@ -1,6 +1,6 @@
 <launch>
 
-  <node pkg="learned_map" type="mapAccuLaser" name="mapAccuLaser" output="screen">
+  <node pkg="map_compression" type="mapAccuLaser" name="mapAccuLaser" output="screen">
   
   <param name="inputFilterName" value="/home/yh/mine_ws/src/test_detection/cfg/inputFilters.yaml"/>
   <param name="rangeFilter" value="0.1"/>

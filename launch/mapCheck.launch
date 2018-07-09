@@ -1,6 +1,6 @@
 <launch>
 
-  <node pkg="learned_map" type="mapCheck" name="mapCheck" output="screen">
+  <node pkg="map_compression" type="mapCheck" name="mapCheck" output="screen">
 
   <param name="loadMapName" value="/home/yh/mapModel/2018/07.06/ILP_YQ_result_2.vtk"/>
   <!--param name="loadMapName" value="/home/yh/mapModel/2018/07.03/030001_salient.vtk"/-->
@@ -10,5 +10,5 @@
 
 
   </node>
-<node pkg="rviz" type="rviz" name="rviz" args="-d $(find learned_map)/cfg/mapCheck.rviz" output="screen"/>
+<node pkg="rviz" type="rviz" name="rviz" args="-d $(find map_compression)/cfg/mapCheck.rviz" output="screen"/>
 </launch>

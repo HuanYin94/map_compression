@@ -1,6 +1,6 @@
 <launch>
 
-  <node pkg="learned_map" type="generateOtherFeatures" name="generateOtherFeatures" output="screen">
+  <node pkg="map_compression" type="generateOtherFeatures" name="generateOtherFeatures" output="screen">
 
   <param name="loadMapName" value="/home/yh/mapModel/05.18/Tianjin/wholeMap_tianjin.vtk"/>
   <param name="loadTrajName" value="/home/yh/mapModel/05.18/Tianjin/icp_tianjin.txt"/>
