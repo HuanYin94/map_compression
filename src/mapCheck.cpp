@@ -52,6 +52,8 @@ public:
     int mapLength;
     nav_msgs::Path mapPath;
 
+    int isScore;
+
     void wait();
     void process();
 
@@ -65,7 +67,8 @@ mapCheck::mapCheck(ros::NodeHandle& n):
     loadMapName(getParam<string>("loadMapName", ".")),
     staticInt(getParam<int>("staticInt", 0)),
     loadTrajName(getParam<string>("loadTrajName", ".")),
-    mapLength(getParam<int>("mapLength", 0))
+    mapLength(getParam<int>("mapLength", 0)),
+    isScore(getParam<int>("isScore", 0))
 {
     mapCloudPub = n.advertise<sensor_msgs::PointCloud2>("mapCloud", 2, true);
     staticCloudPub = n.advertise<sensor_msgs::PointCloud2>("staticCloud", 2, true);
@@ -125,40 +128,42 @@ void mapCheck::process()
     /**  CHECK TEST  **/
 
     /**SALIENT**/
-    /*
-    int rowLine = mapCloud.getDescriptorStartingRow("salient");
-    staticCloud = mapCloud.createSimilarEmpty();
-    int count=0;
-    for(int i=0; i<mapCloud.features.cols(); i++)
+    if(!isScore)
     {
-        if(mapCloud.descriptors(rowLine, i) == 1)
+        int rowLine = mapCloud.getDescriptorStartingRow("salient");
+        staticCloud = mapCloud.createSimilarEmpty();
+        int count=0;
+        for(int i=0; i<mapCloud.features.cols(); i++)
         {
-            staticCloud.setColFrom(count, mapCloud, i);
-            count++;
+            if(mapCloud.descriptors(rowLine, i) == 1)
+            {
+                staticCloud.setColFrom(count, mapCloud, i);
+                count++;
+            }
+
         }
 
+        staticCloud.conservativeResize(count);
     }
-
-    staticCloud.conservativeResize(count);
-    */
-
-
-    /**SESSIONS**/
-
-    int rowLine = mapCloud.getDescriptorStartingRow("session");
-    staticCloud = mapCloud.createSimilarEmpty();
-    int count=0;
-    for(int i=0; i<mapCloud.features.cols(); i++)
+    else
     {
-        if(mapCloud.descriptors(rowLine, i) >= staticInt)
+        /**SESSIONS**/
+
+        int rowLine = mapCloud.getDescriptorStartingRow("session");
+        staticCloud = mapCloud.createSimilarEmpty();
+        int count=0;
+        for(int i=0; i<mapCloud.features.cols(); i++)
         {
-            staticCloud.setColFrom(count, mapCloud, i);
-            count++;
+            if(mapCloud.descriptors(rowLine, i) >= staticInt)
+            {
+                staticCloud.setColFrom(count, mapCloud, i);
+                count++;
+            }
+
         }
 
+        staticCloud.conservativeResize(count);
     }
-
-    staticCloud.conservativeResize(count);
 
     cout<<"map num:  "<<mapCloud.features.cols()<<endl;
 //    cout<<"salient num:  "<<staticCloud.features.cols()<<endl;
