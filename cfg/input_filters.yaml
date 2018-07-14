@@ -6,5 +6,3 @@
     keepNormals: 1
 - SimpleSensorNoiseDataPointsFilter:
     sensorType: 0
-- ObservationDirectionDataPointsFilter
-- OrientNormalsDataPointsFilter 

@@ -1,0 +1,15 @@
+<launch>
+
+  <node pkg="map_compression" type="scanRegister" name="scanRegister" output="screen">
+
+	<param name="icpFileName" value="/media/yh/YH/DataSet/YQ21/2017_03_03/2017_03_03_drive_0001_sync/icp/icp.txt"/> 
+	<param name="velodyneDirName" value="/media/yh/YH/DataSet/YQ21/2017_03_03/2017_03_03_drive_0001_sync/velodyne_points/data/"/> 
+	<param name="keepIndexName" value="/home/yh/mapModel/2018/07.02/icp030001_keep.txt"/> 
+	
+    <param name="inputFilterName" value="$(find map_compression)/cfg/input_filters.yaml"/>
+    <param name="mapPostFilterName" value="$(find map_compression)/cfg/map_filters.yaml"/>
+	<param name="saveVTKname" value="/home/yh/mapModel/2018/07.14/wholeMap.vtk"/>
+
+
+  </node>
+</launch>

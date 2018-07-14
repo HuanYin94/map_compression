@@ -130,7 +130,10 @@ target_link_libraries(mapCompareSub
 ${catkin_LIBRARIES}
 )
 
-
+add_executable(scanRegister src/scanRegister.cpp)
+target_link_libraries(scanRegister
+${catkin_LIBRARIES}
+)
 
 
 
