@@ -41,7 +41,6 @@ public:
     string loadMapName;
     string loadTrajName;
     string loadVeloDir;
-    string inputFilterName;
     string keepIndexName;
 
     DP mapCloud;
@@ -76,7 +75,6 @@ genVisMatrix::genVisMatrix(ros::NodeHandle& n):
     loadMapName(getParam<string>("loadMapName", ".")),
     loadTrajName(getParam<string>("loadTrajName", ".")),
     loadVeloDir(getParam<string>("loadVeloDir", ".")),
-    inputFilterName(getParam<string>("inputFilterName", ".")),
     keepIndexName(getParam<string>("keepIndexName", ".")),
     limitRange(getParam<double>("limitRange", 0)),
     kSearch(getParam<int>("kSearch", 0)),
@@ -122,9 +120,6 @@ genVisMatrix::genVisMatrix(ros::NodeHandle& n):
         indexVector.push_back(l);
     }
 
-    ifstream inputiffilter(inputFilterName);
-    inputFilter = PM::DataPointsFilters(inputiffilter);
-
     // process, wanna see all
     int indexCnt = 0;
     for(; indexCnt < indexVector.size(); indexCnt++)
@@ -149,7 +144,6 @@ void genVisMatrix::process(int indexCnt)
 
     velodyneCloud = readBin(veloName);
     DP velodyneCloudOrigin = velodyneCloud;
-    inputFilter.apply(velodyneCloud);
 
     Trobot= PM::TransformationParameters::Identity(4, 4);
     Trobot(0,0)=initPoses[index][0];Trobot(0,1)=initPoses[index][1];Trobot(0,2)=initPoses[index][2];Trobot(0,3)=initPoses[index][3];
