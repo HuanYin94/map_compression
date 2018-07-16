@@ -44,7 +44,6 @@ public:
     bool isFirstTime;
     string icpFileName;
     string velodyneDirName;
-    string inputFilterName;
     string saveVTKname;
     string keepIndexName;
 
@@ -81,7 +80,6 @@ mapScoringIndex::mapScoringIndex(ros::NodeHandle& n):
     icpFileName(getParam<string>("icpFileName", ".")),
     velodyneDirName(getParam<string>("velodyneDirName", ".")),
     transformation(PM::get().REG(Transformation).create("RigidTransformation")),
-    inputFilterName(getParam<string>("inputFilterName", ".")),
     saveVTKname(getParam<string>("saveVTKname", ".")),
     kSearch(getParam<int>("kSearch", 0)),
     horizontalResRad(getParam<double>("horizontalResRad", 0)),
@@ -132,9 +130,6 @@ mapScoringIndex::mapScoringIndex(ros::NodeHandle& n):
         indexVector.push_back(l);
     }
 
-    ifstream inputiffilter(inputFilterName);
-    inputFilter = PM::DataPointsFilters(inputiffilter);
-
     // process
     int indexCnt = 0;
     for(; indexCnt < indexVector.size(); indexCnt++)
@@ -162,7 +157,6 @@ void mapScoringIndex::process(int indexCnt)
     cout<<veloName<<endl;
 
     velodyneCloud = readBin(veloName);
-    inputFilter.apply(velodyneCloud);
 
     Trobot = PM::TransformationParameters::Identity(4, 4);
     Trobot(0,0)=initPoses[index][0];Trobot(0,1)=initPoses[index][1];Trobot(0,2)=initPoses[index][2];Trobot(0,3)=initPoses[index][3];
