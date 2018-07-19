@@ -143,7 +143,6 @@ void genVisMatrix::process(int indexCnt)
     cout<<veloName<<endl;
 
     velodyneCloud = readBin(veloName);
-    DP velodyneCloudOrigin = velodyneCloud;
 
     Trobot= PM::TransformationParameters::Identity(4, 4);
     Trobot(0,0)=initPoses[index][0];Trobot(0,1)=initPoses[index][1];Trobot(0,2)=initPoses[index][2];Trobot(0,3)=initPoses[index][3];

@@ -6,12 +6,12 @@
 	<param name="isFirstTime" value="true"/>
 
 	<!--param name="wholeMapName" value="/home/yh/wholeMap.vtk"/--> 
-	<param name="wholeMapName" value="/home/yh/mapModel/2018/07.16/wholeMap_origin.vtk"/> 
+	<param name="wholeMapName" value="/home/yh/mapModel/2018/07.19/wholeMap_origin.vtk"/> 
 	<param name="icpFileName" value="/media/yh/YH/DataSet/YQ21/2017_03_03/2017_03_03_drive_0008_sync/icp/icp.txt"/> 
 	<param name="velodyneDirName" value="/media/yh/YH/DataSet/YQ21/2017_03_03/2017_03_03_drive_0008_sync/velodyne_points/data/"/> 
-	<param name="keepIndexName" value="/home/yh/mapModel/2018/07.16/keepicp_030008.txt"/> 
+	<param name="keepIndexName" value="/home/yh/mapModel/2018/07.19/keepicp_030001.txt"/> 
 
-	<param name="saveVTKname" value="/home/yh/mapModel/2018/07.16/wholeMap_s8.vtk"/>
+	<param name="saveVTKname" value="/home/yh/mapModel/2018/07.19/wholeMap_s1.vtk"/>
 	<param name="kSearch" value="10"/>
 	
 	<!--Not used/-->

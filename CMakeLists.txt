@@ -135,6 +135,10 @@ target_link_libraries(scanRegister
 ${catkin_LIBRARIES}
 )
 
+add_executable(genWeightVector src/genWeightVector.cpp)
+target_link_libraries(genWeightVector
+${catkin_LIBRARIES}
+)
 
 
 

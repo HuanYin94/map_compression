@@ -1,0 +1,9 @@
+<launch>
+
+  <node pkg="map_compression" type="genWeightVector" name="genWeightVector" output="screen">
+  
+  <param name="loadMapName" value="/home/yh/mapModel/2018/07.19/wholeMap_s1.vtk"/>
+  <param name="saveWeightName" value="/home/yh/mapModel/2018/07.19/weightVector.txt"/>
+
+  </node>
+</launch>
