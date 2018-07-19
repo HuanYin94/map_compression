@@ -36,11 +36,11 @@ function [ compressIndex ] = section( lamda, q_value, Dir, start, finish, totalN
     model.obj = [q_value', lamda*ones(1,frameNum)];    
     
     bValueVector = bValue*ones(1, (finish-start)+1);  
-    % change bvalus if the num of observed points under it, >=
-    belowID = find(lenOfP < bValue);
-    for i=1:length(belowID)
-        bValueVector(belowID(i)) = lenOfP(belowID(i));
-    end
+%     % change bvalus if the num of observed points under it, >=
+%     belowID = find(lenOfP < bValue);
+%     for i=1:length(belowID)
+%         bValueVector(belowID(i)) = lenOfP(belowID(i));
+%     end
     model.rhs = bValueVector;
     
     % multiple inequality
@@ -60,7 +60,7 @@ function [ compressIndex ] = section( lamda, q_value, Dir, start, finish, totalN
     disp('Programming...');
     tic
     result = gurobi(model, params);
-    time = toc
+    time = toc;
     compressIndex = find(result.x(1:totalNum) == 1);   % former ones
     
 end
