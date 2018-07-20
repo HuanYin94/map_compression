@@ -1,8 +1,15 @@
 - FixStepSamplingDataPointsFilter:
-    startStep: 1
+    startStep: 10
+#- RandomSamplingDataPointsFilter:
+#    prob: 0.9
 - SurfaceNormalDataPointsFilter:
-    knn: 5
+    knn: 10
     epsilon: 3.33
     keepNormals: 1
-- SimpleSensorNoiseDataPointsFilter:
-    sensorType: 0
+    keepDensities: 1
+- MaxDensityDataPointsFilter:
+    maxDensity: 20
+#- SimpleSensorNoiseDataPointsFilter:
+#    sensorType: 0
+#- ObservationDirectionDataPointsFilter
+#- OrientNormalsDataPointsFilter 

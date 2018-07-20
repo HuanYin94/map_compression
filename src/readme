@@ -36,4 +36,8 @@ genVisMatrix:         generate the rows of visibility matrix A by aligning, k-se
 
 loadProResult:       load the predicted programming results from files and save cloud
 
-scanRegister:         registation the origin scans using ground truths to get denser orgin map
+scanRegister:         registation the origin scans using ground truths to get origin map
+
+genWeightVector:      generate the q vector by the obseration counts, the session descriptor
+
+
