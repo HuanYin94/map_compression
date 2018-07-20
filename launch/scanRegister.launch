@@ -2,20 +2,20 @@
 
   <node pkg="map_compression" type="scanRegister" name="scanRegister" output="screen">
 	
-	<param name="isKITTI" value="false" />	
+	<param name="isKITTI" value="true" />	
 
-	<!--param name="icpFileName" value="/home/yh/mapModel/2018/07.20/KITTI_prepare/kitti00_pose.txt"/> 
-	<param name="keepIndexName" value="/home/yh/mapModel/2018/07.20/KITTI_prepare/kitti00_keep.txt"/>
-	<param name="velodyneDirName" value="/media/yh/YH/DataSet/kitti_benchmark_velodyne/dataset/vtk/00/"/--> 
+	<param name="icpFileName" value="/home/yh/mapModel/2018/07.20/KITTI_prepare/kitti03_pose.txt"/> 
+	<param name="keepIndexName" value="/home/yh/mapModel/2018/07.20/KITTI_prepare/kitti03_keep.txt"/>
+	<param name="velodyneDirName" value="/media/yh/YH/DataSet/kitti_benchmark_velodyne/dataset/vtk/03/"/> 
 
-	<param name="icpFileName" value="/home/yh/mapModel/2018/07.19/icp_0301.txt"/> 
+	<!--param name="icpFileName" value="/home/yh/mapModel/2018/07.19/icp_0301.txt"/> 
 	<param name="keepIndexName" value="/home/yh/mapModel/2018/07.19/keepicp_030001.txt"/>
-	<param name="velodyneDirName" value="/media/yh/YH/DataSet/YQ21/2017_03_03/2017_03_03_drive_0001_sync/velodyne_points/data/"/>
+	<param name="velodyneDirName" value="/media/yh/YH/DataSet/YQ21/2017_03_03/2017_03_03_drive_0001_sync/velodyne_points/data/"/-->
 	
     <param name="mapPostFilterName" value="$(find map_compression)/cfg/map_filters.yaml"/>
     <param name="inputFilterName" value="$(find map_compression)/cfg/input_filters.yaml"/>
 
-	<param name="saveVTKname" value="/home/yh/mapModel/2018/07.20/wholeMap_yq.vtk"/>
+	<param name="saveVTKname" value="/home/yh/mapModel/2018/07.20/wholeMap_kitti03.vtk"/>
 
   </node>
 </launch>
