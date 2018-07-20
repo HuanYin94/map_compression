@@ -37,6 +37,8 @@ public:
     ~kittiRegister();
     ros::NodeHandle& n;
 
+    bool isKITTI;
+
     string icpFileName;
     string velodyneDirName;
     string saveVTKname;
@@ -57,6 +59,7 @@ public:
     vector<vector<double>> initPoses;
 
     void process(int indexCnt);
+    DP readBin(string filename);
 };
 
 kittiRegister::~kittiRegister()
@@ -70,7 +73,8 @@ kittiRegister::kittiRegister(ros::NodeHandle& n):
     mapPostFilterName(getParam<string>("mapPostFilterName", ".")),
     inputFilterName(getParam<string>("inputFilterName", ".")),
     saveVTKname(getParam<string>("saveVTKname", ".")),
-    keepIndexName(getParam<string>("keepIndexName", "."))
+    keepIndexName(getParam<string>("keepIndexName", ".")),
+    isKITTI(getParam<bool>("isKITTI", 0))
 {
 
     // read initial transformation
@@ -83,7 +87,7 @@ kittiRegister::kittiRegister(ros::NodeHandle& n):
     }
     for (y = 0; y < 9999999; y++) {
         test.clear();
-    for (x = 0; x < 12; x++) {
+    for (x = 0; x < 16; x++) {
       in >> temp;
       test.push_back(temp);
     }
@@ -111,7 +115,7 @@ kittiRegister::kittiRegister(ros::NodeHandle& n):
 
     // process
     int indexCnt = 0;
-    for(; indexCnt < indexVector.size(); indexCnt++)
+    for(; indexCnt < 200; indexCnt++)
     {
         cout<<"------------------------------------------------------------------"<<endl;
         cout<<"The:  "<<indexCnt<<endl;
@@ -127,12 +131,28 @@ void kittiRegister::process(int indexCnt)
     int index = indexVector.at(indexCnt);
 
     stringstream ss;
-    ss<<index;
+    if(isKITTI)
+        ss<<index;
+    else
+        ss<<setw(10)<<setfill('0')<<index;
+
     string str;
     ss>>str;
-    string veloName = velodyneDirName + str + ".vtk";
 
-    DP velodyneCloud = DP::load(veloName);
+    string veloName;
+    if(isKITTI)
+        veloName = velodyneDirName + str + ".vtk";
+    else
+        veloName = velodyneDirName + str + ".bin";
+
+    cout<<veloName<<endl;
+
+    DP velodyneCloud;
+    if(isKITTI)
+        velodyneCloud = DP::load(veloName);       // KITTI dataset
+    else
+        velodyneCloud = this->readBin(veloName);  // YQ dataset
+
     inputFilter.apply(velodyneCloud);
 
     Trobot = PM::TransformationParameters::Identity(4, 4);
@@ -154,8 +174,51 @@ void kittiRegister::process(int indexCnt)
     }
 
     cout<<"map Size:    "<<mapCloud.features.cols()<<endl;
-    mapCloud.save(saveVTKname);
+//    mapCloud.save(saveVTKname);
 
+}
+
+kittiRegister::DP kittiRegister::readBin(string filename)
+{
+    DP data;
+
+    fstream input(filename.c_str(), ios::in | ios::binary);
+    if(!input.good()){
+        cerr << "Could not read file: " << filename << endl;
+        exit(EXIT_FAILURE);
+    }
+    input.seekg(0, ios::beg);
+
+    data.addFeature("x",PM::Matrix::Constant(1,300000,0));
+    data.addFeature("y",PM::Matrix::Constant(1,300000,0));
+    data.addFeature("z",PM::Matrix::Constant(1,300000,0));
+    data.addFeature("pad",PM::Matrix::Constant(1,300000,1));
+    data.addDescriptor("intensity",PM::Matrix::Constant(1,300000,0));
+    data.addDescriptor("ring",PM::Matrix::Constant(1,300000,0));
+
+    int i;
+
+    for (i=0; input.good() && !input.eof(); i++) {
+        float a,b;
+        input.read((char *) &a, 4*sizeof(unsigned char));
+        data.features(0,i) = a;
+        input.read((char *) &a, 4*sizeof(unsigned char));
+        data.features(1,i) = a;
+        input.read((char *) &a, 4*sizeof(unsigned char));
+        data.features(2,i) = a;
+        input.read((char *) &b, 4*sizeof(unsigned char));
+        input.read((char *) &a, 4*sizeof(unsigned char));
+        data.descriptors(0,i) = a;
+        input.read((char *) &a, 2*sizeof(unsigned char));
+        data.descriptors(1,i) = a;
+
+        input.read((char *) &b, 10*sizeof(unsigned char));
+
+    }
+    input.close();
+    data.conservativeResize(i);
+
+    return data;
 }
 
 int main(int argc, char **argv)

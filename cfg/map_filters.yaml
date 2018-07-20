@@ -3,15 +3,15 @@
     epsilon: 3.16
     keepNormals: 1
     keepDensities: 1
-#- OctreeGridDataPointsFilter:
-#    buildParallel: 1
-#    maxPointByNode: 1
-#    maxSizeByNode: 0.2
-#    samplingMethod: 3
-- VoxelGridDataPointsFilter:
-    vSizeX: 0.2
-    vSizeY: 0.2
-    vSizeZ: 0.2
-    useCentroid: 1
-    averageExistingDescriptors: 1
+- OctreeGridDataPointsFilter:
+    buildParallel: 1
+    maxPointByNode: 1
+    maxSizeByNode: 0.2
+    samplingMethod: 3
+#- VoxelGridDataPointsFilter:
+#    vSizeX: 0.2
+#    vSizeY: 0.2
+#    vSizeZ: 0.2
+#    useCentroid: 1
+#    averageExistingDescriptors: 1
 

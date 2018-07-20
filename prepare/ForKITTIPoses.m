@@ -19,7 +19,8 @@ function [  ] = ForKITTIPoses( savePoseName, saveIndexName, ground_Truth, meanDi
     % save the index to the file
     dlmwrite(saveIndexName, keepIndex, 'delimiter', '\t');
     
-    ground_truth_new = [ground_Truth(:,1:4), ground_Truth(:,9:12), zeros(length(ground_Truth), 3), ones(length(ground_Truth), 1)];
+    % ther order of elements of ground truth matrix in KITTI dataset
+    ground_truth_new = [ground_Truth(:,1:3), ground_Truth(:,12), ground_Truth(:,5:7), ground_Truth(:,4), ground_Truth(:,9:11), ground_Truth(:,8), zeros(length(ground_Truth), 3), ones(length(ground_Truth), 1)];
 
     dlmwrite(savePoseName, ground_truth_new, 'delimiter', '\t');
     
