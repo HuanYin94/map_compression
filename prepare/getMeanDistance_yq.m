@@ -1,4 +1,4 @@
-function [ meanDis ] = getMeanDistance( icpPose )
+function [ meanDis ] = getMeanDistance_yq( icpPose )
 %GETMEANDISTANCE Summary of this function goes here
 %   Detailed explanation goes here
     
@@ -6,7 +6,7 @@ function [ meanDis ] = getMeanDistance( icpPose )
 
     sumDis = 0;
     
-    for i = 2:length(icpPose)
+    for i = 2:length(icpPose)w
         pose1 = [icpPose(i,4), icpPose(i,8)];
         pose2 = [icpPose(i-1,4), icpPose(i-1,8)];
         dis = norm(pose1 - pose2);

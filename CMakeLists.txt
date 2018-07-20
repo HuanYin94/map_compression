@@ -130,8 +130,8 @@ target_link_libraries(mapCompareSub
 ${catkin_LIBRARIES}
 )
 
-add_executable(scanRegister src/scanRegister.cpp)
-target_link_libraries(scanRegister
+add_executable(kittiRegister src/kittiRegister.cpp)
+target_link_libraries(kittiRegister
 ${catkin_LIBRARIES}
 )
 

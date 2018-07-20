@@ -26,44 +26,43 @@
 using namespace std;
 using namespace PointMatcherSupport;
 
-class scanRegister
+class kittiRegister
 {
     typedef PointMatcher<float> PM;
     typedef PM::DataPoints DP;
     typedef PM::Matches Matches;
 
 public:
-    scanRegister(ros::NodeHandle &n);
-    ~scanRegister();
+    kittiRegister(ros::NodeHandle &n);
+    ~kittiRegister();
     ros::NodeHandle& n;
 
     string icpFileName;
     string velodyneDirName;
     string saveVTKname;
-    string keepIndexName;
 
-    string inputFilterName;
     string mapPostFilterName;
+    string inputFilterName;
 
     DP mapCloud;
-    DP velodyneCloud;
+    string keepIndexName;
+    vector<int> indexVector;
 
     unique_ptr<PM::Transformation> transformation;
     PM::TransformationParameters Trobot;
+
     PM::DataPointsFilters mapFilter;
-    PM::DataPointsFilters velFilter;
+    PM::DataPointsFilters inputFilter;
 
     vector<vector<double>> initPoses;
-    vector<int> indexVector;
 
     void process(int indexCnt);
-    DP readBin(string fileName);
 };
 
-scanRegister::~scanRegister()
+kittiRegister::~kittiRegister()
 {}
 
-scanRegister::scanRegister(ros::NodeHandle& n):
+kittiRegister::kittiRegister(ros::NodeHandle& n):
     n(n),
     icpFileName(getParam<string>("icpFileName", ".")),
     velodyneDirName(getParam<string>("velodyneDirName", ".")),
@@ -82,15 +81,21 @@ scanRegister::scanRegister(ros::NodeHandle& n):
     if (!in) {
         cout << "Cannot open file.\n";
     }
-    for (y = 0; y < 999999; y++) {
+    for (y = 0; y < 9999999; y++) {
         test.clear();
-    for (x = 0; x < 16; x++) {
+    for (x = 0; x < 12; x++) {
       in >> temp;
       test.push_back(temp);
     }
       initPoses.push_back(test);
     }
     in.close();
+
+    ifstream mapFilterss(mapPostFilterName);
+    mapFilter = PM::DataPointsFilters(mapFilterss);
+
+    ifstream inputFilterss(inputFilterName);
+    inputFilter = PM::DataPointsFilters(inputFilterss);
 
     // read all the effective index from list in the txt
     int l;
@@ -104,13 +109,6 @@ scanRegister::scanRegister(ros::NodeHandle& n):
         indexVector.push_back(l);
     }
 
-    ifstream mapFilterss(mapPostFilterName);
-    mapFilter = PM::DataPointsFilters(mapFilterss);
-
-    ifstream velFilterss(inputFilterName);
-    velFilter = PM::DataPointsFilters(velFilterss);
-
-
     // process
     int indexCnt = 0;
     for(; indexCnt < indexVector.size(); indexCnt++)
@@ -119,29 +117,23 @@ scanRegister::scanRegister(ros::NodeHandle& n):
         cout<<"The:  "<<indexCnt<<endl;
         this->process(indexCnt);
     }
-
     //save map
-    cout<<mapCloud.features.cols()<<endl;
-    mapFilter.apply(mapCloud);
-    cout<<mapCloud.features.cols()<<endl;
     mapCloud.save(saveVTKname);
-
     cout<<"All Finished!"<<endl;
 }
 
-void scanRegister::process(int indexCnt)
+void kittiRegister::process(int indexCnt)
 {
     int index = indexVector.at(indexCnt);
 
     stringstream ss;
-    ss<<setw(10)<<setfill('0')<<index;
+    ss<<index;
     string str;
     ss>>str;
-    string veloName = velodyneDirName + str + ".bin";
-    cout<<veloName<<endl;
+    string veloName = velodyneDirName + str + ".vtk";
 
-    velodyneCloud = readBin(veloName);
-    velFilter.apply(velodyneCloud);
+    DP velodyneCloud = DP::load(veloName);
+    inputFilter.apply(velodyneCloud);
 
     Trobot = PM::TransformationParameters::Identity(4, 4);
     Trobot(0,0)=initPoses[index][0];Trobot(0,1)=initPoses[index][1];Trobot(0,2)=initPoses[index][2];Trobot(0,3)=initPoses[index][3];
@@ -156,60 +148,23 @@ void scanRegister::process(int indexCnt)
     if(indexCnt == 0)
         mapCloud = velodyneCloud_;
     else
+    {
         mapCloud.concatenate(velodyneCloud_);
-
-}
-
-scanRegister::DP scanRegister::readBin(string filename)
-{
-    DP data;
-
-    fstream input(filename.c_str(), ios::in | ios::binary);
-    if(!input.good()){
-        cerr << "Could not read file: " << filename << endl;
-        exit(EXIT_FAILURE);
+        mapFilter.apply(mapCloud);
     }
-    input.seekg(0, ios::beg);
 
-    data.addFeature("x",PM::Matrix::Constant(1,300000,0));
-    data.addFeature("y",PM::Matrix::Constant(1,300000,0));
-    data.addFeature("z",PM::Matrix::Constant(1,300000,0));
-    data.addFeature("pad",PM::Matrix::Constant(1,300000,1));
-    data.addDescriptor("intensity",PM::Matrix::Constant(1,300000,0));
-    data.addDescriptor("ring",PM::Matrix::Constant(1,300000,0));
+    cout<<"map Size:    "<<mapCloud.features.cols()<<endl;
+    mapCloud.save(saveVTKname);
 
-    int i;
-
-    for (i=0; input.good() && !input.eof(); i++) {
-        float a,b;
-        input.read((char *) &a, 4*sizeof(unsigned char));
-        data.features(0,i) = a;
-        input.read((char *) &a, 4*sizeof(unsigned char));
-        data.features(1,i) = a;
-        input.read((char *) &a, 4*sizeof(unsigned char));
-        data.features(2,i) = a;
-        input.read((char *) &b, 4*sizeof(unsigned char));
-        input.read((char *) &a, 4*sizeof(unsigned char));
-        data.descriptors(0,i) = a;
-        input.read((char *) &a, 2*sizeof(unsigned char));
-        data.descriptors(1,i) = a;
-
-        input.read((char *) &b, 10*sizeof(unsigned char));
-
-    }
-    input.close();
-    data.conservativeResize(i);
-
-    return data;
 }
 
 int main(int argc, char **argv)
 {
 
-    ros::init(argc, argv, "scanRegister");
+    ros::init(argc, argv, "kittiRegister");
     ros::NodeHandle n;
 
-    scanRegister scanRegister_(n);
+    kittiRegister kittiRegister_(n);
 
     // ugly code
 

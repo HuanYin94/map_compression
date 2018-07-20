@@ -2,6 +2,8 @@ function [ keepIndex ] = poseSparsification( icpPose, meanDis, saveIndexFileName
 %POSESPARCIFICATION Summary of this function goes here
 %   Detailed explanation goes here
     
+    % YQ dataset, data preparation
+
     keepIndex = [1];
     icpPoseNew(1,:) = icpPose(1,:); % for plotting
     

@@ -1,0 +1,17 @@
+<launch>
+
+  <node pkg="map_compression" type="kittiRegister" name="kittiRegister" output="screen">
+
+	<param name="icpFileName" value="/media/yh/YH/DataSet/kitti_benchmark_velodyne/kitti_poses/00.txt"/> 
+	<param name="velodyneDirName" value="/media/yh/YH/DataSet/kitti_benchmark_velodyne/dataset/vtk/00/"/> 
+	
+    <param name="mapPostFilterName" value="$(find map_compression)/cfg/map_filters.yaml"/>
+    <param name="inputFilterName" value="$(find map_compression)/cfg/input_filters.yaml"/>
+
+	<param name="saveVTKname" value="/home/yh/mapModel/2018/07.20/wholeMap_00.vtk"/>
+
+    <param name="keepIndexName" value="/home/yh/mapModel/2018/07.20/KITTI_prepare/kitti00_keep.txt"/>
+
+
+  </node>
+</launch>
