@@ -20,7 +20,7 @@ function [  ] = ForKITTIPoses( savePoseName, saveIndexName, ground_Truth, meanDi
     dlmwrite(saveIndexName, keepIndex, 'delimiter', '\t');
     
     % ther order of elements of ground truth matrix in KITTI dataset
-    ground_truth_new = [ground_Truth(:,1:3), ground_Truth(:,12), ground_Truth(:,5:7), ground_Truth(:,4), ground_Truth(:,9:11), ground_Truth(:,8), zeros(length(ground_Truth), 3), ones(length(ground_Truth), 1)];
+    ground_truth_new = [ground_Truth(:,9:11), ground_Truth(:,4), ground_Truth(:,1:3), ground_Truth(:,12), ground_Truth(:,5:7), ground_Truth(:,8), zeros(length(ground_Truth), 3), ones(length(ground_Truth), 1)];
 
     dlmwrite(savePoseName, ground_truth_new, 'delimiter', '\t');
     

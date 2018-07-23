@@ -15,5 +15,5 @@
 
 
   </node>
-<!--node pkg="rviz" type="rviz" name="rviz" args="-d $(find map_compression)/cfg/sessionFilter.rviz" output="screen"/-->
+
 </launch>

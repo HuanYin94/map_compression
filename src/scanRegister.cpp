@@ -58,6 +58,10 @@ public:
 
     vector<vector<double>> initPoses;
 
+    ros::Publisher mapCloudPub;
+    ros::Publisher scanCloudPub;
+    tf::TransformBroadcaster tfBroadcaster;
+
     void process(int indexCnt);
     DP readBin(string filename);
 };
@@ -76,6 +80,9 @@ kittiRegister::kittiRegister(ros::NodeHandle& n):
     keepIndexName(getParam<string>("keepIndexName", ".")),
     isKITTI(getParam<bool>("isKITTI", 0))
 {
+
+    mapCloudPub = n.advertise<sensor_msgs::PointCloud2>("mapCloud", 2, true);
+    scanCloudPub = n.advertise<sensor_msgs::PointCloud2>("velodyneCloud", 2, true);
 
     // read initial transformation
     int x, y;
@@ -161,6 +168,8 @@ void kittiRegister::process(int indexCnt)
     Trobot(2,0)=initPoses[index][8];Trobot(2,1)=initPoses[index][9];Trobot(2,2)=initPoses[index][10];Trobot(2,3)=initPoses[index][11];
     Trobot(3,0)=initPoses[index][12];Trobot(3,1)=initPoses[index][13];Trobot(3,2)=initPoses[index][14];Trobot(3,3)=initPoses[index][15];
 
+    cout<<Trobot<<endl;
+
     transformation->correctParameters(Trobot);
 
     DP velodyneCloud_ = transformation->compute(velodyneCloud, Trobot);
@@ -175,6 +184,10 @@ void kittiRegister::process(int indexCnt)
 
     cout<<"map Size:    "<<mapCloud.features.cols()<<endl;
 //    mapCloud.save(saveVTKname);
+
+    tfBroadcaster.sendTransform(PointMatcher_ros::eigenMatrixToStampedTransform<float>(Trobot, "global", "robot", ros::Time(0)));
+    mapCloudPub.publish(PointMatcher_ros::pointMatcherCloudToRosMsg<float>(mapCloud, "global", ros::Time(0)));
+    scanCloudPub.publish(PointMatcher_ros::pointMatcherCloudToRosMsg<float>(velodyneCloud, "robot", ros::Time(0)));
 
 }
 

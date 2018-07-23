@@ -18,4 +18,5 @@
 	<param name="saveVTKname" value="/home/yh/mapModel/2018/07.20/wholeMap_kitti03.vtk"/>
 
   </node>
+<node pkg="rviz" type="rviz" name="rviz" args="-d $(find map_compression)/cfg/scanRegister.rviz" output="screen"/>
 </launch>
