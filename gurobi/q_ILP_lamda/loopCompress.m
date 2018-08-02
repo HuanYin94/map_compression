@@ -10,7 +10,7 @@ function [  ] = loopCompress( lamda, qFile, filesDir, splitLength, totalNum, bVa
     q_file_t = fopen(qFile);
     q_value = fscanf(q_file_t, '%d');
     fclose(q_file_t);
-    q_value(find(q_value>100)) = 50;
+    q_value(find(q_value>50)) = 50;
     q_value = (1 - mapminmax(q_value', 0, 1))'; % inverse the weighting as the observation counts
     
     for i=0:splitLength:length(files)

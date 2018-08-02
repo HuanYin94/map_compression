@@ -6,26 +6,26 @@
 	<param name="isFirstTime" value="true"/>
 	
 	<!--KITTI or YQ-->
-	<param name="isKITTI" value="true" />
+	<param name="isKITTI" value="false" />
 
-	<!--param name="wholeMapName" value="/home/yh/wholeMap.vtk"/--> 
-	<!--param name="velodyneDirName" value="/media/yh/YH/DataSet/YQ21/2017_03_03/2017_03_03_drive_0008_sync/velodyne_points/data/"/> 
-	<param name="keepIndexName" value="/home/yh/mapModel/2018/07.19/keepicp_030001.txt"/> 
-	<param name="icpFileName" value="/media/yh/YH/DataSet/YQ21/2017_03_03/2017_03_03_drive_0008_sync/icp/icp.txt"/-->
+	<param name="wholeMapName" value="/home/yh/mapModel/2018/08.03/wholeMap_yq.vtk"/> 
+	<param name="velodyneDirName" value="/media/yh/YH/DataSet/YQ21/2017_03_03/2017_03_03_drive_0001_sync/velodyne_points/data/"/> 
+	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.03/keep_0301.txt"/> 
+	<param name="icpFileName" value="/home/yh/mapModel/2018/08.03/icp_0301.txt"/>
 
-	<param name="wholeMapName" value="/home/yh/mapModel/2018/08.02/wholeMap_kitti_03_origin.vtk"/> 
+	<!--param name="wholeMapName" value="/home/yh/mapModel/2018/08.02/wholeMap_kitti_03_origin.vtk"/> 
 	<param name="velodyneDirName" value="/media/yh/YH/DataSet/kitti_benchmark_velodyne/dataset/vtk/03/"/> 
 	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.02/KITTI_prepare/kitti03_keep.txt"/> 
-	<param name="icpFileName" value="/home/yh/mapModel/2018/08.02/KITTI_prepare/kitti03_pose.txt"/>
+	<param name="icpFileName" value="/home/yh/mapModel/2018/08.02/KITTI_prepare/kitti03_pose.txt"/-->
 
-	<param name="saveVTKname" value="/home/yh/mapModel/2018/08.02/wholeMap_kitti_03_scored.vtk"/>
+	<!--param name="saveVTKname" value="/home/yh/mapModel/2018/08.02/wholeMap_kitti_03_scored.vtk"/-->
+	<param name="saveVTKname" value="/home/yh/mapModel/2018/08.03/wholeMap_yq_scored.vtk"/>
+	
+	<param name="limitRange" value="0.05"/>
 	<param name="kSearch" value="10"/>
 	
-	<!--Not used for the complexity/-->s
+	<!--Not used for the complexity/-->
 	<param name="horizontalResRad" value="0.0035"/>
-
-	<param name="limitRange" value="0.1"/>
-
 
   </node>
 </launch>
