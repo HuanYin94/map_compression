@@ -1,0 +1,103 @@
+#include "ros/ros.h"
+#include "ros/console.h"
+
+#include "pointmatcher/PointMatcher.h"
+#include "pointmatcher/Timer.h"
+#include "pointmatcher_ros/point_cloud.h"
+#include "pointmatcher_ros/transform.h"
+#include "nabo/nabo.h"
+#include "eigen_conversions/eigen_msg.h"
+#include "pointmatcher_ros/get_params_from_server.h"
+
+#include <tf/transform_broadcaster.h>
+
+#include <fstream>
+#include <vector>
+#include <algorithm>
+
+#include <visualization_msgs/Marker.h>
+#include <geometry_msgs/PoseStamped.h>
+#include <nav_msgs/Path.h>
+
+#include <numeric>
+
+using namespace std;
+using namespace PointMatcherSupport;
+
+class mapFilter
+{
+    typedef PointMatcher<float> PM;
+    typedef PM::DataPoints DP;
+
+public:
+    mapFilter(ros::NodeHandle &n);
+    ~mapFilter();
+    ros::NodeHandle& n;
+
+    ros::Publisher mapCloudPub;
+    ros::Publisher filterCloudPub;
+
+    string loadMapName;
+    string saveCloudName;
+    string mapPostFilters;
+
+    PM::DataPointsFilters mapFilters;
+
+    DP mapCloud;
+    DP filterCloud;
+
+    void process();
+
+};
+
+mapFilter::~mapFilter()
+{}
+
+mapFilter::mapFilter(ros::NodeHandle& n):
+    n(n),
+    loadMapName(getParam<string>("loadMapName", ".")),
+    saveCloudName(getParam<string>("saveCloudName", ".")),
+    mapPostFilters(getParam<string>("mapPostFilters", "."))
+{
+    mapCloudPub = n.advertise<sensor_msgs::PointCloud2>("mapCloud", 2, true);
+    filterCloudPub = n.advertise<sensor_msgs::PointCloud2>("filterCloud", 2, true);
+
+    // load
+    mapCloud = DP::load(loadMapName);
+    mapCloudPub.publish(PointMatcher_ros::pointMatcherCloudToRosMsg<float>(mapCloud, "global", ros::Time(0)));
+
+    // process
+    this->process();
+
+    filterCloudPub.publish(PointMatcher_ros::pointMatcherCloudToRosMsg<float>(filterCloud, "global", ros::Time(0)));
+
+    filterCloud.save(saveCloudName);
+}
+
+void mapFilter::process()
+{
+
+    ifstream mapFilterss(mapPostFilters);
+    mapFilters = PM::DataPointsFilters(mapFilterss);
+
+    cout<<"Before filter count:  "<<mapCloud.features.cols()<<endl;
+
+    mapFilters.apply(mapCloud);
+    filterCloud = mapCloud;
+
+    cout<<"After that:  "<<filterCloud.features.cols()<<endl;
+
+}
+
+int main(int argc, char **argv)
+{
+
+    ros::init(argc, argv, "mapFilter");
+    ros::NodeHandle n;
+
+    mapFilter mapfilter(n);
+
+    // ugly code
+
+    return 0;
+}

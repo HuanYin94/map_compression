@@ -12,7 +12,6 @@
 	<param name="keepIndexName" value="/home/yh/mapModel/2018/07.19/keepicp_030001.txt"/>
 	<param name="velodyneDirName" value="/media/yh/YH/DataSet/YQ21/2017_03_03/2017_03_03_drive_0001_sync/velodyne_points/data/"/-->
 	
-    <param name="mapPostFilterName" value="$(find map_compression)/cfg/map_filters.yaml"/>
     <param name="inputFilterName" value="$(find map_compression)/cfg/input_filters.yaml"/>
 
 	<param name="saveVTKname" value="/home/yh/mapModel/2018/07.20/wholeMap_kitti03.vtk"/>

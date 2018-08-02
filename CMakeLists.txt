@@ -140,6 +140,12 @@ target_link_libraries(genWeightVector
 ${catkin_LIBRARIES}
 )
 
+add_executable(mapFilter src/mapFilter.cpp)
+target_link_libraries(mapFilter
+${catkin_LIBRARIES}
+)
+
+
 
 
 

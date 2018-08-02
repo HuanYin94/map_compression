@@ -53,7 +53,6 @@ public:
     unique_ptr<PM::Transformation> transformation;
     PM::TransformationParameters Trobot;
 
-    PM::DataPointsFilters mapFilter;
     PM::DataPointsFilters inputFilter;
 
     vector<vector<double>> initPoses;
@@ -74,7 +73,6 @@ kittiRegister::kittiRegister(ros::NodeHandle& n):
     icpFileName(getParam<string>("icpFileName", ".")),
     velodyneDirName(getParam<string>("velodyneDirName", ".")),
     transformation(PM::get().REG(Transformation).create("RigidTransformation")),
-    mapPostFilterName(getParam<string>("mapPostFilterName", ".")),
     inputFilterName(getParam<string>("inputFilterName", ".")),
     saveVTKname(getParam<string>("saveVTKname", ".")),
     keepIndexName(getParam<string>("keepIndexName", ".")),
@@ -101,9 +99,6 @@ kittiRegister::kittiRegister(ros::NodeHandle& n):
       initPoses.push_back(test);
     }
     in.close();
-
-    ifstream mapFilterss(mapPostFilterName);
-    mapFilter = PM::DataPointsFilters(mapFilterss);
 
     ifstream inputFilterss(inputFilterName);
     inputFilter = PM::DataPointsFilters(inputFilterss);
@@ -168,8 +163,6 @@ void kittiRegister::process(int indexCnt)
     Trobot(2,0)=initPoses[index][8];Trobot(2,1)=initPoses[index][9];Trobot(2,2)=initPoses[index][10];Trobot(2,3)=initPoses[index][11];
     Trobot(3,0)=initPoses[index][12];Trobot(3,1)=initPoses[index][13];Trobot(3,2)=initPoses[index][14];Trobot(3,3)=initPoses[index][15];
 
-    cout<<Trobot<<endl;
-
     transformation->correctParameters(Trobot);
 
     DP velodyneCloud_ = transformation->compute(velodyneCloud, Trobot);
@@ -179,7 +172,6 @@ void kittiRegister::process(int indexCnt)
     else
     {
         mapCloud.concatenate(velodyneCloud_);
-        mapFilter.apply(mapCloud);
     }
 
     cout<<"map Size:    "<<mapCloud.features.cols()<<endl;

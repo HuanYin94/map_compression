@@ -1,0 +1,12 @@
+<launch>
+
+  <node pkg="map_compression" type="mapFilter" name="mapFilter" output="screen">
+	
+  <param name="loadMapName" value="/home/yh/mapModel/2018/07.20/wholeMap_kitti03_.vtk"/>
+  <param name="saveMapName" value=""/>
+
+  <param name="mapPostFilters" value="/home/yh/mine_ws/src/map_compression/cfg"/> 	
+
+  </node>
+<node pkg="rviz" type="rviz" name="rviz" args="-d $(find map_compression)/cfg/mapFilter.rviz" output="screen"/>
+</launch>

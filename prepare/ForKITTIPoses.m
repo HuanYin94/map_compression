@@ -19,11 +19,17 @@ function [  ] = ForKITTIPoses( savePoseName, saveIndexName, ground_Truth, meanDi
     % save the index to the file
     dlmwrite(saveIndexName, keepIndex, 'delimiter', '\t');
     
-    % ther order of elements of ground truth matrix in KITTI dataset
-    ground_truth_new = [ground_Truth(:,9:11), ground_Truth(:,4), ground_Truth(:,1:3), ground_Truth(:,12), ground_Truth(:,5:7), ground_Truth(:,8), zeros(length(ground_Truth), 3), ones(length(ground_Truth), 1)];
-
-    dlmwrite(savePoseName, ground_truth_new, 'delimiter', '\t');
+    % rotation new
+    % KITTI dataset: from left-camera coordinate to LiDAR coordinate
+    % help from Zhongxinag Zhou, new transformation new 
+    Tr  = [0, -1, 0, 0; 0, 0, -1, 0; 1, 0, 0, 0; 0, 0, 0, 1];
+    for i = 1:length(ground_Truth)
+       ground_Truth_Tr = [ground_Truth(i, 1:4); ground_Truth(i, 5:8); ground_Truth(i, 9:12); 0, 0, 0, 1]; 
+       ground_Truth_Tr_new = inv(Tr) * ground_Truth_Tr * Tr;
+       ground_Truth_new(i,:) = [ground_Truth_Tr_new(1, :), ground_Truth_Tr_new(2, :), ground_Truth_Tr_new(3, :), ground_Truth_Tr_new(4, :) ];
+    end
+        
+    dlmwrite(savePoseName, ground_Truth_new, 'delimiter', '\t');
     
-
 end
 
