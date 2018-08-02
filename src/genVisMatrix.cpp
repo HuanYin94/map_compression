@@ -38,6 +38,8 @@ public:
     ~genVisMatrix();
     ros::NodeHandle& n;
 
+    bool isKITTI;
+
     string loadMapName;
     string loadTrajName;
     string loadVeloDir;
@@ -79,7 +81,8 @@ genVisMatrix::genVisMatrix(ros::NodeHandle& n):
     limitRange(getParam<double>("limitRange", 0)),
     kSearch(getParam<int>("kSearch", 0)),
     transformation(PM::get().REG(Transformation).create("RigidTransformation")),
-    saveDirName(getParam<string>("saveDirName", "."))
+    saveDirName(getParam<string>("saveDirName", ".")),
+    isKITTI(getParam<bool>("isKITTI", 0))
 {
 
     // load
@@ -136,13 +139,27 @@ void genVisMatrix::process(int indexCnt)
 
     cout<<"------------------------------------------------------------------"<<endl;
     stringstream ss;
-    ss<<setw(10)<<setfill('0')<<index;
+
+    if(isKITTI)
+        ss<<index;
+    else
+        ss<<setw(10)<<setfill('0')<<index;
+
     string str;
     ss>>str;
-    string veloName = loadVeloDir + str + ".bin";
+
+    string veloName;
+    if(isKITTI)
+        veloName = loadVeloDir + str + ".vtk";
+    else
+        veloName = loadVeloDir + str + ".bin";
+
     cout<<veloName<<endl;
 
-    velodyneCloud = readBin(veloName);
+    if(isKITTI)
+        velodyneCloud = DP::load(veloName);       // KITTI dataset
+    else
+        velodyneCloud = this->readBin(veloName);  // YQ dataset
 
     Trobot= PM::TransformationParameters::Identity(4, 4);
     Trobot(0,0)=initPoses[index][0];Trobot(0,1)=initPoses[index][1];Trobot(0,2)=initPoses[index][2];Trobot(0,3)=initPoses[index][3];

@@ -117,7 +117,7 @@ kittiRegister::kittiRegister(ros::NodeHandle& n):
 
     // process
     int indexCnt = 0;
-    for(; indexCnt < 200; indexCnt++)
+    for(; indexCnt < indexVector.size(); indexCnt++)
     {
         cout<<"------------------------------------------------------------------"<<endl;
         cout<<"The:  "<<indexCnt<<endl;

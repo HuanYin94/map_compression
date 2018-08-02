@@ -2,16 +2,16 @@
 
   <node pkg="map_compression" type="scanRegister" name="scanRegister" output="screen">
 	
-	<!--KITTI or YQ-->
+	<!--KITTI or YQ & actually SLAM in YQ, no registration from gt-->
 	<param name="isKITTI" value="true" />	
 
-	<param name="icpFileName" value="/home/yh/mapModel/2018/08.02/KITTI_prepare/kitti03_pose.txt"/> 
-	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.02/KITTI_prepare/kitti03_keep.txt"/>
-	<param name="velodyneDirName" value="/media/yh/YH/DataSet/kitti_benchmark_velodyne/dataset/vtk/03/"/> 
+	<param name="icpFileName" value="/home/yh/mapModel/2018/08.02/KITTI_prepare/kitti00_pose.txt"/> 
+	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.02/KITTI_prepare/kitti00_keep.txt"/>
+	<param name="velodyneDirName" value="/media/yh/YH/DataSet/kitti_benchmark_velodyne/dataset/vtk/00/"/> 
 	
     <param name="inputFilterName" value="$(find map_compression)/cfg/input_filters.yaml"/>
 
-	<param name="saveVTKname" value="/home/yh/mapModel/2018/08.02/wholeMap_kitti_03.vtk"/>
+	<param name="saveVTKname" value="/home/yh/mapModel/2018/08.02/wholeMap_kitti_00_origin.vtk"/>
 
   </node>
 </launch>
