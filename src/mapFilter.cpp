@@ -38,7 +38,7 @@ public:
     ros::Publisher filterCloudPub;
 
     string loadMapName;
-    string saveCloudName;
+    string saveMapName;
     string mapPostFilters;
 
     PM::DataPointsFilters mapFilters;
@@ -56,7 +56,7 @@ mapFilter::~mapFilter()
 mapFilter::mapFilter(ros::NodeHandle& n):
     n(n),
     loadMapName(getParam<string>("loadMapName", ".")),
-    saveCloudName(getParam<string>("saveCloudName", ".")),
+    saveMapName(getParam<string>("saveMapName", ".")),
     mapPostFilters(getParam<string>("mapPostFilters", "."))
 {
     mapCloudPub = n.advertise<sensor_msgs::PointCloud2>("mapCloud", 2, true);
@@ -71,7 +71,7 @@ mapFilter::mapFilter(ros::NodeHandle& n):
 
     filterCloudPub.publish(PointMatcher_ros::pointMatcherCloudToRosMsg<float>(filterCloud, "global", ros::Time(0)));
 
-    filterCloud.save(saveCloudName);
+    filterCloud.save(saveMapName);
 }
 
 void mapFilter::process()

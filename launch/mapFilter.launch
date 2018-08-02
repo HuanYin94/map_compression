@@ -2,10 +2,10 @@
 
   <node pkg="map_compression" type="mapFilter" name="mapFilter" output="screen">
 	
-  <param name="loadMapName" value="/home/yh/mapModel/2018/07.20/wholeMap_kitti03_.vtk"/>
-  <param name="saveMapName" value=""/>
+  <param name="loadMapName" value="/home/yh/mapModel/2018/08.02/wholeMap_kitti_03_origin.vtk"/>
+  <param name="saveMapName" value="/home/yh/mapModel/2018/08.02/wholeMap_kitti_03.vtk"/>
 
-  <param name="mapPostFilters" value="/home/yh/mine_ws/src/map_compression/cfg"/> 	
+  <param name="mapPostFilters" value="/home/yh/mine_ws/src/map_compression/cfg/map_filters.yaml"/> 	
 
   </node>
 <node pkg="rviz" type="rviz" name="rviz" args="-d $(find map_compression)/cfg/mapFilter.rviz" output="screen"/>

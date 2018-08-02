@@ -11,7 +11,7 @@ function [  ] = convertPLY( openDir, saveDir )
         i
         
         fileID = sprintf('%06d', i);
-        fileName = [openDir, fileID, '.bin'cd ];
+        fileName = [openDir, fileID, '.bin' ];
         
         xyz = readVelodyne(fileName);
         xyz = xyz';
