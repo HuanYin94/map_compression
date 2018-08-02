@@ -40,6 +40,8 @@ public:
     ~mapScoringIndex();
     ros::NodeHandle& n;
 
+    bool isKITTI;
+
     string wholeMapName;
     bool isFirstTime;
     string icpFileName;
@@ -84,7 +86,8 @@ mapScoringIndex::mapScoringIndex(ros::NodeHandle& n):
     kSearch(getParam<int>("kSearch", 0)),
     horizontalResRad(getParam<double>("horizontalResRad", 0)),
     keepIndexName(getParam<string>("keepIndexName", ".")),
-    limitRange(getParam<double>("limitRange", 0))
+    limitRange(getParam<double>("limitRange", 0)),
+    isKITTI(getParam<bool>("isKITTI", 0))
 {
     // load
     mapCloud = DP::load(wholeMapName);
@@ -150,13 +153,27 @@ void mapScoringIndex::process(int indexCnt)
     int index = indexVector.at(indexCnt);
 
     stringstream ss;
-    ss<<setw(10)<<setfill('0')<<index;
+    if(isKITTI)
+        ss<<index;
+    else
+        ss<<setw(10)<<setfill('0')<<index;
+
     string str;
     ss>>str;
-    string veloName = velodyneDirName + str + ".bin";
+    string veloName;
+
+    // two datasets, different reading
+    if(isKITTI)
+        veloName = velodyneDirName + str + ".vtk";
+    else
+        veloName = velodyneDirName + str + ".bin";
+
     cout<<veloName<<endl;
 
-    velodyneCloud = readBin(veloName);
+    if(isKITTI)
+        velodyneCloud = DP::load(veloName);       // KITTI dataset
+    else
+        velodyneCloud = this->readBin(veloName);  // YQ dataset
 
     Trobot = PM::TransformationParameters::Identity(4, 4);
     Trobot(0,0)=initPoses[index][0];Trobot(0,1)=initPoses[index][1];Trobot(0,2)=initPoses[index][2];Trobot(0,3)=initPoses[index][3];

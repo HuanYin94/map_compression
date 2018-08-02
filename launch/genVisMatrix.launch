@@ -1,7 +1,10 @@
 <launch>
 
   <node pkg="map_compression" type="genVisMatrix" name="genVisMatrix" output="screen">
-	
+
+	<!--KITTI or YQ-->
+	<param name="isKITTI" value="false"/>
+
 	<param name="loadMapName" value="/home/yh/mapModel/2018/07.19/wholeMap_origin.vtk"/>
 	<param name="loadTrajName" value="/home/yh/mapModel/2018/07.19/icp_0301.txt"/>
 	<param name="loadVeloDir" value="/media/yh/YH/DataSet/YQ21/2017_03_03/2017_03_03_drive_0001_sync/velodyne_points/data/"/>

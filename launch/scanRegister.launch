@@ -2,6 +2,7 @@
 
   <node pkg="map_compression" type="scanRegister" name="scanRegister" output="screen">
 	
+	<!--KITTI or YQ-->
 	<param name="isKITTI" value="true" />	
 
 	<param name="icpFileName" value="/home/yh/mapModel/2018/08.02/KITTI_prepare/kitti03_pose.txt"/> 
