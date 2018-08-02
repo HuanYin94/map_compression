@@ -91,18 +91,6 @@ ${catkin_LIBRARIES}
 ${libpointmatcher_LIBRARIES}
 )
 
-add_executable(mapCompare src/mapCompare.cpp)
-target_link_libraries(mapCompare
-${catkin_LIBRARIES}
-${libpointmatcher_LIBRARIES}
-)
-
-add_executable(mapSummer src/mapSummer.cpp)
-target_link_libraries(mapSummer
-${catkin_LIBRARIES}
-${libpointmatcher_LIBRARIES}
-)
-
 add_executable(mapScoringIndex src/mapScoringIndex.cpp)
 target_link_libraries(mapScoringIndex
 ${catkin_LIBRARIES}
@@ -122,11 +110,6 @@ ${catkin_LIBRARIES}
 
 add_executable(loadProResult src/loadProResult.cpp)
 target_link_libraries(loadProResult
-${catkin_LIBRARIES}
-)
-
-add_executable(mapCompareSub src/mapCompareSub.cpp)
-target_link_libraries(mapCompareSub
 ${catkin_LIBRARIES}
 )
 

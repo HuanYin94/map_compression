@@ -2,17 +2,16 @@
 
   <node pkg="map_compression" type="mapCheck" name="mapCheck" output="screen">
 	
-　　<!--param name="loadMapName" value="/home/yh/mapModel/2018/07.02/sessionMap030001.vtk"/-->
-  <!--param name="loadMapName" value="/home/yh/mapModel/2018/07.19/ILP_YQ_result.vtk"/-->
+  <param name="loadMapName" value="/home/yh/mapModel/2018/08.03/ILP_YQ_result.vtk"/>
   <!--param name="loadMapName" value="/home/yh/mapModel/2018/05.18/05_18_final_test.vtk"/-->
   
-  <param name="loadMapName" value="/home/yh/mapModel/2018/08.02/wholeMap_kitti_03_scored.vtk"/>
+  <!--param name="loadMapName" value="/home/yh/mapModel/2018/08.02/wholeMap_kitti_03_scored.vtk"/-->
 
   <param name="loadTrajName" value="/home/yh/mapModel/2018/07.09/icp_0301.txt"/>
   <param name="mapLength" value="10560"/>
 
   <param name="staticInt" value="30"/> 	
-  <param name="isScore" value="1"/>
+  <param name="isScore" value="0"/>
 
 
   </node>

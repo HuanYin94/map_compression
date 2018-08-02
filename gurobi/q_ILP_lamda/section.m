@@ -30,10 +30,10 @@ function [ compressIndex ] = section( lamda, q_value, Dir, start, finish, totalN
     end
    
     disp('Setting Params');
-    % add frameNum of frame variables
+    % add frameNum of frame variables = epsilon, for soft constraint
     % add q_value and lamda_value, eye for diag-matrix
     model.A = sparse([visMatrix, eye(frameNum)]);
-    model.obj = [q_value', lamda*ones(1,frameNum)];    
+    model.obj = [q_value', lamda*ones(1,frameNum)];     
     
     bValueVector = bValue*ones(1, (finish-start)+1);  
 %     % change bvalus if the num of observed points under it, >=
@@ -49,8 +49,8 @@ function [ compressIndex ] = section( lamda, q_value, Dir, start, finish, totalN
     
     % type different
     x_type = 'B';
-    zeta_type = 'N';
-    model.vtype = [repmat(x_type, 1, totalNum), repmat(zeta_type, 1, frameNum)];
+    epsilon_type = 'N';
+    model.vtype = [repmat(x_type, 1, totalNum), repmat(epsilon_type, 1, frameNum)];
     model.modelsense = 'min';
     
 %     gurobi_write(model, 'sectionTest.lp');
@@ -60,7 +60,7 @@ function [ compressIndex ] = section( lamda, q_value, Dir, start, finish, totalN
     disp('Programming...');
     tic
     result = gurobi(model, params);
-    time = toc;
+    toc
     compressIndex = find(result.x(1:totalNum) == 1);   % former ones
     
 end

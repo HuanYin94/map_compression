@@ -71,7 +71,9 @@ errorDistribution::errorDistribution(ros::NodeHandle& n):
 void errorDistribution::process()
 {
     int rowLineSalient = mapCloud.getDescriptorStartingRow("salient");
-    int rowLineSalientResults = mapCloud.getDescriptorStartingRow("salient_results");
+
+    // prediction == results
+    int rowLineSalientResults = mapCloud.getDescriptorStartingRow("salient_predicted");
 
     // saliency
     int cntSalient = 0;

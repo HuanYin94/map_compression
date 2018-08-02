@@ -4,9 +4,7 @@ mapCheck: 		just show the map
 
 mapCompresser:		compress the map according to the saliency descriptor
 
-sessionFilter:	make great session be salient! & brother_cnt to filter some lonely ones //salient GET
-
-saveAllCRFFeatures:		save all features for simple classification
+sessionFilter:	make great session be salient! & brother_cnt to filter some lonely ones //score result GET
 
 randomSampleMap:			random sampling the map for comparison
 
@@ -20,21 +18,13 @@ DBSCANFilter:			DBSCAN clustering and filter the noises points for SegMatch next
 
 LocTest:				Test of localization on the result map
 
-mapAccuLaser: 		accumalte laser-based experience map, obseration-maximum limited
-
-mapAccuLaserRange:		accumalte laser-based experience map, consider the velocity of the robotcar, to decide the range
-
-mapComapre:				To compare the salient index and delta-distance of two experienced map cloud
-
-mapSummer:				Sum two map Cloud with salient descriptors and save tit
-
-mapScoringIndex:      accumalte laser-based experience map, range limited, new one for Quardratic Programming？
+mapScoringIndex:      accumalte laser-based experience map, range limited, need new one for Quardratic Programming
 
 matchOut:      			get the matched count by aligning point clouds using ground truth poses, 1-1 for velodyne cloud
 
 genVisMatrix:         generate the rows of visibility matrix A by aligning, k-search for map points
 
-loadProResult:       load the predicted programming results from files and save cloud
+loadProResult:       load the programming results from files and save cloud
 
 scanRegister:         registation the origin scans using ground truths to get origin map
 

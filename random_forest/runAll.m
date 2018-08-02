@@ -1,3 +1,4 @@
+%% PR-ROC tests
 % [ Y_soft_all, model_all ] = random_test(Y_train, X_train_all, X_test_all);
 % [ Y_soft_123567, model_123567 ] = random_test(Y_train, X_train_123567, X_test_123567);
 % [ Y_soft_12367, model_12367 ] = random_test(Y_train, X_train_12367, X_test_12367);
@@ -65,7 +66,7 @@
 % xlim([0 1]);
 % ylim([0 1]);
 
-
+%% train and test
 
 
 

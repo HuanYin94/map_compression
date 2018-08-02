@@ -16,6 +16,8 @@ function [  ] = ForKITTIPoses( savePoseName, saveIndexName, ground_Truth, meanDi
         end
     end
     
+    keepIndex = keepIndex - 1;  % from the first scan
+    
     % save the index to the file
     dlmwrite(saveIndexName, keepIndex, 'delimiter', '\t');
     

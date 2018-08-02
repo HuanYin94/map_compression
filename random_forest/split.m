@@ -1,4 +1,4 @@
-
+%% stop using 
 % Y_train = trainCRFFeatures(:,9);
 % Y_test_Gnd = testCRFFeatures(:,9);
 
@@ -16,6 +16,6 @@
 
 % sum(Y_soft_123567(:,2)>0.052)
 
-Y_final = double(Y_soft_123567(:,2)>0.052);
+%Y_final = double(Y_soft_123567(:,2)>0.052);
 
 
