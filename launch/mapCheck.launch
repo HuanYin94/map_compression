@@ -2,7 +2,7 @@
 
   <node pkg="map_compression" type="mapCheck" name="mapCheck" output="screen">
 	
-  <param name="loadMapName" value="/home/yh/mapModel/2018/08.03/ILP_YQ_result.vtk"/>
+  <param name="loadMapName" value="/home/yh/mapModel/2018/08.03/wholeMap_yq_origin.vtk"/>
   <!--param name="loadMapName" value="/home/yh/mapModel/2018/05.18/05_18_final_test.vtk"/-->
   
   <!--param name="loadMapName" value="/home/yh/mapModel/2018/08.02/wholeMap_kitti_03_scored.vtk"/-->

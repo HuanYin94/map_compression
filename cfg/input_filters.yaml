@@ -1,5 +1,9 @@
 - FixStepSamplingDataPointsFilter:
     startStep: 30
+- DistanceLimitDataPointsFilter:
+    dim: -1
+    dist: 2
+    removeInside: 1
 #- RandomSamplingDataPointsFilter:
 #    prob: 0.9
 #- SurfaceNormalDataPointsFilter:

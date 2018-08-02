@@ -16,7 +16,7 @@
     <param name="inputFilterName" value="$(find map_compression)/cfg/input_filters.yaml"/>
 
 	<!--param name="saveVTKname" value="/home/yh/mapModel/2018/08.02/wholeMap_kitti_00_origin.vtk"/-->
-	<param name="saveVTKname" value="/home/yh/mapModel/2018/08.03/wholeMap_yq_origin.vtk"/>
+	<param name="saveVTKname" value="/home/yh/mapModel/2018/08.03/wholeMap_yq_origin_new.vtk"/>
 
   </node>
 </launch>
