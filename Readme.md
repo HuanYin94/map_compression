@@ -1,41 +1,59 @@
-## Map compression in 3D LiDAR, for journal
+# Map compression in 3D LiDAR, for journal
+
+# DIRECTORIES:
+
+# 1. cfg
+   .rviz & filter.yaml
+# 2. gurobi
+   programming
+# 3. launch
+  start ros node
+# 4. prepare
+  sparcify the dnese poses, generate keep.txt
+# 5. random_forest
+  train & test, learning part
+# src
+  .cpp files using ros
 
 # The order of leaned map compression:
 
-## scanRegister:
+## 0. prepare poses
+   get the sparser poses for robot stopping cases
+
+## 1. scanRegister:
    aligning the raw scans (after the input filter) to generate the dnese LiDAR map, using ground truth poses and 
 
-## mapFilter: 
+## 2. mapFilter: 
    filter the map, downsapling and generate some new features
 
-## mapScoringIndex:
+## 3. mapScoringIndex:
    score the map, we have session-counts
 
-## genWeightVector:
+## 4. genWeightVector:
    generate weight vector q for programming
 
-## genVisMatrix:
+## 5. genVisMatrix:
    generate visibility matrix that saved in many .txt, repeat the socring process actually
 
-## GO TO GUROBI TO OPTIMIZE 
+## 6. OPTIMIZE USING GUROBI 
 
-## loadProResult
+## 7. loadProResult
    load the programming results from gurobi_compress directory
 
-## mapCutterTraj
+## 8. mapCutterTraj
    cut the map to train & tedt part for random forest
 
-## generateAllFeatures
+## 9. generateAllFeatures
    generate the features and labels we want
 
-## GO TO MATLAB TO BUILD FOREST 
+## 10. GO TO MATLAB TO BUILD FOREST 
 
-## loadFinalResults
+## 11. loadFinalResults
    load the learned results from matlab.txt
 
-# Others:
+# Other TOOLS:
 
-## mapCheck
+## 1. mapCheck
    See the map and trajecotory
 
 
