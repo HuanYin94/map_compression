@@ -48,11 +48,13 @@ public:
     DP mapCloud;
     DP trajCloud;
 
+    string keepIndexName;
+    vector<int> indexVector;
+
     int cutPoint0;
     int cutPoint1;
     int cutPoint2;
     int cutPoint3;
-    int mapLength;
 
     vector<vector<double>> initPoses;
 
@@ -69,13 +71,13 @@ mapCutterTraj::mapCutterTraj(ros::NodeHandle& n):
     n(n),
     loadMapName(getParam<string>("loadMapName", ".")),
     loadTrajName(getParam<string>("loadTrajName", ".")),
+    keepIndexName(getParam<string>("keepIndexName", ".")),
     cutPoint0(getParam<int>("cutPoint0", 0)),
     cutPoint1(getParam<int>("cutPoint1", 0)),
     cutPoint2(getParam<int>("cutPoint2", 0)),
     cutPoint3(getParam<int>("cutPoint3", 0)),
     saveTrainName(getParam<string>("saveTrainName", ".")),
-    saveTestName(getParam<string>("saveTestName", ".")),
-    mapLength(getParam<int>("mapLength", 0))
+    saveTestName(getParam<string>("saveTestName", "."))
 {
 
     // load
@@ -89,7 +91,7 @@ mapCutterTraj::mapCutterTraj(ros::NodeHandle& n):
     if (!in) {
         cout << "Cannot open file.\n";
     }
-    for (y = 0; y < mapLength; y++) {
+    for (y = 0; y < 999999; y++) {
         test.clear();
     for (x = 0; x < 16; x++) {
       in >> temp;
@@ -99,6 +101,18 @@ mapCutterTraj::mapCutterTraj(ros::NodeHandle& n):
     }
     in.close();
 
+    // read all the effective index from list in the txt
+    int l;
+    ifstream in_(keepIndexName);
+    if (!in_) {
+        cout << "Cannot open file.\n";
+    }
+    while(!in_.eof())
+    {
+        in_>>l;
+        indexVector.push_back(l);
+    }
+
     // process
     this->process();
 
@@ -107,21 +121,18 @@ mapCutterTraj::mapCutterTraj(ros::NodeHandle& n):
 void mapCutterTraj::process()
 {
 
-    // turn poses to a DP::CLOUD
+    // turn trajectory(poses) to a DP::CLOUD
     // feature-rows: x, y, z, directly
-
-    //temp longer
-    DP mapCloudCloud = mapCloud;
-    mapCloudCloud.concatenate(mapCloudCloud);
-
-    trajCloud = mapCloudCloud.createSimilarEmpty();
-    for(int p=0; p<mapLength; p++)
+    trajCloud = mapCloud.createSimilarEmpty();
+    for(int p=0; p<indexVector.size(); p++)
     {
-        trajCloud.features(0, p) = initPoses[p][3];
-        trajCloud.features(1, p) = initPoses[p][7];
-        trajCloud.features(2, p) = initPoses[p][11];
+        int index =indexVector.at(p);
+
+        trajCloud.features(0, p) = initPoses[index][3];
+        trajCloud.features(1, p) = initPoses[index][7];
+        trajCloud.features(2, p) = initPoses[index][11];
     }
-    trajCloud.conservativeResize(mapLength);
+    trajCloud.conservativeResize(indexVector.size());
 
     // map on traj, too slow to build a large one, use index to search
 
@@ -161,6 +172,8 @@ void mapCutterTraj::process()
 
     saveTrainCloud.save(saveTrainName);
     saveTestCloud.save(saveTestName);
+
+    cout<<"Splitted & Saved"<<endl;
 
 }
 
