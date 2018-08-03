@@ -43,18 +43,20 @@ public:
     ros::Publisher mapCloudPub;
     ros::Publisher staticCloudPub;
     ros::Publisher mapPathPub;
+    ros::Publisher pathCloudPub;
 
+    int staticInt;
     DP mapCloud;
     DP staticCloud;
-    int staticInt;
-    DP partCloud;
+    DP pathCloud;
 
-    int mapLength;
     nav_msgs::Path mapPath;
+    string keepIndexName;
+    vector<int> indexVector;
+    vector<vector<double>> initPoses;
 
     int isScore;
 
-    void wait();
     void process();
 
 };
@@ -67,42 +69,75 @@ mapCheck::mapCheck(ros::NodeHandle& n):
     loadMapName(getParam<string>("loadMapName", ".")),
     staticInt(getParam<int>("staticInt", 0)),
     loadTrajName(getParam<string>("loadTrajName", ".")),
-    mapLength(getParam<int>("mapLength", 0)),
-    isScore(getParam<int>("isScore", 0))
+    isScore(getParam<int>("isScore", 0)),
+    keepIndexName(getParam<string>("keepIndexName", "."))
 {
     mapCloudPub = n.advertise<sensor_msgs::PointCloud2>("mapCloud", 2, true);
     staticCloudPub = n.advertise<sensor_msgs::PointCloud2>("staticCloud", 2, true);
     mapPathPub = n.advertise<nav_msgs::Path>("mapPath", 20000, true);
+    pathCloudPub = n.advertise<sensor_msgs::PointCloud2>("pathCloud", 2, true);
 
     // load
     mapCloud = DP::load(loadMapName);
 
     // read initial transformation
     int x, y;
-    double mapPoses [mapLength][16];
+    double temp;
+    vector<double> test;
+    ifstream in(loadTrajName);  // loadTrajName == icpFileName
+    if (!in) {
+        cout << "Cannot open file.\n";
+    }
+    for (y = 0; y < 9999999; y++) {
+        test.clear();
+    for (x = 0; x < 16; x++) {
+      in >> temp;
+      test.push_back(temp);
+    }
+      initPoses.push_back(test);
+    }
+    in.close();
+
+    // read all the effective index from list in the txt
+    int l;
+    ifstream in_(keepIndexName);
+    if (!in_) {
+        cout << "Cannot open file.\n";
+    }
+    while(!in_.eof())
+    {
+        in_>>l;
+        indexVector.push_back(l);
+    }
+
+    // read initial transformation
     mapPath.header.frame_id = "global";
     mapPath.header.stamp = ros::Time::now();
-    ifstream mapin(loadTrajName);
-    for (y = 0; y < mapLength; y++)
+    for (y = 0; y < indexVector.size(); y++)
     {
-        for (x = 0; x < 16; x++)
-        {
-            mapin >> mapPoses[y][x];
-        }
+        int index =indexVector.at(y);
 
         geometry_msgs::PoseStamped pose;
         pose.header.frame_id = mapPath.header.frame_id;
         pose.header.stamp = mapPath.header.stamp;
-        pose.pose.position.x = mapPoses[y][3];
-        pose.pose.position.y = mapPoses[y][7];
-        pose.pose.position.z = mapPoses[y][11];
+        pose.pose.position.x = initPoses[index][3];
+        pose.pose.position.y = initPoses[index][7];
+        pose.pose.position.z = initPoses[index][11];
         pose.pose.orientation = tf::createQuaternionMsgFromYaw(0);  // always 0;
 
         mapPath.poses.push_back(pose);
     }
-    mapin.close();
 
-    cout<<"JUST SHOW"<<endl;
+    // transfer the path to thecloud
+    pathCloud = mapCloud.createSimilarEmpty();
+    for(int p = 0; p< indexVector.size(); p++)
+    {
+        int pindex =indexVector.at(p);
+        pathCloud.features(0, p) = initPoses[pindex][3];
+        pathCloud.features(1, p) = initPoses[pindex][7];
+        pathCloud.features(2, p) = initPoses[pindex][11];
+    }
+    pathCloud.conservativeResize(indexVector.size());
 
     // process
     this->process();
@@ -110,17 +145,7 @@ mapCheck::mapCheck(ros::NodeHandle& n):
     staticCloudPub.publish(PointMatcher_ros::pointMatcherCloudToRosMsg<float>(staticCloud, "global", ros::Time(0)));
     mapCloudPub.publish(PointMatcher_ros::pointMatcherCloudToRosMsg<float>(mapCloud, "global", ros::Time(0)));
     mapPathPub.publish(mapPath);
-
-    this->wait();
-}
-
-void mapCheck::wait()
-{
-    ros::Rate r(1);
-
-    while(ros::ok())
-    {
-    }
+    pathCloudPub.publish(PointMatcher_ros::pointMatcherCloudToRosMsg<float>(pathCloud, "global", ros::Time(0)));
 }
 
 void mapCheck::process()
@@ -168,20 +193,6 @@ void mapCheck::process()
     cout<<"map num:  "<<mapCloud.features.cols()<<endl;
 //    cout<<"salient num:  "<<staticCloud.features.cols()<<endl;
     cout<<"static num:  "<<staticCloud.features.cols()<<endl;
-
-//    /** find MAX **/
-//    int rowLineRange = mapCloud.getDescriptorStartingRow("Range");
-//    int rowLineHeight = mapCloud.getDescriptorStartingRow("Height");
-
-//    double rangeMax = 0;
-//    double heightMax = 0;
-//    for(int m=0; m<mapCloud.features.cols(); m++)
-//    {
-//        mapCloud.descriptors(rowLineRange, m)>rangeMax?rangeMax=mapCloud.descriptors(rowLineRange, m):rangeMax=rangeMax;
-//        mapCloud.descriptors(rowLineHeight, m)>heightMax?heightMax=mapCloud.descriptors(rowLineHeight, m):heightMax=heightMax;
-//    }
-//    cout<<"range Max:   "<<rangeMax<<endl;
-//    cout<<"height Max:  "<<heightMax<<endl;
 
 }
 
