@@ -1,8 +1,8 @@
-# Map compression in 3D LiDAR, for journal
+## Map compression in 3D LiDAR, for journal
 
-# DIRECTORIES:
+## DIRECTORIES:
 
-# 1. cfg
+### 1. cfg
    .rviz & filter.yaml
 # 2. gurobi
    programming
