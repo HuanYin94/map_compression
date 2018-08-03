@@ -1,0 +1,103 @@
+
+Implementation of ensembles of multiple output regression trees 
+(c) 2002-2010 Pierre Geurts
+
+This package contains a c implementation of multiple output regression
+trees and various ensemble methods including extremely randomized
+trees (Geurts, Ernst, Wehenkel, Extremely randomized trees, Machine
+Learning, 36(1):3-42, 2006). It also includes a matlab interface.
+
+The implementation is due to Pierre Geurts (p.geurt@ulg.ac.be). The
+implementation is a research prototype and is provided AS IS. No
+warranties or guarantees of any kind are given. Do not distribute this
+code or use it other than for your own research without permission of
+the author.
+
+This code is part of a broader package that includes classification
+trees and output kernel trees. If you are interested by this package,
+please contact the author (p.geurts@ulg.ac.be).
+
+
+***********************************************************************
+
+INSTALLATION
+
+- Compile the function rtree-c/ok3enslearn_mo_c.c using the command
+mex provided with matlab
+
+    mex rtenslearn_c.c
+
+Note that for convenience, pre-compiled linux and mac os x (64 bits)
+binaries are provided in the archive (rtenslearn_c.mexa64 and
+rtenslearn_c.mexmaci64, compile with Matlab 7.9 (R2009b).
+
+- Copy the resulting mex file into the main directory of the package.
+
+- Add the directory RT into matlab's path
+  path(path,'..../RT');
+
+- To check that everything works, type 'rtexample' in Matlab (you
+  should get no error and a mean square error of around 4.8).
+
+***********************************************************************
+
+SOURCES
+
+Here is a brief description of the matlab functions contained in the
+directory. For some of them, see the code for a description of the
+input and output arguments. The directory rtree-c contains all c
+functions. The source code is (poorly) documented in french.
+
+EXAMPLE:
+
+rtexample.m:
+Contain an example of how to use the different functions
+
+friedman1.csv:
+An illustrative dataset used in example.m
+
+LEARNING:
+
+rtenslearn_c:
+
+Main function to learn an ensemble of multiple output regression
+trees. It provides an interface to the C code. For usage, see the file
+rtexample.m
+
+Settings:
+
+init_single_tree.m:
+Set the default parameters to grow single regression trees
+
+init_extra_trees.m:
+Set the default parameters to grow an ensemble of extremely randomized
+trees (see Geurts, Ernst, Wehenkel, Machine Learning, 2006).
+
+init_rf.m:
+Set the default parameters to implement Breiman's Random Forests method
+
+init_bagging.m:
+Set the default parameters to grow an ensemble of bagged trees
+
+init_mart.m:
+Set the default parameters to grow multiple additive regression trees
+(MART, see Hastie et al's book)
+
+
+TESTING
+
+rtenspred.m:
+
+Compute predictions on a test sample with an ensemble of multiple
+output regression trees learned with the function rtenslearn_c. (can
+be much slower than using the function rtenslearn_c directly)
+
+compute_rtens_variable_importance_mo.m:
+
+Compute variable importances from a test sample for an ensemble built
+with the function rtenslearn_c. Another (faster) solution is to do it
+directly at the learning stage with the function rtenslearn_c.
+
+cvpredict.m:
+
+Compute the predictions on a sample of objects using cross-validation.
