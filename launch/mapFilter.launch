@@ -2,8 +2,8 @@
 
   <node pkg="map_compression" type="mapFilter" name="mapFilter" output="screen">
 	
-  <param name="loadMapName" value="/home/yh/mapModel/2018/08.03/wholeMap_yq_scored.vtk"/>
-  <param name="saveMapName" value="/home/yh/mapModel/2018/08.03/wholeMap_yq_scored_new.vtk"/>
+  <param name="loadMapName" value="/home/yh/mapModel/2018/08.02/wholeMap_kitti_03_origin.vtk"/>
+  <param name="saveMapName" value="/home/yh/mapModel/2018/08.02/wholeMap_kitti_03.vtk"/>
 
   <param name="mapPostFilters" value="/home/yh/mine_ws/src/map_compression/cfg/map_filters.yaml"/> 	
 
