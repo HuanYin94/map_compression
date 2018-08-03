@@ -78,7 +78,13 @@ mapCheck::mapCheck(ros::NodeHandle& n):
     pathCloudPub = n.advertise<sensor_msgs::PointCloud2>("pathCloud", 2, true);
 
     // load
+    // get the loadtime
+    double t0 = ros::Time::now().toSec();
     mapCloud = DP::load(loadMapName);
+    double t1 = ros::Time::now().toSec();
+    cout<<"-----------------------------------------"<<endl;
+    cout<<"LOADING TIME COST:  "<<t1-t0<<"  seconds."<<endl;
+    cout<<"-----------------------------------------"<<endl;
 
     // read initial transformation
     int x, y;
