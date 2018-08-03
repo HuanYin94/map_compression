@@ -45,10 +45,12 @@ public:
     string saveCloudName;
     string saveFeaturesName;
 
+    string keepIndexName;
+    vector<int> indexVector;
+
     DP mapCloud;
     DP trajCloud;
 
-    int mapLength;
     int roadDNA;
     int maxDensity;
 
@@ -69,18 +71,14 @@ Generation::Generation(ros::NodeHandle& n):
     n(n),
     loadMapName(getParam<string>("loadMapName", ".")),
     loadTrajName(getParam<string>("loadTrajName", ".")),
-    mapLength(getParam<int>("mapLength", 0)),
     saveCloudName(getParam<string>("saveCloudName", ".")),
     roadDNA(getParam<int>("roadDNA", 0)),
     saveFeaturesName(getParam<string>("saveFeaturesName", ".")),
-    maxDensity(getParam<int>("maxDensity", 0))
+    maxDensity(getParam<int>("maxDensity", 0)),
+    keepIndexName(getParam<string>("keepIndexName", "."))
 {
     // load
     mapCloud = DP::load(loadMapName);
-
-    //filter normals for trajectory cloud
-//    ifstream mapiffilter(loadFilterName);
-//    mapFilters = PM::DataPointsFilters(mapiffilter);
 
     // read poses
     int x, y;
@@ -90,7 +88,7 @@ Generation::Generation(ros::NodeHandle& n):
     if (!in) {
         cout << "Cannot open file.\n";
     }
-    for (y = 0; y < mapLength; y++) {
+    for (y = 0; y < 999999; y++) {
         test.clear();
     for (x = 0; x < 16; x++) {
       in >> temp;
@@ -99,6 +97,18 @@ Generation::Generation(ros::NodeHandle& n):
       initPoses.push_back(test);
     }
     in.close();
+
+    // read all the effective index from list in the txt
+    int l;
+    ifstream in_(keepIndexName);
+    if (!in_) {
+        cout << "Cannot open file.\n";
+    }
+    while(!in_.eof())
+    {
+        in_>>l;
+        indexVector.push_back(l);
+    }
 
     // process
     this->process();
@@ -112,27 +122,31 @@ void Generation::process()
     //add new descriptors
     mapCloud.addDescriptor("Range", PM::Matrix::Zero(1, mapCloud.features.cols()));
     mapCloud.addDescriptor("Height", PM::Matrix::Zero(1, mapCloud.features.cols()));
-    mapCloud.addDescriptor("Orientation", PM::Matrix::Zero(1, mapCloud.features.cols()));
+//    mapCloud.addDescriptor("Orientation", PM::Matrix::Zero(1, mapCloud.features.cols()));
 
     int rowLineSalient = mapCloud.getDescriptorStartingRow("salient");
     int rowLineRange = mapCloud.getDescriptorStartingRow("Range");
     int rowLineHeight = mapCloud.getDescriptorStartingRow("Height");
-    int rowLineOrientation = mapCloud.getDescriptorStartingRow("Orientation");
+//    int rowLineOrientation = mapCloud.getDescriptorStartingRow("Orientation");
     int rowLineNormal = mapCloud.getDescriptorStartingRow("normals");
     int rowLineIntensity = mapCloud.getDescriptorStartingRow("intensity");
     int rowLineDensity = mapCloud.getDescriptorStartingRow("densities");
+    int rowLineEigen = mapCloud.getDescriptorStartingRow("eigValues");
 
-    // turn poses to a DP::CLOUD
+    // turn trajectory(poses) to a DP::CLOUD
     // feature-rows: x, y, z, directly
     trajCloud = mapCloud.createSimilarEmpty();
-    for(int p=0; p<mapLength; p++)
+    for(int p=0; p<indexVector.size(); p++)
     {
-        trajCloud.features(0, p) = initPoses[p][3];
-        trajCloud.features(1, p) = initPoses[p][7];
-        trajCloud.features(2, p) = initPoses[p][11];
-    }
-    trajCloud.conservativeResize(mapLength);
+        int index =indexVector.at(p);
 
+        trajCloud.features(0, p) = initPoses[index][3];
+        trajCloud.features(1, p) = initPoses[index][7];
+        trajCloud.features(2, p) = initPoses[index][11];
+    }
+    trajCloud.conservativeResize(indexVector.size());
+
+    /*
     //Ort:Traj   ;   Oritentation:MapCloud;  diff-descritors
     trajCloud.addDescriptor("Ort", PM::Matrix::Zero(1, trajCloud.features.cols()));
     int rowLineOrt = trajCloud.getDescriptorStartingRow("Ort");
@@ -144,7 +158,7 @@ void Generation::process()
         indexEnd = -9999999;
         for(int n=t-roadDNA; n<=t+roadDNA; n++)
         {
-            if(n<0 || n>=mapLength)
+            if(n<0 || n>=indexVector.size())
                 continue;
             if(n<indexStart)
                 indexStart = n;
@@ -163,7 +177,7 @@ void Generation::process()
 
     // temp save
     //trajCloud.save("/home/yh/mapModel/05.09/traj_cloud.vtk");
-
+    */
     cout<<"start"<<endl;
 
     // map on traj, too slow to build a large one, use index to search
@@ -184,7 +198,7 @@ void Generation::process()
         double Height = abs(mapCloud.features(2, m) - trajCloud.features(2, matches_Traj.ids(0,m)));
 
         // road direction
-        double Orientation = trajCloud.descriptors(rowLineOrt, matches_Traj.ids(0,m));
+//        double Orientation = trajCloud.descriptors(rowLineOrt, matches_Traj.ids(0,m));
 
         //densities re-filter, sth. is tool large
         if(mapCloud.descriptors(rowLineDensity, m) > maxDensity)
@@ -194,29 +208,42 @@ void Generation::process()
         {
             mapCloud.descriptors(rowLineRange, m)=Range;
             mapCloud.descriptors(rowLineHeight, m)=Height;
-            mapCloud.descriptors(rowLineOrientation, m)=Orientation;
+//            mapCloud.descriptors(rowLineOrientation, m)=Orientation;
         }
 
     }
 
-    // finally
+    // finally save the cloud
     mapCloud.save(saveCloudName);
-    /*
+
+    // the order
+    //  1    2    3      4       5      6        7           8       9      10     11
+    // n_x  n_y  n_z  lamda1  lamda2  lamda3  Densitiy  Intenisty  Range  Height  LABEL
     ofstream saver(saveFeaturesName);
     for(int m=0; m<mapCloud.features.cols(); m++)
     {
+        // the order of lamdas, fomr small to lasrge
+        vector<double> lamdas;
+        lamdas.push_back(mapCloud.descriptors(rowLineEigen,m));
+        lamdas.push_back(mapCloud.descriptors(rowLineEigen+1,m));
+        lamdas.push_back(mapCloud.descriptors(rowLineEigen+2,m));
+        std::sort(lamdas.begin(), lamdas.end());
+
         saver<<mapCloud.descriptors(rowLineNormal,m)<<"   "
                <<mapCloud.descriptors(rowLineNormal+1,m)<<"   "
                  <<mapCloud.descriptors(rowLineNormal+2,m)<<"   "
-                   <<mapCloud.descriptors(rowLineIntensity,m)<<"   "
-                     <<mapCloud.descriptors(rowLineRange,m)<<"   "
-                        <<mapCloud.descriptors(rowLineHeight,m)<<"   "
-                          <<mapCloud.descriptors(rowLineOrientation,m)<<"   "
-                            <<mapCloud.descriptors(rowLineSalient,m)<<endl;
+                   <<(double)(lamdas.at(1) / lamdas.at(0))<<"   "  // new: lamda2 / lamda1
+                     <<(double)(lamdas.at(2) / lamdas.at(1))<<"   "  // new: lamda3 / lamda2
+                        <<(double)(lamdas.at(2) / lamdas.at(0))<<"   "  // new: lamda3 / lamda1
+                          <<mapCloud.descriptors(rowLineDensity,m)<<"   "
+                            <<mapCloud.descriptors(rowLineIntensity,m)<<"   "
+                              <<mapCloud.descriptors(rowLineRange,m)<<"   "
+                                <<mapCloud.descriptors(rowLineHeight,m)<<"   "
+                                  <<mapCloud.descriptors(rowLineSalient,m)<<"   "<<endl;
         saver.flush();
     }
     saver.close();
-    */
+
 
     cout<<"FINISHED"<<endl;
 }

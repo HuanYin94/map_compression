@@ -67,8 +67,8 @@ ${catkin_LIBRARIES}
 ${libpointmatcher_LIBRARIES}
 )
 
-add_executable(generateOtherFeatures src/generateOtherFeatures.cpp)
-target_link_libraries(generateOtherFeatures
+add_executable(generateAllFeatures src/generateAllFeatures.cpp)
+target_link_libraries(generateAllFeatures
 ${catkin_LIBRARIES}
 ${libpointmatcher_LIBRARIES}
 )

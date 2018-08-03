@@ -1,0 +1,19 @@
+<launch>
+
+  <node pkg="map_compression" type="generateAllFeatures" name="generateAllFeatures" output="screen">
+
+  <param name="loadMapName" value="/home/yh/mapModel/2018/08.03/learn/ILP_YQ_map_train_0.1.vtk"/>
+  <param name="loadTrajName" value="/home/yh/mapModel/2018/08.03/icp_0301.txt"/>
+  <param name="keepIndexName" value="/home/yh/mapModel/2018/08.03/keep_0301.txt"/>
+  <param name="saveCloudName" value="/home/yh/mapModel/2018/08.03/learn/ILP_YQ_map_train_0.1_feature_label.vtk"/>
+  <param name="saveFeaturesName" value="/home/yh/mapModel/2018/08.03/learn/ILP_YQ_list_train_0.1_feature_label.txt"/>
+	
+  <!--For Orientation feature of the point & road/-->
+  <!--param name="roadDNA" value="100"/-->
+  
+  <!--Limit the max density-->
+  <param name="maxDensity" value="50"/>
+
+
+  </node>
+</launch>

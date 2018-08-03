@@ -87,6 +87,20 @@ void mapFilter::process()
 
     cout<<"After that:  "<<filterCloud.features.cols()<<endl;
 
+    // descriports process
+    // remove useless
+    if(filterCloud.descriptorExists("ring"))
+        filterCloud.removeDescriptor("ring");
+
+    // cout for test
+    cout<<"Desp num:   "<<filterCloud.descriptors.rows()<<endl;
+    cout<<"eigen values:   "<<filterCloud.getDescriptorStartingRow("eigValues")<<endl;
+    cout<<"--rows:  "<<filterCloud.getDescriptorDimension("eigValues")<<endl;
+    cout<<"intensity:   "<<filterCloud.getDescriptorStartingRow("intensity")<<endl;
+    cout<<"density:   "<<filterCloud.getDescriptorStartingRow("densities")<<endl;
+    cout<<"normals:   "<<filterCloud.getDescriptorStartingRow("normals")<<endl;
+    cout<<"--rows:  "<<filterCloud.getDescriptorDimension("normals")<<endl;
+
 }
 
 int main(int argc, char **argv)

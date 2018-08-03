@@ -3,6 +3,8 @@
     epsilon: 3.16
     keepNormals: 1
     keepDensities: 1
+    keepEigenValues: 1
+    keepEigenVectors: 0
 - OctreeGridDataPointsFilter:
     buildParallel: 1
     maxPointByNode: 1
