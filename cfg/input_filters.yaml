@@ -1,9 +1,11 @@
 - FixStepSamplingDataPointsFilter:
     startStep: 30
-- DistanceLimitDataPointsFilter:
-    dim: -1
-    dist: 2
-    removeInside: 1
+# for YQ
+#- DistanceLimitDataPointsFilter:
+#    dim: -1
+#    dist: 2
+#    removeInside: 1
+# no use
 #- RandomSamplingDataPointsFilter:
 #    prob: 0.9
 #- SurfaceNormalDataPointsFilter:
