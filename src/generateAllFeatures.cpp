@@ -217,17 +217,24 @@ void Generation::process()
     mapCloud.save(saveCloudName);
 
     // the order
-    //  0    1    2      3       4      5        6           7       8      9     10
-    // n_x  n_y  n_z  lamda1  lamda2  lamda3  Densitiy  Intenisty  Range  Height LABEL
+    //  1    2    3      4       5      6        7           8       9      10     11
+    // n_x  n_y  n_z  lamda1  lamda2  lamda3  Densitiy  Intenisty  Range  Height  LABEL
     ofstream saver(saveFeaturesName);
     for(int m=0; m<mapCloud.features.cols(); m++)
     {
+        // the order of lamdas, fomr small to lasrge
+        vector<double> lamdas;
+        lamdas.push_back(mapCloud.descriptors(rowLineEigen,m));
+        lamdas.push_back(mapCloud.descriptors(rowLineEigen+1,m));
+        lamdas.push_back(mapCloud.descriptors(rowLineEigen+2,m));
+        std::sort(lamdas.begin(), lamdas.end());
+
         saver<<mapCloud.descriptors(rowLineNormal,m)<<"   "
                <<mapCloud.descriptors(rowLineNormal+1,m)<<"   "
                  <<mapCloud.descriptors(rowLineNormal+2,m)<<"   "
-                   <<mapCloud.descriptors(rowLineEigen,m)<<"   "
-                     <<mapCloud.descriptors(rowLineEigen+1,m)<<"   "
-                        <<mapCloud.descriptors(rowLineEigen+2,m)<<"   "
+                   <<(double)(lamdas.at(1) / lamdas.at(0))<<"   "  // new: lamda2 / lamda1
+                     <<(double)(lamdas.at(2) / lamdas.at(1))<<"   "  // new: lamda3 / lamda2
+                        <<(double)(lamdas.at(2) / lamdas.at(0))<<"   "  // new: lamda3 / lamda1
                           <<mapCloud.descriptors(rowLineDensity,m)<<"   "
                             <<mapCloud.descriptors(rowLineIntensity,m)<<"   "
                               <<mapCloud.descriptors(rowLineRange,m)<<"   "
