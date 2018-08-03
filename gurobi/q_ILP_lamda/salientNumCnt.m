@@ -1,4 +1,4 @@
-function [  ] = salientNumCnt( filesDir, totalNum )
+function [ num ] = salientNumCnt( filesDir, totalNum )
 %SALIENTNUMCNT Summary of this function goes here
 %   Detailed explanation goes here
     
@@ -25,6 +25,8 @@ function [  ] = salientNumCnt( filesDir, totalNum )
     
     disp('salient predicted:');
     disp(sum(allPoints));
+    
+    num = sum(allPoints);
         
 end
 
