@@ -1,9 +1,0 @@
-<launch>
-
-  <node pkg="map_compression" type="saveAllFeatures" name="saveAllFeatures" output="screen">
-
-	<param name="loadMapName" value="/home/yh/mapModel/05.18/Tianjin/detection_result.vtk"/>
-	<param name="saveFileName" value="/home/yh/mapModel/05.18/Tianjin/detection_xyz.txt"/>
-	
-  </node>
-</launch>

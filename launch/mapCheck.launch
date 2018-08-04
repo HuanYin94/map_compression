@@ -9,14 +9,14 @@
 	<param name="loadTrajName" value="/home/yh/mapModel/2018/08.03/icp_0301.txt"/>
 	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.03/keep_0301.txt"/>
 
-	<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.02/wholeMap_kitti_03.vtk"/>
+	<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.02/wholeMap_kitti_09_scored.vtk"/>
 
-	<param name="loadTrajName" value="/home/yh/mapModel/2018/08.02/kitti03_pose.txt"/>
-	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.02/kitti03_keep.txt"/-->
+	<param name="loadTrajName" value="/home/yh/mapModel/2018/08.02/kitti09_pose.txt"/>
+	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.02/kitti09_keep.txt"/-->
 
 	<!--Score or Salient? Do not forget-->
-	<param name="staticInt" value="30"/> 	
-	<param name="isScore" value="0"/>
+	<param name="staticInt" value="22"/> 	
+	<param name="isScore" value="1"/>
 
 
   </node>
