@@ -7,6 +7,6 @@ function rtensparam=init_single_rt()
   rtparam.varmin=0;
   rtparam.savepred=1;
   rtparam.bestfirst=0;
-  rtparam.extratrees=0;
+  rtparam.extratrees=20;
 
   rtensparam.rtparam=rtparam;
