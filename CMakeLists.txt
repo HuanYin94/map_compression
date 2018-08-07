@@ -55,12 +55,6 @@ ${catkin_LIBRARIES}
 ${libpointmatcher_LIBRARIES}
 )
 
-add_executable(saveAllFeatures src/saveAllFeatures.cpp)
-target_link_libraries(saveAllFeatures
-${catkin_LIBRARIES}
-${libpointmatcher_LIBRARIES}
-)
-
 add_executable(mapCutterTraj src/mapCutterTraj.cpp)
 target_link_libraries(mapCutterTraj
 ${catkin_LIBRARIES}

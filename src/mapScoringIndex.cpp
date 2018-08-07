@@ -67,8 +67,8 @@ public:
     vector<int> indexVector;
 
     void process(int indexCnt);
-    DP readBin(string fileName);
-    double getRangeOfPoint(double x, double y, double z);
+    DP readYQBin(string filename);
+    DP readKITTIBin(string filename);
 
 };
 
@@ -132,6 +132,7 @@ mapScoringIndex::mapScoringIndex(ros::NodeHandle& n):
         in_>>l;
         indexVector.push_back(l);
     }
+    indexVector.pop_back();  // last one repeated
 
     // process
     int indexCnt = 0;
@@ -154,26 +155,19 @@ void mapScoringIndex::process(int indexCnt)
 
     stringstream ss;
     if(isKITTI)
-        ss<<index;
+        ss<<setw(6)<<setfill('0')<<index;
     else
         ss<<setw(10)<<setfill('0')<<index;
 
     string str;
     ss>>str;
-    string veloName;
-
-    // two datasets, different reading
-    if(isKITTI)
-        veloName = velodyneDirName + str + ".vtk";
-    else
-        veloName = velodyneDirName + str + ".bin";
-
+    string veloName = velodyneDirName + str + ".bin";
     cout<<veloName<<endl;
 
     if(isKITTI)
-        velodyneCloud = DP::load(veloName);       // KITTI dataset
+        velodyneCloud = this->readKITTIBin(veloName);       // KITTI dataset
     else
-        velodyneCloud = this->readBin(veloName);  // YQ dataset
+        velodyneCloud = this->readYQBin(veloName);  // YQ dataset
 
     Trobot = PM::TransformationParameters::Identity(4, 4);
     Trobot(0,0)=initPoses[index][0];Trobot(0,1)=initPoses[index][1];Trobot(0,2)=initPoses[index][2];Trobot(0,3)=initPoses[index][3];
@@ -198,10 +192,6 @@ void mapScoringIndex::process(int indexCnt)
         {
             // Points find their way: a new approach
             // not _point
-
-            // dynamic ranging
-//            double rangeFilter s= this->getRangeOfPoint(velodyneCloud.features(0,m), velodyneCloud.features(1,m), velodyneCloud.features(2,m))
-//                                 * this->horizontalResRad;
 
             double rangeFilter = this->limitRange;
 
@@ -229,7 +219,7 @@ void mapScoringIndex::process(int indexCnt)
 
 }
 
-mapScoringIndex::DP mapScoringIndex::readBin(string filename)
+mapScoringIndex::DP mapScoringIndex::readYQBin(string filename)
 {
     DP data;
 
@@ -272,9 +262,53 @@ mapScoringIndex::DP mapScoringIndex::readBin(string filename)
     return data;
 }
 
-double mapScoringIndex::getRangeOfPoint(double x, double y, double z)
+//For kitti dataset
+mapScoringIndex::DP mapScoringIndex::readKITTIBin(string fileName)
 {
-    return sqrt(pow(x,2) + pow(y,2) + pow(z,2));
+    DP tempScan;
+
+    int32_t num = 1000000;
+    float *data = (float*)malloc(num*sizeof(float));
+
+    // pointers
+    float *px = data+0;
+    float *py = data+1;
+    float *pz = data+2;
+    float *pr = data+3;
+
+    // load point cloud
+    FILE *stream;
+    stream = fopen (fileName.c_str(),"rb");
+    num = fread(data,sizeof(float),num,stream)/4;
+
+    //ethz data structure
+    tempScan.addFeature("x", PM::Matrix::Zero(1, num));
+    tempScan.addFeature("y", PM::Matrix::Zero(1, num));
+    tempScan.addFeature("z", PM::Matrix::Zero(1, num));
+    tempScan.addDescriptor("intensity", PM::Matrix::Zero(1, num));
+
+    int x = tempScan.getFeatureStartingRow("x");
+    int y = tempScan.getFeatureStartingRow("y");
+    int z = tempScan.getFeatureStartingRow("z");
+    int intensity = tempScan.getDescriptorStartingRow("intensity");
+
+
+    for (int32_t i=0; i<num; i++)
+    {
+        tempScan.features(x,i) = *px;
+        tempScan.features(y,i) = *py;
+        tempScan.features(z,i) = *pz;
+        tempScan.descriptors(intensity,i) = *pr;
+        px+=4; py+=4; pz+=4; pr+=4;
+    }
+    fclose(stream);
+
+    ///free the ptr
+    {
+        free(data);
+    }
+
+    return tempScan;
 }
 
 int main(int argc, char **argv)

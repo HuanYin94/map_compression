@@ -1,9 +1,12 @@
 <launch>
 
-  <node pkg="map_compression" type="genWeightVector" name="genWeightVector" output="screen">
-  
-  <param name="loadMapName" value="/home/yh/mapModel/2018/08.03/wholeMap_yq_scored.vtk"/>
-  <param name="saveWeightName" value="/home/yh/mapModel/2018/08.03/weightVector.txt"/>
+	<node pkg="map_compression" type="genWeightVector" name="genWeightVector" output="screen">
+
+	<param name="loadMapName" value="/home/yh/mapModel/2018/08.03/wholeMap_yq_scored.vtk"/>
+	<param name="saveWeightName" value="/home/yh/mapModel/2018/08.03/weightVector.txt"/>
+
+	<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.02/wholeMap_kitti_09_scored.vtk"/>
+	<param name="saveWeightName" value="/home/yh/mapModel/2018/08.02/weightVector.txt"/-->
 
   </node>
 </launch>

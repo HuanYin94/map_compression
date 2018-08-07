@@ -26,15 +26,15 @@
 using namespace std;
 using namespace PointMatcherSupport;
 
-class kittiRegister
+class scanRegister
 {
     typedef PointMatcher<float> PM;
     typedef PM::DataPoints DP;
     typedef PM::Matches Matches;
 
 public:
-    kittiRegister(ros::NodeHandle &n);
-    ~kittiRegister();
+    scanRegister(ros::NodeHandle &n);
+    ~scanRegister();
     ros::NodeHandle& n;
 
     bool isKITTI;
@@ -62,13 +62,15 @@ public:
 //    tf::TransformBroadcaster tfBroadcaster;
 
     void process(int indexCnt);
-    DP readBin(string filename);
+    DP readYQBin(string filename);
+    DP readKITTIBin(string filename);
+
 };
 
-kittiRegister::~kittiRegister()
+scanRegister::~scanRegister()
 {}
 
-kittiRegister::kittiRegister(ros::NodeHandle& n):
+scanRegister::scanRegister(ros::NodeHandle& n):
     n(n),
     icpFileName(getParam<string>("icpFileName", ".")),
     velodyneDirName(getParam<string>("velodyneDirName", ".")),
@@ -114,6 +116,7 @@ kittiRegister::kittiRegister(ros::NodeHandle& n):
         in_>>l;
         indexVector.push_back(l);
     }
+    indexVector.pop_back();  // last one repeated
 
     // process
     int indexCnt = 0;
@@ -128,32 +131,26 @@ kittiRegister::kittiRegister(ros::NodeHandle& n):
     cout<<"All Finished!"<<endl;
 }
 
-void kittiRegister::process(int indexCnt)
+void scanRegister::process(int indexCnt)
 {
     int index = indexVector.at(indexCnt);
 
     stringstream ss;
     if(isKITTI)
-        ss<<index;
+        ss<<setw(6)<<setfill('0')<<index;
     else
         ss<<setw(10)<<setfill('0')<<index;
 
     string str;
     ss>>str;
-
-    string veloName;
-    if(isKITTI)
-        veloName = velodyneDirName + str + ".vtk";
-    else
-        veloName = velodyneDirName + str + ".bin";
-
+    string veloName = velodyneDirName + str + ".bin";
     cout<<veloName<<endl;
 
     DP velodyneCloud;
     if(isKITTI)
-        velodyneCloud = DP::load(veloName);       // KITTI dataset
+        velodyneCloud = this->readKITTIBin(veloName);       // KITTI dataset
     else
-        velodyneCloud = this->readBin(veloName);  // YQ dataset
+        velodyneCloud = this->readYQBin(veloName);  // YQ dataset
 
     inputFilter.apply(velodyneCloud);
 
@@ -183,7 +180,7 @@ void kittiRegister::process(int indexCnt)
 
 }
 
-kittiRegister::DP kittiRegister::readBin(string filename)
+scanRegister::DP scanRegister::readYQBin(string filename)
 {
     DP data;
 
@@ -226,13 +223,62 @@ kittiRegister::DP kittiRegister::readBin(string filename)
     return data;
 }
 
+//For kitti dataset
+scanRegister::DP scanRegister::readKITTIBin(string fileName)
+{
+    DP tempScan;
+
+    int32_t num = 1000000;
+    float *data = (float*)malloc(num*sizeof(float));
+
+    // pointers
+    float *px = data+0;
+    float *py = data+1;
+    float *pz = data+2;
+    float *pr = data+3;
+
+    // load point cloud
+    FILE *stream;
+    stream = fopen (fileName.c_str(),"rb");
+    num = fread(data,sizeof(float),num,stream)/4;
+
+    //ethz data structure
+    tempScan.addFeature("x", PM::Matrix::Zero(1, num));
+    tempScan.addFeature("y", PM::Matrix::Zero(1, num));
+    tempScan.addFeature("z", PM::Matrix::Zero(1, num));
+    tempScan.addDescriptor("intensity", PM::Matrix::Zero(1, num));
+
+    int x = tempScan.getFeatureStartingRow("x");
+    int y = tempScan.getFeatureStartingRow("y");
+    int z = tempScan.getFeatureStartingRow("z");
+    int intensity = tempScan.getDescriptorStartingRow("intensity");
+
+
+    for (int32_t i=0; i<num; i++)
+    {
+        tempScan.features(x,i) = *px;
+        tempScan.features(y,i) = *py;
+        tempScan.features(z,i) = *pz;
+        tempScan.descriptors(intensity,i) = *pr;
+        px+=4; py+=4; pz+=4; pr+=4;
+    }
+    fclose(stream);
+
+    ///free the ptr
+    {
+        free(data);
+    }
+
+    return tempScan;
+}
+
 int main(int argc, char **argv)
 {
 
-    ros::init(argc, argv, "kittiRegister");
+    ros::init(argc, argv, "scanRegister");
     ros::NodeHandle n;
 
-    kittiRegister kittiRegister_(n);
+    scanRegister scanRegister_(n);
 
     // ugly code
 
