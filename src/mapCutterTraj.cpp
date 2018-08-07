@@ -170,6 +170,9 @@ void mapCutterTraj::process()
     saveTrainCloud.conservativeResize(trainCount);
     saveTestCloud.conservativeResize(testCount);
 
+    cout<<"Train Num:   "<<trainCount<<endl;
+    cout<<"Test Num:    "<<testCount<<endl;
+
     saveTrainCloud.save(saveTrainName);
     saveTestCloud.save(saveTestName);
 

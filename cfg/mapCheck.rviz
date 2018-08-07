@@ -91,7 +91,7 @@ Visualization Manager:
       Queue Size: 10
       Selectable: true
       Size (Pixels): 1
-      Size (m): 0.3
+      Size (m): 0.35
       Style: Spheres
       Topic: /staticCloud
       Unreliable: false
@@ -193,22 +193,22 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 121.517
+      Distance: 81.1975
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.06
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -106.377
-        Y: -98.7848
-        Z: 22.5486
+        X: 145.029
+        Y: 29.9841
+        Z: 22.831
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 1.0998
+      Pitch: 1.5698
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 3.56815
+      Yaw: 3.64315
     Saved: ~
 Window Geometry:
   Displays:
@@ -226,5 +226,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1879
-  X: 31
-  Y: -14
+  X: 41
+  Y: 24
