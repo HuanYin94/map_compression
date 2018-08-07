@@ -11,8 +11,8 @@
 
 % server
 
-totalNum = 2769950;
-loopCompress(0.1, '/home/huyin/weightVector.txt', '/home/huyin/visMatrix/', 100, totalNum, 600, '/home/huyin/gurobi_compress/');
+totalNum = 1866088;
+loopCompress(0.1, '/home/huyin/weightVector.txt', '/home/huyin/visMatrix/', 50, totalNum, 520, '/home/huyin/gurobi_compress/');
 
 ratio = salientNumCnt( '/home/huyin/gurobi_compress/', totalNum ) / totalNum
 
