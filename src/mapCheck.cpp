@@ -55,7 +55,7 @@ public:
     vector<int> indexVector;
     vector<vector<double>> initPoses;
 
-    int isScore;
+    int showType;
 
     void process();
 
@@ -69,7 +69,7 @@ mapCheck::mapCheck(ros::NodeHandle& n):
     loadMapName(getParam<string>("loadMapName", ".")),
     staticInt(getParam<int>("staticInt", 0)),
     loadTrajName(getParam<string>("loadTrajName", ".")),
-    isScore(getParam<int>("isScore", 0)),
+    showType(getParam<int>("showType", 0)),
     keepIndexName(getParam<string>("keepIndexName", "."))
 {
     mapCloudPub = n.advertise<sensor_msgs::PointCloud2>("mapCloud", 2, true);
@@ -159,7 +159,7 @@ void mapCheck::process()
     /**  CHECK TEST  **/
 
     /**SALIENT**/
-    if(!isScore)
+    if(showType == 1)
     {
         int rowLine = mapCloud.getDescriptorStartingRow("salient");
         staticCloud = mapCloud.createSimilarEmpty();
@@ -176,7 +176,7 @@ void mapCheck::process()
 
         staticCloud.conservativeResize(count);
     }
-    else
+    else if(showType == 0)
     {
         /**SESSIONS**/
 
@@ -195,6 +195,24 @@ void mapCheck::process()
 
         staticCloud.conservativeResize(count);
     }
+    else if(showType == 2)
+    {
+        int rowLine = mapCloud.getDescriptorStartingRow("salient_predicted");
+        staticCloud = mapCloud.createSimilarEmpty();
+        int count=0;
+        for(int i=0; i<mapCloud.features.cols(); i++)
+        {
+            if(mapCloud.descriptors(rowLine, i) == 1)
+            {
+                staticCloud.setColFrom(count, mapCloud, i);
+                count++;
+            }
+
+        }
+
+        staticCloud.conservativeResize(count);
+    }
+
 
     cout<<"map num:  "<<mapCloud.features.cols()<<endl;
 //    cout<<"salient num:  "<<staticCloud.features.cols()<<endl;
