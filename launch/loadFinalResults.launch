@@ -2,9 +2,9 @@
 
   <node pkg="map_compression" type="loadFinalResults" name="loadFinalResults" output="screen">
 
-	<param name="loadResultName" value="/home/yh/mapModel/2018/08.03/learn/result.txt"/>
-	<param name="loadMapName" value="/home/yh/mapModel/2018/08.03/learn/wholeMap_features_tianjin.vtk"/>
-	<param name="saveCloudName" value="/home/yh/mapModel/2018/08.03/learn/detection_result.vtk"/>
+	<param name="loadResultName" value="/home/yh/mapModel/2018/08.03/learn/test.txt"/>
+	<param name="loadMapName" value="/home/yh/mapModel/2018/08.03/learn/ILP_YQ_map_test_0.2.vtk"/>
+	<param name="saveCloudName" value="/home/yh/mapModel/2018/08.03/learn/Learned_YQ_map_test_0.2.vtk"/>
 	
   </node>
 </launch>

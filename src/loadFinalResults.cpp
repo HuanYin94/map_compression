@@ -54,7 +54,7 @@ loadFinalResults::loadFinalResults(ros::NodeHandle& n):
     //map
     mapCloud = DP::load(loadMapName);
     mapCloud.addDescriptor("salient_predicted", PM::Matrix::Zero(1, mapCloud.features.cols()));
-    int rowLineResults = mapCloud.getDescriptorStartingRow("salient_results");
+    int rowLineResults = mapCloud.getDescriptorStartingRow("salient_predicted");
 
     //results
     // read poses
