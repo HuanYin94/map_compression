@@ -1,24 +1,19 @@
 - FixStepSamplingDataPointsFilter:
     startStep: 30
 # for YQ, remove TL
+#- BoundingBoxDataPointsFilter:
+#    xMin: -2.2
+#    xMax: 2.2
+#    yMin: -2.2
+#    yMax: 2.2
+#    zMin: -2.2
+#    zMax: 2.2
+# for KITTI, remove the car itself
 - BoundingBoxDataPointsFilter:
-    xMin: -2
-    xMax: 0
-    yMin: -1
-    yMax: 1
-    zMin: 0
-    zMax: 2
-# no use
-#- RandomSamplingDataPointsFilter:
-#    prob: 0.9
-#- SurfaceNormalDataPointsFilter:
-#    knn: 10
-#    epsilon: 3.33
-#    keepNormals: 1
-#    keepDensities: 1
-#- MaxDensityDataPointsFilter:
-#    maxDensity: 20
-#- SimpleSensorNoiseDataPointsFilter:
-#    sensorType: 0
-#- ObservationDirectionDataPointsFilter
-#- OrientNormalsDataPointsFilter 
+    xMin: -1.8
+    xMax: 1.8
+    yMin: -1.8
+    yMax: 1.8
+    zMin: 1.8
+    zMax: -1.8
+

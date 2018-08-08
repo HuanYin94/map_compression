@@ -1,4 +1,4 @@
-function [ ] = poseSparsification( icpPose, meanDis, saveIndexFileName )
+function [ icpPoseNew ] = poseSparsification( icpPose, saveIndexFileName, expDis )
 %POSESPARCIFICATION Summary of this function goes here
 %   Detailed explanation goes here
     
@@ -13,7 +13,7 @@ function [ ] = poseSparsification( icpPose, meanDis, saveIndexFileName )
         pose2 = [icpPose(keepIndex(cnt),4), icpPose(keepIndex(cnt),8)];
         dis = norm(pose1 - pose2);
         
-        if dis > meanDis
+        if dis > expDis
             cnt = cnt + 1;
             keepIndex(cnt,:) = i;
             icpPoseNew(cnt,:) = icpPose(i,:);
@@ -21,6 +21,8 @@ function [ ] = poseSparsification( icpPose, meanDis, saveIndexFileName )
     end
     
     keepIndex = keepIndex - 1; % from zero
+    
+    length(keepIndex)
     
     % save the index to the file
     dlmwrite(saveIndexFileName, keepIndex, 'delimiter', '\t');

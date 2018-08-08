@@ -4,11 +4,11 @@
 
 % Laptop
 
-% totalNum = 1866088;
-% 
-% loopCompress(0.1, '/home/yh/mapModel/2018/08.03/weightVector.txt', '/home/yh/mapModel/2018/08.03/visMatrix/', 50, totalNum, 520, '/home/yh/mapModel/2018/08.03/gurobi_compress_0.05/');
-% 
-% ratio = salientNumCnt( '/home/yh/mapModel/2018/08.03/gurobi_compress_0.05/', totalNum ) / totalNum
+totalNum = 1867290;
+
+loopCompress(0.1, '/home/yh/mapModel/2018/08.03/weightVector.txt', '/home/yh/mapModel/2018/08.03/visMatrix/', 50, totalNum, 900, '/home/yh/mapModel/2018/08.03/gurobi_compress_0.1/');
+
+ratio = salientNumCnt( '/home/yh/mapModel/2018/08.03/gurobi_compress_0.1/', totalNum ) / totalNum
 
 %% KITTI Dataset
 

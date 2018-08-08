@@ -12,7 +12,7 @@
 	<param name="velodyneDirName" value="/media/yh/YH/DataSet/kitti_benchmark_velodyne/dataset/sequences/10/velodyne/"/> 
 	<param name="saveVTKname" value="/home/yh/mapModel/2018/08.02/wholeMap_kitti_10_origin.vtk"/>
 
-	<!---There are dynamic objects in YQ dataset-->
+	<!--There are dynamic objects in YQ dataset-->
 	<!--param name="icpFileName" value="/home/yh/mapModel/2018/08.03/icp_0301.txt"/> 
 	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.03/keep_0301.txt"/>
 	<param name="velodyneDirName" value="/media/yh/YH/DataSet/YQ21/2017_03_03/2017_03_03_drive_0001_sync/velodyne_points/data/"/>
