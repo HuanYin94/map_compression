@@ -11,7 +11,7 @@
     maxSizeByNode: 0.2
     samplingMethod: 3
 - MaxDensityDataPointsFilter:
-    maxDensity: 75
+    maxDensity: 125
 #- VoxelGridDataPointsFilter:
 #    vSizeX: 0.2
 #    vSizeY: 0.2
