@@ -3,39 +3,39 @@
 ## DIRECTORIES:
 
 ### 1. cfg
-   .rviz & filter.yaml
+   .rviz & filter.yaml, visualization & configuration
 ### 2. gurobi
-   programming
+   programming code, Matlab
 ### 3. launch
-  start ros node
+  launch ros nodes, C++
 ### 4. prepare
-  sparcify the dnese poses, generate keep.txt
+  sparcify the dnese poses, generate keep.txt, Matlab
 ### 5. random_forest
-  train & test, learning part
+  train & test, learning part, copy from GitHub, thanks to [ranger]((https://github.com/your/project/tags))
 ### 6. src
-  .cpp files using ros
+  .cpp files using ros api & [libpointmatcher](https://github.com/ethz-asl/libpointmatcher)
 
 ## The order of leaned map compression:
 
 ### 0. prepare poses
    get the sparser poses for robot stopping cases
 
-### 1. scanRegister:
+### 1. scanRegister
    aligning the raw scans (after the input filter) to generate the dnese LiDAR map, using ground truth poses and 
 
-### 2. mapFilter: 
+### 2. mapFilter
    filter the map, downsapling and generate some new features
 
-### 3. mapScoringIndex:
+### 3. mapScoringIndex
    score the map, we have session-counts
 
-### 4. genWeightVector:
+### 4. genWeightVector
    generate weight vector q for programming
 
-### 5. genVisMatrix:
+### 5. genVisMatrix
    generate visibility matrix that saved in many .txt, repeat the socring process actually
 
-### 6. OPTIMIZE USING GUROBI 
+### 6. Optimize Using Gurobi Software API
 
 ### 7. loadProResult
    load the programming results from gurobi_compress directory
