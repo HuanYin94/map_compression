@@ -152,7 +152,7 @@ void mapCutterTraj::process()
 
     for(int i=0; i<mapCloud.features.cols(); i++)
     {
-        cout<<i<<endl;
+//        cout<<i<<endl;
         int numOfTraj = matches_Traj.ids(0,i);
 
         if(numOfTraj >= cutPoint0 && numOfTraj <= cutPoint1)
