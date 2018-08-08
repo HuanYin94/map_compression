@@ -1,26 +1,7 @@
-function [  ] = ForKITTIPoses( savePoseName, saveIndexName, ground_Truth, meanDis )
+function [ ground_Truth_new, ground_Truth_keep ] = ForKITTIPoses( savePoseName, saveIndexName, ground_Truth, meanDis )
 %FORKITTI Summary of this function goes here
 %   Detailed explanation goes here
 
-    keepIndex = [1];    
-    
-    cnt = 1;
-    for i = 2:length(ground_Truth)
-        pose1 = [ground_Truth(i,4), ground_Truth(i,12)];
-        pose2 = [ground_Truth(keepIndex(cnt),4), ground_Truth(keepIndex(cnt),12)];
-        dis = norm(pose1 - pose2);
-        
-        if dis > meanDis
-            cnt = cnt + 1;
-            keepIndex(cnt,:) = i;
-        end
-    end
-    
-    keepIndex = keepIndex - 1;  % from the first scan
-    
-    % save the index to the file
-    dlmwrite(saveIndexName, keepIndex, 'delimiter', '\t');
-    
     % rotation new
     % KITTI dataset: from left-camera coordinate to LiDAR coordinate
     % help from Zhongxinag Zhou, new transformation new 
@@ -32,6 +13,29 @@ function [  ] = ForKITTIPoses( savePoseName, saveIndexName, ground_Truth, meanDi
     end
         
     dlmwrite(savePoseName, ground_Truth_new, 'delimiter', '\t');
+
+    keepIndex = [1];    
+    ground_Truth_keep(1,:) = ground_Truth_new(1,:);
+    
+    cnt = 1;
+    for i = 2:length(ground_Truth_new)
+        pose1 = [ground_Truth_new(i,4), ground_Truth_new(i,8)];
+        pose2 = [ground_Truth_new(keepIndex(cnt),4), ground_Truth_new(keepIndex(cnt),8)];
+        dis = norm(pose1 - pose2);
+        
+        if dis > meanDis
+            cnt = cnt + 1;
+            keepIndex(cnt,:) = i;
+            ground_Truth_keep(cnt,:) = ground_Truth_new(i,:);
+        end
+    end
+    
+    keepIndex = keepIndex - 1;  % from the first scan
+    
+    length(keepIndex)
+    
+    % save the index to the file
+    dlmwrite(saveIndexName, keepIndex, 'delimiter', '\t');
     
 end
 

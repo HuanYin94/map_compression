@@ -1,6 +1,11 @@
 
-meanDis10 = getMeanDistance_kitti(kitti10);
-ForKITTIPoses( '/home/yh/mapModel/2018/08.02/kitti10_pose.txt', '/home/yh/mapModel/2018/08.02/kitti10_keep.txt', kitti10, meanDis10);
+icp030001_new = poseSparsification( icp030001, '/home/yh/mapModel/2018/08.03/keep_0301.txt', 0.20);
+getDistribution(icp030001);
+hold on;
+getDistribution(icp030001_new);
 
-% meanDis0301 = getMeanDistance_yq(icp0301);
-% poseSparsification( icp0301, meanDis0301, '/home/yh/mapModel/2018/08.03/keep_0301.txt');
+% [pose10_new, pose10_keep] = ForKITTIPoses( '/home/yh/mapModel/2018/08.02/kitti10_pose.txt', '/home/yh/mapModel/2018/08.02/kitti10_keep.txt', pose10, 0.70);
+% 
+% getDistribution(pose10_new);
+% hold on;
+% getDistribution(pose10_keep);
