@@ -8,13 +8,13 @@
 	<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.03/learn/Learned_YQ_map_test_0.2.vtk"/-->
 	<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.03/ILP_YQ_map_0.1.vtk"/-->
 
-	<!param name="loadTrajName" value="/home/yh/mapModel/2018/08.03/icp_0301.txt"/>
-	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.03/keep_0301.txt"/>
+	<!--param name="loadTrajName" value="/home/yh/mapModel/2018/08.03/icp_0301.txt"/>
+	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.03/keep_0301.txt"/-->
 
-	<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.02/wholeMap_kitti_09_scored.vtk"/>
+	<param name="loadMapName" value="/home/yh/mapModel/2018/08.02/wholeMap_kitti_10.vtk"/>
 
-	<param name="loadTrajName" value="/home/yh/mapModel/2018/08.02/kitti09_pose.txt"/>
-	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.02/kitti09_keep.txt"/-->
+	<param name="loadTrajName" value="/home/yh/mapModel/2018/08.02/kitti10_pose.txt"/>
+	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.02/kitti10_keep.txt"/>
 
 	<!--Score_0 or Salient_1 or prediction_2? Do not forget-->
 	<param name="staticInt" value="22"/> 	
