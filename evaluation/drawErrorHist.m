@@ -8,7 +8,7 @@ function [  ] = drawErrorHist( errors )
     grid on;
     xlabel('Matched Distance (m)', 'FontWeight', 'bold', 'FontSize', 12);
     ylabel('Ratio', 'FontWeight', 'bold', 'FontSize', 12);
-    axis([0.0, 1.0, 0, 0.5]); 
+    axis([0.0, 1.0, 0, 0.7]); 
 %     set(gca,'xtick', [0:0.1:1])
 %     set(gca,'ytick', [0:0.1:0.5])
 

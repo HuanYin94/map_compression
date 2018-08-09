@@ -20,7 +20,7 @@ function [  ] = predict_effe( testData, predictData, threshold, saveFileName )
     recall = length(sameNum) / length(gt_index)
     
     saveIndex = double(predictData < threshold);
-    dlmwrite(saveFileName, saveIndex);
+%     dlmwrite(saveFileName, saveIndex);
     
 end
 
