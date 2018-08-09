@@ -2,9 +2,13 @@
 
   <node pkg="map_compression" type="loadFinalResults" name="loadFinalResults" output="screen">
 
-	<param name="loadResultName" value="/home/yh/mapModel/2018/08.03/learn/test.txt"/>
+	<!--param name="loadResultName" value="/home/yh/mapModel/2018/08.03/learn/test.txt"/>
 	<param name="loadMapName" value="/home/yh/mapModel/2018/08.03/learn/ILP_YQ_map_test_0.2.vtk"/>
-	<param name="saveCloudName" value="/home/yh/mapModel/2018/08.03/learn/Learned_YQ_map_test_0.2.vtk"/>
+	<param name="saveCloudName" value="/home/yh/mapModel/2018/08.03/learn/Learned_YQ_map_test_0.2.vtk"/-->
+
+	<param name="loadResultName" value="/home/yh/mapModel/2018/08.02/learn/predict_label_0.1.txt"/>
+	<param name="loadMapName" value="/home/yh/mapModel/2018/08.02/learn/ILP_kitti10_map_test_0.1.vtk"/>
+	<param name="saveCloudName" value="/home/yh/mapModel/2018/08.02/learn/Learned_kitti10_map_test_0.1.vtk"/>
 	
   </node>
 </launch>
