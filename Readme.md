@@ -11,7 +11,7 @@
 ### 4. prepare
   sparcify the dnese poses, generate keep.txt, Matlab
 ### 5. random_forest
-  train & test, learning part, copy from GitHub, thanks to [ranger]((https://github.com/your/project/tags))
+  train & test, learning part, copy from GitHub, thanks to [ranger](https://github.com/your/project/tags)
 ### 6. src
   .cpp files using ros api & [libpointmatcher](https://github.com/ethz-asl/libpointmatcher)
 

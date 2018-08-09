@@ -2,22 +2,22 @@
 
   <node pkg="map_compression" type="mapCutterTraj" name="mapCutterTraj" output="screen">
 
-	<param name="loadMapName" value="/home/yh/mapModel/2018/08.03/ILP_YQ_map_0.1.vtk"/>
+	<param name="loadMapName" value="/home/yh/mapModel/2018/08.03/ILP_YQ_map_0.2.vtk"/>
 	<param name="loadTrajName" value="/home/yh/mapModel/2018/08.03/icp_0301.txt"/>
 	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.03/keep_0301.txt"/>
-	<param name="saveTrainName" value="/home/yh/mapModel/2018/08.03/learn/ILP_YQ_map_train_0.1.vtk"/>
-	<param name="saveTestName" value="/home/yh/mapModel/2018/08.03/learn/ILP_YQ_map_test_0.1.vtk"/>
+	<param name="saveTrainName" value="/home/yh/mapModel/2018/08.03/learn/ILP_YQ_map_train_0.2.vtk"/>
+	<param name="saveTestName" value="/home/yh/mapModel/2018/08.03/learn/ILP_YQ_map_test_0.2.vtk"/>
 	
 	<param name="cutPoint0" value="0"/>	
-	<param name="cutPoint1" value="1640"/>	
-	<param name="cutPoint2" value="1641"/>	
+	<param name="cutPoint1" value="899"/>	
+	<param name="cutPoint2" value="900"/>	
 	<param name="cutPoint3" value="4923"/>	
 
-	<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.02/ILP_kitti10_map_0.1.vtk"/>
+	<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.02/ILP_kitti10_map_0.2.vtk"/>
 	<param name="loadTrajName" value="/home/yh/mapModel/2018/08.02/kitti10_pose.txt"/>
 	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.02/kitti10_keep.txt"/>
-	<param name="saveTrainName" value="/home/yh/mapModel/2018/08.02/learn/ILP_kitti10_map_train_0.1.vtk"/>
-	<param name="saveTestName" value="/home/yh/mapModel/2018/08.02/learn/ILP_kitti10_map_test_0.1.vtk"/>
+	<param name="saveTrainName" value="/home/yh/mapModel/2018/08.02/learn/ILP_kitti10_map_train_0.2.vtk"/>
+	<param name="saveTestName" value="/home/yh/mapModel/2018/08.02/learn/ILP_kitti10_map_test_0.2.vtk"/>
 	
 	<param name="cutPoint0" value="0"/>	
 	<param name="cutPoint1" value="639"/>	
