@@ -44,6 +44,7 @@ public:
     string loadTrajName;
     string saveTrainName;
     string saveTestName;
+    string saveCloudName;
 
     DP mapCloud;
     DP trajCloud;
@@ -77,7 +78,8 @@ mapCutterTraj::mapCutterTraj(ros::NodeHandle& n):
     cutPoint2(getParam<int>("cutPoint2", 0)),
     cutPoint3(getParam<int>("cutPoint3", 0)),
     saveTrainName(getParam<string>("saveTrainName", ".")),
-    saveTestName(getParam<string>("saveTestName", "."))
+    saveTestName(getParam<string>("saveTestName", ".")),
+    saveCloudName(getParam<string>("saveCloudName", "."))
 {
 
     // load
@@ -120,6 +122,8 @@ mapCutterTraj::mapCutterTraj(ros::NodeHandle& n):
 
 void mapCutterTraj::process()
 {
+    mapCloud.addDescriptor("label", PM::Matrix::Zero(1, mapCloud.features.cols()));
+    int rowLineLabel = mapCloud.getDescriptorStartingRow("label");
 
     // turn trajectory(poses) to a DP::CLOUD
     // feature-rows: x, y, z, directly
@@ -155,15 +159,18 @@ void mapCutterTraj::process()
 //        cout<<i<<endl;
         int numOfTraj = matches_Traj.ids(0,i);
 
+        // train
         if(numOfTraj >= cutPoint0 && numOfTraj <= cutPoint1)
         {
             saveTrainCloud.setColFrom(trainCount, mapCloud, i);
             trainCount++;
-        }
+            mapCloud.descriptors(rowLineLabel, i) = 0;
+        } //test
         else if(numOfTraj >= cutPoint2 && numOfTraj <= cutPoint3)
         {
             saveTestCloud.setColFrom(testCount, mapCloud, i);
             testCount++;
+            mapCloud.descriptors(rowLineLabel, i) = 1;
         }
     }
 
@@ -175,6 +182,7 @@ void mapCutterTraj::process()
 
     saveTrainCloud.save(saveTrainName);
     saveTestCloud.save(saveTestName);
+    mapCloud.save(saveCloudName);
 
     cout<<"Splitted & Saved"<<endl;
 
