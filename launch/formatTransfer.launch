@@ -1,0 +1,10 @@
+<launch>
+
+	<node pkg="map_compression" type="formatTransfer" name="formatTransfer" output="screen">
+	
+	<param name="loadMapDir" value="/home/yh/mapModel/2018/08.03/"/>
+	<param name="loadFormat" value="vtk"/>
+	<param name="saveFormat" value="ply"/>
+
+  </node>
+</launch>

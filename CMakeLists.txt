@@ -122,7 +122,10 @@ target_link_libraries(mapFilter
 ${catkin_LIBRARIES}
 )
 
-
+add_executable(formatTransfer src/formatTransfer.cpp)
+target_link_libraries(formatTransfer
+${catkin_LIBRARIES}
+)
 
 
 
