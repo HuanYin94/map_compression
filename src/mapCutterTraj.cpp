@@ -182,7 +182,7 @@ void mapCutterTraj::process()
 
     saveTrainCloud.save(saveTrainName);
     saveTestCloud.save(saveTestName);
-    mapCloud.save(saveCloudName);
+//    mapCloud.save(saveCloudName);
 
     cout<<"Splitted & Saved"<<endl;
 

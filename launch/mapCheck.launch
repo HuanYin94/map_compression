@@ -12,15 +12,15 @@
 	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.03/keep_0301.txt"/-->
 
 	<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.02/ILP_kitti10_map_0.05.vtk"/-->
-	<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.02/learn/Learned_kitti10_map_test_0.05.vtk"/-->
-	<param name="loadMapName" value="/home/yh/mapModel/2018/08.02/learn/ILP_kitti10_map_test_0.2.vtk"/>
+	<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.02/learn/Learned_kitti10_map_test_0.2.vtk"/-->
+	<param name="loadMapName" value="/home/yh/mapModel/2018/08.02/learn/ILP_kitti10_map_train_test.vtk"/>
 
 	<param name="loadTrajName" value="/home/yh/mapModel/2018/08.02/kitti10_pose.txt"/>
 	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.02/kitti10_keep.txt"/>
 
 	<!--Score_0 or Salient_1 or prediction_2? Do not forget-->
 	<param name="staticInt" value="25"/> 	
-	<param name="showType" value="1"/>
+	<param name="showType" value="2"/>
 
 
   </node>

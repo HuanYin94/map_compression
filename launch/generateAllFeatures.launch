@@ -3,19 +3,20 @@
   <node pkg="map_compression" type="generateAllFeatures" name="generateAllFeatures" output="screen">
 	
 	<!--Do not save the featured map, temp-->
-	<!--param name="loadTrajName" value="/home/yh/mapModel/2018/08.03/icp_0301.txt"/>
+
+	<param name="loadTrajName" value="/home/yh/mapModel/2018/08.03/icp_0301.txt"/>
 	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.03/keep_0301.txt"/>
 
-	<param name="loadMapName" value="/home/yh/mapModel/2018/08.03/learn/ILP_YQ_map_train_0.05.vtk"/>
-	<param name="saveCloudName" value="/home/yh/mapModel/2018/08.03/learn/ILP_YQ_map_train_0.05_label.vtk"/>
-	<param name="saveFeaturesName" value="/home/yh/mapModel/2018/08.03/learn/ILP_YQ_map_train_0.05_label.txt"/-->
+	<param name="loadMapName" value="/home/yh/mapModel/2018/08.03/learn/ILP_YQ_map_train_0.2.vtk"/>
+	<param name="saveCloudName" value="/home/yh/mapModel/2018/08.03/learn/ILP_YQ_map_train_0.2_label.vtk"/>
+	<param name="saveFeaturesName" value="/home/yh/mapModel/2018/08.03/learn/ILP_YQ_map_train_0.2_label.txt"/>
 
-	<param name="loadTrajName" value="/home/yh/mapModel/2018/08.02/kitti10_pose.txt"/>
+	<!--param name="loadTrajName" value="/home/yh/mapModel/2018/08.02/kitti10_pose.txt"/>
 	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.02/kitti10_keep.txt"/>
 
-	<param name="loadMapName" value="/home/yh/mapModel/2018/08.02/learn/ILP_kitti10_map_train_0.05.vtk"/>
-	<param name="saveCloudName" value="/home/yh/mapModel/2018/08.02/learn/ILP_kitti10_map_train_0.05_label.vtk"/>
-	<param name="saveFeaturesName" value="/home/yh/mapModel/2018/08.02/learn/ILP_kitti10_map_train_0.05_label.txt"/>
+	<param name="loadMapName" value="/home/yh/mapModel/2018/08.02/learn/ILP_kitti10_map_train_0.2.vtk"/>
+	<param name="saveCloudName" value="/home/yh/mapModel/2018/08.02/learn/ILP_kitti10_map_train_0.2_label.vtk"/>
+	<param name="saveFeaturesName" value="/home/yh/mapModel/2018/08.02/learn/ILP_kitti10_map_train_0.2_label.txt"/-->
 	
   <!--For Orientation feature of the point & road/-->
   <!--param name="roadDNA" value="100"/-->

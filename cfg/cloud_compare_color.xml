@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CloudCompare>
+    <ColorScale version="1">
+        <Properties>
+            <name>paper</name>
+            <uuid>{3d3ffad0-0ef3-4c06-b57b-0bff7d3177bd}</uuid>
+            <absolute>0</absolute>
+        </Properties>
+        <Data>
+            <step r="0" g="255" b="0" pos="0"/>
+            <step r="0" g="254" b="0" pos="0.974248927039"/>
+            <step r="0" g="254" b="0" pos="0.989270386266"/>
+            <step r="13" g="242" b="0" pos="0.995708154506"/>
+            <step r="255" g="0" b="0" pos="1"/>
+        </Data>
+    </ColorScale>
+</CloudCompare>
