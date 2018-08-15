@@ -45,29 +45,29 @@ Visualization Manager:
         Min Value: -12.2623
         Value: true
       Axis: Z
-      Channel Name: session
+      Channel Name: label
       Class: rviz/PointCloud2
       Color: 0; 0; 255
-      Color Transformer: FlatColor
+      Color Transformer: Intensity
       Decay Time: 0
-      Enabled: false
+      Enabled: true
       Invert Rainbow: false
-      Max Color: 255; 255; 255
-      Max Intensity: 147
-      Min Color: 0; 0; 255
-      Min Intensity: 1
+      Max Color: 0; 0; 255
+      Max Intensity: 1
+      Min Color: 255; 85; 0
+      Min Intensity: 0
       Name: PointCloud2
       Position Transformer: XYZ
       Queue Size: 10
       Selectable: false
       Size (Pixels): 1
-      Size (m): 0.1
+      Size (m): 0.18
       Style: Spheres
       Topic: /mapCloud
       Unreliable: false
       Use Fixed Frame: false
-      Use rainbow: true
-      Value: false
+      Use rainbow: false
+      Value: true
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
@@ -80,7 +80,7 @@ Visualization Manager:
       Color: 0; 0; 255
       Color Transformer: FlatColor
       Decay Time: 0
-      Enabled: true
+      Enabled: false
       Invert Rainbow: false
       Max Color: 255; 255; 255
       Max Intensity: 500
@@ -91,13 +91,13 @@ Visualization Manager:
       Queue Size: 10
       Selectable: true
       Size (Pixels): 1
-      Size (m): 0.1
+      Size (m): 0.18
       Style: Spheres
       Topic: /staticCloud
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: false
-      Value: true
+      Value: false
     - Alpha: 1
       Buffer Length: 10
       Class: rviz/Path
@@ -107,7 +107,7 @@ Visualization Manager:
       Head Length: 0.1
       Length: 1
       Line Style: Billboards
-      Line Width: 0.5
+      Line Width: 0.8
       Name: Path
       Offset:
         X: 0
@@ -193,16 +193,16 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 397.585
+      Distance: 878.224
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.06
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 158.282
-        Y: -580.72
-        Z: -150.34
+        X: 102.58
+        Y: -381.619
+        Z: -234.242
       Name: Current View
       Near Clip Distance: 0.01
       Pitch: 1.0948

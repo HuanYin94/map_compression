@@ -1,4 +1,4 @@
-function [  ] = predict_effe( testData, predictData, threshold, saveFileName )
+function [  ] = predict_effe( testData, predictData, threshold, saveFileName, isSave )
 %PREDICT_EFFE Summary of this function goes here
 %   Detailed explanation goes here
     
@@ -20,7 +20,9 @@ function [  ] = predict_effe( testData, predictData, threshold, saveFileName )
     recall = length(sameNum) / length(gt_index)
     
     saveIndex = double(predictData < threshold);
-%     dlmwrite(saveFileName, saveIndex);
+    if isSave == 1
+        dlmwrite(saveFileName, saveIndex);
+    end
     
 end
 
