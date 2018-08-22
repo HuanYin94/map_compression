@@ -127,5 +127,3 @@ target_link_libraries(formatTransfer
 ${catkin_LIBRARIES}
 )
 
-
-

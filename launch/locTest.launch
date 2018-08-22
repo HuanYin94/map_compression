@@ -2,20 +2,22 @@
 
   <node pkg="map_compression" type="locTest" name="locTest" output="screen">
 	
-	<!--param name="loadMapName" value="/home/yh/mapModel/05.21/saliencyCloud_yq.vtk"/-->
-	<param name="loadMapName" value="/home/yh/mapModel/06.03/test_cloud_0.02_compressed.vtk"/>
-	<param name="loadTrajName" value="/home/yh/mapModel/12.25/icp_0301.txt"/>
-	<param name="loadVeloDir" value="/media/yh/YH/DataSet/YQ21/2017_03_03/2017_03_03_drive_0001_sync/velodyne_points/vtk/"/>
-	<param name="mapLength" value="10560"/>
+	<!--KITTI or YQ-->
+	<param name="isKITTI" value="true" />
 
-	<param name="startIndex" value="7310"/>
-	<param name="endIndex" value="10500"/>
+	<param name="wholeMapName" value="/home/yh/mapModel/2018/08.03/Learned_YQ_map_test_0.2.vtk"/> 
+	<param name="velodyneDirName" value="/media/yh/YH/DataSet/YQ21/2017_03_03/2017_03_03_drive_0001_sync/velodyne_points/data/"/>
+	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.03/keep_0301.txt"/> 
+	<param name="icpFileName" value="/home/yh/mapModel/2018/08.03/icp_0301.txt"/>
 	
-	<param name="inputYaml" value="$(find map_compression)/cfg/input_filters.yaml"/>
+	<param name="startIndex" value="1000"/>
+	<param name="endIndex" value="4800"/>
+	
+	<param name="inputFilterYaml" value="$(find map_compression)/cfg/input_filters.yaml"/>
 	<param name="icpYaml" value="$(find map_compression)/cfg/icp.yaml"/>
 
-	<param name="saveLocName" value="/home/yh/test/5_0.05.txt"/>
-	<param name="saveTimeName" value="/home/yh/test/6_0.05.txt"/>
+	<param name="savePoseName" value="/home/yh/mapModel/2018/08.22/yq_learned_0.2_pose.txt"/>
+	<param name="saveTimeName" value="/home/yh/mapModel/2018/08.22/yq_learned_0.2_time.txt"/>
 
   </node>
 </launch>
