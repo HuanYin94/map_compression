@@ -1,0 +1,9 @@
+#- FixStepSamplingDataPointsFilter:
+#    startStep: 30
+- SurfaceNormalDataPointsFilter:
+    knn: 20
+    epsilon: 3.16
+    keepNormals: 1
+    keepDensities: 1
+    keepEigenValues: 1
+    keepEigenVectors: 0

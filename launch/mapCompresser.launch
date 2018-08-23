@@ -3,9 +3,9 @@
   <node pkg="map_compression" type="mapCompresser" name="mapCompresser" output="screen">
 	
   <!--get the compressed map by the descriptor name directly-->
-  <param name="loadMapName" value="/home/yh/mapModel/2018/07.03/030001_salient.vtk"/> 
- 　<param name="desName" value="salient"/> 
-  <param name="saveMapName" value="/home/yh/mapModel/2018/07.03/030001_compressed.vtk"/>
+  <param name="loadMapName" value="/home/yh/mapModel/2018/08.03/learn/Learned_YQ_map_test_0.2.ply"/> 
+ 　<param name="desName" value="salient_predicted"/> 
+  <param name="saveMapName" value="/home/yh/mapModel/2018/08.03/test/Learned_YQ_map_test_0.2_kept.ply"/>
 
   </node>
 </launch>
