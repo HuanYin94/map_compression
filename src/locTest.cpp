@@ -195,9 +195,13 @@ void locTest::process(int indexCnt)
     else
         velodyneCloud = this->readYQBin(veloName);  // YQ dataset
 
+    cout<<"VEL_NUM:  "<<velodyneCloud.features.cols()<<endl;
+
     ifstream inputFilterss(inputFilterYaml);
     inputFilters = PM::DataPointsFilters(inputFilterss);
     inputFilters.apply(velodyneCloud);
+
+    cout<<"filtered VEL_NUM:  "<<velodyneCloud.features.cols()<<endl;
 
     // icp
     // bug "Ignore..." fixed, quat!
