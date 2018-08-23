@@ -1,9 +1,16 @@
-- FixStepSamplingDataPointsFilter:
-    startStep: 10
+- RandomSamplingDataPointsFilter:
+    prob: 0.8
 - SurfaceNormalDataPointsFilter:
-    knn: 10
-    epsilon: 3.16
+    knn: 5
+    epsilon: 0
     keepNormals: 1
     keepDensities: 1
-    keepEigenValues: 1
-    keepEigenVectors: 0
+- ObservationDirectionDataPointsFilter
+- OrientNormalsDataPointsFilter 
+#- BoundingBoxDataPointsFilter:
+#    xMin: -inf
+#    xMax: inf
+#    yMin: -inf
+#    yMax: inf
+#    zMin: -inf
+#    zMax: -0.7
