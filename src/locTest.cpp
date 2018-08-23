@@ -39,11 +39,12 @@ public:
     string velodyneDirName;
     string keepIndexName;
 
-    string saveLocName;
+    string savePoseName;
     string saveTimeName;
 
     string icpYaml;
     string inputFilterYaml;
+    string mapFilterYaml;
 
     DP mapCloud;
     DP velodyneCloud;
@@ -64,14 +65,13 @@ public:
     vector<vector<double>> initPoses;
     vector<int> indexVector;
 
-    void process(int index);
+    void process(int indexCnt);
     DP readYQBin(string filename);
     DP readKITTIBin(string filename);
 
     ros::Publisher mapCloudPub;
     ros::Publisher velCloudPub;
     tf::TransformBroadcaster tfBroadcaster;
-
 };
 
 locTest::~locTest()
@@ -85,7 +85,7 @@ locTest::locTest(ros::NodeHandle& n):
     endIndex(getParam<int>("endIndex", 0)),
     icpYaml(getParam<string>("icpYaml", ".")),
     velodyneDirName(getParam<string>("velodyneDirName", ".")),
-    saveLocName(getParam<string>("saveLocName", ".")),
+    savePoseName(getParam<string>("savePoseName", ".")),
     saveTimeName(getParam<string>("saveTimeName", ".")),
     inputFilterYaml(getParam<string>("inputFilterYaml", ".")),
     isKITTI(getParam<bool>("isKITTI", ".")),
@@ -136,37 +136,41 @@ locTest::locTest(ros::NodeHandle& n):
     icp.setMap(mapCloud);
 
     ofstream saverTime(saveTimeName);
-    ofstream saverLoc(saveLocName);
+    ofstream saverLoc(savePoseName);
+
+    mapCloudPub.publish(PointMatcher_ros::pointMatcherCloudToRosMsg<float>(mapCloud, "global", ros::Time::now()));
 
     // process
     // from start to end
-    for(int index = indexVector.at(startIndex); index<=indexVector.at(endIndex); index++)
+    for(int indexCnt = startIndex; indexCnt<=endIndex; indexCnt++)
     {
-        this->process(index);
+        this->process(indexCnt);
 
         //saving...
-        if(index!=startIndex)
+        if(indexCnt!=startIndex)
         {
             saverTime<<deltaTime<<endl;
             saverLoc<<Ticp(0,0)<<"  "<<Ticp(0,1)<<"  "<<Ticp(0,2)<<"  "<<Ticp(0,3)<<"  "
                       <<Ticp(1,0)<<"  "<<Ticp(1,1)<<"  "<<Ticp(1,2)<<"  "<<Ticp(1,3)<<"  "
                      <<Ticp(2,0)<<"  "<<Ticp(2,1)<<"  "<<Ticp(2,2)<<"  "<<Ticp(2,3)<<"  "
                     <<Ticp(3,0)<<"  "<<Ticp(3,1)<<"  "<<Ticp(3,2)<<"  "<<Ticp(3,3)<<endl;
+            // publish
+            velCloudPub.publish(PointMatcher_ros::pointMatcherCloudToRosMsg<float>(velodyneCloud, "robot", ros::Time::now()));
+            tfBroadcaster.sendTransform(PointMatcher_ros::eigenMatrixToStampedTransform<float>(Ticp, "global", "robot", ros::Time::now()));
         }
-
-        // publish
-        velCloudPub.publish(PointMatcher_ros::pointMatcherCloudToRosMsg<float>(velodyneCloud, "robot", ros::Time::now()));
-        mapCloudPub.publish(PointMatcher_ros::pointMatcherCloudToRosMsg<float>(mapCloud, "global", ros::Time::now()));
-        tfBroadcaster.sendTransform(PointMatcher_ros::eigenMatrixToStampedTransform<float>(Ticp, "global", "robot", ros::Time::now()));
     }
-
 }
 
-void locTest::process(int index)
+void locTest::process(int indexCnt)
 {
+    int index = indexVector.at(indexCnt);
+
+    cout<<indexCnt<<"   "<<index<<endl;
+
     // first time, just set the initial value
-    if(index == startIndex)
+    if(indexCnt == startIndex)
     {
+        cout<<"!!!!!!"<<endl;
         Tinit = PM::TransformationParameters::Identity(4, 4);
         Tinit(0,0)=initPoses[index][0];Tinit(0,1)=initPoses[index][1];Tinit(0,2)=initPoses[index][2];Tinit(0,3)=initPoses[index][3];
         Tinit(1,0)=initPoses[index][4];Tinit(1,1)=initPoses[index][5];Tinit(1,2)=initPoses[index][6];Tinit(1,3)=initPoses[index][7];
@@ -191,21 +195,25 @@ void locTest::process(int index)
     else
         velodyneCloud = this->readYQBin(veloName);  // YQ dataset
 
-    // icp
+    ifstream inputFilterss(inputFilterYaml);
+    inputFilters = PM::DataPointsFilters(inputFilterss);
+    inputFilters.apply(velodyneCloud);
 
+    // icp
     // bug "Ignore..." fixed, quat!
     Eigen::Matrix3f BaseToMapRotation = Tinit.block(0,0,3,3);
     Eigen::AngleAxisf BaseToMapAxisAngle(BaseToMapRotation);    // RotationMatrix to AxisAngle
     Tinit.block(0,0,3,3) = BaseToMapAxisAngle.toRotationMatrix();
 
 //    cout<<Tinit<<endl;
-
     double t0 = ros::Time::now().toSec();
 
     Ticp = icp(velodyneCloud, Tinit);
 
     double t1 = ros::Time::now().toSec();
     deltaTime = t1-t0;
+
+    cout<<"ICP...   "<<deltaTime<<endl;
 
     Tinit = Ticp;
 

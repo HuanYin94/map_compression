@@ -3,9 +3,9 @@
   <node pkg="map_compression" type="locTest" name="locTest" output="screen">
 	
 	<!--KITTI or YQ-->
-	<param name="isKITTI" value="true" />
+	<param name="isKITTI" value="false" />
 
-	<param name="wholeMapName" value="/home/yh/mapModel/2018/08.03/Learned_YQ_map_test_0.2.vtk"/> 
+	<param name="wholeMapName" value="/home/yh/mapModel/2018/08.03/test/Learned_YQ_map_test_0.2_kept.ply"/> 
 	<param name="velodyneDirName" value="/media/yh/YH/DataSet/YQ21/2017_03_03/2017_03_03_drive_0001_sync/velodyne_points/data/"/>
 	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.03/keep_0301.txt"/> 
 	<param name="icpFileName" value="/home/yh/mapModel/2018/08.03/icp_0301.txt"/>
@@ -13,11 +13,12 @@
 	<param name="startIndex" value="1000"/>
 	<param name="endIndex" value="4800"/>
 	
-	<param name="inputFilterYaml" value="$(find map_compression)/cfg/input_filters.yaml"/>
-	<param name="icpYaml" value="$(find map_compression)/cfg/icp.yaml"/>
+	<param name="inputFilterYaml" value="$(find map_compression)/cfg/loc_filters.yaml"/>
+	<param name="icpYaml" value="$(find map_compression)/cfg/icp_loc.yaml"/>
 
 	<param name="savePoseName" value="/home/yh/mapModel/2018/08.22/yq_learned_0.2_pose.txt"/>
 	<param name="saveTimeName" value="/home/yh/mapModel/2018/08.22/yq_learned_0.2_time.txt"/>
 
   </node>
+<node pkg="rviz" type="rviz" name="rviz" args="-d $(find map_compression)/cfg/locTest.rviz" output="screen"/>
 </launch>
