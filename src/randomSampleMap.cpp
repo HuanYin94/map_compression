@@ -58,12 +58,13 @@ randomSampleMap::randomSampleMap(ros::NodeHandle& n):
     n(n),
     loadMapName(getParam<string>("loadMapName", ".")),
     keepPointsNum(getParam<int>("keepPointsNum", 0)),
-    totalPointsNum(getParam<int>("totalPointsNum", 0)),
     saveMapName(getParam<string>("saveMapName", "."))
 {
 
     // load
     mapCloud = DP::load(loadMapName);
+
+    totalPointsNum = mapCloud.features.cols();
 
     // process
     this->process();
