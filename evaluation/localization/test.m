@@ -25,30 +25,27 @@ for i =1:300
     yaw_error_random(i) = norm(yaw_random(i) - yaw_gt(i));
 end
 
-%
-position_all = [yqall0(:,4), yqall0(:,8), yqall0(:,12)];
-for i =1:300
-    angles_all = rotm2eul([yqall0(i,1:3); yqall0(i,5:7); yqall0(i,9:11)]);
-    yaw_all(i,:) = angles_all(1,1);
-    
-    pos_error_all(i) = norm(position_all(i) - position_gt(i));
-
-    yaw_error_all(i) = norm(yaw_all(i) - yaw_gt(i));
-end
+% %
+% position_all = [yqall0(:,4), yqall0(:,8), yqall0(:,12)];
+% for i =1:300
+%     angles_all = rotm2eul([yqall0(i,1:3); yqall0(i,5:7); yqall0(i,9:11)]);
+%     yaw_all(i,:) = angles_all(1,1);
+%     
+%     pos_error_all(i) = norm(position_all(i) - position_gt(i));
+% 
+%     yaw_error_all(i) = norm(yaw_all(i) - yaw_gt(i));
+% end
 
 
 plot(pos_error_learn, 'k');
 hold on;
 plot(pos_error_random, 'r');
-hold on;
-plot(pos_error_all, 'b');
+
 
 figure;
 plot(yaw_error_learn, 'k');
 hold on;
 plot(yaw_error_random, 'r');
-hold on;
-plot(yaw_error_all, 'b');
 
 
 

@@ -58,6 +58,7 @@ public:
 
     //icp
     PM::DataPointsFilters inputFilters;
+    PM::DataPointsFilters mapFilters;
     PM::ICPSequence icp;
     PM::TransformationParameters Ticp;
     PM::TransformationParameters Tinit;
@@ -88,6 +89,7 @@ locTest::locTest(ros::NodeHandle& n):
     savePoseName(getParam<string>("savePoseName", ".")),
     saveTimeName(getParam<string>("saveTimeName", ".")),
     inputFilterYaml(getParam<string>("inputFilterYaml", ".")),
+    mapFilterYaml(getParam<string>("mapFilterYaml", ".")),
     isKITTI(getParam<bool>("isKITTI", ".")),
     keepIndexName(getParam<string>("keepIndexName", "."))
 {
@@ -96,6 +98,15 @@ locTest::locTest(ros::NodeHandle& n):
 
     // load
     mapCloud = DP::load(wholeMapName);
+
+    mapCloud.removeDescriptor("normals");
+    mapCloud.removeDescriptor("eigValues");
+
+    ifstream mapFilterss(mapFilterYaml);
+    mapFilters = PM::DataPointsFilters(mapFilterss);
+    mapFilters.apply(mapCloud);
+
+    cout<<"Need Re-filter"<<endl;
 
     // read initial transformation
     int x, y;

@@ -29,20 +29,20 @@
 	
 	<!--For Localization Test-->
 
-	<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.03/learn/Learned_YQ_map_test_0.05.ply"/>
+	<param name="loadMapName" value="/home/yh/mapModel/2018/08.03/learn/Learned_YQ_map_test_0.01_from_0.05.ply"/>
 	<param name="loadTrajName" value="/home/yh/mapModel/2018/08.03/icp_0301.txt"/>
 	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.03/keep_0301.txt"/>
-	<param name="saveTrainName" value="/home/yh/mapModel/2018/08.03/test/Learned_YQ_map_test_0.05_delete.ply"/>
-	<param name="saveTestName" value="/home/yh/mapModel/2018/08.03/test/Learned_YQ_map_test_0.05_kept.ply"/>
+	<param name="saveTrainName" value="/home/yh/mapModel/2018/08.03/test/Learned_YQ_map_test_0.01_from_0.05_delete.ply"/>
+	<param name="saveTestName" value="/home/yh/mapModel/2018/08.03/test/Learned_YQ_map_test_0.01_from_0.05_kept.ply"/>
 	<param name="saveCloudName" value="/home/yh/mapModel/2018/08.03/learn/Learned_YQ_map_test_0.05_delete_.vtk"/>
 	
 	<param name="cutPoint0" value="0"/>	
 	<param name="cutPoint1" value="3199"/>	
 	<param name="cutPoint2" value="3200"/>	
-	<param name="cutPoint3" value="4924"/-->
+	<param name="cutPoint3" value="4924"/>
 
 	<!--For Localization Test-->
-	<param name="loadMapName" value="/home/yh/mapModel/2018/08.02/learn/Learned_kitti10_map_test_0.05.ply"/>
+	<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.02/learn/Learned_kitti10_map_test_0.05.ply"/>
 	<param name="loadTrajName" value="/home/yh/mapModel/2018/08.02/kitti10_pose.txt"/>
 	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.02/kitti10_keep.txt"/>
 	<param name="saveTrainName" value="/home/yh/mapModel/2018/08.02/test/Learned_kitti10_map_test_0.05_delete.ply"/>
@@ -52,7 +52,7 @@
 	<param name="cutPoint0" value="0"/>	
 	<param name="cutPoint1" value="599"/>	
 	<param name="cutPoint2" value="600"/>	
-	<param name="cutPoint3" value="960"/>
+	<param name="cutPoint3" value="960"/-->
 
 
   </node>

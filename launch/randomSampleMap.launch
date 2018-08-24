@@ -2,13 +2,13 @@
 
   <node pkg="map_compression" type="randomSampleMap" name="randomSampleMap" output="screen">
 
-  <!--param name="loadMapName" value="/home/yh/mapModel/2018/08.03/test/Learned_YQ_map_test_0.1_kept.ply"/>
-  <param name="saveMapName" value="/home/yh/mapModel/2018/08.03/test/Random_YQ_map_test_0.1_locTest_1.ply"/>
-  <param name="keepPointsNum" value="58319"/-->
+  <param name="loadMapName" value="/home/yh/mapModel/2018/08.03/test/Learned_YQ_map_test_0.05_kept.ply"/>
+  <param name="saveMapName" value="/home/yh/mapModel/2018/08.03/test/Random_YQ_map_test_0.01_locTest.ply"/>
+  <param name="keepPointsNum" value="6813"/>
 
-	<param name="loadMapName" value="/home/yh/mapModel/2018/08.02/test/Learned_kitti10_map_test_0.05_kept.ply"/>
+	<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.02/test/Learned_kitti10_map_test_0.05_kept.ply"/>
   	<param name="saveMapName" value="/home/yh/mapModel/2018/08.02/test/Random_kitti10_map_test_0.05_locTest.ply"/>
-	  <param name="keepPointsNum" value="23365"/>
+	<param name="keepPointsNum" value=""/-->
 
 
   </node>
