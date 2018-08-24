@@ -12,5 +12,11 @@
 % for localization, the small circle is kept at ~1%, not the wholetestpart
 % just_save(yqmap_5, 0.53, '/home/yh/mapModel/2018/08.03/learn/predict_label_0.01_from_0.05.txt', 1);
 % just_save(yqmap_10, 0.35, '/home/yh/mapModel/2018/08.03/learn/predict_label_0.01_from_0.1.txt', 1);
-just_save(yqmap_20, 0.16, '/home/yh/mapModel/2018/08.03/learn/predict_label_0.01_from_0.2.txt', 1);
+% just_save(yqmap_20, 0.16, '/home/yh/mapModel/2018/08.03/learn/predict_label_0.01_from_0.2.txt', 1);
+
+% just_save(yqmap_5, 0.595, '/home/yh/mapModel/2018/08.03/learn/predict_label_0.02_from_0.05.txt', 1);
+% just_save(yqmap_10, 0.405, '/home/yh/mapModel/2018/08.03/learn/predict_label_0.02_from_0.1.txt', 1);
+% just_save(yqmap_20, 0.2, '/home/yh/mapModel/2018/08.03/learn/predict_label_0.02_from_0.2.txt', 1);
+
+
 
