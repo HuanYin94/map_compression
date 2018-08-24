@@ -2,10 +2,10 @@
 
   <node pkg="map_compression" type="loadProResult" name="loadProResult" output="screen">
 
-	<param name="loadResultDir" value="/home/yh/mapModel/2018/08.03/gurobi_compress_0.05/"/>
+	<param name="loadResultDir" value="/home/yh/mapModel/2018/08.03/gurobi_compress_0.01/"/>
 	<param name="sectionNum" value="99"/>
 	<param name="loadMapName" value="/home/yh/mapModel/2018/08.03/wholeMap_yq.vtk"/>
-	<param name="saveCloudName" value="/home/yh/mapModel/2018/08.03/ILP_YQ_map_0.05.vtk"/>
+	<param name="saveCloudName" value="/home/yh/mapModel/2018/08.03/ILP_YQ_map_0.01.vtk"/>
 
 	<!--param name="loadResultDir" value="/home/yh/mapModel/2018/08.02/gurobi_compress_0.05/"/>
 	<param name="sectionNum" value="20"/>
