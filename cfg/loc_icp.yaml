@@ -5,9 +5,8 @@ matcher:
     epsilon: 0
 
 outlierFilters:
-#  - RobustWelschOutlierFilter:
-#	  scale: 
-#     approximation:  
+#  - TrimmedDistOutlierFilter:
+#     ratio: 0.5
   - MaxDistOutlierFilter:
      maxDist: 0.5
   - SurfaceNormalOutlierFilter:
@@ -22,7 +21,7 @@ transformationCheckers:
       minDiffTransErr: 0.01
       smoothLength: 10
   - CounterTransformationChecker:
-      maxIterationCount: 40
+      maxIterationCount: 20
   - BoundTransformationChecker:
       maxRotationNorm: 0.8
       maxTranslationNorm: 30.00
