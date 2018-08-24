@@ -11,9 +11,9 @@
 % ratio = salientNumCnt( '/home/yh/mapModel/2018/08.03/gurobi_compress_0.1/', totalNum ) / totalNum
 
 %% KITTI Dataset
-
-totalNum = 1410661;
-
-loopCompress(0.1, '/home/yh/mapModel/2018/08.02/weightVector.txt', '/home/yh/mapModel/2018/08.02/visMatrix/', 50, totalNum, 6250, '/home/yh/mapModel/2018/08.02/gurobi_compress_0.2/');
-
-ratio = salientNumCnt( '/home/yh/mapModel/2018/08.02/gurobi_compress_0.2/', totalNum ) / totalNum
+% 
+% totalNum = 1410661;
+% 
+% loopCompress(0.1, '/home/yh/mapModel/2018/08.02/weightVector.txt', '/home/yh/mapModel/2018/08.02/visMatrix/', 50, totalNum, 6250, '/home/yh/mapModel/2018/08.02/gurobi_compress_0.2/');
+% 
+% ratio = salientNumCnt( '/home/yh/mapModel/2018/08.02/gurobi_compress_0.2/', totalNum ) / totalNum
