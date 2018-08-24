@@ -10,14 +10,14 @@ end
 position_learn = [yqLearned0(:,4), yqLearned0(:,8), yqLearned0(:,12)];
 position_random = [yqRandom0(:,4), yqRandom0(:,8), yqRandom0(:,12)];
 
-for i=1:1:300
+for i=1:1:202
     angles_learn = rotm2eul([yqLearned0(i,1:3); yqLearned0(i,5:7); yqLearned0(i,9:11)]);
     yaw_learn(i,:) = angles_learn(1,1);
     angles_random = rotm2eul([yqRandom0(i,1:3); yqRandom0(i,5:7); yqRandom0(i,9:11)]);
     yaw_random(i,:) = angles_random(1,1);
 end
 
-for i =1:300
+for i =1:202
     pos_error_learn(i) = norm(position_learn(i) - position_gt(i));
     pos_error_random(i) = norm(position_random(i) - position_gt(i));
 
