@@ -1,4 +1,8 @@
-## Map compression in 3D LiDAR, for journal
+```diff
+- To be continued, for a jounal publication. - yh
+```
+
+## Learned map compression in 3D LiDAR
 
 ## DIRECTORIES:
 
