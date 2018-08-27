@@ -1,13 +1,14 @@
 %% YQ Dataset
 
-% same device as the random forest, no server, we use
+%same device as the random forest, no server, we use
 
 % Laptop
 
-% totalNum = 1867290;
-% 
+totalNum = 1867290;
+loopCompress(0.1, '/home/yh/mapModel/2018/08.03/weightVector.txt', '/home/yh/mapModel/2018/08.03/visMatrix/', 50, totalNum, 2040, '/home/yh/test/');
+
 % loopCompress(0.1, '/home/yh/mapModel/2018/08.03/weightVector.txt', '/home/yh/mapModel/2018/08.03/visMatrix/', 50, totalNum, 900, '/home/yh/mapModel/2018/08.03/gurobi_compress_0.1/');
-% 
+
 % ratio = salientNumCnt( '/home/yh/mapModel/2018/08.03/gurobi_compress_0.1/', totalNum ) / totalNum
 
 %% KITTI Dataset
