@@ -1,4 +1,4 @@
-function [ compressIndex ] = section( lamda, q_value, Dir, start, finish, totalNum, bValue )
+function [ compressIndex, time ] = section_compress( lamda, q_value, Dir, start, finish, totalNum, bValue )
 %SECTIONTEST Summary of this function goes here
 %   Detailed explanation goes here
     
@@ -60,7 +60,7 @@ function [ compressIndex ] = section( lamda, q_value, Dir, start, finish, totalN
     disp('Programming...');
     tic
     result = gurobi(model, params);
-    toc
+    time = toc
     compressIndex = find(result.x(1:totalNum) == 1);   % former ones
     
 end

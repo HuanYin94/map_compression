@@ -13,6 +13,7 @@ function [  ] = loopCompress( lamda, qFile, filesDir, splitLength, totalNum, bVa
     q_value(find(q_value>100)) = 100;
     q_value = (1 - mapminmax(q_value', 0, 1))'; % inverse the weighting as the observation counts
     
+    time_sum = 0;
     for i=0:splitLength:length(files)
         disp('--------------------------------------');
         start = i;
@@ -25,8 +26,8 @@ function [  ] = loopCompress( lamda, qFile, filesDir, splitLength, totalNum, bVa
         disp(finish);
         
         % core
-        compressIndex = section(lamda, q_value, filesDir, start, finish, totalNum, bValue);
-        
+        [compressIndex, time_sec] = section_compress(lamda, q_value, filesDir, start, finish, totalNum, bValue);
+        time_sum = time_sum + time_sec;
         saveName = [saveDir, num2str(saveCnt), '.txt'];
         dlmwrite(saveName, compressIndex, 'precision', '%d');
         
@@ -34,6 +35,9 @@ function [  ] = loopCompress( lamda, qFile, filesDir, splitLength, totalNum, bVa
         saveCnt = saveCnt + 1;
         
     end
+    
+    disp('All time of programming:');
+    disp(time_sum)
     
 end
 
