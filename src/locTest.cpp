@@ -234,6 +234,9 @@ void locTest::process(int indexCnt)
 
     // save the results outside this function
 
+    // color for matching results, optional
+
+
 }
 
 locTest::DP locTest::readYQBin(string filename)

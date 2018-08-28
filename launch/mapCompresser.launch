@@ -3,13 +3,13 @@
   <node pkg="map_compression" type="mapCompresser" name="mapCompresser" output="screen">
 	
 	<!--get the compressed map by the descriptor name directly-->
-	<param name="loadMapName" value="/home/yh/mapModel/2018/08.02/ILP_kitti10_map_0.05.ply"/> 
+	<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.02/ILP_kitti10_map_0.05.ply"/> 
 	　<param name="desName" value="salient"/> 
-	<param name="saveMapName" value="/home/yh/mapModel/2018/08.02/AAA.ply"/>
+	<param name="saveMapName" value="/home/yh/mapModel/2018/08.02/AAA.ply"/-->
 
-	<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.03/ILP_YQ_map_0.02.vtk"/> 
+	<param name="loadMapName" value="/home/yh/mapModel/2018/08.03/learn/ILP_YQ_map_test_0.02.vtk"/> 
 	　<param name="desName" value="salient"/> 
-	<param name="saveMapName" value="/home/yh/mapModel/2018/08.03/AAA.ply"/-->
+	<param name="saveMapName" value="/home/yh/mapModel/2018/08.03/test/ILP_YQ_map_test_0.02_locTest.ply"/>
 
   </node>
 </launch>

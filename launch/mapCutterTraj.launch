@@ -29,12 +29,12 @@
 	
 	<!--For Localization Test-->
 
-	<param name="loadMapName" value="/home/yh/mapModel/2018/08.03/learn/Learned_YQ_map_test_0.02_from_0.05.ply"/>
+	<param name="loadMapName" value="/home/yh/mapModel/2018/08.03/test/ILP_YQ_map_test_0.02_locTest.ply"/>
 	<param name="loadTrajName" value="/home/yh/mapModel/2018/08.03/icp_0301.txt"/>
 	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.03/keep_0301.txt"/>
-	<param name="saveTrainName" value="/home/yh/mapModel/2018/08.03/test/Learned_YQ_map_test_0.02_from_0.05_delete.ply"/>
-	<param name="saveTestName" value="/home/yh/mapModel/2018/08.03/test/Learned_YQ_map_test_0.02_from_0.05_kept.ply"/>
-	<param name="saveCloudName" value="/home/yh/mapModel/2018/08.03/learn/Learned_YQ_map_test_0.05_delete_.vtk"/>
+	<param name="saveTrainName" value="/home/yh/mapModel/2018/08.03/test/ILP_YQ_map_test_0.02_delete.ply"/>
+	<param name="saveTestName" value="/home/yh/mapModel/2018/08.03/test/ILP_YQ_map_test_0.02_locTest.ply"/>
+	<param name="saveCloudName" value="/home/yh/mapModel/2018/08.03/test/AAA.ply"/>
 	
 	<param name="cutPoint0" value="0"/>	
 	<param name="cutPoint1" value="3199"/>	
