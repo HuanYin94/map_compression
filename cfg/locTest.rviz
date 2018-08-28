@@ -9,7 +9,7 @@ Panels:
         - /PointCloud21
         - /PointCloud22
       Splitter Ratio: 0.5
-    Tree Height: 348
+    Tree Height: 776
   - Class: rviz/Selection
     Name: Selection
   - Class: rviz/Tool Properties
@@ -93,7 +93,7 @@ Visualization Manager:
       Queue Size: 10
       Selectable: true
       Size (Pixels): 3
-      Size (m): 0.1
+      Size (m): 0.4
       Style: Flat Squares
       Topic: /velodyne_cloud
       Unreliable: false
@@ -124,22 +124,22 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 79.9502
+      Distance: 199.605
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.06
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -30.1814
-        Y: -92.216
-        Z: -14.9901
+        X: -76.6112
+        Y: -74.8708
+        Z: 6.43267
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 1.3298
+      Pitch: 1.1348
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 1.60638
+      Yaw: 6.18956
     Saved: ~
 Window Geometry:
   Displays:
@@ -157,5 +157,5 @@ Window Geometry:
   Views:
     collapsed: true
   Width: 939
-  X: 950
+  X: 930
   Y: 14
