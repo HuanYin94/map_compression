@@ -28,6 +28,10 @@ class locTest
 {
     typedef PointMatcher<float> PM;
     typedef PM::DataPoints DP;
+    typedef PM::Matches Matches;
+
+    typedef typename Nabo::NearestNeighbourSearch<float> NNS;
+    typedef typename NNS::SearchType NNSearchType;
 
 public:
     locTest(ros::NodeHandle &n);
@@ -62,6 +66,7 @@ public:
     PM::ICPSequence icp;
     PM::TransformationParameters Ticp;
     PM::TransformationParameters Tinit;
+    PM::TransformationParameters Ttemp;
 
     vector<vector<double>> initPoses;
     vector<int> indexVector;
@@ -73,6 +78,9 @@ public:
     ros::Publisher mapCloudPub;
     ros::Publisher velCloudPub;
     tf::TransformBroadcaster tfBroadcaster;
+
+    shared_ptr<NNS> NNSMap;
+    unique_ptr<PM::Transformation> transformation;
 };
 
 locTest::~locTest()
@@ -91,7 +99,8 @@ locTest::locTest(ros::NodeHandle& n):
     inputFilterYaml(getParam<string>("inputFilterYaml", ".")),
     mapFilterYaml(getParam<string>("mapFilterYaml", ".")),
     isKITTI(getParam<bool>("isKITTI", ".")),
-    keepIndexName(getParam<string>("keepIndexName", "."))
+    keepIndexName(getParam<string>("keepIndexName", ".")),
+    transformation(PM::get().REG(Transformation).create("RigidTransformation"))
 {
     mapCloudPub = n.advertise<sensor_msgs::PointCloud2>("map_cloud", 2, true);
     velCloudPub = n.advertise<sensor_msgs::PointCloud2>("velodyne_cloud", 2, true);
@@ -105,6 +114,8 @@ locTest::locTest(ros::NodeHandle& n):
     ifstream mapFilterss(mapFilterYaml);
     mapFilters = PM::DataPointsFilters(mapFilterss);
     mapFilters.apply(mapCloud);
+
+    NNSMap.reset(NNS::create(mapCloud.features, mapCloud.features.rows() - 1, NNS::KDTREE_LINEAR_HEAP, NNS::TOUCH_STATISTICS));
 
     cout<<"Need Re-filter"<<endl;
 
@@ -166,8 +177,8 @@ locTest::locTest(ros::NodeHandle& n):
                      <<Ticp(2,0)<<"  "<<Ticp(2,1)<<"  "<<Ticp(2,2)<<"  "<<Ticp(2,3)<<"  "
                     <<Ticp(3,0)<<"  "<<Ticp(3,1)<<"  "<<Ticp(3,2)<<"  "<<Ticp(3,3)<<endl;
             // publish
-            velCloudPub.publish(PointMatcher_ros::pointMatcherCloudToRosMsg<float>(velodyneCloud, "robot", ros::Time::now()));
             tfBroadcaster.sendTransform(PointMatcher_ros::eigenMatrixToStampedTransform<float>(Ticp, "global", "robot", ros::Time::now()));
+            velCloudPub.publish(PointMatcher_ros::pointMatcherCloudToRosMsg<float>(velodyneCloud, "robot", ros::Time::now()));
         }
     }
 }
@@ -220,8 +231,12 @@ void locTest::process(int indexCnt)
     Eigen::AngleAxisf BaseToMapAxisAngle(BaseToMapRotation);    // RotationMatrix to AxisAngle
     Tinit.block(0,0,3,3) = BaseToMapAxisAngle.toRotationMatrix();
 
+    Ttemp=Tinit;
+
 //    cout<<Tinit<<endl;
     double t0 = ros::Time::now().toSec();
+
+
 
     Ticp = icp(velodyneCloud, Tinit);
 
@@ -235,8 +250,26 @@ void locTest::process(int indexCnt)
     // save the results outside this function
 
     // color for matching results, optional
+    // need transformation, label the matched points
+    /*
+    velodyneCloud.addDescriptor("matched", PM::Matrix::Zero(1, velodyneCloud.features.cols()));
+    int rowLinemaMatched = velodyneCloud.getDescriptorStartingRow("matched");
 
+    transformation->correctParameters(Ttemp);
+    DP velodyneCloud_ = transformation->compute(velodyneCloud, Ttemp);
 
+    PM::Matches matches_velo(
+        Matches::Dists(1, velodyneCloud_.features.cols()),
+        Matches::Ids(1, velodyneCloud_.features.cols())
+    );
+    NNSMap->knn(velodyneCloud_.features, matches_velo.ids, matches_velo.dists, 1, 0);
+
+    for(int p=0; p<velodyneCloud_.features.cols(); p++)
+    {
+        if(sqrt(matches_velo.dists(0,p)) < 0.5)
+            velodyneCloud.descriptors(rowLinemaMatched, p) = 1;
+    }
+    */
 }
 
 locTest::DP locTest::readYQBin(string filename)
