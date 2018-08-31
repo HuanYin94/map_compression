@@ -251,7 +251,7 @@ void locTest::process(int indexCnt)
 
     // color for matching results, optional
     // need transformation, label the matched points
-    /*
+
     velodyneCloud.addDescriptor("matched", PM::Matrix::Zero(1, velodyneCloud.features.cols()));
     int rowLinemaMatched = velodyneCloud.getDescriptorStartingRow("matched");
 
@@ -269,7 +269,7 @@ void locTest::process(int indexCnt)
         if(sqrt(matches_velo.dists(0,p)) < 0.5)
             velodyneCloud.descriptors(rowLinemaMatched, p) = 1;
     }
-    */
+
 }
 
 locTest::DP locTest::readYQBin(string filename)

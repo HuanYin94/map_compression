@@ -155,18 +155,117 @@
 
 %% random time
 
-mean((yqRandom120time + yqRandom220time + yqRandom320time + yqRandom420time + yqRandom520time) / 5)
-
-mean((yqRandom110time + yqRandom210time + yqRandom310time + yqRandom410time + yqRandom510time) / 5)
-
-mean((yqRandom15time + yqRandom25time + yqRandom35time + yqRandom45time + yqRandom55time) / 5)
-
-mean((yqRandom12time(1:300) + yqRandom22time(1:300) + yqRandom32time(1:300) + yqRandom42time(1:300) + yqRandom52time(1:300)) / 5)
-
-
+% mean((yqRandom120time + yqRandom220time + yqRandom320time + yqRandom420time + yqRandom520time) / 5)
+% 
+% mean((yqRandom110time + yqRandom210time + yqRandom310time + yqRandom410time + yqRandom510time) / 5)
+% 
+% mean((yqRandom15time + yqRandom25time + yqRandom35time + yqRandom45time + yqRandom55time) / 5)
+% 
+% mean((yqRandom12time(1:300) + yqRandom22time(1:300) + yqRandom32time(1:300) + yqRandom42time(1:300) + yqRandom52time(1:300)) / 5)
 
 
+%% add clustering and voxel map, 2018.08.31
 
+
+
+
+% for i=1:length(yqpose)
+% 
+%     % random 20
+%     rotmErrors_20_S(i,:) = getRotmError(yqpose(i,:), yqcluster20pose(i,:));
+%     transErrors_20_S(i,:) = getTransError(yqpose(i,:), yqcluster20pose(i,:));
+% 
+% end
+% 
+% for i=1:length(yqpose)
+% 
+%     % random 20
+%     rotmErrors_20_V(i,:) = getRotmError(yqpose(i,:), yqvoxel20pose(i,:));
+%     transErrors_20_V(i,:) = getTransError(yqpose(i,:), yqvoxel20pose(i,:));
+%     
+%     % random 10
+%     rotmErrors_10_V(i,:) = getRotmError(yqpose(i,:), yqvoxel10pose(i,:));
+%     transErrors_10_V(i,:) = getTransError(yqpose(i,:), yqvoxel10pose(i,:));
+%     
+%     % random 5
+%     rotmErrors_5_V(i,:) = getRotmError(yqpose(i,:), yqvoxel5pose(i,:));
+%     transErrors_5_V(i,:) = getTransError(yqpose(i,:), yqvoxel5pose(i,:));
+% end
+% 
+
+% subplot(1,4,1)
+% h = boxplot([transErrors_20_P, transErrors_20_L, transErrors_20_R, transErrors_20_V, transErrors_20_S], 'Labels',{'Mp','Ml','Mr','Mv', 'Ms'}, 'OutlierSize', 8);
+% title('20%');
+% ylim([0 0.5]);
+% ylabel('Translation error (m)', 'FontWeight', 'bold', 'FontSize', 12);
+% set(gca,'FontSize',12)
+% set(gca,'ytick', [0:0.05:0.5])
+% 
+% subplot(1,4,2)
+% h = boxplot([transErrors_10_P, transErrors_10_L, transErrors_10_R, transErrors_10_V, 999*ones(length(transErrors_2_L),1)], 'Labels',{'Mp','Ml','Mr','Mv', 'Ms'}, 'OutlierSize', 8);
+% title('10%');
+% ylim([0 0.5]);
+% set(gca,'yticklabel',[])
+% set(gca,'FontSize',12)
+% set(gca,'ytick', [0:0.05:0.5])
+% 
+% subplot(1,4,3)
+% h = boxplot([transErrors_5_P, transErrors_5_L, transErrors_5_R, transErrors_5_V, 999*ones(length(transErrors_2_L),1)], 'Labels',{'Mp','Ml','Mr','Mv', 'Ms'}, 'OutlierSize', 8);
+% title('5%');
+% ylim([0 0.5]);
+% set(gca,'yticklabel',[])
+% set(gca,'FontSize',12)
+% set(gca,'ytick', [0:0.05:0.5])
+% 
+% subplot(1,4,4)
+% h = boxplot([transErrors_2_P, transErrors_2_L, 999*ones(length(transErrors_2_L),1), 999*ones(length(transErrors_2_L),1), 999*ones(length(transErrors_2_L),1)], 'Labels',{'Mp','Ml','Mr','Mv', 'Ms'}, 'OutlierSize', 8);
+% title('2%');
+% ylim([0 0.5]);
+% set(gca,'yticklabel',[])
+% set(gca,'FontSize',12)
+% set(gca,'ytick', [0:0.05:0.5])
+
+
+
+
+
+
+
+
+
+
+
+subplot(1,4,1)
+h = boxplot([rotmErrors_20_P, rotmErrors_20_L, rotmErrors_20_R, rotmErrors_20_V, rotmErrors_20_S], 'Labels',{'Mp','Ml','Mr','Mv', 'Ms'}, 'OutlierSize', 8);
+title('20%');
+ylim([0 1.5]);
+ylabel('Rotation error (°)', 'FontWeight', 'bold', 'FontSize', 12);
+set(gca,'FontSize',12)
+set(gca,'ytick', [0:0.15:1.5])
+
+subplot(1,4,2)
+h = boxplot([rotmErrors_10_P, rotmErrors_10_L, rotmErrors_10_R, rotmErrors_10_V, 999*ones(length(rotmErrors_2_L),1)], 'Labels',{'Mp','Ml','Mr','Mv', 'Ms'}, 'OutlierSize', 8);
+title('10%');
+ylim([0 1.5]);
+set(gca,'yticklabel',[])
+set(gca,'FontSize',12)
+set(gca,'ytick', [0:0.15:1.5])
+
+subplot(1,4,3)
+h = boxplot([rotmErrors_5_P, rotmErrors_5_L, rotmErrors_5_R, rotmErrors_5_V, 999*ones(length(rotmErrors_2_L),1)], 'Labels',{'Mp','Ml','Mr','Mv', 'Ms'}, 'OutlierSize', 8);
+title('5%');
+ylim([0 1.5]);
+set(gca,'yticklabel',[])
+set(gca,'FontSize',12)
+set(gca,'ytick', [0:0.15:1.5])
+
+subplot(1,4,4)
+h = boxplot([rotmErrors_2_P, rotmErrors_2_L, 999*ones(length(rotmErrors_2_L),1), 999*ones(length(rotmErrors_2_L),1), 999*ones(length(rotmErrors_2_L),1)], 'Labels',{'Mp','Ml','Mr','Mv', 'Ms'}, 'OutlierSize', 8);
+title('2%');
+ylim([0 1.5]);
+set(gca,'yticklabel',[])
+set(gca,'FontSize',12)
+set(gca,'ytick', [0:0.15:1.5])
 
 
 
