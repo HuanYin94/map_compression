@@ -73,12 +73,6 @@ ${catkin_LIBRARIES}
 ${libpointmatcher_LIBRARIES}
 )
 
-add_executable(DBSCANFilter src/DBSCANFilter.cpp)
-target_link_libraries(DBSCANFilter
-${catkin_LIBRARIES}
-${libpointmatcher_LIBRARIES}
-)
-
 add_executable(locTest src/locTest.cpp)
 target_link_libraries(locTest
 ${catkin_LIBRARIES}
@@ -125,5 +119,17 @@ ${catkin_LIBRARIES}
 add_executable(formatTransfer src/formatTransfer.cpp)
 target_link_libraries(formatTransfer
 ${catkin_LIBRARIES}
+)
+
+add_executable(clusterMap src/clusterMap.cpp)
+target_link_libraries(clusterMap
+${catkin_LIBRARIES}
+${libpointmatcher_LIBRARIES}
+)
+
+add_executable(voxelMap src/voxelMap.cpp)
+target_link_libraries(voxelMap
+${catkin_LIBRARIES}
+${libpointmatcher_LIBRARIES}
 )
 
