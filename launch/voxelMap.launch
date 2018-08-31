@@ -1,0 +1,10 @@
+<launch>
+
+  	<node pkg="map_compression" type="voxelMap" name="voxelMap" output="screen">
+	
+  	<param name="loadMapName" value="/home/yh/mapModel/2018/08.03/test/Learned_YQ_map_test_PART.ply"/>
+  	<param name="saveMapName" value="/home/yh/mapModel/2018/08.03/test/Voxel_YQ_map_test_0.1_locTest.ply"/>
+    <param name="leafSize" value="1.2"/>
+
+  </node>
+</launch>
