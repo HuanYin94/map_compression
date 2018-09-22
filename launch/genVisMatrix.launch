@@ -2,8 +2,9 @@
 
   <node pkg="map_compression" type="genVisMatrix" name="genVisMatrix" output="screen">
 
-	<!--KITTI or YQ-->
-	<param name="isKITTI" value="true"/>
+	<!--KITTI or YQ or Chery-->
+	<param name="isChery" value="true" />
+	<param name="isKITTI" value="false"/>
     
 	<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.03/wholeMap_yq.vtk"/>
 	<param name="loadTrajName" value="/home/yh/mapModel/2018/08.03/icp_0301.txt"/>
@@ -11,11 +12,17 @@
 	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.03/keep_0301.txt"/> 	
 　　　 <param name="saveDirName" value="/home/yh/mapModel/2018/08.03/visMatrix/"/-->
 
-	<param name="loadMapName" value="/home/yh/mapModel/2018/08.02/wholeMap_kitti_10.vtk"/>
+	<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.02/wholeMap_kitti_10.vtk"/>
 	<param name="loadTrajName" value="/home/yh/mapModel/2018/08.02/kitti10_pose.txt"/>
 	<param name="loadVeloDir" value="/media/yh/YH/DataSet/kitti_benchmark_velodyne/dataset/sequences/10/velodyne/"/>
 	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.02/kitti10_keep.txt"/>
-　　　 <param name="saveDirName" value="/home/yh/mapModel/2018/08.02/visMatrix/"/>
+　　　 <param name="saveDirName" value="/home/yh/mapModel/2018/08.02/visMatrix/"/-->
+
+	<param name="loadMapName" value="/home/yh/mapModel/2018/09.22/whole_park.ply"/>
+	<param name="loadTrajName" value="/home/yh/mapModel/2018/09.22/global_pose.txt"/>
+	<param name="velodyneDirName" value="/home/yh/mapModel/2018/09.22/scan/"/>
+	<param name="keepIndexName" value="/home/yh/mapModel/2018/09.22/keep_chery.txt"/>
+　　　 <param name="saveDirName" value="/home/yh/mapModel/2018/09.22/visMatrix/"/>
 
 	<param name="limitRange" value="0.1"/>
 	<param name="kSearch" value="10"/>
