@@ -160,7 +160,7 @@ void scanRegister::process(int indexCnt)
     else
     {
         string vtkFileName = velodyneDirName + std::to_string(index) + ".vtk";
-        velodyneCloud = this->readYQBin(vtkFileName);  // Chery dataset
+        velodyneCloud = DP::load(vtkFileName);  // Chery dataset
     }
 
     inputFilter.apply(velodyneCloud);
