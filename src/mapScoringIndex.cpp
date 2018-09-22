@@ -41,6 +41,7 @@ public:
     ros::NodeHandle& n;
 
     bool isKITTI;
+    bool isChery;
 
     string wholeMapName;
     bool isFirstTime;
@@ -87,7 +88,8 @@ mapScoringIndex::mapScoringIndex(ros::NodeHandle& n):
     horizontalResRad(getParam<double>("horizontalResRad", 0)),
     keepIndexName(getParam<string>("keepIndexName", ".")),
     limitRange(getParam<double>("limitRange", 0)),
-    isKITTI(getParam<bool>("isKITTI", 0))
+    isKITTI(getParam<bool>("isKITTI", 0)),
+    isChery(getParam<bool>("isChery", 0))
 {
     // load
     mapCloud = DP::load(wholeMapName);
@@ -153,21 +155,31 @@ void mapScoringIndex::process(int indexCnt)
 {
     int index = indexVector.at(indexCnt);
 
-    stringstream ss;
-    if(isKITTI)
-        ss<<setw(6)<<setfill('0')<<index;
-    else
-        ss<<setw(10)<<setfill('0')<<index;
+    DP velodyneCloud;
 
-    string str;
-    ss>>str;
-    string veloName = velodyneDirName + str + ".bin";
-    cout<<veloName<<endl;
+    if(!isChery)
+    {
+        stringstream ss;
+        if(isKITTI)
+            ss<<setw(6)<<setfill('0')<<index;
+        else
+            ss<<setw(10)<<setfill('0')<<index;
 
-    if(isKITTI)
-        velodyneCloud = this->readKITTIBin(veloName);       // KITTI dataset
+        string str;
+        ss>>str;
+        string veloName = velodyneDirName + str + ".bin";
+        cout<<veloName<<endl;
+
+        if(isKITTI)
+            velodyneCloud = this->readKITTIBin(veloName);       // KITTI dataset
+        else
+            velodyneCloud = this->readYQBin(veloName);  // YQ dataset
+    }
     else
-        velodyneCloud = this->readYQBin(veloName);  // YQ dataset
+    {
+        string vtkFileName = velodyneDirName + std::to_string(index) + ".vtk";
+        velodyneCloud = DP::load(vtkFileName);  // Chery dataset
+    }
 
     Trobot = PM::TransformationParameters::Identity(4, 4);
     Trobot(0,0)=initPoses[index][0];Trobot(0,1)=initPoses[index][1];Trobot(0,2)=initPoses[index][2];Trobot(0,3)=initPoses[index][3];
