@@ -2,21 +2,27 @@
 
   <node pkg="map_compression" type="scanRegister" name="scanRegister" output="screen">
 	
-	<!--KITTI or YQ & actually SLAM in YQ, no registration from gt-->
-	<param name="isKITTI" value="true" />	
+	<!--KITTI or YQ & actually SLAM in YQ, no registration from gt & add Chery-->
+	<param name="isChery" value="true" />	
+	<param name="isKITTI" value="false" />	
 
     <param name="inputFilterName" value="$(find map_compression)/cfg/input_filters.yaml"/>
 
-	<param name="icpFileName" value="/home/yh/mapModel/2018/08.02/kitti10_pose.txt"/> 
+	<!--param name="icpFileName" value="/home/yh/mapModel/2018/08.02/kitti10_pose.txt"/> 
 	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.02/kitti10_keep.txt"/>
 	<param name="velodyneDirName" value="/media/yh/YH/DataSet/kitti_benchmark_velodyne/dataset/sequences/10/velodyne/"/> 
-	<param name="saveVTKname" value="/home/yh/mapModel/2018/08.02/wholeMap_kitti_10_origin.vtk"/>
+	<param name="saveVTKname" value="/home/yh/mapModel/2018/08.02/wholeMap_kitti_10_origin.vtk"/-->
 
 	<!--There are dynamic objects in YQ dataset-->
 	<!--param name="icpFileName" value="/home/yh/mapModel/2018/08.03/icp_0301.txt"/> 
 	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.03/keep_0301.txt"/>
 	<param name="velodyneDirName" value="/media/yh/YH/DataSet/YQ21/2017_03_03/2017_03_03_drive_0001_sync/velodyne_points/data/"/>
 	<param name="saveVTKname" value="/home/yh/mapModel/2018/08.03/wholeMap_yq_origin.vtk"/-->
+
+	<param name="icpFileName" value="/home/yh/mapModel/2018/09.22/global_pose.txt"/> 
+	<param name="keepIndexName" value="/home/yh/mapModel/2018/09.22/keep_chery.txt"/>
+	<param name="velodyneDirName" value="/home/yh/mapModel/2018/09.22/scan/"/>
+	<param name="saveVTKname" value="/home/yh/mapModel/2018/09.22/whole_park.vtk"/>
 
   </node>
 </launch>
