@@ -22,7 +22,7 @@
 	<param name="icpFileName" value="/home/yh/mapModel/2018/09.22/global_pose.txt"/> 
 	<param name="keepIndexName" value="/home/yh/mapModel/2018/09.22/keep_chery.txt"/>
 	<param name="velodyneDirName" value="/home/yh/mapModel/2018/09.22/scan/"/>
-	<param name="saveVTKname" value="/home/yh/mapModel/2018/09.22/whole_park.vtk"/>
+	<param name="saveVTKname" value="/home/yh/mapModel/2018/09.22/whole_park_origin.ply"/>
 
   </node>
 </launch>
