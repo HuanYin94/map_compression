@@ -38,6 +38,7 @@ public:
     ros::NodeHandle& n;
 
     bool isKITTI;
+    bool isChery;
 
     string icpFileName;
     string velodyneDirName;
@@ -78,7 +79,8 @@ scanRegister::scanRegister(ros::NodeHandle& n):
     inputFilterName(getParam<string>("inputFilterName", ".")),
     saveVTKname(getParam<string>("saveVTKname", ".")),
     keepIndexName(getParam<string>("keepIndexName", ".")),
-    isKITTI(getParam<bool>("isKITTI", 0))
+    isKITTI(getParam<bool>("isKITTI", 0)),
+    isChery(getParam<bool>("isChery", 0))
 {
 
 //    mapCloudPub = n.advertise<sensor_msgs::PointCloud2>("mapCloud", 2, true);
@@ -135,22 +137,31 @@ void scanRegister::process(int indexCnt)
 {
     int index = indexVector.at(indexCnt);
 
-    stringstream ss;
-    if(isKITTI)
-        ss<<setw(6)<<setfill('0')<<index;
-    else
-        ss<<setw(10)<<setfill('0')<<index;
-
-    string str;
-    ss>>str;
-    string veloName = velodyneDirName + str + ".bin";
-    cout<<veloName<<endl;
-
     DP velodyneCloud;
-    if(isKITTI)
-        velodyneCloud = this->readKITTIBin(veloName);       // KITTI dataset
+
+    if(!isChery)
+    {
+        stringstream ss;
+        if(isKITTI)
+            ss<<setw(6)<<setfill('0')<<index;
+        else
+            ss<<setw(10)<<setfill('0')<<index;
+
+        string str;
+        ss>>str;
+        string veloName = velodyneDirName + str + ".bin";
+        cout<<veloName<<endl;
+
+        if(isKITTI)
+            velodyneCloud = this->readKITTIBin(veloName);       // KITTI dataset
+        else
+            velodyneCloud = this->readYQBin(veloName);  // YQ dataset
+    }
     else
-        velodyneCloud = this->readYQBin(veloName);  // YQ dataset
+    {
+        string vtkFileName = velodyneDirName + std::to_string(index) + ".vtk";
+        velodyneCloud = DP::load(vtkFileName);  // Chery dataset
+    }
 
     inputFilter.apply(velodyneCloud);
 
@@ -159,6 +170,8 @@ void scanRegister::process(int indexCnt)
     Trobot(1,0)=initPoses[index][4];Trobot(1,1)=initPoses[index][5];Trobot(1,2)=initPoses[index][6];Trobot(1,3)=initPoses[index][7];
     Trobot(2,0)=initPoses[index][8];Trobot(2,1)=initPoses[index][9];Trobot(2,2)=initPoses[index][10];Trobot(2,3)=initPoses[index][11];
     Trobot(3,0)=initPoses[index][12];Trobot(3,1)=initPoses[index][13];Trobot(3,2)=initPoses[index][14];Trobot(3,3)=initPoses[index][15];
+
+    cout<<Trobot<<endl;
 
     transformation->correctParameters(Trobot);
 

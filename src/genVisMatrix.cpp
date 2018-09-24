@@ -39,10 +39,11 @@ public:
     ros::NodeHandle& n;
 
     bool isKITTI;
+    bool isChery;
 
     string loadMapName;
     string loadTrajName;
-    string loadVeloDir;
+    string velodyneDirName;
     string keepIndexName;
 
     DP mapCloud;
@@ -76,13 +77,14 @@ genVisMatrix::genVisMatrix(ros::NodeHandle& n):
     n(n),
     loadMapName(getParam<string>("loadMapName", ".")),
     loadTrajName(getParam<string>("loadTrajName", ".")),
-    loadVeloDir(getParam<string>("loadVeloDir", ".")),
+    velodyneDirName(getParam<string>("velodyneDirName", ".")),
     keepIndexName(getParam<string>("keepIndexName", ".")),
     limitRange(getParam<double>("limitRange", 0)),
     kSearch(getParam<int>("kSearch", 0)),
     transformation(PM::get().REG(Transformation).create("RigidTransformation")),
     saveDirName(getParam<string>("saveDirName", ".")),
-    isKITTI(getParam<bool>("isKITTI", 0))
+    isKITTI(getParam<bool>("isKITTI", 0)),
+    isChery(getParam<bool>("isChery", 0))
 {
 
     // load
@@ -140,21 +142,31 @@ void genVisMatrix::process(int indexCnt)
 
     int index = indexVector.at(indexCnt);
 
-    stringstream ss;
-    if(isKITTI)
-        ss<<setw(6)<<setfill('0')<<index;
-    else
-        ss<<setw(10)<<setfill('0')<<index;
+    DP velodyneCloud;
 
-    string str;
-    ss>>str;
-    string veloName = loadVeloDir + str + ".bin";
-    cout<<veloName<<endl;
+    if(!isChery)
+    {
+        stringstream ss;
+        if(isKITTI)
+            ss<<setw(6)<<setfill('0')<<index;
+        else
+            ss<<setw(10)<<setfill('0')<<index;
 
-    if(isKITTI)
-        velodyneCloud = this->readKITTIBin(veloName);       // KITTI dataset
+        string str;
+        ss>>str;
+        string veloName = velodyneDirName + str + ".bin";
+        cout<<veloName<<endl;
+
+        if(isKITTI)
+            velodyneCloud = this->readKITTIBin(veloName);       // KITTI dataset
+        else
+            velodyneCloud = this->readYQBin(veloName);  // YQ dataset
+    }
     else
-        velodyneCloud = this->readYQBin(veloName);  // YQ dataset
+    {
+        string vtkFileName = velodyneDirName + std::to_string(index) + ".vtk";
+        velodyneCloud = DP::load(vtkFileName);  // Chery dataset
+    }
 
     inputFilter.apply(velodyneCloud);
 
