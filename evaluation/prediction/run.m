@@ -18,5 +18,9 @@
 % just_save(yqmap_10, 0.405, '/home/yh/mapModel/2018/08.03/learn/predict_label_0.02_from_0.1.txt', 1);
 % just_save(yqmap_20, 0.2, '/home/yh/mapModel/2018/08.03/learn/predict_label_0.02_from_0.2.txt', 1);
 
+%% chery test
+
+just_save(parkmap_5, 0.78, '/home/yh/mapModel/2018/09.22/learn/predict_label_0.05.txt', 1);
+
 
 

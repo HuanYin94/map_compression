@@ -8,7 +8,7 @@
 	<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.02/wholeMap_kitti_10_scored.vtk"/>
 	<param name="saveWeightName" value="/home/yh/mapModel/2018/08.02/weightVector.txt"/-->
 	
-	<param name="loadMapName" value="/home/yh/mapModel/2018/09.22/whole_park_scored.ply"/>
+	<param name="loadMapName" value="/home/yh/mapModel/2018/09.22/wholeMap_park_scored.ply"/>
 	<param name="saveWeightName" value="/home/yh/mapModel/2018/09.22/weightVector.txt"/>	
 
   </node>

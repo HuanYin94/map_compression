@@ -19,4 +19,11 @@
 #    zMin: 1.8
 #    zMax: -1.8
 
-# for Chery, remove nothing?
+# for Chery, remove sensors
+- BoundingBoxDataPointsFilter:
+    xMin: -1.5
+    xMax: 1.5
+    yMin: -1.5
+    yMax: 1.5
+    zMin: 1.5
+    zMax: -1.5
