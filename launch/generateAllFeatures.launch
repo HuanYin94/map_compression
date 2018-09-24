@@ -4,12 +4,14 @@
 	
 	<!--Do not save the featured map, temp-->
 
-	<param name="loadTrajName" value="/home/yh/mapModel/2018/08.03/icp_0301.txt"/>
+	<!--param name="loadTrajName" value="/home/yh/mapModel/2018/08.03/icp_0301.txt"/>
 	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.03/keep_0301.txt"/>
 
 	<param name="loadMapName" value="/home/yh/mapModel/2018/08.03/learn/ILP_YQ_map_train_0.2.vtk"/>
 	<param name="saveCloudName" value="/home/yh/mapModel/2018/08.03/learn/ILP_YQ_map_train_0.2_label.vtk"/>
-	<param name="saveFeaturesName" value="/home/yh/mapModel/2018/08.03/learn/ILP_YQ_map_train_0.2_label.txt"/>
+	<param name="saveFeaturesName" value="/home/yh/mapModel/2018/08.03/learn/ILP_YQ_map_train_0.2_label.txt"/-->
+
+
 
 	<!--param name="loadTrajName" value="/home/yh/mapModel/2018/08.02/kitti10_pose.txt"/>
 	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.02/kitti10_keep.txt"/>
@@ -17,6 +19,15 @@
 	<param name="loadMapName" value="/home/yh/mapModel/2018/08.02/learn/ILP_kitti10_map_train_0.2.vtk"/>
 	<param name="saveCloudName" value="/home/yh/mapModel/2018/08.02/learn/ILP_kitti10_map_train_0.2_label.vtk"/>
 	<param name="saveFeaturesName" value="/home/yh/mapModel/2018/08.02/learn/ILP_kitti10_map_train_0.2_label.txt"/-->
+
+
+
+	<param name="loadTrajName" value="/home/yh/mapModel/2018/09.22/global_pose.txt"/>
+	<param name="keepIndexName" value="/home/yh/mapModel/2018/09.22/keep_chery.txt"/>
+
+	<param name="loadMapName" value="/home/yh/mapModel/2018/09.22/ILP_park_map_0.2.ply"/>
+	<param name="saveCloudName" value="/home/yh/mapModel/2018/09.22/learn/ILP_park_map_0.2_label.ply"/>
+	<param name="saveFeaturesName" value="/home/yh/mapModel/2018/09.22/learn/ILP_park_map_0.2_label.txt"/>
 	
   <!--For Orientation feature of the point & road/-->
   <!--param name="roadDNA" value="100"/-->

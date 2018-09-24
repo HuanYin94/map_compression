@@ -18,7 +18,7 @@
 	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.02/kitti10_keep.txt"/>
 　　　 <param name="saveDirName" value="/home/yh/mapModel/2018/08.02/visMatrix/"/-->
 
-	<param name="loadMapName" value="/home/yh/mapModel/2018/09.22/whole_park.ply"/>
+	<param name="loadMapName" value="/home/yh/mapModel/2018/09.22/wholeMap_park.ply"/>
 	<param name="loadTrajName" value="/home/yh/mapModel/2018/09.22/global_pose.txt"/>
 	<param name="velodyneDirName" value="/home/yh/mapModel/2018/09.22/scan/"/>
 	<param name="keepIndexName" value="/home/yh/mapModel/2018/09.22/keep_chery.txt"/>
