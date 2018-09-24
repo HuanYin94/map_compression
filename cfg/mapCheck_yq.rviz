@@ -7,7 +7,6 @@ Panels:
         - /Global Options1
         - /Status1
         - /PointCloud21
-        - /PointCloud21/Status1
         - /PointCloud21/Autocompute Value Bounds1
         - /PointCloud22
         - /Path1
@@ -46,10 +45,10 @@ Visualization Manager:
         Min Value: -12.2623
         Value: true
       Axis: Z
-      Channel Name: label
+      Channel Name: salient
       Class: rviz/PointCloud2
       Color: 0; 0; 255
-      Color Transformer: FlatColor
+      Color Transformer: Intensity
       Decay Time: 0
       Enabled: true
       Invert Rainbow: false
@@ -103,7 +102,7 @@ Visualization Manager:
       Buffer Length: 10
       Class: rviz/Path
       Color: 0; 255; 0
-      Enabled: false
+      Enabled: true
       Head Diameter: 0.1
       Head Length: 0.1
       Length: 1
@@ -121,7 +120,7 @@ Visualization Manager:
       Shaft Length: 0.1
       Topic: /mapPath
       Unreliable: false
-      Value: false
+      Value: true
     - Alpha: 0.5
       Cell Size: 10
       Class: rviz/Grid
@@ -194,22 +193,22 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 123.876
+      Distance: 92.6235
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.06
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -21.2607
-        Y: 9.14141
-        Z: 34.8924
+        X: -19.3251
+        Y: 37.0222
+        Z: 46.92
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 1.5698
+      Pitch: 1.2198
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 3.9054
+      Yaw: 5.2354
     Saved: ~
 Window Geometry:
   Displays:
@@ -227,5 +226,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1879
-  X: 100
-  Y: 40
+  X: 31
+  Y: 14

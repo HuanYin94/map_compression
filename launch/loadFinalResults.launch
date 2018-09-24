@@ -2,13 +2,22 @@
 
   <node pkg="map_compression" type="loadFinalResults" name="loadFinalResults" output="screen">
 
-	<param name="loadResultName" value="/home/yh/mapModel/2018/08.03/learn/predict_label_0.02_from_0.2.txt"/>
+
+	<!--param name="loadResultName" value="/home/yh/mapModel/2018/08.03/learn/predict_label_0.02_from_0.2.txt"/>
 	<param name="loadMapName" value="/home/yh/mapModel/2018/08.03/learn/ILP_YQ_map_test_0.02.vtk"/>
-	<param name="saveCloudName" value="/home/yh/mapModel/2018/08.03/learn/Learned_YQ_map_test_0.02_from_0.2.ply"/>
+	<param name="saveCloudName" value="/home/yh/mapModel/2018/08.03/learn/Learned_YQ_map_test_0.02_from_0.2.ply"/-->
+
+
 
 	<!--param name="loadResultName" value="/home/yh/mapModel/2018/08.02/learn/predict_label_0.05.txt"/>
 	<param name="loadMapName" value="/home/yh/mapModel/2018/08.02/learn/ILP_kitti10_map_test_0.05.vtk"/>
 	<param name="saveCloudName" value="/home/yh/mapModel/2018/08.02/learn/Learned_kitti10_map_test_0.05.vtk"/-->
+
+
+	<param name="loadResultName" value="/home/yh/mapModel/2018/09.22/learn/predict_label_0.05.txt"/>
+	<param name="loadMapName" value="/home/yh/mapModel/2018/09.22/ILP_park_map_0.05.ply"/>
+	<param name="saveCloudName" value="/home/yh/mapModel/2018/09.22/learn/Learned_park_map_0.05.ply"/>
+
 	
   </node>
 </launch>
