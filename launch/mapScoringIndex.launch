@@ -21,11 +21,11 @@
 	<param name="icpFileName" value="/home/yh/mapModel/2018/08.02/kitti10_pose.txt"/>
 	<param name="saveVTKname" value="/home/yh/mapModel/2018/08.02/wholeMap_kitti_10_scored.vtk"/-->
 
-	<param name="wholeMapName" value="/home/yh/mapModel/2018/09.22/whole_park.ply"/>
+	<param name="wholeMapName" value="/home/yh/mapModel/2018/09.22/wholeMap_park.ply"/>
 	<param name="icpFileName" value="/home/yh/mapModel/2018/09.22/global_pose.txt"/>
 	<param name="velodyneDirName" value="/home/yh/mapModel/2018/09.22/scan/"/>
 	<param name="keepIndexName" value="/home/yh/mapModel/2018/09.22/keep_chery.txt"/>
-　　　 <param name="saveVTKname" value="/home/yh/mapModel/2018/09.22/whole_park_scored.ply"/>
+　　　 <param name="saveVTKname" value="/home/yh/mapModel/2018/09.22/wholeMap_park_scored.ply"/>
 	
 	<param name="limitRange" value="0.1"/>
 	<param name="kSearch" value="10"/>
