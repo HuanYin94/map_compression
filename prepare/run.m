@@ -13,7 +13,14 @@
 
 %% test
 
-icp0901_new = poseSparsification( icp0901, '/home/yh/mapModel/2018/08.03/test/keep_0901.txt', 0.20);
-getDistribution(icp0901);
+% icp0901_new = poseSparsification( icp0901, '/home/yh/mapModel/2018/08.03/test/keep_0901.txt', 0.20);
+% getDistribution(icp0901);
+% hold on;
+% getDistribution(icp0901_new);
+
+%% Chery test'
+
+chery_pose = poseSparsification( globalpose, '/home/yh/mapModel/2018/09.22/keep_chery.txt', 0.20);
+getDistribution(globalpose);
 hold on;
-getDistribution(icp0901_new);
+getDistribution(chery_pose);
