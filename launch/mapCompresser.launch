@@ -14,9 +14,9 @@
 	<param name="saveMapName" value="/home/yh/mapModel/2018/08.03/test/ILP_YQ_map_test_0.02_locTest.ply"/-->
 	
 
-	<param name="loadMapName" value="/home/yh/mapModel/2018/09.22/learn/Learned_park_map_0.01.ply"/> 
-	　<param name="desName" value="salient_predicted"/> 
-	<param name="saveMapName" value="/home/yh/mapModel/2018/09.22/learn/LocTest_park_map_0.01_learn.ply"/>	
+	<param name="loadMapName" value="/home/yh/mapModel/2018/09.22/learn/Learned_park_map_0.2.ply"/> 
+	　<param name="desName" value="salient"/> 
+	<param name="saveMapName" value="/home/yh/mapModel/2018/09.22/learn/LocTest_park_map_0.2_program.ply"/>	
 
   </node>
 </launch>

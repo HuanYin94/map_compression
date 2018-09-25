@@ -2,12 +2,12 @@
 
   	<node pkg="map_compression" type="clusterMap" name="clusterMap" output="screen">
 	
-  	<param name="loadMapName" value="/home/yh/mapModel/2018/08.03/test/Learned_YQ_map_test_PART.ply"/>
-  	<param name="saveMapName" value="/home/yh/mapModel/2018/08.03/test/Cluster_YQ_map_test_0.02_locTest.ply"/>
+  	<param name="loadMapName" value="/home/yh/mapModel/2018/09.22/wholeMap_park.ply"/>
+  	<param name="saveMapName" value="/home/yh/mapModel/2018/09.22/locTest/Cluster_park_map_0.02.ply"/>
     <param name="disThreshold" value="0.25"/>
     <param name="minNum" value="20"/>
     <param name="maxNum" value="100"/>
-    <param name="expectedNum" value="13198"/>
+    <param name="expectedNum" value="11148"/>
 
   </node>
 </launch>
