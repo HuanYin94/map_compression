@@ -12,8 +12,8 @@
 
 ### DIRECTORIES:
 
-> + `cfg`
-	.rviz & filter.yaml, visualization & configuration
+> + `cfg`  
+.rviz & filter.yaml, visualization & configuration
 > + `gurobi`
 	programming code, Matlab
 > + `launch`
