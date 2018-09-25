@@ -34,7 +34,7 @@
 
 
 	<!--PARK-->
-	<param name="wholeMapName" value="/home/yh/mapModel/2018/09.22/learn/LocTest_park_map_0.01_learn.ply"/> 
+	<param name="wholeMapName" value="/home/yh/mapModel/2018/09.22/locTest/Random1_park_map_0.02.ply"/> 
 	<param name="velodyneDirName" value="/home/yh/mapModel/2018/09.22/scan/"/>
 	<param name="keepIndexName" value="/home/yh/mapModel/2018/09.22/keep_chery.txt"/> 
 	<param name="icpFileName" value="/home/yh/mapModel/2018/09.22/global_pose.txt"/>
@@ -46,8 +46,8 @@
 	<param name="mapFilterYaml" value="$(find map_compression)/cfg/loc_map_filters.yaml"/>
 	<param name="icpYaml" value="$(find map_compression)/cfg/loc_icp.yaml"/>
 
-	<param name="savePoseName" value="/home/yh/mapModel/2018/09.22/locTest/park_learn_1_pose.txt"/>
-	<param name="saveTimeName" value="/home/yh/mapModel/2018/09.22/locTest/park_learn_1_time.txt"/>
+	<param name="savePoseName" value="/home/yh/mapModel/2018/09.22/locTest/park_random1_2_pose.txt"/>
+	<param name="saveTimeName" value="/home/yh/mapModel/2018/09.22/locTest/park_random1_2_time.txt"/>
 
 
 
