@@ -2,9 +2,9 @@
 
   	<node pkg="map_compression" type="voxelMap" name="voxelMap" output="screen">
 	
-  	<param name="loadMapName" value="/home/yh/mapModel/2018/08.03/test/Learned_YQ_map_test_PART.ply"/>
-  	<param name="saveMapName" value="/home/yh/mapModel/2018/08.03/test/Voxel_YQ_map_test_0.02_locTest.ply"/>
-    <param name="leafSize" value="2.72"/>
+  	<param name="loadMapName" value="/home/yh/mapModel/2018/09.22/wholeMap_park.ply"/>
+  	<param name="saveMapName" value="/home/yh/mapModel/2018/09.22/locTest/Voxel_park_map_0.02.ply"/>
+    <param name="leafSize" value="2.2"/>
 
   </node>
 </launch>

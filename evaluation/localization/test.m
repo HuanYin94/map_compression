@@ -194,7 +194,7 @@
 % 
 
 subplot(1,4,1)
-h = boxplot([transErrors_20_P, transErrors_20_L, transErrors_20_R, transErrors_20_V, transErrors_20_S], 'Labels',{'Mp','Ml','Mr','Mv', 'Ms'}, 'OutlierSize', 8, 'colors', {'b', 'g', 'r', 'c', 'm'});
+h = boxplot([transErrors_20_P, transErrors_20_L, transErrors_20_R, transErrors_20_V, transErrors_20_S], 'Labels',{'Mp','Ml','Mr','Mv', 'Ms'}, 'OutlierSize', 8);
 title('20%');
 ylim([0 0.5]);
 ylabel('Translation error (m)', 'FontWeight', 'bold', 'FontSize', 12);
