@@ -37,12 +37,6 @@ ${catkin_LIBRARIES}
 ${libpointmatcher_LIBRARIES}
 )
 
-add_executable(sessionFilter src/sessionFilter.cpp)
-target_link_libraries(sessionFilter
-${catkin_LIBRARIES}
-${libpointmatcher_LIBRARIES}
-)
-
 add_executable(loadFinalResults src/loadFinalResults.cpp)
 target_link_libraries(loadFinalResults
 ${catkin_LIBRARIES}
@@ -81,12 +75,6 @@ ${libpointmatcher_LIBRARIES}
 
 add_executable(mapScoringIndex src/mapScoringIndex.cpp)
 target_link_libraries(mapScoringIndex
-${catkin_LIBRARIES}
-${libpointmatcher_LIBRARIES}
-)
-
-add_executable(matchOut src/matchOut.cpp)
-target_link_libraries(matchOut
 ${catkin_LIBRARIES}
 ${libpointmatcher_LIBRARIES}
 )
