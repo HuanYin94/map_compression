@@ -19,7 +19,7 @@
 	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.02/kitti10_keep.txt"/-->
 
 	<!--param name="loadMapName" value="/home/yh/mapModel/2018/09.22/ILP_park_map_0.1.ply"/-->
-	<param name="loadMapName" value="/home/yh/mapModel/2018/09.22/learn/Learned_park_map_0.05.ply"/>
+	<param name="loadMapName" value="/home/yh/mapModel/2018/09.22/learn/Learned_park_map_0.02.ply"/>
 
 	<param name="loadTrajName" value="/home/yh/mapModel/2018/09.22/global_pose.txt"/>
 	<param name="keepIndexName" value="/home/yh/mapModel/2018/09.22/keep_chery.txt"/>

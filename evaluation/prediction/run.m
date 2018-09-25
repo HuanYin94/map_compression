@@ -20,7 +20,7 @@
 
 %% chery test
 
-just_save(parkmap_5, 0.78, '/home/yh/mapModel/2018/09.22/learn/predict_label_0.05.txt', 1);
+just_save(parkmap_5, 0.60, '/home/yh/mapModel/2018/09.22/learn/predict_label_0.01_from_0.05.txt', 1);
 
 
 
