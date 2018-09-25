@@ -10,7 +10,6 @@
 
 ![image](https://github.com/ZJUYH/map_compression/blob/master/pics/system.png)
 
-
 ### DIRECTORIES:
 
 > + `cfg`
@@ -28,7 +27,7 @@
 > + `evaluation`
 	prediction and localization evaluation matlab files
 > + `pics`
-	some pictures
+	some pictures of results
 
 ### The order of programming/learning based map compression:
 
