@@ -8,6 +8,8 @@
 
 ## Learned map compression in 3D LiDAR
 
+![image](https://github.com/ZJUYH/map_compression/blob/master/pics/system.png)
+
 
 ### DIRECTORIES:
 
@@ -28,7 +30,7 @@
 > + `pics`
 	some pictures
 
-### The order of leaned map compression:
+### The order of programming/learning based map compression:
 
 > + `prepare poses and scans`
 	get the sparser poses for robot stopping cases, magic number used for uniform density of poses
@@ -52,7 +54,7 @@
  	Matlab files, partitioning and optimization
 
 > + `loadProResult.launch`
-	load the programming results from gurobi_compress directory, generate *ground truth* saliency points
+	load the programming results from gurobi_compress directory, generate *ground truth* saliency points, Mp
 
 > + `mapCutterTraj.launch`
 	cut the map to train & test parts for random forest, some maps are not needed
@@ -67,7 +69,7 @@
 	from 0~1 to 0 or 1
 
 > + `loadFinalResults.launch`
-	load the learned results from prediction.txt
+	load the learned results from prediction.txt, Ml
 
 > + `errorDistribution.launch`
     get the difference metrics between learned and programmed maps 
