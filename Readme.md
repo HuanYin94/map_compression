@@ -14,18 +14,25 @@
 
 > + `cfg`  
 .rviz & filter.yaml, visualization & configuration
+
 > + `gurobi`  
 programming code, Matlab
+
 > + `launch`  
 launch ros nodes, C++
+
 > + `prepare`  
 sparcify the dnese poses, generate keep.txt, Matlab
+
 > + `random_forest`  
 train & test, learning part, copy from GitHub, thanks to [ranger](https://github.com/your/project/tags)
+
 > + `src`  
 .cpp files using ros api & [libpointmatcher](https://github.com/ethz-asl/libpointmatcher)
+
 > + `evaluation`  
 prediction and localization evaluation matlab files
+
 > + `pics`  
 some pictures of results
 
