@@ -59,6 +59,7 @@ public:
     int endIndex;
 
     bool isKITTI;
+    bool isChery;
 
     //icp
     PM::DataPointsFilters inputFilters;
@@ -98,7 +99,8 @@ locTest::locTest(ros::NodeHandle& n):
     saveTimeName(getParam<string>("saveTimeName", ".")),
     inputFilterYaml(getParam<string>("inputFilterYaml", ".")),
     mapFilterYaml(getParam<string>("mapFilterYaml", ".")),
-    isKITTI(getParam<bool>("isKITTI", ".")),
+    isKITTI(getParam<bool>("isKITTI", 0)),
+    isChery(getParam<bool>("isChery", 0)),
     keepIndexName(getParam<string>("keepIndexName", ".")),
     transformation(PM::get().REG(Transformation).create("RigidTransformation"))
 {
@@ -201,21 +203,29 @@ void locTest::process(int indexCnt)
         return;
     }
 
-    stringstream ss;
-    if(isKITTI)
-        ss<<setw(6)<<setfill('0')<<index;
-    else
-        ss<<setw(10)<<setfill('0')<<index;
+    if(!isChery)
+    {
+        stringstream ss;
+        if(isKITTI)
+            ss<<setw(6)<<setfill('0')<<index;
+        else
+            ss<<setw(10)<<setfill('0')<<index;
 
-    string str;
-    ss>>str;
-    string veloName = velodyneDirName + str + ".bin";
-    cout<<veloName<<endl;
+        string str;
+        ss>>str;
+        string veloName = velodyneDirName + str + ".bin";
+        cout<<veloName<<endl;
 
-    if(isKITTI)
-        velodyneCloud = this->readKITTIBin(veloName);       // KITTI dataset
+        if(isKITTI)
+            velodyneCloud = this->readKITTIBin(veloName);       // KITTI dataset
+        else
+            velodyneCloud = this->readYQBin(veloName);  // YQ dataset
+    }
     else
-        velodyneCloud = this->readYQBin(veloName);  // YQ dataset
+    {
+        string vtkFileName = velodyneDirName + std::to_string(index) + ".vtk";
+        velodyneCloud = DP::load(vtkFileName);  // Chery dataset
+    }
 
     cout<<"VEL_NUM:  "<<velodyneCloud.features.cols()<<endl;
 

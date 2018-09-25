@@ -4,23 +4,23 @@
 
   <node pkg="map_compression" type="locTest" name="locTest" output="screen">
 	
-	<!--KITTI or YQ-->
-	<param name="isKITTI" value="false" />
+	<!--KITTI or YQ # add Chery.vtk-->
+	<param name="isChery" value="true" />	
+	<param name="isKITTI" value="false" />	
+	
 
+	<!--YQ-->
 	<!--Not close to the beginning and end of the cutted map-->
 	<!--Multi-session test, in Day three-->
-	<param name="wholeMapName" value="/home/yh/mapModel/2018/08.03/test/Learned_YQ_map_test_PART.ply"/> 
-	<!--param name="velodyneDirName" value="/media/yh/YH/DataSet/YQ21/2017_03_03/2017_03_03_drive_0001_sync/velodyne_points/data/"/>
-	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.03/keep_0301.txt"/> 
-	<param name="icpFileName" value="/home/yh/mapModel/2018/08.03/icp_0301.txt"/-->
+	<!--param name="wholeMapName" value="/home/yh/mapModel/2018/08.03/test/Learned_YQ_map_test_PART.ply"/> 
 	<param name="velodyneDirName" value="/media/yh/YH/DataSet/YQ21/2017_03_09/2017_03_09_drive_0001_sync/velodyne_points/data/"/>
 	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.03/test/keep_0901.txt"/> 
-	<param name="icpFileName" value="/home/yh/mapModel/2018/08.03/test/icp_0901.txt"/>
+	<param name="icpFileName" value="/home/yh/mapModel/2018/08.03/test/icp_0901.txt"/-->
 	
 	<!--param name="startIndex" value="3500"/>
 	<param name="endIndex" value="4900"/-->
 
-	<param name="startIndex" value="4445"/>
+	<!--param name="startIndex" value="4445"/>
 	<param name="endIndex" value="4450"/>
 	
 	<param name="inputFilterYaml" value="$(find map_compression)/cfg/loc_laser_filters.yaml"/>
@@ -28,8 +28,35 @@
 	<param name="icpYaml" value="$(find map_compression)/cfg/loc_icp.yaml"/>
 
 	<param name="savePoseName" value="/home/yh/mapModel/2018/08.22/yq_random_2_pose.txt"/>
-	<param name="saveTimeName" value="/home/yh/mapModel/2018/08.22/yq_random_2_time.txt"/>
+	<param name="saveTimeName" value="/home/yh/mapModel/2018/08.22/yq_random_2_time.txt"/-->
 
+
+
+
+	<!--PARK-->
+	<param name="wholeMapName" value="/home/yh/mapModel/2018/09.22/learn/LocTest_park_map_0.01_learn.ply"/> 
+	<param name="velodyneDirName" value="/home/yh/mapModel/2018/09.22/scan/"/>
+	<param name="keepIndexName" value="/home/yh/mapModel/2018/09.22/keep_chery.txt"/> 
+	<param name="icpFileName" value="/home/yh/mapModel/2018/09.22/global_pose.txt"/>
+
+	<param name="startIndex" value="0"/>
+	<param name="endIndex" value="1160"/>
+	
+	<param name="inputFilterYaml" value="$(find map_compression)/cfg/loc_laser_filters.yaml"/>
+	<param name="mapFilterYaml" value="$(find map_compression)/cfg/loc_map_filters.yaml"/>
+	<param name="icpYaml" value="$(find map_compression)/cfg/loc_icp.yaml"/>
+
+	<param name="savePoseName" value="/home/yh/mapModel/2018/09.22/locTest/park_learn_1_pose.txt"/>
+	<param name="saveTimeName" value="/home/yh/mapModel/2018/09.22/locTest/park_learn_1_time.txt"/>
+
+
+
+
+
+
+
+
+	<!--KITTI-->
 	<!--param name="wholeMapName" value="/home/yh/mapModel/2018/08.02/test/Learned_kitti10_map_test_0.05_locTest.ply"/> 
 	<param name="velodyneDirName" value="/media/yh/YH/DataSet/kitti_benchmark_velodyne/dataset/sequences/10/velodyne/"/>
 	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.02/kitti10_keep.txt"/> 
