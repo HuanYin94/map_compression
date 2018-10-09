@@ -218,6 +218,10 @@ void mapCheck::process()
 //    cout<<"salient num:  "<<staticCloud.features.cols()<<endl;
     cout<<"static num:  "<<staticCloud.features.cols()<<endl;
 
+    // the first points of YQ map are not observed ? ...
+//    cout<<mapCloud.features(0,0)<<"  "<<mapCloud.features(1,0)<<"  "<<mapCloud.features(2,0)<<endl;
+//    cout<<mapCloud.features(0,1)<<"  "<<mapCloud.features(1,1)<<"  "<<mapCloud.features(2,1)<<endl;
+
 }
 
 int main(int argc, char **argv)

@@ -27,7 +27,7 @@ function [  ] = writeVisTxt( filesDir, saveAddress )
         for m = 1:length(pointID)
            % write pairs as edges  
            fprintf(saveFile,'%d ', i);
-           fprintf(saveFile,'%d\n', pointID(m));
+           fprintf(saveFile,'%d\n', (pointID(m) + pathLength)); % index from pathLength, not zero, changed for graph cut 
 
         end
             
