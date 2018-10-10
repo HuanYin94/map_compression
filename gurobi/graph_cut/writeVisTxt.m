@@ -24,6 +24,12 @@ function [  ] = writeVisTxt( filesDir, saveAddress )
         % from beginning to the end ?
         pointID = sort(pointID);
         
+        % write edges between poses
+        if i>0
+           fprintf(saveFile,'%d ', i);
+           fprintf(saveFile,'%d\n', i-1);    
+        end
+        
         for m = 1:length(pointID)
            % write pairs as edges  
            fprintf(saveFile,'%d ', i);
