@@ -1,5 +1,5 @@
-function [ pointByPose ] = getPoseGraph( filesDir)
-%GETPOSEGRAPH Summary of this function goes here
+function [ pointByPose ] = getPointMat( filesDir)
+%XXXX Summary of this function goes here
 %   Detailed explanation goes here
     
     fileExt = '*.txt';
