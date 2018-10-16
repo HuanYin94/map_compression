@@ -21,7 +21,7 @@ function [ pointByPose ] = getPointMat( filesDir)
         
         % add this pose to some point        
         for p = 1:length(pointID)
-           pointByPose(pointID(1), i+1) = i+1; 
+           pointByPose(pointID(p), i+1) = i+1; 
         end
         
     end
