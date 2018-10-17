@@ -1,4 +1,5 @@
 import sys
+import time
 
 import matplotlib.pyplot as plt
 import networkx as nx
@@ -26,10 +27,19 @@ file.close()
 
 print('start gomory')
 
+# gomory and count
+start = time.clock()
 T = nx.gomory_hu_tree(G, capacity='weight')
+elapsed = (time.clock() - start)
+print("Time used:",elapsed)
 
+# save
+nx.write_weighted_edgelist(G, 'pose_weighted.edgelist')
+
+# draw try
 weight = nx.get_edge_attributes(T,'weight')
 nx.draw_circular(T, with_labels=True, font_weight='bold')
 layout = nx.circular_layout(T)
 nx.draw_networkx_edge_labels(T,pos=layout,edge_labels=weight)
 plt.show()
+#
