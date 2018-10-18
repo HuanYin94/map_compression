@@ -4,12 +4,24 @@
 
 	<!--param name="loadMapName" value="/home/yh/UTS_2d_August.vtk"/-->
 
-	<param name="loadMapName" value="/home/yh/mapModel/2018/08.03/wholeMap_yq_scored.vtk"/>
+
+	<!--Score_0 or Salient_1 or prediction_2? Do not forget-->
+	<param name="staticInt" value="15"/> 	
+	<param name="showType" value="2"/>
+
+
+
+
+	<param name="loadMapName" value="/home/yh/mapModel/2018/10.18/wholeMap_yq_scored.vtk"/>
 	<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.03/learn/Learned_YQ_map_test_0.2.vtk"/-->
 	<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.03/test/Learned_YQ_map_test_0.2_locTest.ply"/-->
 
-	<param name="loadTrajName" value="/home/yh/mapModel/2018/08.03/icp_0301.txt"/>
-	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.03/keep_0301.txt"/>
+	<param name="loadTrajName" value="/home/yh/mapModel/2018/10.18/icp_0301.txt"/>
+	<param name="keepIndexName" value="/home/yh/mapModel/2018/10.18/keep_0301.txt"/>
+
+
+
+
 
 	<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.02/ILP_kitti10_map_0.05.vtk"/-->
 	<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.02/learn/Learned_kitti10_map_test_0.2.vtk"/-->
@@ -18,15 +30,15 @@
 	<param name="loadTrajName" value="/home/yh/mapModel/2018/08.02/kitti10_pose.txt"/>
 	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.02/kitti10_keep.txt"/-->
 
+
+
+
+
 	<!--param name="loadMapName" value="/home/yh/mapModel/2018/09.22/ILP_park_map_0.1.ply"/-->
 	<!--param name="loadMapName" value="/home/yh/mapModel/2018/09.22/learn/LocTest_park_map_0.02_program.ply"/-->
 
-	<param name="loadTrajName" value="/home/yh/mapModel/2018/09.22/global_pose.txt"/>
-	<param name="keepIndexName" value="/home/yh/mapModel/2018/09.22/keep_chery.txt"/>
-
-	<!--Score_0 or Salient_1 or prediction_2? Do not forget-->
-	<param name="staticInt" value="15"/> 	
-	<param name="showType" value="2"/>
+	<!--param name="loadTrajName" value="/home/yh/mapModel/2018/09.22/global_pose.txt"/>
+	<param name="keepIndexName" value="/home/yh/mapModel/2018/09.22/keep_chery.txt"/-->
 
 
   </node>

@@ -20,7 +20,17 @@
 
 %% Chery test'
 
-chery_pose = poseSparsification( globalpose, '/home/yh/mapModel/2018/09.22/keep_chery.txt', 0.20);
-getDistribution(globalpose);
+% chery_pose = poseSparsification( globalpose, '/home/yh/mapModel/2018/09.22/keep_chery.txt', 0.20);
+% getDistribution(globalpose);
+% hold on;
+% getDistribution(chery_pose);
+
+%% New YQ data pepare, the former are too dense\
+
+icp0301_new = poseSparsification( icp0301, '/home/yh/mapModel/2018/10.18/keep_0301.txt', 1.0);
+getDistribution(icp0301);
 hold on;
-getDistribution(chery_pose);
+getDistribution(icp0301_new);
+
+
+
