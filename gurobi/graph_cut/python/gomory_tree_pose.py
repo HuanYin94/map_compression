@@ -6,14 +6,15 @@ import networkx as nx
 from networkx.algorithms import flow
 
 # init
-pathLength = 4924
+pathLength = 1174
 G = nx.Graph();
 
 
-for i in range(0, 4923):
+for i in range(0, 1173):
 	G.add_node(i)
 
-file = open("/home/yh/mapModel/2018/10.16/pose_graph.txt")
+#file = open("/home/yh/mapModel/2018/10.16/pose_graph.txt")
+file = open("/home/yinhuan/pose_graph_yq.txt")
 
 print('file open, adding edges')
 
@@ -34,7 +35,7 @@ elapsed = (time.clock() - start)
 print("Time used:",elapsed)
 
 # save
-nx.write_weighted_edgelist(G, 'pose_weighted.edgelist')
+nx.write_weighted_edgelist(G, '/home/yinhuan/gomory_yq.edgelist')
 
 # draw try
 weight = nx.get_edge_attributes(T,'weight')
