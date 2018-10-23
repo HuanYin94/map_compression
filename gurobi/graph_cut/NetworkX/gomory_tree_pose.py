@@ -35,7 +35,7 @@ elapsed = (time.clock() - start)
 print("Time used:",elapsed)
 
 # save
-nx.write_weighted_edgelist(G, '/home/yinhuan/gomory_yq.edgelist')
+nx.write_weighted_edgelist(T, '/home/yinhuan/gomory_yq.edgelist')
 
 # draw try
 weight = nx.get_edge_attributes(T,'weight')

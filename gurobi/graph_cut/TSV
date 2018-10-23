@@ -1,1 +1,0 @@
-csvtool -t SPACE -u SPACE cat vis.txt > vis.tsv
