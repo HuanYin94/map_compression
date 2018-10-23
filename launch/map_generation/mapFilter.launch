@@ -1,15 +1,15 @@
 <launch>
 
 	<node pkg="map_compression" type="mapFilter" name="mapFilter" output="screen">
+	
+	<param name="loadMapName" value="/home/yh/mapModel/2018/10.18/wholeMap_yq_origin.vtk"/>
+    <param name="saveMapName" value="/home/yh/mapModel/2018/10.18/wholeMap_yq.vtk"/>	
 
 	<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.02/wholeMap_kitti_10_origin.vtk"/>
 	<param name="saveMapName" value="/home/yh/mapModel/2018/08.02/wholeMap_kitti_10.vtk"/-->
 
-	<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.03/wholeMap_yq_origin.vtk"/>
-    <param name="saveMapName" value="/home/yh/mapModel/2018/08.03/wholeMap_yq.vtk"/-->
-
-	<param name="loadMapName" value="/home/yh/mapModel/2018/09.22/wholeMap_park_origin.ply"/>
-    <param name="saveMapName" value="/home/yh/mapModel/2018/09.22/wholeMap_park.ply"/>
+	<!--param name="loadMapName" value="/home/yh/mapModel/2018/09.22/wholeMap_park_origin.ply"/>
+    <param name="saveMapName" value="/home/yh/mapModel/2018/09.22/wholeMap_park.ply"/-->
 
 	<param name="mapPostFilters" value="/home/yh/mine_ws/src/map_compression/cfg/map_filters.yaml"/> 	
 
