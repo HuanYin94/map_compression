@@ -24,5 +24,16 @@ mc = g.mincut()
 
 print mc
 
-layout = t.layout("kk")
-plot(t, layout = layout)
+# layout = t.layout("kk")
+# plot(t, layout = layout)
+
+saveFile = open("/home/yh/saved.txt", "w");
+
+for e in g.es:
+	print e.tuple
+	saveFile.write(str(e.tuple[0])+' ')
+	saveFile.write(str(e.tuple[1])+' ')
+	print e["weight"]
+	saveFile.write(str(e["weight"])+'\n')
+
+saveFile.close();
