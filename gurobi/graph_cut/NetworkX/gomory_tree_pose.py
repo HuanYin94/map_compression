@@ -4,6 +4,7 @@ import time
 import matplotlib.pyplot as plt
 import networkx as nx
 from networkx.algorithms import flow
+from networkx.algorithms.flow import shortest_augmenting_path
 
 # init
 pathLength = 1174
@@ -14,7 +15,7 @@ for i in range(0, 1173):
 	G.add_node(i)
 
 #file = open("/home/yh/mapModel/2018/10.16/pose_graph.txt")
-file = open("/home/yinhuan/pose_graph_yq.txt")
+file = open("/home/yinhuan/gomory_yq_s.edgelist")
 
 print('file open, adding edges')
 
@@ -30,12 +31,12 @@ print('start gomory')
 
 # gomory and count
 start = time.clock()
-T = nx.gomory_hu_tree(G, capacity='weight')
+T = nx.gomory_hu_tree(G, capacity='weight', flow_func=shortest_augmenting_path)
 elapsed = (time.clock() - start)
 print("Time used:",elapsed)
 
 # save
-nx.write_weighted_edgelist(T, '/home/yinhuan/gomory_yq.edgelist')
+nx.write_weighted_edgelist(T, '/home/yinhuan/gomory_yq_ss.edgelist')
 
 # draw try
 weight = nx.get_edge_attributes(T,'weight')
