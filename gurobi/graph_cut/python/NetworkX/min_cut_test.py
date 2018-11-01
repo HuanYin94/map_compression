@@ -2,6 +2,7 @@ import sys
 import time
 
 import networkx as nx
+import matplotlib.pyplot as plt
 
 
 # init
@@ -45,4 +46,19 @@ print("Time used:",elapsed)
 
 set1, set2 = partition
 
-print set1
+list1 = list(set1)
+
+print list1
+
+# H = nx.Graph();
+
+H = G.subgraph(list1)
+
+for line in nx.generate_edgelist(H):
+	print(line)
+
+# weight = nx.get_edge_attributes(H,'weight')
+# nx.draw_circular(H, with_labels=True, font_weight='bold')
+# layout = nx.circular_layout(H)
+# nx.draw_networkx_edge_labels(H,pos=layout,edge_labels=weight)
+# plt.show()
