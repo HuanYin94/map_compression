@@ -31,7 +31,7 @@ function [ ] = getPoseGraph( filesDir, windowLength, saveAddress )
                 fprintf(saveFile,'%d ', j);
                 fprintf(saveFile,'%d\n', length(samer));
 
-                % build thw window, no matrix
+                % build the window, no matrix
                 windowID{cnt} = pointID_j;
                 cnt = cnt + 1;
             end
@@ -62,7 +62,7 @@ function [ ] = getPoseGraph( filesDir, windowLength, saveAddress )
             
             samer = intersect(pointID_i, windowID{rowLine});
             
-            % no common see
+            % no common see, do not save for simplification in txt file 
             if isempty(samer)
                continue; 
             end
