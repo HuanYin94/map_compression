@@ -6,6 +6,9 @@ function [  ] = seeWhereCuts( cutCostsFile, poses, keepIndex, ignoreSides, testN
     cut_costs = fscanf(file_t, '%d');
     fclose(file_t);
     
+    figure
+    plot(cut_costs, 'k.')
+    
     sorted_costs = sort(cut_costs);
     
    index_need_plot = [];
