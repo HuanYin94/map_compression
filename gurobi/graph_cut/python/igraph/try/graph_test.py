@@ -18,22 +18,20 @@ g.add_edge("4", "5", weight=2)
 
 t = g.gomory_hu_tree(capacity="weight")
 
-print t
+# print t
 
-mc = g.mincut()
+# mc = g.mincut()
 
-print mc
+# print mc
 
 # layout = t.layout("kk")
 # plot(t, layout = layout)
 
-saveFile = open("/home/yh/saved.txt", "w");
+saveFile = open("/home/yinhuan/test.txt", "w");
 
-for e in g.es:
-	print e.tuple
+for e in t.es:
 	saveFile.write(str(e.tuple[0])+' ')
 	saveFile.write(str(e.tuple[1])+' ')
-	print e["weight"]
-	saveFile.write(str(e["weight"])+'\n')
+	saveFile.write(str(e["flow"])+'\n')
 
 saveFile.close();
