@@ -5,12 +5,16 @@ from igraph import *
 
 g = Graph();
 
-g.add_vertices(1174);
+# 4924 nodes in yq dataset Day1-1
+g.add_vertices(4924);
 
 # file = open("/home/yinhuan/gomory_yq_s.edgelist")
-file = open("/home/yh/pose_graph_yq.txt")
+file = open("/home/yinhuan/pose_graph_yq_vis100.txt")
 
 print('file open, adding edges')
+
+for idx, v in enumerate(g.vs):
+    v["name"] = idx
 
 for line in file.readlines():
 	line.strip('\n')	
@@ -20,7 +24,6 @@ for line in file.readlines():
 	g.add_edge(nums[0], nums[1], weight=nums[2])
 
 file.close();
-
 
 
 print('start gomory')
@@ -33,14 +36,13 @@ print("Time used:",elapsed)
 
 
 
-saveFile = open("/home/yh/saved.txt", "w");
+saveFile = open("/home/yinhuan/gomory_yq_vis100.txt", "w");
 
 for e in t.es:
 	saveFile.write(str(e.tuple[0])+' ')
 	saveFile.write(str(e.tuple[1])+' ')
-	saveFile.write(str(e["weight"])+'\n')
+	saveFile.write(str(e["flow"])+'\n')
 
 saveFile.close();
 
-layout = t.layout("kk")
-plot(t, layout = layout)
+print('Finished Saving')
