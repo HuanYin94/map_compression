@@ -1,18 +1,20 @@
-function [ ] = getPoseGraph( filesDir, windowLength, saveAddress )
+function [ ] = getPoseGraph( visFilesDir, windowLength, saveAddress )
 %GETPOSEGRAPH Summary of this function goes here
 %   Detailed explanation goes here
     
     fileExt = '*.txt';
-    files = dir(fullfile(filesDir,fileExt)); 
+    files = dir(fullfile(visFilesDir,fileExt)); 
     
     pathLength= length(files);
     
-    saveFile = fopen(saveAddress, 'w');
+%     saveFile = fopen(saveAddress, 'w');
         
     for i=0:pathLength-1
         i
         
-        fileName_i = [filesDir, num2str(i), '.txt'];     
+        saveFile = fopen(saveAddress, 'a');
+        
+        fileName_i = [visFilesDir, num2str(i), '.txt'];     
         file_t_i = fopen(fileName_i);
         pointID_i = fscanf(file_t_i, '%d');
         
@@ -21,7 +23,7 @@ function [ ] = getPoseGraph( filesDir, windowLength, saveAddress )
             cnt = 1;
             for j=i+1:i+windowLength
             
-                fileName_j = [filesDir, num2str(j), '.txt'];     
+                fileName_j = [visFilesDir, num2str(j), '.txt'];     
                 file_t_j = fopen(fileName_j);
                 pointID_j = fscanf(file_t_j, '%d');
 
@@ -46,7 +48,7 @@ function [ ] = getPoseGraph( filesDir, windowLength, saveAddress )
            
         else
         % read a new txt
-            fileName_j = [filesDir, num2str(i+windowLength), '.txt'];     
+            fileName_j = [visFilesDir, num2str(i+windowLength), '.txt'];     
             file_t_j = fopen(fileName_j);
             pointID_j = fscanf(file_t_j, '%d');
             windowID{cnt} = pointID_j;
@@ -72,7 +74,8 @@ function [ ] = getPoseGraph( filesDir, windowLength, saveAddress )
             fprintf(saveFile,'%d\n', length(samer));
             
         end
-                
+       
+        fclose all;
     end
     
 
