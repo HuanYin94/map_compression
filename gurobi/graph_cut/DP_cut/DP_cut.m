@@ -1,4 +1,4 @@
-function [ ] = DP_cut( cutCostsFile, cut_num, search_k)
+function [ DP_cost, DP_time, av_cost, av_time ] = DP_cut( cutCostsFile, cut_num, search_k)
 %DP_CUT Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -18,6 +18,7 @@ function [ ] = DP_cut( cutCostsFile, cut_num, search_k)
     % find the best/min value in the domain near cut_points as initial
     % values
     
+    tic;
     best_values = [];
     best_cuts = [];
     search_domain = floor(cut_length / search_k);
@@ -34,13 +35,22 @@ function [ ] = DP_cut( cutCostsFile, cut_num, search_k)
         
     end
         
-    sum(best_values)
+    DP_cost = sum(best_values);
+    DP_time = toc;
     
+    
+    
+    
+    
+    
+    tic
     % get average cost sum
     av_sum = 0;
     for i = 1:length(initial_cuts)
        av_sum = av_sum + cut_costs(initial_cuts(i));
     end
-    display(av_sum)
+    av_cost = av_sum;
+    av_time = toc;
+    
 end
 
