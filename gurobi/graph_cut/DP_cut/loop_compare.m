@@ -8,7 +8,7 @@ function [ ] = loop_compare( cutCostsFile, max_cut_num, search_k, max_local_dis 
     av_cost_list = []; av_time_list = [];
 
     for i = 2:max_cut_num
-        [ DP_cost, DP_time, av_cost, av_time ] = DP_cut( cutCostsFile, i, search_k);
+        [ DP_cost, DP_time, av_cost, av_time ] = DP_cut_k( cutCostsFile, i, search_k);
         
         DP_cost_list(i, :) = DP_cost;
         DP_time_list(i, :) = DP_time * 1000;
