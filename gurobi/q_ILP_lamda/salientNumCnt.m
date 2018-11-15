@@ -1,4 +1,4 @@
-function [ num ] = salientNumCnt( filesDir, totalNum )
+function [  ] = salientNumCnt( filesDir, totalNum )
 %SALIENTNUMCNT Summary of this function goes here
 %   Detailed explanation goes here
     
@@ -9,7 +9,6 @@ function [ num ] = salientNumCnt( filesDir, totalNum )
     files = dir(fullfile(filesDir,fileExt));  
         
     for i=0:length(files)-1
-        i
         fileCnt = num2str(i);
         fileName = [filesDir, fileCnt, '.txt'];
         
@@ -25,6 +24,7 @@ function [ num ] = salientNumCnt( filesDir, totalNum )
     
     disp('salient predicted:');
     disp(sum(allPoints));
+    disp(sum(allPoints) / length(allPoints));
     
     num = sum(allPoints);
         

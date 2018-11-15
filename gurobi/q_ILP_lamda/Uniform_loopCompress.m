@@ -10,17 +10,17 @@ function [  ] = Uniform_loopCompress( lamda, qFile, filesDir, cut_num, totalNum,
     q_file_t = fopen(qFile);
     observe_value = fscanf(q_file_t, '%d');
     fclose(q_file_t);
-   q_max = max(observe_value);
-   q_value = q_max - observe_value ;  % same as CVPR_W 2013
+    observe_value(find(observe_value > 100)) = 100;  % remove some unusual counts
+    q_value = (1 - mapminmax(observe_value', 0, 1))';  % actually same as in CVPR_W 2013
    
     time_sum = 0;
     saveCnt = 0;
-    for i=0:splitLength:length(files)
+    for i=0:splitLength:length(files)-1
         disp('-----------------------------------------------------------------------');
-        start = i;
+        start = i; 
         finish = i + splitLength - 1;
         % for the last section
-        if finish > length(files)
+        if finish > (length(files) - splitLength) % last section will be longer than others
             finish = length(files) - 1;
         end
         disp(start);
@@ -34,6 +34,11 @@ function [  ] = Uniform_loopCompress( lamda, qFile, filesDir, cut_num, totalNum,
         
         disp('Compressed & Saved')
         saveCnt = saveCnt + 1;
+        
+        % added fucked!
+        if finish == length(files) - 1 
+            break; % jump out the fucking looping
+        end
         
     end
     
