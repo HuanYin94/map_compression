@@ -1,4 +1,4 @@
-function [  ] = Uniform_loopCompress( lamda, qFile, filesDir, cut_num, totalNum, bValue, saveDir )
+function [ epsilon_soft  ] = Uniform_loopCompress( lamda, qFile, filesDir, cut_num, totalNum, bValue, saveDir )
 %LOOPCOMPRESS Summary of this function goes here
 %   Detailed explanation goes here
     
@@ -15,6 +15,8 @@ function [  ] = Uniform_loopCompress( lamda, qFile, filesDir, cut_num, totalNum,
    
     time_sum = 0;
     saveCnt = 0;
+    epsilon_soft = [];
+    
     for i=0:splitLength:length(files)-1
         disp('-----------------------------------------------------------------------');
         start = i; 
@@ -27,10 +29,13 @@ function [  ] = Uniform_loopCompress( lamda, qFile, filesDir, cut_num, totalNum,
         disp(finish);
         
         % core
-        [compressIndex, time_sec] = section_compress(lamda, q_value, filesDir, start, finish, totalNum, bValue);
+        [compressIndex, time_sec, epsilon_part] = section_compress(lamda, q_value, filesDir, start, finish, totalNum, bValue);
         time_sum = time_sum + time_sec;
         saveName = [saveDir, num2str(saveCnt), '.txt'];
         dlmwrite(saveName, compressIndex, 'precision', '%d');
+        
+        % soft part
+        epsilon_soft  = [epsilon_soft;epsilon_part];
         
         disp('Compressed & Saved')
         saveCnt = saveCnt + 1;
