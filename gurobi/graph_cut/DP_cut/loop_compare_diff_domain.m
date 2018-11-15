@@ -1,4 +1,4 @@
-function [ ] = loop_compare_diff_search( cutCostsFile, max_cut_num, search_domain_1, search_domain_2, search_domain_3, max_local_dis )
+function [ ] = loop_compare_diff_domain( cutCostsFile, max_cut_num, search_domain_1, search_domain_2, search_domain_3, max_local_dis )
 %LOOP_COMPARE_DIFF_SEARCH Summary of this function goes here
 %   Detailed explanation goes here
 

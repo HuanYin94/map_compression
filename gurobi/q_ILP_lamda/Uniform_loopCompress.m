@@ -1,21 +1,22 @@
-function [  ] = loopCompress( lamda, qFile, filesDir, splitLength, totalNum, bValue, saveDir )
+function [  ] = Uniform_loopCompress( lamda, qFile, filesDir, cut_num, totalNum, bValue, saveDir )
 %LOOPCOMPRESS Summary of this function goes here
 %   Detailed explanation goes here
     
     fileExt = '*.txt';
     files = dir(fullfile(filesDir,fileExt));  
     
-    saveCnt = 0;
-    
+    splitLength =  floor(length(files) / cut_num);
+        
     q_file_t = fopen(qFile);
-    q_value = fscanf(q_file_t, '%d');
+    observe_value = fscanf(q_file_t, '%d');
     fclose(q_file_t);
-    q_value(find(q_value>100)) = 100;
-    q_value = (1 - mapminmax(q_value', 0, 1))'; % inverse the weighting as the observation counts
-    
+   q_max = max(observe_value);
+   q_value = q_max - observe_value ;  % same as CVPR_W 2013
+   
     time_sum = 0;
+    saveCnt = 0;
     for i=0:splitLength:length(files)
-        disp('--------------------------------------');
+        disp('-----------------------------------------------------------------------');
         start = i;
         finish = i + splitLength - 1;
         % for the last section
