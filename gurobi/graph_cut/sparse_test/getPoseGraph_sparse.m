@@ -1,4 +1,4 @@
-function [  ] = getPoseGraph_sparse( visFilesDir, windowLength,  sparse_separate, saveAddress  )
+function [ node_list ] = getPoseGraph_sparse( visFilesDir, windowLength,  sparse_separate, saveAddress  )
 %GETPOSEGRAPH_SPARSE Summary of this function goes here
 %   Detailed explanation goes here
     
