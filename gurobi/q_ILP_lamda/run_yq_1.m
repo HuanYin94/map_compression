@@ -8,10 +8,8 @@ totalNum = 1867290;
 
 
 % sparse test
-epsilon_soft_4_DP = DP_loopCompress(0.1, '/home/yinhuan/mapModel/yq/weightVector.txt', '/home/yinhuan/mapModel/yq/rows_cut/sparse/visMatrix/', '/home/yinhuan/mapModel/yq/rows_cut/sparse/DP_rows_cuts_4.txt', totalNum, 2050, '/home/yinhuan/mapModel/yq/rows_cut/sparse/DP_compress0.2_4/'); 
+epsilon_soft_5_DP = DP_loopCompress(1, '/home/yinhuan/mapModel/yq/weightVector.txt', '/home/yinhuan/mapModel/yq/rows_cut/sparse/visMatrix/', '/home/yinhuan/mapModel/yq/rows_cut/sparse/DP_rows_cuts_5.txt', totalNum, 1000, '/home/yinhuan/mapModel/yq/rows_cut/sparse/DP_compress0.2_5/'); 
 
-salientNumCnt('/home/yinhuan/mapModel/yq/rows_cut/sparse/DP_compress0.2_4/', totalNum );
+point_num_DP_5 = salientNumCnt('/home/yinhuan/mapModel/yq/rows_cut/sparse/DP_compress0.2_5/', totalNum );
  
-min_cost_DP_4  = get_min_cost('/home/yinhuan/mapModel/yq/rows_cut/sparse/DP_compress0.2_4/', '/home/yinhuan/mapModel/yq/weightVector.txt', 0.1, epsilon_soft_4_DP);
-
-
+min_cost_DP_5 = get_min_cost('/home/yinhuan/mapModel/yq/rows_cut/sparse/DP_compress0.2_5/', '/home/yinhuan/mapModel/yq/weightVector.txt', 1, epsilon_soft_5_DP);
