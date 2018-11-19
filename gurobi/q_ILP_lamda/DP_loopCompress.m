@@ -1,4 +1,4 @@
-function [ epsilon_soft ] = DP_loopCompress( lamda, qFile, filesDir, cutFile, totalNum, bValue, saveDir )
+function [ epsilon_soft, time_sum ] = DP_loopCompress( lamda, qFile, filesDir, cutFile, totalNum, bValue, saveDir )
 %LOOPCOMPRESS Summary of this function goes here
 %   Detailed explanation goes here
     
