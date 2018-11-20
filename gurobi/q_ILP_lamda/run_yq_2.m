@@ -20,10 +20,10 @@ min_cost_Uniform_1 = get_min_cost('/home/yinhuan/mapModel/yq/rows_cut/sparse/Uni
  
 
 
-[epsilon_soft_5_Uni, time_Uni_5] = Uniform_loopCompress( 1, '/home/yinhuan/mapModel/yq/weightVector.txt', '/home/yinhuan/mapModel/yq/rows_cut/sparse/visMatrix/', 5, totalNum, 1000, '/home/yinhuan/mapModel/yq/rows_cut/sparse/Uniform_compress_5/' );
+[epsilon_soft_2_Uni, time_Uni_2] = Uniform_loopCompress( 1, '/home/yinhuan/mapModel/yq/weightVector.txt', '/home/yinhuan/mapModel/yq/rows_cut/sparse/visMatrix/', 2, totalNum, 1000, '/home/yinhuan/mapModel/yq/rows_cut/sparse/Uniform_compress_2/' );
 
-point_num_Uni_5 = salientNumCnt('/home/yinhuan/mapModel/yq/rows_cut/sparse/Uniform_compress_5/', totalNum );
+point_num_Uni_2 = salientNumCnt('/home/yinhuan/mapModel/yq/rows_cut/sparse/Uniform_compress_2/', totalNum );
 
-min_cost_Uniform_5 = get_min_cost('/home/yinhuan/mapModel/yq/rows_cut/sparse/Uniform_compress_5/', '/home/yinhuan/mapModel/yq/weightVector.txt', 1, epsilon_soft_5_Uni);
+min_cost_Uniform_2 = get_min_cost('/home/yinhuan/mapModel/yq/rows_cut/sparse/Uniform_compress_2/', '/home/yinhuan/mapModel/yq/weightVector.txt', 1, epsilon_soft_2_Uni);
 
 
