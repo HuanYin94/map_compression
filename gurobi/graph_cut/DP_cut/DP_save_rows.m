@@ -20,21 +20,52 @@ function [  ] = DP_save_rows( cutCostsFile, cut_num,  search_k, saveFileAddress 
     
     best_values = [];
     best_cuts = [];
-    search_domain = floor(cut_length / search_k);
+    search_domain_start = floor(cut_length / search_k);
+    search_domain_finish = floor(cut_length / search_k);
+    
+    sum_best_value = 0;
     
     for i = 1:length(initial_cuts)
         
-        domain = cut_costs(initial_cuts(i,:)-search_domain:initial_cuts(i,:)+search_domain,:);
+        start = initial_cuts(i,:)-search_domain_start;
+        finish = initial_cuts(i,:)+search_domain_finish;
         
-        [min_value, min_cut] = min(domain);
+        if start <= 0
+            start = 1;
+            search_domain_start = initial_cuts(i,:) - start;
+        end
+        
+        if finish > length(cut_costs)-1
+            finish  = length(cut_costs)-1;
+            search_domain_finish = finish - initial_cuts(i,:);
+        end
+        
+        domain = cut_costs(start:finish,:);
+        
+        % observe the minimum
+%         [min_value, min_cut] = min(domain);
+        % obserbe the maximum
+        [min_value, min_cut] = max(domain);
         
         best_values(i,:) = min_value;
         
-        best_cuts(i,:) = initial_cuts(i,:) + (min_cut - search_domain - 1);
+        if min_cut < initial_cuts(i,:)
+            best_cuts(i,:) = initial_cuts(i,:) + (min_cut - search_domain_start - 1);
+        else
+            best_cuts(i,:) = initial_cuts(i,:) + (min_cut - search_domain_finish - 1);
+        end
+        
+        if i > 1 && best_cuts(i,:) == best_cuts(i-1,:)
+            best_cuts(i,:) = best_cuts(i,:) + 1;
+            best_values(i,:) = domain(min_cut + 1);
+        end
+        
+        sum_best_value = sum_best_value + best_values(i,:);
         
     end
     
     dlmwrite(saveFileAddress, best_cuts);
+    sum_best_value
     
 end
 
