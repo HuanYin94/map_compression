@@ -33,7 +33,8 @@ figure;
 plot(min_costs, 'r*', 'MarkerSize', 10);
 xlabel('Method', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Min Cost', 'FontSize', 12, 'FontWeight', 'bold');
-set(gca,'Xtick', 1:1:5, 'fontsize',10);
+grid on;
+set(gca,'Xtick', 1:1:6, 'fontsize',10);
 set(gca,'Xticklabel',{'uniform','DP 10%','DP 20%', 'DP 50%', 'DP 80%', 'No-Cut'});
 
 hold on;
@@ -55,7 +56,8 @@ figure;
 plot(need_points, 'k*', 'MarkerSize', 10);
 xlabel('Method', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Remained Points', 'FontSize', 12, 'FontWeight', 'bold');
-set(gca,'Xtick', 1:1:5, 'fontsize',10);
+grid on;
+set(gca,'Xtick', 1:1:6, 'fontsize',10);
 set(gca,'Xticklabel',{'uniform','DP 10%','DP 20%', 'DP 50%', 'DP 80%', 'No-Cut'});
 
 hold on;
