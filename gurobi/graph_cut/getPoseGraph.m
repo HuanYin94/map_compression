@@ -7,8 +7,9 @@ function [ ] = getPoseGraph( visFilesDir, windowLength, saveAddress )
     
     pathLength= length(files);
     
-%     saveFile = fopen(saveAddress, 'w');
-        
+%     saveFile = fopen(saveAddress, 'w');    
+
+    % keep a window of data: delete and add
     for i=0:pathLength-1
         i
         

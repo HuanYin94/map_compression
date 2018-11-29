@@ -1,4 +1,4 @@
-function [ compressIndex, time ] = section_compress( lamda, q_value, Dir, start, finish, totalNum, bValue )
+function [ compressIndex, time, epsilon_soft ] = section_compress( lamda, q_value, Dir, start, finish, totalNum, bValue )
 %SECTIONTEST Summary of this function goes here
 %   Detailed explanation goes here
     
@@ -62,6 +62,7 @@ function [ compressIndex, time ] = section_compress( lamda, q_value, Dir, start,
     result = gurobi(model, params);
     time = toc
     compressIndex = find(result.x(1:totalNum) == 1);   % former ones
+    epsilon_soft = result.x(totalNum+1:end);
     
 end
 
