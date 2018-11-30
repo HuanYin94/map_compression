@@ -31,10 +31,10 @@ function [ min_cost  ] = get_min_cost( compressResultsDir, qFile, lamda, epsilon
         min_cost = min_cost + q_value(saved_ID(i));
     end
     
-%     % sum the soft part 
-%     for i = 1:length(files)
-%         min_cost = min_cost + lamda*epsilon_soft(i,:);
-%     end
+    % sum the soft part 
+    for i = 1:length(files)
+        min_cost = min_cost + lamda*epsilon_soft(i,:);
+    end
     
 end
 
