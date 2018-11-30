@@ -45,17 +45,19 @@ function [ save_totalNum ] = deleteZeroPoints( weightFile, visFilesDir, compress
         file_old = fopen(old_fileName);
         vis_point_ID_old = fscanf(file_old, '%d');
         
+        % the map point index, in C++ from 0, in Matlab from 1
+        % visMatrix is from 
         vis_point_ID_new = [];
         remain_cnt = 1;
         for j =1:length(vis_point_ID_old)
-            row_indexList = find(indexList(:,1) == vis_point_ID_old(j));
+            row_indexList = find(indexList(:,1) == (vis_point_ID_old(j)+1));
             if size(row_indexList,1) == 1
-                vis_point_ID_new(remain_cnt,:) = indexList(row_indexList,2); % the map point index
+                vis_point_ID_new(remain_cnt,:) = indexList(row_indexList,2);  % already from zero before this part 
                 remain_cnt = remain_cnt + 1;
             else  % zero matrix
             end
         end
-        disp(length(intersect(vis_point_ID_old, all_ID)))
+        
         % save the new visible map indexes
         new_fileName = [saveNewVisDir, fileCnt, '.txt'];
         disp(new_fileName);
@@ -67,8 +69,8 @@ function [ save_totalNum ] = deleteZeroPoints( weightFile, visFilesDir, compress
     file_q = fopen(weightFile);
     weights = fscanf(file_q, '%d');
     new_weights = [];
-    for i = 1:length(all_ID)
-        new_weights(i,:) = weights(all_ID(i));
+    for i = 1:length(indexList)
+        new_weights(i,:) = weights(indexList(i,1));
     end
     dlmwrite(saveNewQFile, new_weights, 'precision', '%d');
     
