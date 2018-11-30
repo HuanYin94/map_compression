@@ -1,4 +1,4 @@
-function [ save_totalNum ] = deleteZeroPoints( visFilesDir, compressResultsDir, saveNewVisDir, saveReIndexFile )
+function [ save_totalNum ] = deleteZeroPoints( weightFile, visFilesDir, compressResultsDir, saveNewVisDir, saveReIndexFile, saveNewQFile )
 %DELETEZEROPOINTS Summary of this function goes here
 %   Detailed explanation goes here
     
@@ -60,5 +60,14 @@ function [ save_totalNum ] = deleteZeroPoints( visFilesDir, compressResultsDir, 
 
     end
     
+    % update the q-matrix-vector
+    file_q = fopen(weightFile);
+    weights = fscanf(file_q, '%d');
+    new_weights = [];
+    for i = 1:length(all_ID)
+        new_weights(i,:) = weights(all_ID(i));
+    end
+    dlmwrite(new_weights, saveNewQFile, 'precision', '%d');
+
 end
 
