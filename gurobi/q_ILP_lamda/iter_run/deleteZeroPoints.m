@@ -3,10 +3,12 @@ function [ save_totalNum ] = deleteZeroPoints( weightFile, visFilesDir, compress
 %   Detailed explanation goes here
     
     % get the union result
+    disp('Prepare the next optimization');
     
     fileExt = '*.txt';
-    files = dir(fullfile(compressResultsDir,fileExt)); 
-    for i = 0:length(files)-1
+    compress_files = dir(fullfile(compressResultsDir,fileExt)); 
+    all_ID = [];
+    for i = 0:length(compress_files)-1
         
         fileCnt = num2str(i);
         fileName = [compressResultsDir, fileCnt, '.txt'];
@@ -18,45 +20,46 @@ function [ save_totalNum ] = deleteZeroPoints( weightFile, visFilesDir, compress
         all_ID = union(all_ID, point_ID);
     
     end
-    
     save_totalNum = length(all_ID);
     
+    
+    %%
     % get the one2one indexes relations and save
     indexList = [];
     for i= 1:length(all_ID)
         indexList(i,1) = all_ID(i);
         indexList(i,2) = i-1;  % map point re-index from zero
     end
-    dlmwrite(indexList, saveReIndexFile, 'precision', '%d');
+    dlmwrite(saveReIndexFile, indexList, 'precision', '%d');
 
     
     
     % update the visMatrix and save
     
     fileExt = '*.txt';
-    files = dir(fullfile(visFilesDir,fileExt)); 
-    for i=0:length(files)
+    vis_files = dir(fullfile(visFilesDir,fileExt)); 
+    for i=0:length(vis_files)-1
         
         fileCnt = num2str(i);
         old_fileName = [visFilesDir, fileCnt, '.txt'];
         file_old = fopen(old_fileName);
-        point_ID_old = fscanf(filfile_olde_t, '%d');
+        vis_point_ID_old = fscanf(file_old, '%d');
         
-        point_ID_new = [];
+        vis_point_ID_new = [];
         remain_cnt = 1;
-        for j =1:length(point_ID_old)
-            row_indexList = find(indexList(:,1) == point_ID_old(j));
+        for j =1:length(vis_point_ID_old)
+            row_indexList = find(indexList(:,1) == vis_point_ID_old(j));
             if size(row_indexList,1) == 1
-                point_ID_new(remain_cnt,:) = indexList(row_indexList,2); % the map point index
+                vis_point_ID_new(remain_cnt,:) = indexList(row_indexList,2); % the map point index
                 remain_cnt = remain_cnt + 1;
             else  % zero matrix
-                continue;
             end
         end
-        
+        disp(length(intersect(vis_point_ID_old, all_ID)))
         % save the new visible map indexes
         new_fileName = [saveNewVisDir, fileCnt, '.txt'];
-        dlmwrite(point_ID_new, saveNewVisDir, 'precision', '%d');
+        disp(new_fileName);
+        dlmwrite(new_fileName, vis_point_ID_new, 'precision', '%d');
 
     end
     
@@ -67,7 +70,9 @@ function [ save_totalNum ] = deleteZeroPoints( weightFile, visFilesDir, compress
     for i = 1:length(all_ID)
         new_weights(i,:) = weights(all_ID(i));
     end
-    dlmwrite(new_weights, saveNewQFile, 'precision', '%d');
-
+    dlmwrite(saveNewQFile, new_weights, 'precision', '%d');
+    
+    disp('Finished');
+    
 end
 
