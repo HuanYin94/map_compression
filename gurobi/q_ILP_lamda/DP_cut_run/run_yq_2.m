@@ -29,11 +29,11 @@ totalNum = 1867290;
 
 %% sparse 500 2018.11.30
 
- [epsilon_soft_1_Uni, time_Uni_1, compressIndex] = Uniform_loopCompress( 1, '/home/yinhuan/mapModel/yq_1/weightVector.txt', '/home/yinhuan/mapModel/yq_1/visMatrix/', 1, totalNum, 1000, '/home/yinhuan/mapModel/yq_1/greedy/whole/' );
+ [epsilon_soft_5_Uni, time_Uni_5, compressIndex] = Uniform_loopCompress( 1.0, '/home/yinhuan/mapModel/yq_500/weightVector.txt', '/home/yinhuan/mapModel/yq_500/visMatrix/', 5, totalNum, 1000, '/home/yinhuan/mapModel/yq_500/greedy/uniform/' );
 
-pointNum_1 = salientNumCnt('/home/yinhuan/mapModel/yq_1/greedy/whole/', totalNum );
+pointNum_5 = salientNumCnt('/home/yinhuan/mapModel/yq_500/greedy/uniform/', totalNum );
 
-min_cost_Uniform_1 = get_min_cost('/home/yinhuan/mapModel/yq_1/greedy/whole/', '/home/yinhuan/mapModel/yq_1/weightVector.txt', 1, epsilon_soft_1_Uni);
+min_cost_Uniform_5 = get_min_cost('/home/yinhuan/mapModel/yq_500/greedy/uniform/', '/home/yinhuan/mapModel/yq_500/weightVector.txt', 5, epsilon_soft_1_Uni);
 
 
 
