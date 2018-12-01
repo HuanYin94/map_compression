@@ -1,0 +1,1 @@
+DP_save_rows('/home/yinhuan/mapModel/yq_500/greedy/DP/cut_costs.txt', 5, 2, '/home/yinhuan/mapModel/yq_500/greedy/DP/DP_rows_cuts_5_50.txt');
