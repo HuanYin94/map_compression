@@ -63,7 +63,7 @@ void genWeightVector::process()
 
     for(int m=0; m<mapCloud.features.cols(); m++)
     {
-        cout<<m<<endl;
+//        cout<<m<<endl;
         output << mapCloud.descriptors(rowLineSession, m) << endl;
     }
 
