@@ -25,9 +25,11 @@ function [ save_totalNum ] = deleteZeroPoints( weightFile, visFilesDir, compress
     
     %%
     % get the one2one indexes relations and save
+    % the map point index, in C++ from 0, in Matlab from 1
+    % indexList id from ZERO
     indexList = [];
     for i= 1:length(all_ID)
-        indexList(i,1) = all_ID(i);
+        indexList(i,1) = all_ID(i)-1;
         indexList(i,2) = i-1;  % map point re-index from zero
     end
     dlmwrite(saveReIndexFile, indexList, 'precision', '%d');
@@ -45,12 +47,11 @@ function [ save_totalNum ] = deleteZeroPoints( weightFile, visFilesDir, compress
         file_old = fopen(old_fileName);
         vis_point_ID_old = fscanf(file_old, '%d');
         
-        % the map point index, in C++ from 0, in Matlab from 1
         % visMatrix is from 
         vis_point_ID_new = [];
         remain_cnt = 1;
         for j =1:length(vis_point_ID_old)
-            row_indexList = find(indexList(:,1) == (vis_point_ID_old(j)+1));
+            row_indexList = find(indexList(:,1) == (vis_point_ID_old(j)));
             if size(row_indexList,1) == 1
                 vis_point_ID_new(remain_cnt,:) = indexList(row_indexList,2);  % already from zero before this part 
                 remain_cnt = remain_cnt + 1;
@@ -66,11 +67,12 @@ function [ save_totalNum ] = deleteZeroPoints( weightFile, visFilesDir, compress
     end
     
     % update the q-matrix-vector
+    % weight is from ONE
     file_q = fopen(weightFile);
     weights = fscanf(file_q, '%d');
     new_weights = [];
     for i = 1:length(indexList)
-        new_weights(i,:) = weights(indexList(i,1));
+        new_weights(i,:) = weights(indexList(i,1)+1);
     end
     dlmwrite(saveNewQFile, new_weights, 'precision', '%d');
     
