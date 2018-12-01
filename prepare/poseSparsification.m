@@ -14,7 +14,7 @@ function [ icpPoseNew ] = poseSparsification( icpPose, saveIndexFileName, expDis
         dis = norm(pose1 - pose2);
         
         if dis > expDis
-            cnt = cnt + 1;
+            cnt = cnt + 1;q
             keepIndex(cnt,:) = i;
             icpPoseNew(cnt,:) = icpPose(i,:);
         end
