@@ -1,4 +1,4 @@
-function [ epsilon_soft, time_sum  ] = Uniform_loopCompress( lamda, qFile, filesDir, cut_num, totalNum, bValue, saveDir )
+function [ epsilon_soft, time_sum, compressIndex  ] = Uniform_loopCompress( lamda, qFile, filesDir, cut_num, totalNum, bValue, saveDir )
 %LOOPCOMPRESS Summary of this function goes here
 %   Detailed explanation goes here
     
