@@ -7,7 +7,7 @@ visFilesDir_0 = '/home/yinhuan/mapModel/yq_500/visMatrix/';
 maxQ = 19;
 minQ = 1;
 
-splitLength_0 = 50;
+splitLength_0 = 20;
 saveResultsDir_0 = '/home/yinhuan/mapModel/yq_500/greedy/0/results/';
 saveNewVisDir_0 = '/home/yinhuan/mapModel/yq_500/greedy/0/visMatrix/';
 saveReIndexFile_0 = '/home/yinhuan/mapModel/yq_500/greedy/index/0.txt';
