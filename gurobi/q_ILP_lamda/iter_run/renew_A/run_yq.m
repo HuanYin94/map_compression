@@ -1,59 +1,59 @@
 % params
 totalNum = 1867290;
 bValue = 1000;
-lamda = 999999;
-qFile = '/home/yh/mapModel/2018/12.05/weightVector.txt';
-visFilesDir_0 = '/home/yh/mapModel/2018/12.05/visMatrix/';
-maxQ = 19;
+lamda = 1;
+qFile = '/home/yinhuan/mapModel/yq/weightVector.txt';
+visFilesDir_0 = '/home/yinhuan/mapModel/yq/visMatrix/';
+maxQ = 147;
 minQ = 1;
 
-splitLength_0 = 50;
-saveResultsDir_0 = '/home/yh/mapModel/2018/12.05/0/results/';
-saveNewVisDir_0 = '/home/yh/mapModel/2018/12.05/0/visMatrix/';
-saveReIndexFile_0 = '/home/yh/mapModel/2018/12.05/index/0.txt';
-saveNewQFile_0 = '/home/yh/mapModel/2018/12.05/weight/0.txt';
+splitLength_0 = 20;
+saveResultsDir_0 = '/home/yinhuan/mapModel/yq/greedy/0/results/';
+saveNewVisDir_0 = '/home/yinhuan/mapModel/yq/greedy/0/visMatrix/';
+saveReIndexFile_0 = '/home/yinhuan/mapModel/yq/greedy/index/0.txt';
+saveNewQFile_0 = '/home/yinhuan/mapModel/yq/greedy/weight/0.txt';
 
 splitLength_1 = 100;
 visFilesDir_1 = saveNewVisDir_0;
-saveResultsDir_1 = '/home/yh/mapModel/2018/12.05/1/results/';
-saveNewVisDir_1 = '/home/yh/mapModel/2018/12.05/1/visMatrix/';
-saveReIndexFile_1 = '/home/yh/mapModel/2018/12.05/index/1.txt';
-saveNewQFile_1 = '/home/yh/mapModel/2018/12.05/weight/1.txt';
+saveResultsDir_1 = '/home/yinhuan/mapModel/yq/greedy/1/results/';
+saveNewVisDir_1 = '/home/yinhuan/mapModel/yq/greedy/1/visMatrix/';
+saveReIndexFile_1 = '/home/yinhuan/mapModel/yq/greedy/index/1.txt';
+saveNewQFile_1 = '/home/yinhuan/mapModel/yq/greedy/weight/1.txt';
 
 splitLength_2 = 200;
 visFilesDir_2 = saveNewVisDir_1;
-saveResultsDir_2 = '/home/yh/mapModel/2018/12.05/2/results/';
-saveNewVisDir_2 = '/home/yh/mapModel/2018/12.05/2/visMatrix/';
-saveReIndexFile_2 = '/home/yh/mapModel/2018/12.05/index/2.txt';
-saveNewQFile_2 = '/home/yh/mapModel/2018/12.05/weight/2.txt';
+saveResultsDir_2 = '/home/yinhuan/mapModel/yq/greedy/2/results/';
+saveNewVisDir_2 = '/home/yinhuan/mapModel/yq/greedy/2/visMatrix/';
+saveReIndexFile_2 = '/home/yinhuan/mapModel/yq/greedy/index/2.txt';
+saveNewQFile_2 = '/home/yinhuan/mapModel/yq/greedy/weight/2.txt';
 
 splitLength_3 =400;
 visFilesDir_3 = saveNewVisDir_2;
-saveResultsDir_3 = '/home/yh/mapModel/2018/12.05/3/results/';
-saveNewVisDir_3 = '/home/yh/mapModel/2018/12.05/3/visMatrix/';
-saveReIndexFile_3 = '/home/yh/mapModel/2018/12.05/index/3.txt';
-saveNewQFile_3 = '/home/yh/mapModel/2018/12.05/weight/3.txt';
+saveResultsDir_3 = '/home/yinhuan/mapModel/yq/greedy/3/results/';
+saveNewVisDir_3 = '/home/yinhuan/mapModel/yq/greedy/3/visMatrix/';
+saveReIndexFile_3 = '/home/yinhuan/mapModel/yq/greedy/index/3.txt';
+saveNewQFile_3 = '/home/yinhuan/mapModel/yq/greedy/weight/3.txt';
 
 splitLength_4 =800; 
 visFilesDir_4 = saveNewVisDir_3;
-saveResultsDir_4 = '/home/yh/mapModel/2018/12.05/4/results/';
-saveNewVisDir_4 = '/home/yh/mapModel/2018/12.05/4/visMatrix/';
-saveReIndexFile_4 = '/home/yh/mapModel/2018/12.05/index/4.txt';
-saveNewQFile_4 = '/home/yh/mapModel/2018/12.05/weight/4.txt';
+saveResultsDir_4 = '/home/yinhuan/mapModel/yq/greedy/4/results/';
+saveNewVisDir_4 = '/home/yinhuan/mapModel/yq/greedy/4/visMatrix/';
+saveReIndexFile_4 = '/home/yinhuan/mapModel/yq/greedy/index/4.txt';
+saveNewQFile_4 = '/home/yinhuan/mapModel/yq/greedy/weight/4.txt';
 
 splitLength_5 =1600;
 visFilesDir_5 = saveNewVisDir_4;
-saveResultsDir_5 = '/home/yh/mapModel/2018/12.05/5/results/';
-saveNewVisDir_5 = '/home/yh/mapModel/2018/12.05/5/visMatrix/';
-saveReIndexFile_5 = '/home/yh/mapModel/2018/12.05/index/5.txt';
-saveNewQFile_5 = '/home/yh/mapModel/2018/12.05/weight/5.txt';
+saveResultsDir_5 = '/home/yinhuan/mapModel/yq/greedy/5/results/';
+saveNewVisDir_5 = '/home/yinhuan/mapModel/yq/greedy/5/visMatrix/';
+saveReIndexFile_5 = '/home/yinhuan/mapModel/yq/greedy/index/5.txt';
+saveNewQFile_5 = '/home/yinhuan/mapModel/yq/greedy/weight/5.txt';
 
-splitLength_6 =4924; % final of yq_pose_500
+splitLength_6 =4924; % final of yq/greedy_pose
 visFilesDir_6 = saveNewVisDir_5;
-saveResultsDir_6 = '/home/yh/mapModel/2018/12.05/6/results/';
-saveNewVisDir_6 = '/home/yh/mapModel/2018/12.05/6/visMatrix/';
-saveReIndexFile_6 = '/home/yh/mapModel/2018/12.05/index/6.txt';
-saveNewQFile_6 = '/home/yh/mapModel/2018/12.05/weight/6.txt';
+saveResultsDir_6 = '/home/yinhuan/mapModel/yq/greedy/6/results/';
+saveNewVisDir_6 = '/home/yinhuan/mapModel/yq/greedy/6/visMatrix/';
+saveReIndexFile_6 = '/home/yinhuan/mapModel/yq/greedy/index/6.txt';
+saveNewQFile_6 = '/home/yinhuan/mapModel/yq/greedy/weight/6.txt';
 
 
 %% iteration of optimization
