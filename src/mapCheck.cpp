@@ -222,23 +222,23 @@ void mapCheck::process()
 //    cout<<mapCloud.features(0,0)<<"  "<<mapCloud.features(1,0)<<"  "<<mapCloud.features(2,0)<<endl;
 //    cout<<mapCloud.features(0,1)<<"  "<<mapCloud.features(1,1)<<"  "<<mapCloud.features(2,1)<<endl;
 
-    ofstream salientStream;
-    ofstream pointStream;
-    string salientFileName = "/home/yh/salients.txt";
-    string pointFileName = "/home/yh/points.txt";
-    salientStream.open(salientFileName);
-    pointStream.open(pointFileName);
+//    ofstream salientStream;
+//    ofstream pointStream;
+//    string salientFileName = "/home/yh/salients.txt";
+//    string pointFileName = "/home/yh/points.txt";
+//    salientStream.open(salientFileName);
+//    pointStream.open(pointFileName);
 
-    int rowLine = mapCloud.getDescriptorStartingRow("salient");
-    for(int i=0; i<mapCloud.features.cols(); i++)
-    {
-        salientStream << mapCloud.descriptors(rowLine, i) << endl;
-        pointStream << mapCloud.features(0, i) << "   "
-                        << mapCloud.features(1, i) << "   "
-                           << mapCloud.features(2, i) << endl;
-    }
-    salientStream.close();
-    pointStream.close();
+//    int rowLine = mapCloud.getDescriptorStartingRow("salient");
+//    for(int i=0; i<mapCloud.features.cols(); i++)
+//    {
+//        salientStream << mapCloud.descriptors(rowLine, i) << endl;
+//        pointStream << mapCloud.features(0, i) << "   "
+//                        << mapCloud.features(1, i) << "   "
+//                           << mapCloud.features(2, i) << endl;
+//    }
+//    salientStream.close();
+//    pointStream.close();
 }
 
 int main(int argc, char **argv)
