@@ -41,7 +41,7 @@ function [ save_totalNum ] = deleteZeroPoints( weightFile, visFilesDir, compress
     fileExt = '*.txt';
     vis_files = dir(fullfile(visFilesDir,fileExt)); 
     for i=0:length(vis_files)-1
-        
+        tic
         fileCnt = num2str(i);
         old_fileName = [visFilesDir, fileCnt, '.txt'];
         file_old = fopen(old_fileName);
@@ -50,6 +50,8 @@ function [ save_totalNum ] = deleteZeroPoints( weightFile, visFilesDir, compress
         % visMatrix is from 
         vis_point_ID_new = [];
         remain_cnt = 1;
+        
+        % thought 1
         for j =1:length(vis_point_ID_old)
             row_indexList = find(indexList(:,1) == (vis_point_ID_old(j)));
             if size(row_indexList,1) == 1
@@ -59,11 +61,25 @@ function [ save_totalNum ] = deleteZeroPoints( weightFile, visFilesDir, compress
             end
         end
         
+%         % thought 2
+%         vis_point_ID_old_inter = intersect(vis_point_ID_old, indexList(:,1));
+%         for j = 1:length(vis_point_ID_old_inter)
+% %             rowLine = find(indexList(:,1) == vis_point_ID_old_inter(j));
+%             vis_point_ID_old_inter(j,:) = indexList(find(indexList(:,1) == vis_point_ID_old_inter(j)), 2);
+%         end
+%         
+
+        % thought 3
+%         isInIndex = ismember(indexList(:,1), vis_point_ID_old);
+%         isSaved = find(isInIndex==1);
+%         newnew = indexList(:,2);
+%         vis_point_ID_new = newnew(isSaved);
+        
         % save the new visible map indexes
         new_fileName = [saveNewVisDir, fileCnt, '.txt'];
         disp(new_fileName);
-        dlmwrite(new_fileName, vis_point_ID_new, 'precision', '%d');
-
+%         dlmwrite(new_fileName, vis_point_ID_new, 'precision', '%d');
+        toc
     end
     
     % update the q-matrix-vector
@@ -74,7 +90,7 @@ function [ save_totalNum ] = deleteZeroPoints( weightFile, visFilesDir, compress
     for i = 1:length(indexList)
         new_weights(i,:) = weights(indexList(i,1)+1);
     end
-    dlmwrite(saveNewQFile, new_weights, 'precision', '%d');
+%     dlmwrite(saveNewQFile, new_weights, 'precision', '%d');
     
     disp('Finished');
     
