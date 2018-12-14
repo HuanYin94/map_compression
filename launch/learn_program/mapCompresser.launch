@@ -4,9 +4,9 @@
 	
 	<!--get the compressed map by the descriptor name directly-->
 	
-<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.02/ILP_kitti10_map_0.05.ply"/> 
+	<param name="loadMapName" value="/home/yh/mapModel/2018/08.03/ILP_YQ_map_0.2.ply"/> 
 	　<param name="desName" value="salient"/> 
-	<param name="saveMapName" value="/home/yh/mapModel/2018/08.02/AAA.ply"/-->
+	<param name="saveMapName" value="/home/yh/mapModel/2018/08.03/map_0.2.ply"/>
 
 
 	<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.03/learn/ILP_YQ_map_test_0.02.vtk"/> 
@@ -14,9 +14,9 @@
 	<param name="saveMapName" value="/home/yh/mapModel/2018/08.03/test/ILP_YQ_map_test_0.02_locTest.ply"/-->
 	
 
-	<param name="loadMapName" value="/home/yh/mapModel/2018/09.22/learn/Learned_park_map_0.2.ply"/> 
+	<!--param name="loadMapName" value="/home/yh/mapModel/2018/09.22/learn/Learned_park_map_0.2.ply"/> 
 	　<param name="desName" value="salient"/> 
-	<param name="saveMapName" value="/home/yh/mapModel/2018/09.22/learn/LocTest_park_map_0.2_program.ply"/>	
+	<param name="saveMapName" value="/home/yh/mapModel/2018/09.22/learn/LocTest_park_map_0.2_program.ply"/-->	
 
   </node>
 </launch>
