@@ -52,14 +52,14 @@ function [ save_totalNum ] = deleteZeroPoints( weightFile, visFilesDir, compress
         remain_cnt = 1;
         
         % thought 1
-        for j =1:length(vis_point_ID_old)
-            row_indexList = find(indexList(:,1) == (vis_point_ID_old(j)));
-            if size(row_indexList,1) == 1
-                vis_point_ID_new(remain_cnt,:) = indexList(row_indexList,2);  % already from zero before this part 
-                remain_cnt = remain_cnt + 1;
-            else  % zero matrix
-            end
-        end
+%         for j =1:length(vis_point_ID_old)
+%             row_indexList = find(indexList(:,1) == (vis_point_ID_old(j)));
+%             if size(row_indexList,1) == 1
+%                 vis_point_ID_new(remain_cnt,:) = indexList(row_indexList,2);  % already from zero before this part 
+%                 remain_cnt = remain_cnt + 1;
+%             else  % zero matrix
+%             end
+%         end
         
 %         % thought 2
 %         vis_point_ID_old_inter = intersect(vis_point_ID_old, indexList(:,1));
@@ -70,15 +70,15 @@ function [ save_totalNum ] = deleteZeroPoints( weightFile, visFilesDir, compress
 %         
 
         % thought 3
-%         isInIndex = ismember(indexList(:,1), vis_point_ID_old);
-%         isSaved = find(isInIndex==1);
-%         newnew = indexList(:,2);
-%         vis_point_ID_new = newnew(isSaved);
+        isInIndex = ismember(indexList(:,1), vis_point_ID_old);
+        isSaved = find(isInIndex==1);
+        newnew = indexList(:,2);
+        vis_point_ID_new = newnew(isSaved);
         
         % save the new visible map indexes
         new_fileName = [saveNewVisDir, fileCnt, '.txt'];
         disp(new_fileName);
-%         dlmwrite(new_fileName, vis_point_ID_new, 'precision', '%d');
+         dlmwrite(new_fileName, vis_point_ID_new, 'precision', '%d');
         toc
     end
     
