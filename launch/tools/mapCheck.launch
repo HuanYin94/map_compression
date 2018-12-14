@@ -12,7 +12,7 @@
 
 
 
-	<param name="loadMapName" value="/home/yh/mapModel/2018/08.03/ILP_YQ_map_0.2.ply"/>
+	<param name="loadMapName" value="/home/yh/mapModel/2018/08.03/map_0.2.ply"/>
 	<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.03/learn/Learned_YQ_map_test_0.2.vtk"/-->
 	<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.03/test/Learned_YQ_map_test_0.2_locTest.ply"/-->
 

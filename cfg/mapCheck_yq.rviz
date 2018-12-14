@@ -48,7 +48,7 @@ Visualization Manager:
       Channel Name: session
       Class: rviz/PointCloud2
       Color: 0; 0; 255
-      Color Transformer: Intensity
+      Color Transformer: FlatColor
       Decay Time: 0
       Enabled: true
       Invert Rainbow: false
@@ -193,7 +193,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 308.873
+      Distance: 308.221
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.06
         Stereo Focal Distance: 1
@@ -205,10 +205,10 @@ Visualization Manager:
         Z: 8.22069
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 1.4698
+      Pitch: 1.5048
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 5.5654
+      Yaw: 5.5754
     Saved: ~
 Window Geometry:
   Displays:
