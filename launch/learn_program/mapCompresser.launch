@@ -4,9 +4,9 @@
 	
 	<!--get the compressed map by the descriptor name directly-->
 	
-	<param name="loadMapName" value="/home/yh/mapModel/2018/08.03/ILP_YQ_map_0.2.ply"/> 
+	<param name="loadMapName" value="/home/yh/mapModel/2018/12.14/iter_results/b_800.ply"/> 
 	　<param name="desName" value="salient"/> 
-	<param name="saveMapName" value="/home/yh/mapModel/2018/08.03/map_0.2.ply"/>
+	<param name="saveMapName" value="/home/yh/mapModel/2018/12.14/iter_results/b_800_program.ply"/>
 
 
 	<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.03/learn/ILP_YQ_map_test_0.02.vtk"/> 

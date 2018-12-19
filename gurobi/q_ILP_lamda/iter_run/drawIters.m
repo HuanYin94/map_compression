@@ -97,19 +97,19 @@
 % time_sum_800 = sum([time_sum_0, time_sum_1, time_sum_2, time_sum_3, time_sum_4, time_sum_5, time_sum_6, time_sum_7]);
 
 
-
-iter = [1;2;3;4;5];
-times = [time_sum_2000; time_sum_1500; time_sum_1200; time_sum_1000; time_sum_800];
-ff = figure;
-plot(iter, times, '--bs', 'MarkerSize', 10,  'MarkerFaceColor', 'r'); hold on;
-grid on;
-l=legend('time costs');
-title(l, 'Total time under Diff b');
-xlabel('Iteration', 'FontWeight', 'bold', 'FontSize', 12);
-ylabel('Time Costs (second)', 'FontWeight', 'bold', 'FontSize', 12);
-set(ff, 'Renderer', 'painters');
-set(gca,'Xtick', 1:1:8, 'fontsize',10);
-set(gca,'Xticklabel',{'b=2000','b=1500', 'b=1200', 'b=1000', 'b=800'});
+% 
+% iter = [1;2;3;4;5];
+% times = [time_sum_2000; time_sum_1500; time_sum_1200; time_sum_1000; time_sum_800];
+% ff = figure;
+% plot(iter, times, '--bs', 'MarkerSize', 10,  'MarkerFaceColor', 'r'); hold on;
+% grid on;
+% l=legend('time costs');
+% title(l, 'Total time under Diff b');
+% xlabel('Iteration', 'FontWeight', 'bold', 'FontSize', 12);
+% ylabel('Time Costs (second)', 'FontWeight', 'bold', 'FontSize', 12);
+% set(ff, 'Renderer', 'painters');
+% set(gca,'Xtick', 1:1:8, 'fontsize',10);
+% set(gca,'Xticklabel',{'b=2000','b=1500', 'b=1200', 'b=1000', 'b=800'});
 
 
 
