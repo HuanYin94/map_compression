@@ -7,17 +7,14 @@
 
 	<!--Score_0 or Salient_1 or prediction_2? Do not forget-->
 	<param name="staticInt" value="15"/> 	
-	<param name="showType" value="2"/>
+	<param name="showType" value="1"/>
 
 
 
 
-	<param name="loadMapName" value="/home/yh/mapModel/2018/08.03/map_0.2.ply"/>
-	<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.03/learn/Learned_YQ_map_test_0.2.vtk"/-->
-	<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.03/test/Learned_YQ_map_test_0.2_locTest.ply"/-->
-
-	<param name="loadTrajName" value="/home/yh/mapModel/2018/08.03/icp_0301.txt"/>
-	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.03/keep_0301.txt"/>
+	<param name="loadMapName" value="/home/yh/mapModel/2018/12.14/server_test.vtk"/>
+	<param name="loadTrajName" value="/home/yh/mapModel/2018/12.14/icp_0301.txt"/>
+	<param name="keepIndexName" value="/home/yh/mapModel/2018/12.14/keep_0301.txt"/>
 
 
 

@@ -1,5 +1,5 @@
 - FixStepSamplingDataPointsFilter:
-    startStep: 30
+    startStep: 50
 
 # for YQ, remove TL
 - BoundingBoxDataPointsFilter:

@@ -9,10 +9,10 @@
     <param name="inputFilterName" value="$(find map_compression)/cfg/input_filters.yaml"/>
 
 	<!--There are dynamic objects in YQ dataset-->
-	<param name="icpFileName" value="/home/yh/mapModel/2018/10.18/icp_0301.txt"/> 
-	<param name="keepIndexName" value="/home/yh/mapModel/2018/10.18/keep_0301.txt"/>
+	<param name="icpFileName" value="/home/yh/mapModel/2018/12.14/icp_0301.txt"/> 
+	<param name="keepIndexName" value="/home/yh/mapModel/2018/12.14/keep_0301_scan_all.txt"/>
 	<param name="velodyneDirName" value="/media/yh/YH/DataSet/YQ21/2017_03_03/2017_03_03_drive_0001_sync/velodyne_points/data/"/>
-	<param name="saveVTKname" value="/home/yh/mapModel/2018/10.18/wholeMap_yq_origin.vtk"/>
+	<param name="saveVTKname" value="/home/yh/mapModel/2018/12.14/wholeMap_yq_origin.vtk"/>
 
 	<!--param name="icpFileName" value="/home/yh/mapModel/2018/08.02/kitti10_pose.txt"/> 
 	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.02/kitti10_keep.txt"/>

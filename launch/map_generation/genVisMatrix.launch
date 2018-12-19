@@ -6,11 +6,11 @@
 	<param name="isChery" value="false" />
 	<param name="isKITTI" value="false"/>
     
-	<param name="loadMapName" value="/home/yh/mapModel/2018/12.01/wholeMap_yq.ply"/>
-	<param name="loadTrajName" value="/home/yh/mapModel/2018/12.01/icp_0301.txt"/>
+	<param name="loadMapName" value="/home/yh/mapModel/2018/12.14/wholeMap_yq.vtk"/>
+	<param name="loadTrajName" value="/home/yh/mapModel/2018/12.14/icp_0301.txt"/>
 	<param name="velodyneDirName" value="/media/yh/YH/DataSet/YQ21/2017_03_03/2017_03_03_drive_0001_sync/velodyne_points/data/"/>
-	<param name="keepIndexName" value="/home/yh/mapModel/2018/12.01/keep_0301.txt"/> 	
-　　　 <param name="saveDirName" value="/home/yh/mapModel/2018/12.01/visMatrix/"/>
+	<param name="keepIndexName" value="/home/yh/mapModel/2018/12.14/keep_0301_all.txt"/> 	
+　　　 <param name="saveDirName" value="/home/yh/mapModel/2018/12.14/visMatrix/"/>
 
 	<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.02/wholeMap_kitti_10.vtk"/>
 	<param name="loadTrajName" value="/home/yh/mapModel/2018/08.02/kitti10_pose.txt"/>

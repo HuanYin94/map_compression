@@ -9,11 +9,11 @@
 	<param name="isChery" value="false" />
 	<param name="isKITTI" value="false" />
 
-	<param name="wholeMapName" value="/home/yh/mapModel/2018/12.01/wholeMap_yq.ply"/> 
+	<param name="wholeMapName" value="/home/yh/mapModel/2018/12.14/wholeMap_yq.vtk"/> 
 	<param name="velodyneDirName" value="/media/yh/YH/DataSet/YQ21/2017_03_03/2017_03_03_drive_0001_sync/velodyne_points/data/"/> 
-	<param name="keepIndexName" value="/home/yh/mapModel/2018/12.01/keep_0301.txt"/> 
-	<param name="icpFileName" value="/home/yh/mapModel/2018/12.01/icp_0301.txt"/>
-	<param name="saveVTKname" value="/home/yh/mapModel/2018/12.01/wholeMap_yq_scored.ply"/>
+	<param name="keepIndexName" value="/home/yh/mapModel/2018/12.14/keep_0301_all.txt"/> 
+	<param name="icpFileName" value="/home/yh/mapModel/2018/12.14/icp_0301.txt"/>
+	<param name="saveVTKname" value="/home/yh/mapModel/2018/12.14/wholeMap_yq_scored.vtk"/>
 
 	<!--param name="wholeMapName" value="/home/yh/mapModel/2018/08.02/wholeMap_kitti_10.vtk"/> 
 	<param name="velodyneDirName" value="/media/yh/YH/DataSet/kitti_benchmark_velodyne/dataset/sequences/10/velodyne/"/>
