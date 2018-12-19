@@ -12,9 +12,9 @@
 
 
 
-	<param name="loadMapName" value="/home/yh/mapModel/2018/12.14/server_test.vtk"/>
+	<param name="loadMapName" value="/home/yh/mapModel/2018/12.14/iter_results/b_800.ply"/> 
 	<param name="loadTrajName" value="/home/yh/mapModel/2018/12.14/icp_0301.txt"/>
-	<param name="keepIndexName" value="/home/yh/mapModel/2018/12.14/keep_0301.txt"/>
+	<param name="keepIndexName" value="/home/yh/mapModel/2018/12.14/keep_0301_all.txt"/>
 
 
 
