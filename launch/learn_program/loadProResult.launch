@@ -12,10 +12,10 @@
 	<param name="loadMapName" value="/home/yh/mapModel/2018/08.02/wholeMap_kitti_10.vtk"/>
 	<param name="saveCloudName" value="/home/yh/mapModel/2018/08.02/ILP_kitti10_map_0.05.vtk"/-->
 
-	<param name="loadResultDir" value="/home/yh/mapModel/2018/09.22/gurobi_compress_0.02/"/>
-	<param name="sectionNum" value="18"/>
-	<param name="loadMapName" value="/home/yh/mapModel/2018/09.22/wholeMap_park.ply"/>
-	<param name="saveCloudName" value="/home/yh/mapModel/2018/09.22/ILP_park_map_0.02.ply"/>
+	<param name="loadResultDir" value="/home/yh/mapModel/2018/12.14/server_iter_5/"/>
+	<param name="sectionNum" value="1"/>
+	<param name="loadMapName" value="/home/yh/mapModel/2018/12.14/wholeMap_yq.vtk"/>
+	<param name="saveCloudName" value="/home/yh/mapModel/2018/12.14/server_test.vtk"/>
 	
   </node>
 </launch>
