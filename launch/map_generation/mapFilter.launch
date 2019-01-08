@@ -2,8 +2,8 @@
 
 	<node pkg="map_compression" type="mapFilter" name="mapFilter" output="screen">
 	
-	<param name="loadMapName" value="/home/yh/mapModel/2018/12.14/wholeMap_yq_origin.vtk"/>
-    <param name="saveMapName" value="/home/yh/mapModel/2018/12.14/wholeMap_yq.vtk"/>	
+	<!--param name="loadMapName" value="/home/yh/mapModel/2018/12.14/wholeMap_yq_origin.vtk"/>
+    <param name="saveMapName" value="/home/yh/mapModel/2018/12.14/wholeMap_yq.vtk"/-->	
 
 	<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.02/wholeMap_kitti_10_origin.vtk"/>
 	<param name="saveMapName" value="/home/yh/mapModel/2018/08.02/wholeMap_kitti_10.vtk"/-->
@@ -12,6 +12,10 @@
     <param name="saveMapName" value="/home/yh/mapModel/2018/09.22/wholeMap_park.ply"/-->
 
 	<param name="mapPostFilters" value="/home/yh/mine_ws/src/map_compression/cfg/map_filters.yaml"/> 	
+
+	<param name="loadMapName" value="/home/yh/wholeMap_noloop.ply"/>
+    <param name="saveMapName" value="/home/yh/wholeMap_noloop_filtered.ply"/>	
+
 
   </node>
 <!--node pkg="rviz" type="rviz" name="rviz" args="-d $(find map_compression)/cfg/mapFilter.rviz" output="screen"/-->

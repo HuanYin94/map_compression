@@ -12,30 +12,32 @@
 
 
 
-	<param name="loadMapName" value="/home/yh/mapModel/2018/12.14/iter_results/b_800.ply"/> 
-	<param name="loadTrajName" value="/home/yh/mapModel/2018/12.14/icp_0301.txt"/>
-	<param name="keepIndexName" value="/home/yh/mapModel/2018/12.14/keep_0301_all.txt"/>
+	<!--param name="loadMapName" value="/home/yh/mapModel/2019/12.14/iter_results/b_800.ply"/--> 
+	<param name="loadMapName" value="/home/yh/wholeMap_before.ply"/> 
+
+
+	<param name="loadTrajName" value="/home/yh/mapModel/2019/12.14/icp_0301.txt"/>
+	<param name="keepIndexName" value="/home/yh/mapModel/2019/12.14/keep_0301_all.txt"/>
+
+
+
+
+	<!--param name="loadMapName" value="/home/yh/mapModel/2019/08.02/ILP_kitti10_map_0.05.vtk"/-->
+	<!--param name="loadMapName" value="/home/yh/mapModel/2019/08.02/learn/Learned_kitti10_map_test_0.2.vtk"/-->
+	<!--param name="loadMapName" value="/home/yh/mapModel/2019/08.02/learn/ILP_kitti10_map_train_test.vtk"/>
+
+	<param name="loadTrajName" value="/home/yh/mapModel/2019/08.02/kitti10_pose.txt"/>
+	<param name="keepIndexName" value="/home/yh/mapModel/2019/08.02/kitti10_keep.txt"/-->
 
 
 
 
 
-	<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.02/ILP_kitti10_map_0.05.vtk"/-->
-	<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.02/learn/Learned_kitti10_map_test_0.2.vtk"/-->
-	<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.02/learn/ILP_kitti10_map_train_test.vtk"/>
+	<!--param name="loadMapName" value="/home/yh/mapModel/2019/09.22/ILP_park_map_0.1.ply"/-->
+	<!--param name="loadMapName" value="/home/yh/mapModel/2019/09.22/learn/LocTest_park_map_0.02_program.ply"/-->
 
-	<param name="loadTrajName" value="/home/yh/mapModel/2018/08.02/kitti10_pose.txt"/>
-	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.02/kitti10_keep.txt"/-->
-
-
-
-
-
-	<!--param name="loadMapName" value="/home/yh/mapModel/2018/09.22/ILP_park_map_0.1.ply"/-->
-	<!--param name="loadMapName" value="/home/yh/mapModel/2018/09.22/learn/LocTest_park_map_0.02_program.ply"/-->
-
-	<!--param name="loadTrajName" value="/home/yh/mapModel/2018/09.22/global_pose.txt"/>
-	<param name="keepIndexName" value="/home/yh/mapModel/2018/09.22/keep_chery.txt"/-->
+	<!--param name="loadTrajName" value="/home/yh/mapModel/2019/09.22/global_pose.txt"/>
+	<param name="keepIndexName" value="/home/yh/mapModel/2019/09.22/keep_chery.txt"/-->
 
 
   </node>
