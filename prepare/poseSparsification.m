@@ -25,7 +25,7 @@ function [ icpPoseNew ] = poseSparsification( icpPose, saveIndexFileName, expDis
     length(keepIndex)
     
     % save the index to the file
-    dlmwrite(saveIndexFileName, keepIndex, 'delimiter', '\t');
+    dlmwrite(saveIndexFileName, keepIndex+8399, 'delimiter', '\t');
 
 end
 
