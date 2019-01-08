@@ -12,22 +12,21 @@
 
 
 
-	<!--param name="loadMapName" value="/home/yh/mapModel/2019/12.14/iter_results/b_800.ply"/--> 
-	<param name="loadMapName" value="/home/yh/wholeMap_before.ply"/> 
+	<!--param name="loadMapName" value="/home/yh/mapModel/2019/01.08/wholeMap_yq.vtk"/--> 
+	<!--param name="loadMapName" value="/home/yh/mapModel/2019/01.08/iter_results/b_800_program.ply"/--> 
+	<param name="loadMapName" value="/home/yh/mapModel/2019/01.08/locTest/otherMaps/random_b800_yq.ply"/>
+
+	<param name="loadTrajName" value="/home/yh/mapModel/2019/01.08/icp_0301.txt"/>
+	<param name="keepIndexName" value="/home/yh/mapModel/2019/01.08/keep_0301_all.txt"/>
 
 
-	<param name="loadTrajName" value="/home/yh/mapModel/2019/12.14/icp_0301.txt"/>
-	<param name="keepIndexName" value="/home/yh/mapModel/2019/12.14/keep_0301_all.txt"/>
 
 
 
+	<!--param name="loadMapName" value="/home/yh/mapModel/2019/01.09/wholeMap_kitti_10.ply"/>
 
-	<!--param name="loadMapName" value="/home/yh/mapModel/2019/08.02/ILP_kitti10_map_0.05.vtk"/-->
-	<!--param name="loadMapName" value="/home/yh/mapModel/2019/08.02/learn/Learned_kitti10_map_test_0.2.vtk"/-->
-	<!--param name="loadMapName" value="/home/yh/mapModel/2019/08.02/learn/ILP_kitti10_map_train_test.vtk"/>
-
-	<param name="loadTrajName" value="/home/yh/mapModel/2019/08.02/kitti10_pose.txt"/>
-	<param name="keepIndexName" value="/home/yh/mapModel/2019/08.02/kitti10_keep.txt"/-->
+	<param name="loadTrajName" value="/home/yh/mapModel/2019/01.09/kitti10_pose.txt"/>
+	<param name="keepIndexName" value="/home/yh/mapModel/2019/01.09/keep_kitti10_all.txt"/-->
 
 
 

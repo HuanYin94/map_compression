@@ -2,6 +2,13 @@
 
   <node pkg="map_compression" type="mapCutterTraj" name="mapCutterTraj" output="screen">
 
+
+
+
+
+
+
+
 	<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.03/ILP_YQ_map_0.02.vtk"/>
 	<param name="loadTrajName" value="/home/yh/mapModel/2018/08.03/icp_0301.txt"/>
 	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.03/keep_0301.txt"/>
@@ -14,6 +21,13 @@
 	<param name="cutPoint2" value="900"/>	
 	<param name="cutPoint3" value="4924"/-->	
 
+
+
+
+
+
+
+
 	<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.02/ILP_kitti10_map_0.05.vtk"/>
 	<param name="loadTrajName" value="/home/yh/mapModel/2018/08.02/kitti10_pose.txt"/>
 	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.02/kitti10_keep.txt"/>
@@ -25,6 +39,13 @@
 	<param name="cutPoint1" value="319"/>	
 	<param name="cutPoint2" value="320"/>	
 	<param name="cutPoint3" value="960"/-->	
+
+
+
+
+
+
+
 
 	
 	<!--For Localization Test-->
