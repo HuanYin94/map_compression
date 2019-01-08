@@ -47,7 +47,7 @@ Visualization Manager:
       Axis: Z
       Channel Name: normal_z
       Class: rviz/PointCloud2
-      Color: 0; 255; 0
+      Color: 0; 0; 255
       Color Transformer: FlatColor
       Decay Time: 0
       Enabled: true
@@ -60,7 +60,7 @@ Visualization Manager:
       Position Transformer: XYZ
       Queue Size: 10
       Selectable: false
-      Size (Pixels): 3.5
+      Size (Pixels): 2.5
       Size (m): 0.18
       Style: Points
       Topic: /mapCloud
@@ -171,7 +171,7 @@ Visualization Manager:
       Value: false
   Enabled: true
   Global Options:
-    Background Color: 0; 0; 0
+    Background Color: 255; 255; 255
     Fixed Frame: global
     Frame Rate: 30
   Name: root
@@ -193,22 +193,22 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 106.882
+      Distance: 160.82
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.06
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 50.8371
-        Y: 44.9807
-        Z: -20.3599
+        X: 2.48533
+        Y: -2.38834
+        Z: -25.2556
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 1.4798
+      Pitch: 1.5698
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 3.6804
+      Yaw: 1.08221
     Saved: ~
 Window Geometry:
   Displays:

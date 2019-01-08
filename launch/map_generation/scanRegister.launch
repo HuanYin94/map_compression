@@ -4,25 +4,37 @@
 	
 	<!--KITTI or YQ & actually SLAM in YQ, no registration from gt & add Chery-->
 	<param name="isChery" value="false" />	
-	<param name="isKITTI" value="false" />	
+	<param name="isKITTI" value="true" />	
 
     <param name="inputFilterName" value="$(find map_compression)/cfg/input_filters.yaml"/>
 
+
+
 	<!--There are dynamic objects in YQ dataset-->
-	<param name="icpFileName" value="/home/yh/mapModel/2018/12.14/icp_0301.txt"/> 
-	<param name="keepIndexName" value="/home/yh/mapModel/2018/12.14/keep_0301_scan_all.txt"/>
+
+	<!--param name="icpFileName" value="/home/yh/mapModel/2019/01.08/icp_0301.txt"/> 
+	<param name="keepIndexName" value="/home/yh/mapModel/2019/01.08/keep_0301_all.txt"/>
 	<param name="velodyneDirName" value="/media/yh/YH/DataSet/YQ21/2017_03_03/2017_03_03_drive_0001_sync/velodyne_points/data/"/>
-	<param name="saveVTKname" value="/home/yh/mapModel/2018/12.14/wholeMap_yq_origin.vtk"/>
+	<param name="saveVTKname" value="/home/yh/mapModel/2019/01.08/wholeMap_yq_origin.vtk"/-->
 
-	<!--param name="icpFileName" value="/home/yh/mapModel/2018/08.02/kitti10_pose.txt"/> 
-	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.02/kitti10_keep.txt"/>
+
+
+
+	<param name="icpFileName" value="/home/yh/mapModel/2019/01.09/kitti10_pose.txt"/> 
+	<param name="keepIndexName" value="/home/yh/mapModel/2019/01.09/keep_kitti10_all.txt"/>
 	<param name="velodyneDirName" value="/media/yh/YH/DataSet/kitti_benchmark_velodyne/dataset/sequences/10/velodyne/"/> 
-	<param name="saveVTKname" value="/home/yh/mapModel/2018/08.02/wholeMap_kitti_10_origin.vtk"/-->
+	<param name="saveVTKname" value="/home/yh/mapModel/2019/01.09/wholeMap_kitti_10_origin.ply"/>
 
-	<!--param name="icpFileName" value="/home/yh/mapModel/2018/09.22/global_pose.txt"/> 
-	<param name="keepIndexName" value="/home/yh/mapModel/2018/09.22/keep_chery.txt"/>
-	<param name="velodyneDirName" value="/home/yh/mapModel/2018/09.22/scan/"/>
-	<param name="saveVTKname" value="/home/yh/mapModel/2018/09.22/wholeMap_park_origin.ply"/-->
+
+
+
+	<!--param name="icpFileName" value="/home/yh/mapModel/2019/09.22/global_pose.txt"/> 
+	<param name="keepIndexName" value="/home/yh/mapModel/2019/09.22/keep_chery.txt"/>
+	<param name="velodyneDirName" value="/home/yh/mapModel/2019/09.22/scan/"/>
+	<param name="saveVTKname" value="/home/yh/mapModel/2019/09.22/wholeMap_park_origin.ply"/-->
+
+
+
 
   </node>
 </launch>

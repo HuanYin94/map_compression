@@ -7,25 +7,25 @@
 	
 	<!--KITTI or YQ-->
 	<param name="isChery" value="false" />
-	<param name="isKITTI" value="false" />
+	<param name="isKITTI" value="true" />
 
-	<param name="wholeMapName" value="/home/yh/mapModel/2018/12.14/wholeMap_yq.vtk"/> 
+	<!--param name="wholeMapName" value="/home/yh/mapModel/2019/01.08/wholeMap_yq.vtk"/> 
 	<param name="velodyneDirName" value="/media/yh/YH/DataSet/YQ21/2017_03_03/2017_03_03_drive_0001_sync/velodyne_points/data/"/> 
-	<param name="keepIndexName" value="/home/yh/mapModel/2018/12.14/keep_0301_all.txt"/> 
-	<param name="icpFileName" value="/home/yh/mapModel/2018/12.14/icp_0301.txt"/>
-	<param name="saveVTKname" value="/home/yh/mapModel/2018/12.14/wholeMap_yq_scored.vtk"/>
+	<param name="keepIndexName" value="/home/yh/mapModel/2019/01.08/keep_0301_all.txt"/> 
+	<param name="icpFileName" value="/home/yh/mapModel/2019/01.08/icp_0301.txt"/>
+	<param name="saveVTKname" value="/home/yh/mapModel/2019/01.08/wholeMap_yq_scored.vtk"/-->
 
-	<!--param name="wholeMapName" value="/home/yh/mapModel/2018/08.02/wholeMap_kitti_10.vtk"/> 
+	<param name="wholeMapName" value="/home/yh/mapModel/2019/01.09/wholeMap_kitti_10.ply"/> 
 	<param name="velodyneDirName" value="/media/yh/YH/DataSet/kitti_benchmark_velodyne/dataset/sequences/10/velodyne/"/>
-	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.02/kitti10_keep.txt"/> 
-	<param name="icpFileName" value="/home/yh/mapModel/2018/08.02/kitti10_pose.txt"/>
-	<param name="saveVTKname" value="/home/yh/mapModel/2018/08.02/wholeMap_kitti_10_scored.vtk"/-->
+	<param name="keepIndexName" value="/home/yh/mapModel/2019/01.09/keep_kitti10_all.txt"/> 
+	<param name="icpFileName" value="/home/yh/mapModel/2019/01.09/kitti10_pose.txt"/>
+	<param name="saveVTKname" value="/home/yh/mapModel/2019/01.09/wholeMap_kitti_10_scored.ply"/>
 
-	<!--param name="wholeMapName" value="/home/yh/mapModel/2018/09.22/wholeMap_park.ply"/>
-	<param name="icpFileName" value="/home/yh/mapModel/2018/09.22/global_pose.txt"/>
-	<param name="velodyneDirName" value="/home/yh/mapModel/2018/09.22/scan/"/>
-	<param name="keepIndexName" value="/home/yh/mapModel/2018/09.22/keep_chery.txt"/>
-　　　 <param name="saveVTKname" value="/home/yh/mapModel/2018/09.22/wholeMap_park_scored.ply"/-->
+	<!--param name="wholeMapName" value="/home/yh/mapModel/2019/09.22/wholeMap_park.ply"/>
+	<param name="icpFileName" value="/home/yh/mapModel/2019/09.22/global_pose.txt"/>
+	<param name="velodyneDirName" value="/home/yh/mapModel/2019/09.22/scan/"/>
+	<param name="keepIndexName" value="/home/yh/mapModel/2019/09.22/keep_chery.txt"/>
+　　　 <param name="saveVTKname" value="/home/yh/mapModel/2019/09.22/wholeMap_park_scored.ply"/-->
 	
 	<param name="limitRange" value="0.1"/>
 	<param name="kSearch" value="10"/>

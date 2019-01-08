@@ -12,10 +12,11 @@
 	<!--YQ-->
 	<!--Not close to the beginning and end of the cutted map-->
 	<!--Multi-session test, in Day three-->
-	<!--param name="wholeMapName" value="/home/yh/mapModel/2018/08.03/test/Learned_YQ_map_test_PART.ply"/> 
+
+	<param name="wholeMapName" value="/home/yh/mapModel/2018/08.03/test/Learned_YQ_map_test_PART.ply"/> 
 	<param name="velodyneDirName" value="/media/yh/YH/DataSet/YQ21/2017_03_09/2017_03_09_drive_0001_sync/velodyne_points/data/"/>
 	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.03/test/keep_0901.txt"/> 
-	<param name="icpFileName" value="/home/yh/mapModel/2018/08.03/test/icp_0901.txt"/-->
+	<param name="icpFileName" value="/home/yh/mapModel/2018/08.03/test/icp_0901.txt"/>
 	
 	<!--param name="startIndex" value="3500"/>
 	<param name="endIndex" value="4900"/-->
@@ -34,7 +35,7 @@
 
 
 	<!--PARK-->
-	<param name="wholeMapName" value="/home/yh/mapModel/2018/09.22/locTest/Voxel_park_map_0.02.ply"/> 
+	<!--param name="wholeMapName" value="/home/yh/mapModel/2018/09.22/locTest/Voxel_park_map_0.02.ply"/> 
 	<param name="velodyneDirName" value="/home/yh/mapModel/2018/09.22/scan/"/>
 	<param name="keepIndexName" value="/home/yh/mapModel/2018/09.22/keep_chery.txt"/> 
 	<param name="icpFileName" value="/home/yh/mapModel/2018/09.22/global_pose.txt"/>
@@ -47,7 +48,7 @@
 	<param name="icpYaml" value="$(find map_compression)/cfg/loc_icp.yaml"/>
 
 	<param name="savePoseName" value="/home/yh/mapModel/2018/09.22/locTest/park_voxel_2_pose.txt"/>
-	<param name="saveTimeName" value="/home/yh/mapModel/2018/09.22/locTest/park_voxel_2_time.txt"/>
+	<param name="saveTimeName" value="/home/yh/mapModel/2018/09.22/locTest/park_voxel_2_time.txt"/-->
 
 
 
