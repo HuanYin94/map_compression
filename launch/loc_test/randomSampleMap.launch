@@ -9,7 +9,7 @@
     <!--param name="keepPointsNum" value="121180"/-->
 
 	<param name="loadMapName" value="/home/yh/mapModel/2019/01.08/wholeMap_yq.vtk"/>
-  	<param name="saveMapName" value="/home/yh/mapModel/2019/01.08/locTest/otherMaps/random_b800_yq.ply"/>
+  	<param name="saveMapName" value="/home/yh/mapModel/2019/01.08/locTest/random_b800.ply"/>
 
 
   </node>
