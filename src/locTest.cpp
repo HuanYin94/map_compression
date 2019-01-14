@@ -234,6 +234,7 @@ void locTest::process(int indexCnt)
     inputFilters.apply(velodyneCloud);
 
     cout<<"filtered VEL_NUM:  "<<velodyneCloud.features.cols()<<endl;
+    cout<<"filtered VEL_DES:  "<<velodyneCloud.features.rows()<<endl;
 
     // icp
     // bug "Ignore..." fixed, quat!
@@ -243,10 +244,7 @@ void locTest::process(int indexCnt)
 
     Ttemp=Tinit;
 
-//    cout<<Tinit<<endl;
     double t0 = ros::Time::now().toSec();
-
-
 
     Ticp = icp(velodyneCloud, Tinit);
 
