@@ -1,24 +1,12 @@
 <launch>
 
   	<node pkg="map_compression" type="randomSampleMap" name="randomSampleMap" output="screen">
-	
-  	<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.03/test/Learned_YQ_map_test_PART.ply"/>
-  	<param name="saveMapName" value="/home/yh/mapModel/2018/08.03/test/Random/Random1_YQ_map_test_0.02_locTest.ply"/-->
-
 		
-  	<!--param name="keepPointsNum" value="6608"/-->
-    <!--param name="keepPointsNum" value="13198"/-->
-  	<!--param name="keepPointsNum" value="27684"/-->
-  	<!--param name="keepPointsNum" value="58319"/-->
-    <!--param name="keepPointsNum" value="121180"/-->
+  	<param name="keepPointsNum" value="315771"/>
 
-	<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.02/test/Learned_kitti10_map_test_0.05_kept.ply"/>
-  	<param name="saveMapName" value="/home/yh/mapModel/2018/08.02/test/Random_kitti10_map_test_0.05_locTest.ply"/>
-	<param name="keepPointsNum" value=""/-->
+	<param name="loadMapName" value="/home/yh/mapModel/2019/01.08/wholeMap_yq.vtk"/>
+  	<param name="saveMapName" value="/home/yh/mapModel/2019/01.08/locTest/random_b2000.ply"/>
 
-	<param name="loadMapName" value="/home/yh/mapModel/2018/09.22/learn/Learned_park_map_0.02.ply"/>
-  	<param name="saveMapName" value="/home/yh/mapModel/2018/09.22/locTest/Random1_park_map_0.02.ply"/>
-	<param name="keepPointsNum" value="11152"/>
 
   </node>
 </launch>

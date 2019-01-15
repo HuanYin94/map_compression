@@ -6,7 +6,7 @@ function [ icpPoseNew ] = poseSparsification( icpPose, saveIndexFileName, expDis
 
     keepIndex = [1];
     icpPoseNew(1,:) = icpPose(1,:); % for plotting
-    
+
     cnt = 1;
     for i = 2:length(icpPose)
         pose1 = [icpPose(i,4), icpPose(i,8)];
@@ -14,7 +14,7 @@ function [ icpPoseNew ] = poseSparsification( icpPose, saveIndexFileName, expDis
         dis = norm(pose1 - pose2);
         
         if dis > expDis
-            cnt = cnt + 1;q
+            cnt = cnt + 1;
             keepIndex(cnt,:) = i;
             icpPoseNew(cnt,:) = icpPose(i,:);
         end

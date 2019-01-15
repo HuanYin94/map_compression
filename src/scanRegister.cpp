@@ -171,7 +171,7 @@ void scanRegister::process(int indexCnt)
     Trobot(2,0)=initPoses[index][8];Trobot(2,1)=initPoses[index][9];Trobot(2,2)=initPoses[index][10];Trobot(2,3)=initPoses[index][11];
     Trobot(3,0)=initPoses[index][12];Trobot(3,1)=initPoses[index][13];Trobot(3,2)=initPoses[index][14];Trobot(3,3)=initPoses[index][15];
 
-    cout<<Trobot<<endl;
+//    cout<<Trobot<<endl;
 
     transformation->correctParameters(Trobot);
 
