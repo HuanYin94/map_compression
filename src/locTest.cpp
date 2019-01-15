@@ -227,6 +227,7 @@ void locTest::process(int indexCnt)
         velodyneCloud = DP::load(vtkFileName);  // Chery dataset
     }
 
+    cout<<"-----------------------------------------------------------------------"<<endl;
     cout<<"VEL_NUM:  "<<velodyneCloud.features.cols()<<endl;
 
     ifstream inputFilterss(inputFilterYaml);
@@ -243,10 +244,7 @@ void locTest::process(int indexCnt)
 
     Ttemp=Tinit;
 
-//    cout<<Tinit<<endl;
     double t0 = ros::Time::now().toSec();
-
-
 
     Ticp = icp(velodyneCloud, Tinit);
 
