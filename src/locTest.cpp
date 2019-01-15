@@ -227,6 +227,7 @@ void locTest::process(int indexCnt)
         velodyneCloud = DP::load(vtkFileName);  // Chery dataset
     }
 
+    cout<<"-----------------------------------------------------------------------"<<endl;
     cout<<"VEL_NUM:  "<<velodyneCloud.features.cols()<<endl;
 
     ifstream inputFilterss(inputFilterYaml);
@@ -234,7 +235,6 @@ void locTest::process(int indexCnt)
     inputFilters.apply(velodyneCloud);
 
     cout<<"filtered VEL_NUM:  "<<velodyneCloud.features.cols()<<endl;
-    cout<<"filtered VEL_DES:  "<<velodyneCloud.features.rows()<<endl;
 
     // icp
     // bug "Ignore..." fixed, quat!

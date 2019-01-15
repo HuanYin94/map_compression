@@ -12,23 +12,26 @@
 	<!--YQ-->
 	<!--Not close to the beginning and end of the cutted map-->
 	<!--Multi-session test, in Day three-->
-	<param name="wholeMapName" value="/home/yh/mapModel/2019/01.08/locTest/ILP_b800_locTest.ply"/> 
+	<param name="wholeMapName" value="/home/yh/mapModel/2019/01.08/locTest/random_b200_locTest.ply"/> 
 	<param name="velodyneDirName" value="/media/yh/YH/DataSet/YQ21/2017_03_09/2017_03_09_drive_0001_sync/velodyne_points/data/"/>
-	<param name="keepIndexName" value="/home/yh/mapModel/2019/01.08/locTest/keep_0901_all.txt"/> 
+	<param name="keepIndexName" value="/home/yh/mapModel/2019/01.08/locTest/keep_0901.txt"/> 
 	<param name="icpFileName" value="/home/yh/mapModel/2019/01.08/locTest/icp_0901.txt"/>
-	
-	<!--param name="startIndex" value="3500"/>
-	<param name="endIndex" value="4900"/-->
 
-	<param name="startIndex" value="7200"/>
-	<param name="endIndex" value="10500"/>
+	<!--param name="startIndex" value="1587"/>
+	<param name="endIndex" value="2220"/-->
+	
+	<param name="startIndex" value="3500"/>
+	<param name="endIndex" value="4900"/>
+
+	<!--param name="startIndex" value="7500"/>
+	<param name="endIndex" value="10500"/-->
 	
 	<param name="inputFilterYaml" value="$(find map_compression)/cfg/loc_laser_filters.yaml"/>
 	<param name="mapFilterYaml" value="$(find map_compression)/cfg/loc_map_filters.yaml"/>
 	<param name="icpYaml" value="$(find map_compression)/cfg/loc_icp.yaml"/>
 
-	<param name="savePoseName" value="/home/yh/mapModel/2019/01.08/locTest/results/yq_ILP_b800_pose.txt"/>
-	<param name="saveTimeName" value="/home/yh/mapModel/2019/01.08/locTest/results/yq_ILP_b800_time.txt"/>
+	<param name="savePoseName" value="/home/yh/mapModel/2019/01.08/locTest/results/yq_random_b500_pose.txt"/>
+	<param name="saveTimeName" value="/home/yh/mapModel/2019/01.08/locTest/results/yq_random_b500_time.txt"/>
 
 
 
