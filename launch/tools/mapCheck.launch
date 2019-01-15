@@ -14,7 +14,7 @@
 
 	<!--param name="loadMapName" value="/home/yh/mapModel/2019/01.08/wholeMap_yq.vtk"/--> 
 	<!--param name="loadMapName" value="/home/yh/mapModel/2019/01.08/iter_results/b_800_program.ply"/--> 
-	<param name="loadMapName" value="/home/yh/mapModel/2019/01.08/locTest/random_b800_locTest.ply"/>
+	<param name="loadMapName" value="/home/yh/mapModel/2019/01.08/iter_results/b_2000_program.ply"/>
 
 	<param name="loadTrajName" value="/home/yh/mapModel/2019/01.08/icp_0301.txt"/>
 	<param name="keepIndexName" value="/home/yh/mapModel/2019/01.08/keep_0301_all.txt"/>
@@ -41,5 +41,5 @@
 
   </node>
 <!--node pkg="rviz" type="rviz" name="rviz" args="-d $(find map_compression)/cfg/mapCheck_kitti10.rviz" output="screen"/-->
-<node pkg="rviz" type="rviz" name="rviz" args="-d $(find map_compression)/cfg/mapCheck_yq.rviz" output="screen"/>
+<!--node pkg="rviz" type="rviz" name="rviz" args="-d $(find map_compression)/cfg/mapCheck_yq.rviz" output="screen"/-->
 </launch>
