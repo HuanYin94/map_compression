@@ -22,7 +22,7 @@ transformationCheckers:
       minDiffTransErr: 0.01
       smoothLength: 10
   - CounterTransformationChecker:
-      maxIterationCount: 20
+      maxIterationCount: 50
   - BoundTransformationChecker:
       maxRotationNorm: 1.5
       maxTranslationNorm: 50.00
