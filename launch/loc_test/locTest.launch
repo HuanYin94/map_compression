@@ -12,7 +12,7 @@
 	<!--YQ-->
 	<!--Not close to the beginning and end of the cutted map-->
 	<!--Multi-session test, in Day three-->
-	<param name="wholeMapName" value="/home/yh/mapModel/2019/01.08/locTest/random_b200_locTest.ply"/> 
+	<param name="wholeMapName" value="/home/yh/mapModel/2019/01.08/locTest/random_b500_locTest.ply"/> 
 	<param name="velodyneDirName" value="/media/yh/YH/DataSet/YQ21/2017_03_09/2017_03_09_drive_0001_sync/velodyne_points/data/"/>
 	<param name="keepIndexName" value="/home/yh/mapModel/2019/01.08/locTest/keep_0901.txt"/> 
 	<param name="icpFileName" value="/home/yh/mapModel/2019/01.08/locTest/icp_0901.txt"/>

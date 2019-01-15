@@ -1,0 +1,23 @@
+roslaunch map_compression mapCutterTraj.launch loadMapName:="/home/yh/mapModel/2019/01.08/locTest/random/random_b500_1.ply" saveTestName:="/home/yh/mapModel/2019/01.08/locTest/random/random_b500_1_locTest.ply"
+roslaunch map_compression mapCutterTraj.launch loadMapName:="/home/yh/mapModel/2019/01.08/locTest/random/random_b500_2.ply" saveTestName:="/home/yh/mapModel/2019/01.08/locTest/random/random_b500_2_locTest.ply"
+roslaunch map_compression mapCutterTraj.launch loadMapName:="/home/yh/mapModel/2019/01.08/locTest/random/random_b500_3.ply" saveTestName:="/home/yh/mapModel/2019/01.08/locTest/random/random_b500_3_locTest.ply"
+roslaunch map_compression mapCutterTraj.launch loadMapName:="/home/yh/mapModel/2019/01.08/locTest/random/random_b500_4.ply" saveTestName:="/home/yh/mapModel/2019/01.08/locTest/random/random_b500_4_locTest.ply"
+roslaunch map_compression mapCutterTraj.launch loadMapName:="/home/yh/mapModel/2019/01.08/locTest/random/random_b500_5.ply" saveTestName:="/home/yh/mapModel/2019/01.08/locTest/random/random_b500_5_locTest.ply"
+
+roslaunch map_compression mapCutterTraj.launch loadMapName:="/home/yh/mapModel/2019/01.08/locTest/random/random_b1000_1.ply" saveTestName:="/home/yh/mapModel/2019/01.08/locTest/random/random_b1000_1_locTest.ply"
+roslaunch map_compression mapCutterTraj.launch loadMapName:="/home/yh/mapModel/2019/01.08/locTest/random/random_b1000_2.ply" saveTestName:="/home/yh/mapModel/2019/01.08/locTest/random/random_b1000_2_locTest.ply"
+roslaunch map_compression mapCutterTraj.launch loadMapName:="/home/yh/mapModel/2019/01.08/locTest/random/random_b1000_3.ply" saveTestName:="/home/yh/mapModel/2019/01.08/locTest/random/random_b1000_3_locTest.ply"
+roslaunch map_compression mapCutterTraj.launch loadMapName:="/home/yh/mapModel/2019/01.08/locTest/random/random_b1000_4.ply" saveTestName:="/home/yh/mapModel/2019/01.08/locTest/random/random_b1000_4_locTest.ply"
+roslaunch map_compression mapCutterTraj.launch loadMapName:="/home/yh/mapModel/2019/01.08/locTest/random/random_b1000_5.ply" saveTestName:="/home/yh/mapModel/2019/01.08/locTest/random/random_b1000_5_locTest.ply"
+
+roslaunch map_compression mapCutterTraj.launch loadMapName:="/home/yh/mapModel/2019/01.08/locTest/random/random_b1500_1.ply" saveTestName:="/home/yh/mapModel/2019/01.08/locTest/random/random_b1500_1_locTest.ply"
+roslaunch map_compression mapCutterTraj.launch loadMapName:="/home/yh/mapModel/2019/01.08/locTest/random/random_b1500_2.ply" saveTestName:="/home/yh/mapModel/2019/01.08/locTest/random/random_b1500_2_locTest.ply"
+roslaunch map_compression mapCutterTraj.launch loadMapName:="/home/yh/mapModel/2019/01.08/locTest/random/random_b1500_3.ply" saveTestName:="/home/yh/mapModel/2019/01.08/locTest/random/random_b1500_3_locTest.ply"
+roslaunch map_compression mapCutterTraj.launch loadMapName:="/home/yh/mapModel/2019/01.08/locTest/random/random_b1500_4.ply" saveTestName:="/home/yh/mapModel/2019/01.08/locTest/random/random_b1500_4_locTest.ply"
+roslaunch map_compression mapCutterTraj.launch loadMapName:="/home/yh/mapModel/2019/01.08/locTest/random/random_b1500_5.ply" saveTestName:="/home/yh/mapModel/2019/01.08/locTest/random/random_b1500_5_locTest.ply"
+
+roslaunch map_compression mapCutterTraj.launch loadMapName:="/home/yh/mapModel/2019/01.08/locTest/random/random_b2000_1.ply" saveTestName:="/home/yh/mapModel/2019/01.08/locTest/random/random_b2000_1_locTest.ply"
+roslaunch map_compression mapCutterTraj.launch loadMapName:="/home/yh/mapModel/2019/01.08/locTest/random/random_b2000_2.ply" saveTestName:="/home/yh/mapModel/2019/01.08/locTest/random/random_b2000_2_locTest.ply"
+roslaunch map_compression mapCutterTraj.launch loadMapName:="/home/yh/mapModel/2019/01.08/locTest/random/random_b2000_3.ply" saveTestName:="/home/yh/mapModel/2019/01.08/locTest/random/random_b2000_3_locTest.ply"
+roslaunch map_compression mapCutterTraj.launch loadMapName:="/home/yh/mapModel/2019/01.08/locTest/random/random_b2000_4.ply" saveTestName:="/home/yh/mapModel/2019/01.08/locTest/random/random_b2000_4_locTest.ply"
+roslaunch map_compression mapCutterTraj.launch loadMapName:="/home/yh/mapModel/2019/01.08/locTest/random/random_b2000_5.ply" saveTestName:="/home/yh/mapModel/2019/01.08/locTest/random/random_b2000_5_locTest.ply"

@@ -185,6 +185,7 @@ void mapCutterTraj::process()
 //    mapCloud.save(saveCloudName);
 
     cout<<"Splitted & Saved"<<endl;
+    exit(0);
 
 }
 
