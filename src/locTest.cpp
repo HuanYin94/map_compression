@@ -380,7 +380,8 @@ int main(int argc, char **argv)
     ros::NodeHandle n;
 
     locTest loctest(n);
-    ros::spin();
+	
+	exit(0);
 
     return 0;
 }
