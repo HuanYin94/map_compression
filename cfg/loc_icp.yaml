@@ -1,17 +1,17 @@
 matcher:
   KDTreeMatcher:
-    knn: 5
-    maxDist: 3.0
+    knn: 3
+    maxDist: 10.0
     epsilon: 0
 
 outlierFilters:
 #  - TrimmedDistOutlierFilter:
 #     ratio: 0.4
-# 0.4 for others, 1.?+ for voxel for the leafSize?
+# 0.4 for all ! (include voxel)
   - MaxDistOutlierFilter:
-     maxDist: 0.4
+     maxDist: 0.8
   - SurfaceNormalOutlierFilter:
-     maxAngle: 0.78
+     maxAngle: 1.57
 
 errorMinimizer:
   PointToPlaneErrorMinimizer
@@ -20,12 +20,12 @@ transformationCheckers:
   - DifferentialTransformationChecker:
       minDiffRotErr: 0.001
       minDiffTransErr: 0.01
-      smoothLength: 10
+      smoothLength: 2
   - CounterTransformationChecker:
-      maxIterationCount: 50
+      maxIterationCount: 40
   - BoundTransformationChecker:
-      maxRotationNorm: 1.5
-      maxTranslationNorm: 50.00
+      maxRotationNorm: 0.8
+      maxTranslationNorm: 30.00
 
 inspector:
 #  VTKFileInspector
