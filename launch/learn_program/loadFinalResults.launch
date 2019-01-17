@@ -9,9 +9,9 @@
 	<param name="saveCloudName" value="/home/yh/mapModel/2018/08.02/learn/Learned_kitti10_map_test_0.05.vtk"/-->
 
 
-	<param name="loadResultName" value="/home/yh/mapModel/2019/01.08/learn/results/predict_b2000.txt"/>
-	<param name="loadMapName" value="/home/yh/mapModel/2019/01.08/learn/b_2000_test.ply"/>
-	<param name="saveCloudName" value="/home/yh/mapModel/2019/01.08/learn/results/predict_b2000_test.ply"/>
+	<param name="loadResultName" value="/home/yh/mapModel/2019/01.08/learn/results/predict_b500_from_1000.txt"/>
+	<param name="loadMapName" value="/home/yh/mapModel/2019/01.08/learn/b_500_test.ply"/>
+	<param name="saveCloudName" value="/home/yh/mapModel/2019/01.08/learn/results/predict_b500_from_1000_test.ply"/>
 
 	
   </node>
