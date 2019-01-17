@@ -12,8 +12,8 @@
 
 
 
-	<param name="loadMapName" value="/home/yh/mapModel/2018/09.22/learn/Learned_park_map_0.02.ply"/>
-	<param name="saveDisName" value="/home/yh/mapModel/2018/09.22/learn/Learned_park_error_0.02.txt"/>
+	<param name="loadMapName" value="/home/yh/mapModel/2019/01.08/learn/results/predict_b500_from_1000_test.ply"/>
+	<param name="saveDisName" value="/home/yh/mapModel/2019/01.08/learn/results/predict_b500_from_1000_error_dis.txt"/>
 
   </node>
 </launch>

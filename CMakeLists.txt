@@ -67,6 +67,13 @@ ${catkin_LIBRARIES}
 ${libpointmatcher_LIBRARIES}
 )
 
+add_executable(compareDistribution src/compareDistribution.cpp)
+target_link_libraries(compareDistribution
+${catkin_LIBRARIES}
+${libpointmatcher_LIBRARIES}
+)
+
+
 add_executable(locTest src/locTest.cpp)
 target_link_libraries(locTest
 ${catkin_LIBRARIES}
