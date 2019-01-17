@@ -1,5 +1,5 @@
 - RandomSamplingDataPointsFilter:
-    prob: 0.1
+    prob: 0.2
 - SurfaceNormalDataPointsFilter:
     knn: 5
     epsilon: 0
