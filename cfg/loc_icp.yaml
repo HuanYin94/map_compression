@@ -6,12 +6,11 @@ matcher:
 
 outlierFilters:
 #  - TrimmedDistOutlierFilter:
-#     ratio: 0.4
-# 0.4 for all ! (include voxel)
+#     ratio: 0.8
   - MaxDistOutlierFilter:
-     maxDist: 0.8
+     maxDist: 0.4
   - SurfaceNormalOutlierFilter:
-     maxAngle: 1.57
+     maxAngle: 0.78
 
 errorMinimizer:
   PointToPlaneErrorMinimizer
@@ -20,12 +19,12 @@ transformationCheckers:
   - DifferentialTransformationChecker:
       minDiffRotErr: 0.001
       minDiffTransErr: 0.01
-      smoothLength: 2
+      smoothLength: 5
   - CounterTransformationChecker:
       maxIterationCount: 40
   - BoundTransformationChecker:
-      maxRotationNorm: 0.8
-      maxTranslationNorm: 30.00
+      maxRotationNorm: 0.78
+      maxTranslationNorm: 40.00
 
 inspector:
 #  VTKFileInspector
