@@ -68,9 +68,9 @@ ratio_500 = totalNum_500 / totalNum;
 
 ff = figure;
 plot(iter, ratio_2000, '--bs', 'MarkerSize', 10,  'MarkerFaceColor', 'r'); hold on;
-plot(iter, ratio_1500, '--bs', 'MarkerSize', 10,  'MarkerFaceColor', 'k'); hold on;
-plot(iter, ratio_1000, '--bs', 'MarkerSize', 10,  'MarkerFaceColor', 'm'); hold on;
-plot(iter, ratio_500, '--bs', 'MarkerSize', 10,  'MarkerFaceColor', 'b'); hold on;
+plot(iter, ratio_1500, '--bs', 'MarkerSize', 10,  'MarkerFaceColor', 'b'); hold on;
+plot(iter, ratio_1000, '--bs', 'MarkerSize', 10,  'MarkerFaceColor', 'k'); hold on;
+plot(iter, ratio_500, '--bs', 'MarkerSize', 10,  'MarkerFaceColor', 'm'); hold on;
 
 grid on;
 l=legend('b=2000', 'b=1500', 'b=1000', 'b=500');
