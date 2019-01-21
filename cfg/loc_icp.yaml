@@ -6,10 +6,9 @@ matcher:
 
 outlierFilters:
 #  - TrimmedDistOutlierFilter:
-#     ratio: 0.4
-# 0.5 for others, 1.5+ for voxel for the leafSize?
+#     ratio: 0.8
   - MaxDistOutlierFilter:
-     maxDist: 0.4
+     maxDist: 0.5
   - SurfaceNormalOutlierFilter:
      maxAngle: 0.78
 
@@ -20,12 +19,12 @@ transformationCheckers:
   - DifferentialTransformationChecker:
       minDiffRotErr: 0.001
       minDiffTransErr: 0.01
-      smoothLength: 10
+      smoothLength: 2
   - CounterTransformationChecker:
-      maxIterationCount: 50
+      maxIterationCount: 20
   - BoundTransformationChecker:
-      maxRotationNorm: 1.5
-      maxTranslationNorm: 50.00
+      maxRotationNorm: 0.78
+      maxTranslationNorm: 30.00
 
 inspector:
 #  VTKFileInspector

@@ -1,8 +1,13 @@
 <launch>
 	
-	<node pkg="rviz" type="rviz" name="rviz" args="-d $(find map_compression)/cfg/locTest.rviz" output="screen"/>
+	<!--node pkg="rviz" type="rviz" name="rviz" args="-d $(find map_compression)/cfg/locTest.rviz" output="screen"/-->
 
-  <node pkg="map_compression" type="locTest" name="locTest" output="screen">
+	<arg name="wholeMapName"/> 
+	<arg name="savePoseName"/> 
+	<arg name="saveTimeName"/> 
+	<arg name="saveIterName"/> 
+
+  	<node pkg="map_compression" type="locTest" name="locTest" output="screen" required="true">
 	
 	<!--KITTI or YQ # add Chery.vtk-->
 	<param name="isChery" value="false" />	
@@ -12,28 +17,38 @@
 	<!--YQ-->
 	<!--Not close to the beginning and end of the cutted map-->
 	<!--Multi-session test, in Day three-->
-	<param name="wholeMapName" value="/home/yh/mapModel/2019/01.08/locTest/random_b500_locTest.ply"/> 
+
+
+	<!--param name="wholeMapName" value="/home/yh/mapModel/2019/01.08/locTest/random/random_b500_1_locTest.ply"/--> 
+	<param name="wholeMapName" value="$(arg wholeMapName)"/> 
+
 	<param name="velodyneDirName" value="/media/yh/YH/DataSet/YQ21/2017_03_09/2017_03_09_drive_0001_sync/velodyne_points/data/"/>
 	<param name="keepIndexName" value="/home/yh/mapModel/2019/01.08/locTest/keep_0901.txt"/> 
 	<param name="icpFileName" value="/home/yh/mapModel/2019/01.08/locTest/icp_0901.txt"/>
 
-	<!--param name="startIndex" value="1587"/>
-	<param name="endIndex" value="2220"/-->
-	
 	<param name="startIndex" value="3500"/>
 	<param name="endIndex" value="4900"/>
 
-	<!--param name="startIndex" value="7500"/>
-	<param name="endIndex" value="10500"/-->
+	<!--for figures-->
+	<!--param name="startIndex" value="3983"/>
+	<param name="endIndex" value="3985"/-->
+
+	<!--param name="startIndex" value="4053"/>
+	<param name="endIndex" value="4055"/-->
+
+	<!--param name="startIndex" value="4823"/>
+	<param name="endIndex" value="4825"/-->
 	
 	<param name="inputFilterYaml" value="$(find map_compression)/cfg/loc_laser_filters.yaml"/>
 	<param name="mapFilterYaml" value="$(find map_compression)/cfg/loc_map_filters.yaml"/>
 	<param name="icpYaml" value="$(find map_compression)/cfg/loc_icp.yaml"/>
 
-	<param name="savePoseName" value="/home/yh/mapModel/2019/01.08/locTest/results/yq_random_b500_pose.txt"/>
-	<param name="saveTimeName" value="/home/yh/mapModel/2019/01.08/locTest/results/yq_random_b500_time.txt"/>
-
-
+	<!--param name="savePoseName" value="/home/yh/mapModel/2019/01.08/locTest/figs/yq_random_b500_pose.txt"/-->
+	<!--param name="saveTimeName" value="/home/yh/mapModel/2019/01.08/locTest/figs/yq_random_b500_time.txt"/-->
+	
+	<param name="savePoseName" value="$(arg savePoseName)"/> 
+	<param name="saveTimeName" value="$(arg saveTimeName)"/> 
+	<param name="saveIterName" value="$(arg saveIterName)"/> 
 
 
 	<!--PARK-->

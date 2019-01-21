@@ -2,10 +2,10 @@
 
   	<node pkg="map_compression" type="randomSampleMap" name="randomSampleMap" output="screen">
 		
-  	<param name="keepPointsNum" value="70996"/>
+  	<param name="keepPointsNum" value="131061"/>
 
 	<param name="loadMapName" value="/home/yh/mapModel/2019/01.08/wholeMap_yq.ply"/>
-  	<param name="saveMapName" value="/home/yh/mapModel/2019/01.08/locTest/random/random_b500_1.ply"/>
+  	<param name="saveMapName" value="/home/yh/mapModel/2019/01.08/locTest/random/random_b1000_4.ply"/>
 
 
   </node>
