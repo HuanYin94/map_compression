@@ -30,5 +30,7 @@ just_save(wholeMapparkresult, 0.632, '/home/yh/mapModel/2019/01.10/learn/20_pred
 
 
 
+%%  NOT TUNING IN THIS FILE IN 2019
+
 
 

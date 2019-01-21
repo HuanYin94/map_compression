@@ -193,37 +193,37 @@
 % end
 % 
 
-subplot(1,4,1)
-h = boxplot([transErrors_20_P, transErrors_20_L, transErrors_20_R, transErrors_20_V, transErrors_20_S], 'Labels',{'Mp','Ml','Mr','Mv', 'Ms'}, 'OutlierSize', 8);
-title('20%');
-ylim([0 0.5]);
-ylabel('Translation error (m)', 'FontWeight', 'bold', 'FontSize', 12);
-set(gca,'FontSize',12)
-set(gca,'ytick', [0:0.05:0.5])
-
-subplot(1,4,2)
-h = boxplot([transErrors_10_P, transErrors_10_L, transErrors_10_R, transErrors_10_V, 999*ones(length(transErrors_2_L),1)], 'Labels',{'Mp','Ml','Mr','Mv', 'Ms'}, 'OutlierSize', 8);
-title('10%');
-ylim([0 0.5]);
-set(gca,'yticklabel',[])
-set(gca,'FontSize',12)
-set(gca,'ytick', [0:0.05:0.5])
-
-subplot(1,4,3)
-h = boxplot([transErrors_5_P, transErrors_5_L, transErrors_5_R, transErrors_5_V, 999*ones(length(transErrors_2_L),1)], 'Labels',{'Mp','Ml','Mr','Mv', 'Ms'}, 'OutlierSize', 8);
-title('5%');
-ylim([0 0.5]);
-set(gca,'yticklabel',[])
-set(gca,'FontSize',12)
-set(gca,'ytick', [0:0.05:0.5])
-
-subplot(1,4,4)
-h = boxplot([transErrors_2_P, transErrors_2_L, 999*ones(length(transErrors_2_L),1), 999*ones(length(transErrors_2_L),1), 999*ones(length(transErrors_2_L),1)], 'Labels',{'Mp','Ml','Mr','Mv', 'Ms'}, 'OutlierSize', 8);
-title('2%');
-ylim([0 0.5]);
-set(gca,'yticklabel',[])
-set(gca,'FontSize',12)
-set(gca,'ytick', [0:0.05:0.5])
+% subplot(1,4,1)
+% h = boxplot([transErrors_20_P, transErrors_20_L, transErrors_20_R, transErrors_20_V, transErrors_20_S], 'Labels',{'Mp','Ml','Mr','Mv', 'Ms'}, 'OutlierSize', 8);
+% title('20%');
+% ylim([0 0.5]);
+% ylabel('Translation error (m)', 'FontWeight', 'bold', 'FontSize', 12);
+% set(gca,'FontSize',12)
+% set(gca,'ytick', [0:0.05:0.5])
+% 
+% subplot(1,4,2)
+% h = boxplot([transErrors_10_P, transErrors_10_L, transErrors_10_R, transErrors_10_V, 999*ones(length(transErrors_2_L),1)], 'Labels',{'Mp','Ml','Mr','Mv', 'Ms'}, 'OutlierSize', 8);
+% title('10%');
+% ylim([0 0.5]);
+% set(gca,'yticklabel',[])
+% set(gca,'FontSize',12)
+% set(gca,'ytick', [0:0.05:0.5])
+% 
+% subplot(1,4,3)
+% h = boxplot([transErrors_5_P, transErrors_5_L, transErrors_5_R, transErrors_5_V, 999*ones(length(transErrors_2_L),1)], 'Labels',{'Mp','Ml','Mr','Mv', 'Ms'}, 'OutlierSize', 8);
+% title('5%');
+% ylim([0 0.5]);
+% set(gca,'yticklabel',[])
+% set(gca,'FontSize',12)
+% set(gca,'ytick', [0:0.05:0.5])
+% 
+% subplot(1,4,4)
+% h = boxplot([transErrors_2_P, transErrors_2_L, 999*ones(length(transErrors_2_L),1), 999*ones(length(transErrors_2_L),1), 999*ones(length(transErrors_2_L),1)], 'Labels',{'Mp','Ml','Mr','Mv', 'Ms'}, 'OutlierSize', 8);
+% title('2%');
+% ylim([0 0.5]);
+% set(gca,'yticklabel',[])
+% set(gca,'FontSize',12)
+% set(gca,'ytick', [0:0.05:0.5])
 
 
 
