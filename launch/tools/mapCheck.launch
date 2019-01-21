@@ -15,9 +15,10 @@
 n
 	<!--param name="loadMapName" value="/home/yh/mapModel/2019/01.08/iter_results/b_800_program.ply"/--> 
 	<!--param name="loadMapName" value="/home/yh/mapModel/2019/01.08/learn/results/predict_b2000_test.ply"/-->
-	<!--param name="loadMapName" value="/home/yh/mapModel/2019/01.08/wholeMap_yq.ply"/-->
-	<param name="loadMapName" value="$(arg loadMapName)"/> 
+	<!--param name="loadMapName" value="/home/yh/mapModel/2019/01.08/wholeMap_learn.ply"/-->
+	<!--param name="loadMapName" value="$(arg loadMapName)"/--> 
 
+	<param name="loadMapName" value="/home/yh/mapModel/2019/01.10/learn/Learned_park_5_compressed.ply"/>
 
 	<param name="loadTrajName" value="/home/yh/mapModel/2019/01.08/icp_0301.txt"/>
 	<param name="keepIndexName" value="/home/yh/mapModel/2019/01.08/keep_0301_all.txt"/>

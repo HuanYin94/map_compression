@@ -18,9 +18,17 @@
 % just_save(yqmap_10, 0.405, '/home/yh/mapModel/2018/08.03/learn/predict_label_0.02_from_0.1.txt', 1);
 % just_save(yqmap_20, 0.2, '/home/yh/mapModel/2018/08.03/learn/predict_label_0.02_from_0.2.txt', 1);
 
-%% chery test
+%% chery test 2018
 
-just_save(parkmap_5, 0.60, '/home/yh/mapModel/2018/09.22/learn/predict_label_0.01_from_0.05.txt', 1);
+% just_save(parkmap_5, 0.60, '/home/yh/mapModel/2018/09.22/learn/predict_label_0.01_from_0.05.txt', 1);
+
+%% KITTI 2019
+
+just_save(wholeMapparkresult, 0.632, '/home/yh/mapModel/2019/01.10/learn/20_predict.txt', 1);
+
+
+
+
 
 
 

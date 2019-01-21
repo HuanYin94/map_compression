@@ -4,30 +4,34 @@
 	
 	<!--Do not save the featured map, temp-->
 
-	<!--param name="loadTrajName" value="/home/yh/mapModel/2018/08.03/icp_0301.txt"/>
-	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.03/keep_0301.txt"/>
-
-	<param name="loadMapName" value="/home/yh/mapModel/2018/08.03/learn/ILP_YQ_map_train_0.2.vtk"/>
-	<param name="saveCloudName" value="/home/yh/mapModel/2018/08.03/learn/ILP_YQ_map_train_0.2_label.vtk"/>
-	<param name="saveFeaturesName" value="/home/yh/mapModel/2018/08.03/learn/ILP_YQ_map_train_0.2_label.txt"/-->
 
 
-
-	<!--param name="loadTrajName" value="/home/yh/mapModel/2018/08.02/kitti10_pose.txt"/>
-	<param name="keepIndexName" value="/home/mapModel/yh/2018/08.02/kitti10_keep.txt"/>
-
-	<param name="loadMapName" value="/home/yh/mapModel/2018/08.02/learn/ILP_kitti10_map_train_0.2.vtk"/>
-	<param name="saveCloudName" value="/home/yh/mapModel/2018/08.02/learn/ILP_kitti10_map_train_0.2_label.vtk"/>
-	<param name="saveFeaturesName" value="/home/yh/mapModel/2018/08.02/learn/ILP_kitti10_map_train_0.2_label.txt"/-->
-
-
-
-	<param name="loadTrajName" value="/home/yh/mapModel/2019/01.08/icp_0301.txt"/>
+	<!--param name="loadTrajName" value="/home/yh/mapModel/2019/01.08/icp_0301.txt"/>
 	<param name="keepIndexName" value="/home/yh/mapModel/2019/01.08/keep_0301_all.txt"/>
 
 	<param name="loadMapName" value="/home/yh/mapModel/2019/01.08/learn/b_2000_test.ply"/>
 	<param name="saveCloudName" value="/home/yh/mapModel/2019/01.08/learn/txt/b_2000_test_label.ply"/>
-	<param name="saveFeaturesName" value="/home/yh/mapModel/2019/01.08/learn/txt/b_2000_test_label.txt"/>
+	<param name="saveFeaturesName" value="/home/yh/mapModel/2019/01.08/learn/txt/b_2000_test_label.txt"/-->
+
+
+
+	<!--param name="loadTrajName" value="/home/yh/mapModel/2019/01.09/kitti10_pose.txt"/>
+	<param name="keepIndexName" value="/home/yh/mapModel/2019/01.09/keep_kitti10_all.txt"/>
+
+	<param name="loadMapName" value="/home/yh/mapModel/2019/01.09/wholeMap_kitti_10.ply"/>
+	<param name="saveCloudName" value="/home/yh/mapModel/2019/01.09/learn/wholeMap_kitti_10_features.vtk"/>
+	<param name="saveFeaturesName" value="/home/yh/mapModel/2019/01.09/learn/wholeMap_kitti_10_test_LABEL.txt"/-->
+
+
+
+
+	<param name="loadTrajName" value="/home/yh/mapModel/2019/01.10/park_pose.txt"/>
+	<param name="keepIndexName" value="/home/yh/mapModel/2019/01.10/keep_park.txt"/>
+
+	<param name="loadMapName" value="/home/yh/mapModel/2019/01.10/wholeMap_park.ply"/>
+	<param name="saveCloudName" value="/home/yh/mapModel/2019/01.10/learn/wholeMap_park_features.ply"/>
+	<param name="saveFeaturesName" value="/home/yh/mapModel/2019/01.10/learn/wholeMap_park_test_LABEL.txt"/>
+
 	
   <!--For Orientation feature of the point & road/-->
   <!--param name="roadDNA" value="100"/-->
