@@ -19,7 +19,7 @@
 #include <geometry_msgs/PoseStamped.h>
 #include <nav_msgs/Path.h>
 
-#include <numeric>
+#include <time.h>
 
 using namespace std;
 using namespace PointMatcherSupport;
@@ -73,9 +73,12 @@ randomSampleMap::randomSampleMap(ros::NodeHandle& n):
 
 void randomSampleMap::process()
 {
+    srand(time(NULL));
+
     vector<int> randomIndex;
     for(int m=0; m<this->keepPointsNum;  )
     {
+
         int index = (rand() % (totalPointsNum-0))+ 0;
         int findNum = std::count(randomIndex.begin(), randomIndex.end(), index);
 

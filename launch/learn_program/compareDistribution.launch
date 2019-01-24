@@ -1,0 +1,10 @@
+<launch>
+
+	<node pkg="map_compression" type="compareDistribution" name="compareDistribution" output="screen">
+
+	<param name="loadMapName1" value="/home/yh/mapModel/2019/01.08/locTest/random/random_b500_1.ply"/>
+	<param name="loadMapName2" value="/home/yh/mapModel/2019/01.08/locTest/random/random_b500_2.ply"/>
+	<param name="saveDisName" value="/home/yh/test.txt"/>
+
+  </node>
+</launch>
