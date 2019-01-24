@@ -11,8 +11,8 @@ function [  ] = drawErrorHist( path )
     ylabel('Ratio', 'FontWeight', 'bold', 'FontSize', 14);
     set(gca,'XTick',0:0.1:1);
     set(gca,'YTick',0:0.2:1);
-    axis([0.0, 1.0, 0, 1.0]); 
-    set(gca,'FontSize',12);
+    axis([0.0, 1.0, 0,; 1.0]); 
+    set(gca,'FontSize',12)
 
 % 
 %     edges = [0 : 0.05 : 1];

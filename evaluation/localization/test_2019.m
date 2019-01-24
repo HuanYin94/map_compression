@@ -163,8 +163,8 @@ subplot(1,4,1)
 h = boxplot([trsError_ILP_2000, trsError_predict_2000, trsError_voxel_2000, trsError_random_2000, trsError_cluster_2000], 'Labels',{'Mp','Ml','Mv','Mr', 'Ms'}, 'OutlierSize', 8);
 title('b=2000');
 ylim([0 0.5]);
-ylabel('Translation error (m)', 'FontWeight', 'bold', 'FontSize', 14);
-set(gca,'FontSize',12)
+ylabel('Translation error (m)', 'FontWeight', 'bold', 'FontSize', 30);
+set(gca,'FontSize',25)  
 set(gca,'ytick', [0:0.05:0.5])
 
 
@@ -172,7 +172,7 @@ subplot(1,4,2)
 h = boxplot([trsError_ILP_1500, trsError_predict_1500, trsError_voxel_1500, trsError_random_1500, 999*ones(length(trsError_random_1500),1)], 'Labels',{'Mp','Ml','Mv','Mr', 'Ms'}, 'OutlierSize', 8);
 title('b=1500');
 ylim([0 0.5]);
-set(gca,'FontSize',12)
+set(gca,'FontSize',25)  
 set(gca,'ytick', [0:0.05:0.5])
 
 
@@ -181,7 +181,7 @@ subplot(1,4,3)
 h = boxplot([trsError_ILP_1000, trsError_predict_1000, trsError_voxel_1000, trsError_random_1000, 999*ones(length(trsError_ILP_500),1)], 'Labels',{'Mp','Ml','Mv','Mr', 'Ms'}, 'OutlierSize', 8);
 title('b=1000');
 ylim([0 0.5]);
-set(gca,'FontSize',12)
+set(gca,'FontSize',25)  
 set(gca,'ytick', [0:0.05:0.5])
 
 
@@ -189,7 +189,7 @@ subplot(1,4,4)
 h = boxplot([trsError_ILP_500, trsError_predict_500, 999*ones(length(rotError_ILP_500),1), 999*ones(length(trsError_ILP_500),1), 999*ones(length(trsError_ILP_500),1)], 'Labels',{'Mp','Ml','Mv','Mr', 'Ms'}, 'OutlierSize', 8);
 title('b=500');
 ylim([0 0.5]);
-set(gca,'FontSize',12)
+set(gca,'FontSize',25)  
 set(gca,'ytick', [0:0.05:0.5])
 
 
@@ -200,8 +200,8 @@ subplot(1,4,1)
 h = boxplot([rotError_ILP_2000, rotError_predict_2000, rotError_voxel_2000, rotError_random_2000, trsError_cluster_2000], 'Labels',{'Mp','Ml','Mv','Mr', 'Ms'}, 'OutlierSize', 8);
 title('b=2000');
 ylim([0 1.0]);
-ylabel('Rotation error (°)', 'FontWeight', 'bold', 'FontSize', 14);
-set(gca,'FontSize',12)
+ylabel('Rotation error (°)', 'FontWeight', 'bold', 'FontSize', 30);
+set(gca,'FontSize',25)  
 set(gca,'ytick', [0:0.1:1.0]) 
 
 
@@ -209,7 +209,7 @@ subplot(1,4,2)
 h = boxplot([rotError_ILP_1500, rotError_predict_1500, rotError_voxel_1500, rotError_random_1500, 999*ones(length(rotError_random_1500),1)], 'Labels',{'Mp','Ml','Mv','Mr', 'Ms'}, 'OutlierSize', 8);
 title('b=1500');
 ylim([0 1.0]);
-set(gca,'FontSize',12)
+set(gca,'FontSize',25)  
 set(gca,'ytick', [0:0.1:1.0]) 
 
 
@@ -219,7 +219,7 @@ subplot(1,4,3)
 h = boxplot([rotError_ILP_1000, rotError_predict_1000, rotError_voxel_1000, rotError_random_1000, 999*ones(length(rotError_random_1000),1)], 'Labels',{'Mp','Ml','Mv','Mr', 'Ms'}, 'OutlierSize', 8);
 title('b=1000');
 ylim([0 1.0]);
-set(gca,'FontSize',12)
+set(gca,'FontSize',25)  
 set(gca,'ytick', [0:0.1:1.0]) 
 
 
@@ -228,7 +228,7 @@ subplot(1,4,4)
 h = boxplot([rotError_ILP_500, rotError_predict_500, 999*ones(length(rotError_ILP_500),1),  999*ones(length(rotError_ILP_500),1), 999*ones(length(rotError_ILP_500),1)], 'Labels',{'Mp','Ml','Mv','Mr', 'Ms'}, 'OutlierSize', 8);
 title('b=500');
 ylim([0 1.0]);
-set(gca,'FontSize',12)
+set(gca,'FontSize',25)  
 set(gca,'ytick', [0:0.1:1.0]) 
 
 
