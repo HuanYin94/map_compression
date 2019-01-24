@@ -45,6 +45,7 @@ public:
 
     string savePoseName;
     string saveTimeName;
+    string saveIterName;
 
     string icpYaml;
     string inputFilterYaml;
@@ -54,6 +55,7 @@ public:
     DP velodyneCloud;
 
     double deltaTime;
+    int iterCount;
 
     int startIndex;
     int endIndex;
@@ -97,6 +99,7 @@ locTest::locTest(ros::NodeHandle& n):
     velodyneDirName(getParam<string>("velodyneDirName", ".")),
     savePoseName(getParam<string>("savePoseName", ".")),
     saveTimeName(getParam<string>("saveTimeName", ".")),
+    saveIterName(getParam<string>("saveIterName", ".")),
     inputFilterYaml(getParam<string>("inputFilterYaml", ".")),
     mapFilterYaml(getParam<string>("mapFilterYaml", ".")),
     isKITTI(getParam<bool>("isKITTI", 0)),
@@ -161,6 +164,7 @@ locTest::locTest(ros::NodeHandle& n):
 
     ofstream saverTime(saveTimeName);
     ofstream saverLoc(savePoseName);
+    ofstream saverIter(saveIterName);
 
     mapCloudPub.publish(PointMatcher_ros::pointMatcherCloudToRosMsg<float>(mapCloud, "global", ros::Time::now()));
 
@@ -174,6 +178,7 @@ locTest::locTest(ros::NodeHandle& n):
         if(indexCnt!=startIndex)
         {
             saverTime<<deltaTime<<endl;
+            saverIter<<iterCount<<endl;
             saverLoc<<Ticp(0,0)<<"  "<<Ticp(0,1)<<"  "<<Ticp(0,2)<<"  "<<Ticp(0,3)<<"  "
                       <<Ticp(1,0)<<"  "<<Ticp(1,1)<<"  "<<Ticp(1,2)<<"  "<<Ticp(1,3)<<"  "
                      <<Ticp(2,0)<<"  "<<Ticp(2,1)<<"  "<<Ticp(2,2)<<"  "<<Ticp(2,3)<<"  "
@@ -249,7 +254,9 @@ void locTest::process(int indexCnt)
     Ticp = icp(velodyneCloud, Tinit);
 
     double t1 = ros::Time::now().toSec();
-    deltaTime = t1-t0;
+
+    this->deltaTime = t1-t0;
+    this->iterCount = icp.maxIteration;
 
     cout<<"ICP...   "<<deltaTime<<endl;
 

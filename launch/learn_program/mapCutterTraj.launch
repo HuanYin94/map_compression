@@ -1,24 +1,28 @@
 <launch>
 
-  <node pkg="map_compression" type="mapCutterTraj" name="mapCutterTraj" output="screen">
+	<arg name="loadMapName"/> 
+	<arg name="saveTestName"/> 	
 
-
-
-
-
+  <node pkg="map_compression" type="mapCutterTraj" name="mapCutterTraj" output="screen" required="true">
 
 
 	<!--param name="loadMapName" value="/home/yh/mapModel/2019/01.08/ILP_YQ_map_0.02.vtk"/-->
 	<!--param name="loadMapName" value="/home/yh/mapModel/2019/01.08/iter_results/b_800_program.ply"/-->
 
-	<param name="loadMapName" value="/home/yh/mapModel/2019/01.08/locTest/random_b200.ply"/>
-	<!--param name="loadMapName" value="/home/yh/mapModel/2019/01.08/iter_results/b_2000_program.ply"/-->
+
+	<!--param name="loadMapName" value="/home/yh/mapModel/2019/01.08/learn/results/predict_b500_from_1000_test_compressed.ply"/-->
+	<param name="loadMapName" value="$(arg loadMapName)"/>
+
+
 
 	<param name="loadTrajName" value="/home/yh/mapModel/2019/01.08/icp_0301.txt"/>
 	<param name="keepIndexName" value="/home/yh/mapModel/2019/01.08/keep_0301_all.txt"/>
-	<param name="saveTrainName" value="/home/yh/mapModel/2019/01.08/locTest/b_500_program_no.ply"/>
-	<param name="saveTestName" value="/home/yh/mapModel/2019/01.08/locTest/random_b200_locTest.ply"/>
+	<!--param name="saveTrainName" value="/home/yh/mapModel/2019/01.08/learn/results/no.ply"/>
+	<param name="saveTestName" value="/home/yh/mapModel/2019/01.08/learn/results/predict_b2000_locTest.ply"/-->
+	<param name="saveTrainName" value="/home/yh/mapModel/2019/01.08/no.ply"/>
+	<!--param name="saveTestName" value="/home/yh/mapModel/2019/01.08/locTest/predict_b500_locTest_.ply"/-->
 
+	<param name="saveTestName" value="$(arg saveTestName)"/>
 	
 	<!--Cut for loc Test-->
 	<param name="cutPoint0" value="0"/>	
@@ -26,8 +30,11 @@
 	<param name="cutPoint2" value="7000"/>	
 	<param name="cutPoint3" value="10559"/>	
 
-
-
+	<!--Cut for training and test-->
+	<!--param name="cutPoint0" value="0"/>	
+	<param name="cutPoint1" value="3519"/>	
+	<param name="cutPoint2" value="3520"/>	
+	<param name="cutPoint3" value="10559"/-->	
 
 
 
