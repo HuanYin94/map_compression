@@ -1,3 +1,6 @@
+<<COMMENT
+
+
 roslaunch map_compression locTest.launch wholeMapName:="/home/yh/mapModel/2019/01.08/locTest/wholeMap_locTest.ply" savePoseName:="/home/yh/mapModel/2019/01.08/locTest/timing/wholeMap_pose.txt" saveTimeName:="/home/yh/mapModel/2019/01.08/locTest/timing/wholeMap_time.txt" saveIterName:="/home/yh/mapModel/2019/01.08/locTest/timing/wholeMap_iter.txt"
 
 
@@ -33,5 +36,7 @@ roslaunch map_compression locTest.launch wholeMapName:="/home/yh/mapModel/2019/0
 roslaunch map_compression locTest.launch wholeMapName:="/home/yh/mapModel/2019/01.08/locTest/random/random_b1000_1_locTest.ply" savePoseName:="/home/yh/mapModel/2019/01.08/locTest/timing/yq_random_b1000_pose_1.txt" saveTimeName:="/home/yh/mapModel/2019/01.08/locTest/timing/yq_random_b1000_time_1.txt" saveIterName:="/home/yh/mapModel/2019/01.08/locTest/timing/random_b1000_iter_1.txt" 
 
 
+COMMENT
 
+roslaunch map_compression locTest.launch wholeMapName:="/home/yh/mapModel/2019/01.08/locTest/cluster_b2000_locTest.ply" savePoseName:="/home/yh/test_pose.txt" saveTimeName:="/home/yh/test_time.txt" saveIterName:="/home/yh/test_iter.txt"
 
