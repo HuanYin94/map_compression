@@ -18,19 +18,22 @@ n
 	<!--param name="loadMapName" value="/home/yh/mapModel/2019/01.08/wholeMap_learn.ply"/-->
 	<!--param name="loadMapName" value="$(arg loadMapName)"/--> 
 
-	<param name="loadMapName" value="/home/yh/mapModel/2019/01.10/learn/Learned_park_5_compressed.ply"/>
+	
+	<!--param name="loadMapName" value="/home/yh/mapModel/2019/01.08/wholeMap_yq.ply"/-->
+	<!--param name="loadMapName" value="/home/yh/mapModel/2019/01.08/iter_results/b_500_program.ply"/-->
+	<!--param name="loadMapName" value="/home/yh/mapModel/2019/01.08/learn/results/predict_b500_test_compressed.ply"/>
 
 	<param name="loadTrajName" value="/home/yh/mapModel/2019/01.08/icp_0301.txt"/>
-	<param name="keepIndexName" value="/home/yh/mapModel/2019/01.08/keep_0301_all.txt"/>
+	<param name="keepIndexName" value="/home/yh/mapModel/2019/01.08/keep_0301_all.txt"/-->
 
 
 
 
 
-	<!--param name="loadMapName" value="/home/yh/mapModel/2019/01.09/wholeMap_kitti_10.ply"/>
+	<param name="loadMapName" value="/home/yh/mapModel/2019/01.09/learn/Learned_kitti_5_compressed.ply"/>
 
 	<param name="loadTrajName" value="/home/yh/mapModel/2019/01.09/kitti10_pose.txt"/>
-	<param name="keepIndexName" value="/home/yh/mapModel/2019/01.09/keep_kitti10_all.txt"/-->
+	<param name="keepIndexName" value="/home/yh/mapModel/2019/01.09/keep_kitti10_all.txt"/>
 
 
 
@@ -44,6 +47,6 @@ n
 
 
   </node>
-<!--node pkg="rviz" type="rviz" name="rviz" args="-d $(find map_compression)/cfg/mapCheck_kitti10.rviz" output="screen"/-->
-<node pkg="rviz" type="rviz" name="rviz" args="-d $(find map_compression)/cfg/mapCheck_yq.rviz" output="screen"/>
+<node pkg="rviz" type="rviz" name="rviz" args="-d $(find map_compression)/cfg/mapCheck_kitti10.rviz" output="screen"/>
+<!--node pkg="rviz" type="rviz" name="rviz" args="-d $(find map_compression)/cfg/mapCheck_yq.rviz" output="screen"/-->
 </launch>

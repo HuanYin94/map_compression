@@ -27,7 +27,7 @@
 	<param name="icpFileName" value="/home/yh/mapModel/2019/01.08/locTest/icp_0901.txt"/>
 
 	<param name="startIndex" value="3500"/>
-	<param name="endIndex" value="4900"/>
+	<param name="endIndex" value="4300"/>
 
 	<!--for figures-->
 	<!--param name="startIndex" value="3983"/>
