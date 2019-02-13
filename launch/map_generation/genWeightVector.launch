@@ -5,11 +5,11 @@
 	<!--param name="loadMapName" value="/home/yh/mapModel/2019/01.08/wholeMap_yq_scored.vtk"/>
 	<param name="saveWeightName" value="/home/yh/mapModel/2019/01.08/weightVector.txt"/-->
 
-	<param name="loadMapName" value="/home/yh/mapModel/2019/01.09/wholeMap_kitti_10_scored.ply"/>
-	<param name="saveWeightName" value="/home/yh/mapModel/2019/01.09/weightVector.txt"/>
+	<!--param name="loadMapName" value="/home/yh/mapModel/2019/01.09/wholeMap_kitti_10_scored.ply"/>
+	<param name="saveWeightName" value="/home/yh/mapModel/2019/01.09/weightVector.txt"/-->
 	
-	<!--param name="loadMapName" value="/home/yh/mapModel/2018/09.22/wholeMap_park_scored.ply"/>
-	<param name="saveWeightName" value="/home/yh/mapModel/2018/09.22/weightVector.txt"/-->	
+	<param name="loadMapName" value="/home/yh/mapModel/2019/01.10/wholeMap_park_scored.ply"/>
+	<param name="saveWeightName" value="/home/yh/mapModel/2019/01.10/weightVector.txt"/>	
 
   </node>
 </launch>
