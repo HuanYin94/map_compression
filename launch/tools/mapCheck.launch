@@ -30,20 +30,11 @@ n
 
 
 
-	<param name="loadMapName" value="/home/yh/mapModel/2019/01.09/learn/Learned_kitti_20_compressed.ply"/>
+	<param name="loadMapName" value="/home/yh/mapModel/2019/01.10/wholeMap_park.ply"/>
 
-	<param name="loadTrajName" value="/home/yh/mapModel/2019/01.09/kitti10_pose.txt"/>
-	<param name="keepIndexName" value="/home/yh/mapModel/2019/01.09/keep_kitti10_all.txt"/>
+	<param name="loadTrajName" value="/home/yh/mapModel/2019/01.10/park_pose.txt"/>
+	<param name="keepIndexName" value="/home/yh/mapModel/2019/01.10/keep_park_all.txt"/>
 
-
-
-
-
-	<!--param name="loadMapName" value="/home/yh/mapModel/2019/09.22/ILP_park_map_0.1.ply"/-->
-	<!--param name="loadMapName" value="/home/yh/mapModel/2019/09.22/learn/LocTest_park_map_0.02_program.ply"/-->
-
-	<!--param name="loadTrajName" value="/home/yh/mapModel/2019/09.22/global_pose.txt"/>
-	<param name="keepIndexName" value="/home/yh/mapModel/2019/09.22/keep_chery.txt"/-->
 
 
   </node>

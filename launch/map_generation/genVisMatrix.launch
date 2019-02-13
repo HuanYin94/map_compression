@@ -3,8 +3,8 @@
   <node pkg="map_compression" type="genVisMatrix" name="genVisMatrix" output="screen">
 
 	<!--KITTI or YQ or Chery-->
-	<param name="isChery" value="false" />
-	<param name="isKITTI" value="true"/>
+	<param name="isChery" value="true" />
+	<param name="isKITTI" value="false"/>
     
 	<!--param name="loadMapName" value="/home/yh/mapModel/2019/01.08/wholeMap_yq.vtk"/>
 	<param name="loadTrajName" value="/home/yh/mapModel/2019/01.08/icp_0301.txt"/>
@@ -12,17 +12,17 @@
 	<param name="keepIndexName" value="/home/yh/mapModel/2019/01.08/keep_0301_all.txt"/> 	
 　　　 <param name="saveDirName" value="/home/yh/mapModel/2019/01.08/visMatrix/"/-->
 
-	<param name="loadMapName" value="/home/yh/mapModel/2019/01.09/wholeMap_kitti_10.ply"/>
+	<!--param name="loadMapName" value="/home/yh/mapModel/2019/01.09/wholeMap_kitti_10.ply"/>
 	<param name="loadTrajName" value="/home/yh/mapModel/2019/01.09/kitti10_pose.txt"/>
 	<param name="velodyneDirName" value="/media/yh/YH/DataSet/kitti_benchmark_velodyne/dataset/sequences/10/velodyne/"/>
 	<param name="keepIndexName" value="/home/yh/mapModel/2019/01.09/keep_kitti10_all.txt"/>
-　　　 <param name="saveDirName" value="/home/yh/mapModel/2019/01.09/visMatrix/"/>
+　　　 <param name="saveDirName" value="/home/yh/mapModel/2019/01.09/visMatrix/"/-->
 
-	<!--param name="loadMapName" value="/home/yh/mapModel/2018/09.22/wholeMap_park.ply"/>
-	<param name="loadTrajName" value="/home/yh/mapModel/2018/09.22/global_pose.txt"/>
-	<param name="velodyneDirName" value="/home/yh/mapModel/2018/09.22/scan/"/>
-	<param name="keepIndexName" value="/home/yh/mapModel/2018/09.22/keep_chery.txt"/>
-　　　 <param name="saveDirName" value="/home/yh/mapModel/2018/09.22/visMatrix/"/-->
+	<param name="loadMapName" value="/home/yh/mapModel/2019/01.10/wholeMap_park.ply"/>
+	<param name="loadTrajName" value="/home/yh/mapModel/2019/01.10/park_pose.txt"/>
+	<param name="velodyneDirName" value="/media/yh/YH/DataSet/chery/scan/"/>
+	<param name="keepIndexName" value="/home/yh/mapModel/2019/01.10/keep_park_all.txt"/>
+　　　 <param name="saveDirName" value="/home/yh/mapModel/2019/01.10/visMatrix/"/>
 
 	<param name="limitRange" value="0.1"/>
 	<param name="kSearch" value="10"/>
