@@ -1,1 +1,0 @@
-roslaunch map_compression locTest.launch wholeMapName:="/home/yh/mapModel/2019/01.08/locTest/wholeMap_locTest.ply" savePoseName:="/home/yh/mapModel/2019/01.08/locTest/timing/wholeMap_pose.txt" saveTimeName:="/home/yh/mapModel/2019/01.08/locTest/timing/wholeMap_time.txt" saveIterName:="/home/yh/mapModel/2019/01.08/locTest/timing/wholeMap_iter.txt"

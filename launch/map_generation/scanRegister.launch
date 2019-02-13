@@ -3,8 +3,8 @@
   <node pkg="map_compression" type="scanRegister" name="scanRegister" output="screen">
 	
 	<!--KITTI or YQ & actually SLAM in YQ, no registration from gt & add Chery-->
-	<param name="isChery" value="false" />	
-	<param name="isKITTI" value="true" />	
+	<param name="isChery" value="true" />	
+	<param name="isKITTI" value="false" />	
 
     <param name="inputFilterName" value="$(find map_compression)/cfg/input_filters.yaml"/>
 
@@ -28,10 +28,10 @@
 
 
 
-	<param name="icpFileName" value="/home/yh/mapModel/2019/01.24/kitti_00_pose.txt"/> 
-	<param name="keepIndexName" value="/home/yh/mapModel/2019/01.24/keep_kitti_00.txt"/>
-	<param name="velodyneDirName" value="/media/yh/YH/DataSet/kitti_benchmark_velodyne/dataset/sequences/00/velodyne/"/>
-	<param name="saveVTKname" value="/home/yh/mapModel/2019/01.24/wholeMap_kitti00_origin.ply"/>
+	<param name="icpFileName" value="/home/yh/mapModel/2019/01.10/park_pose.txt"/> 
+	<param name="keepIndexName" value="/home/yh/mapModel/2019/01.10/keep_park_all.txt"/>
+	<param name="velodyneDirName" value="/media/yh/YH/DataSet/chery/scan/"/>
+	<param name="saveVTKname" value="/home/yh/mapModel/2019/01.10/wholeMap_park_origin.ply"/>
 
 
 
