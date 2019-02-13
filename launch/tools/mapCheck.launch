@@ -30,7 +30,7 @@ n
 
 
 
-	<param name="loadMapName" value="/home/yh/mapModel/2019/01.09/learn/Learned_kitti_5_compressed.ply"/>
+	<param name="loadMapName" value="/home/yh/mapModel/2019/01.09/learn/Learned_kitti_20_compressed.ply"/>
 
 	<param name="loadTrajName" value="/home/yh/mapModel/2019/01.09/kitti10_pose.txt"/>
 	<param name="keepIndexName" value="/home/yh/mapModel/2019/01.09/keep_kitti10_all.txt"/>
