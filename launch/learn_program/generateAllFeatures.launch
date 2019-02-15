@@ -26,7 +26,7 @@
 
 
 	<param name="loadTrajName" value="/home/yh/mapModel/2019/01.10/park_pose.txt"/>
-	<param name="keepIndexName" value="/home/yh/mapModel/2019/01.10/keep_park.txt"/>
+	<param name="keepIndexName" value="/home/yh/mapModel/2019/01.10/keep_park_all.txt"/>
 
 	<param name="loadMapName" value="/home/yh/mapModel/2019/01.10/wholeMap_park.ply"/>
 	<param name="saveCloudName" value="/home/yh/mapModel/2019/01.10/learn/wholeMap_park_features.ply"/>
