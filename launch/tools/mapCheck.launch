@@ -30,7 +30,8 @@ n
 
 
 
-	<param name="loadMapName" value="/home/yh/mapModel/2019/01.10/wholeMap_park.ply"/>
+	<!--param name="loadMapName" value="/home/yh/mapModel/2019/01.10/wholeMap_park.ply"/-->
+	<param name="loadMapName" value="/home/yh/mapModel/2019/01.10/locTest/Learned_b500.ply"/>
 
 	<param name="loadTrajName" value="/home/yh/mapModel/2019/01.10/park_pose.txt"/>
 	<param name="keepIndexName" value="/home/yh/mapModel/2019/01.10/keep_park_all.txt"/>
@@ -38,6 +39,6 @@ n
 
 
   </node>
-<node pkg="rviz" type="rviz" name="rviz" args="-d $(find map_compression)/cfg/mapCheck_kitti10.rviz" output="screen"/>
+<node pkg="rviz" type="rviz" name="rviz" args="-d $(find map_compression)/cfg/mapCheck_park.rviz" output="screen"/>
 <!--node pkg="rviz" type="rviz" name="rviz" args="-d $(find map_compression)/cfg/mapCheck_yq.rviz" output="screen"/-->
 </launch>

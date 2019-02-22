@@ -1,3 +1,4 @@
+<<COMMENT
 roslaunch map_compression locTest_park.launch wholeMapName:="/home/yh/mapModel/2019/01.10/locTest/Learned_b1500.ply" savePoseName:="/home/yh/mapModel/2019/01.10/locTest/result/Learned_b1500_pose.txt" saveTimeName:="/home/yh/mapModel/2019/01.10/locTest/result/no.txt" saveIterName:="/home/yh/mapModel/2019/01.10/locTest/result/no.txt"
 roslaunch map_compression locTest_park.launch wholeMapName:="/home/yh/mapModel/2019/01.10/locTest/Learned_b1000.ply" savePoseName:="/home/yh/mapModel/2019/01.10/locTest/result/Learned_b1000_pose.txt" saveTimeName:="/home/yh/mapModel/2019/01.10/locTest/result/no.txt" saveIterName:="/home/yh/mapModel/2019/01.10/locTest/result/no.txt"
 roslaunch map_compression locTest_park.launch wholeMapName:="/home/yh/mapModel/2019/01.10/locTest/Learned_b500.ply" savePoseName:="/home/yh/mapModel/2019/01.10/locTest/result/Learned_b500_pose.txt" saveTimeName:="/home/yh/mapModel/2019/01.10/locTest/result/no.txt" saveIterName:="/home/yh/mapModel/2019/01.10/locTest/result/no.txt"
@@ -24,11 +25,27 @@ roslaunch map_compression locTest_park.launch wholeMapName:="/home/yh/mapModel/2
 roslaunch map_compression locTest_park.launch wholeMapName:="/home/yh/mapModel/2019/01.10/locTest/voxel_b1000.ply" savePoseName:="/home/yh/mapModel/2019/01.10/locTest/result/voxel_b1000_pose.txt" saveTimeName:="/home/yh/mapModel/2019/01.10/locTest/result/no.txt" saveIterName:="/home/yh/mapModel/2019/01.10/locTest/result/no.txt"
 roslaunch map_compression locTest_park.launch wholeMapName:="/home/yh/mapModel/2019/01.10/locTest/voxel_b500.ply" savePoseName:="/home/yh/mapModel/2019/01.10/locTest/result/voxel_b500_pose.txt" saveTimeName:="/home/yh/mapModel/2019/01.10/locTest/result/no.txt" saveIterName:="/home/yh/mapModel/2019/01.10/locTest/result/no.txt"
 
+COMMENT
 
 
 
-
+roslaunch map_compression locTest_park.launch wholeMapName:="/home/yh/mapModel/2019/01.10/locTest/Learned_b2000.ply" savePoseName:="/home/yh/mapModel/2019/01.10/locTest/result/Learned_b2000_pose.txt" saveTimeName:="/home/yh/mapModel/2019/01.10/locTest/result/no.txt" saveIterName:="/home/yh/mapModel/2019/01.10/locTest/result/no.txt"
 
 <<COMMENT
-roslaunch map_compression locTest_park.launch wholeMapName:="/home/yh/mapModel/2019/01.10/locTest/random_b500.ply" savePoseName:="/home/yh/mapModel/2019/01.10/locTest/result/random_b500_pose.txt" saveTimeName:="/home/yh/mapModel/2019/01.10/locTest/result/random_b500_time.txt" saveIterName:="/home/yh/mapModel/2019/01.10/locTest/result/random_b500_iter.txt"
+roslaunch map_compression locTest_park.launch wholeMapName:="/home/yh/mapModel/2019/01.10/locTest/b2000_compressed.ply" savePoseName:="/home/yh/mapModel/2019/01.10/locTest/result/Prog_b2000_pose.txt" saveTimeName:="/home/yh/mapModel/2019/01.10/locTest/result/no.txt" saveIterName:="/home/yh/mapModel/2019/01.10/locTest/result/no.txt"
+
+roslaunch map_compression locTest_park.launch wholeMapName:="/home/yh/mapModel/2019/01.10/locTest/cluster_b2000.ply" savePoseName:="/home/yh/mapModel/2019/01.10/locTest/result/cluster_b2000_pose.txt" saveTimeName:="/home/yh/mapModel/2019/01.10/locTest/result/no.txt" saveIterName:="/home/yh/mapModel/2019/01.10/locTest/result/no.txt"
+
+roslaunch map_compression locTest_park.launch wholeMapName:="/home/yh/mapModel/2019/01.10/locTest/random_b2000.ply" savePoseName:="/home/yh/mapModel/2019/01.10/locTest/result/random_b2000_pose.txt" saveTimeName:="/home/yh/mapModel/2019/01.10/locTest/result/no.txt" saveIterName:="/home/yh/mapModel/2019/01.10/locTest/result/no.txt"
+
+roslaunch map_compression locTest_park.launch wholeMapName:="/home/yh/mapModel/2019/01.10/locTest/voxel_b2000.ply" savePoseName:="/home/yh/mapModel/2019/01.10/locTest/result/voxel_b2000_pose.txt" saveTimeName:="/home/yh/mapModel/2019/01.10/locTest/result/no.txt" saveIterName:="/home/yh/mapModel/2019/01.10/locTest/result/no.txt"
 COMMENT
+
+
+
+
+
+
+
+
+
