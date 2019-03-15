@@ -56,6 +56,7 @@ public:
     vector<vector<double>> initPoses;
 
     int showType;
+    shared_ptr<NNS> featureNNS;
 
     void process();
 
@@ -84,6 +85,14 @@ mapCheck::mapCheck(ros::NodeHandle& n):
     double t1 = ros::Time::now().toSec();
     cout<<"-----------------------------------------"<<endl;
     cout<<"LOADING TIME COST:  "<<t1-t0<<"  seconds."<<endl;
+    cout<<"-----------------------------------------"<<endl;
+
+    // time for building KD-tree
+    double t2 = ros::Time::now().toSec();
+    featureNNS.reset(NNS::create(mapCloud.features, mapCloud.features.rows() - 1, NNS::KDTREE_LINEAR_HEAP, NNS::TOUCH_STATISTICS));
+    double t3 = ros::Time::now().toSec();
+    cout<<"-----------------------------------------"<<endl;
+    cout<<"KD-TREE TIME COST:  "<<t3-t2<<"  seconds."<<endl;
     cout<<"-----------------------------------------"<<endl;
 
     // read initial transformation
