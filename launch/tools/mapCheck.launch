@@ -30,14 +30,14 @@ n
 
 
 
-	<param name="loadMapName" value="/home/yh/mapModel/2019/01.08/iter_results/b_500_program.ply"/>
+	<param name="loadMapName" value="/home/yh/mapModel/2019/03.16/learned_6.ply"/>
 
-	<param name="loadTrajName" value="/home/yh/mapModel/2019/01.10/park_pose.txt"/>
-	<param name="keepIndexName" value="/home/yh/mapModel/2019/01.10/keep_park_all.txt"/>
+	<param name="loadTrajName" value="/home/yh/mapModel/2019/01.08/icp_0301.txt"/>
+	<param name="keepIndexName" value="/home/yh/mapModel/2019/01.08/keep_0301_all.txt"/>
 
 
 
   </node>
 <!--node pkg="rviz" type="rviz" name="rviz" args="-d $(find map_compression)/cfg/mapCheck_park.rviz" output="screen"/-->
-<!--node pkg="rviz" type="rviz" name="rviz" args="-d $(find map_compression)/cfg/mapCheck_yq.rviz" output="screen"/-->
+<node pkg="rviz" type="rviz" name="rviz" args="-d $(find map_compression)/cfg/mapCheck_yq.rviz" output="screen"/>
 </launch>

@@ -102,12 +102,12 @@ Visualization Manager:
       Buffer Length: 10
       Class: rviz/Path
       Color: 255; 0; 0
-      Enabled: true
+      Enabled: false
       Head Diameter: 0.1
       Head Length: 0.1
       Length: 1
       Line Style: Billboards
-      Line Width: 0.5
+      Line Width: 0.8
       Name: Path
       Offset:
         X: 0
@@ -120,7 +120,7 @@ Visualization Manager:
       Shaft Length: 0.1
       Topic: /mapPath
       Unreliable: false
-      Value: true
+      Value: false
     - Alpha: 0.5
       Cell Size: 10
       Class: rviz/Grid
@@ -193,16 +193,16 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 586.567
+      Distance: 193.698
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.06
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 1.06679
-        Y: 38.8179
-        Z: 50.8283
+        X: -72.3019
+        Y: -81.1363
+        Z: 38.0149
       Name: Current View
       Near Clip Distance: 0.01
       Pitch: 1.4798

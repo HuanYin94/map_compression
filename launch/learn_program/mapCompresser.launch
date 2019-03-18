@@ -9,9 +9,9 @@
 	<param name="saveMapName" value="/home/yh/mapModel/2019/01.08/learn/results/predict_b500_from_1000_test_compressed.ply"/-->
 
 
-	<param name="loadMapName" value="/home/yh/mapModel/2019/01.10/learn/Learned_park_b2000.ply"/> 
+	<param name="loadMapName" value="/home/yh/mapModel/2019/03.16/map_6.ply"/> 
 	<param name="desName" value="salient_predicted"/> 
-	<param name="saveMapName" value="/home/yh/mapModel/2019/01.10/learn/Learned_b2000.ply"/>
+	<param name="saveMapName" value="/home/yh/mapModel/2019/03.16/learned_6.ply"/>
 	
 
   </node>
