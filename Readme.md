@@ -1,24 +1,24 @@
 ```
 - Code of a manuscript, submitted to IEEE Transactions on Intelligent Transportation Systems
-- Written by [Huan Yin](https://yinhuan.site)
+- Written by [Huan Yin](https://yinhuan.site/)
 ```
 
 # 3D LiDAR Map Compression for Efficient Localization on Resource Constrained Vehicles 
 
 ![image](https://github.com/ZJUYH/map_compression/blob/master/pics/system.png)
 
-## RELIES & BUILD
+## Prepare to build
 
 This project is compiled on `ros` and `Ubuntu`. 
+And use `catkin_make` in your workspace to build this project.
 Some dependencies are needed to be prepared:
 * [libpointmatcher](https://github.com/ethz-asl/libpointmatcher)
-* [Gurobi](http://www.gurobi.com/)
-
+* [Gurobi](http://www.gurobi.com/) 
 
 ## Introduction to every folder
 
-> + `cfg`  
-contains configuration files:  .rviz & filter.yaml, for visualization & configuration
+* cfg  
+`contains configuration files:  .rviz & filter.yaml, for visualization & configuration`
 
 > + `gurobi`  
 integer linear programming code, written in Matlab
