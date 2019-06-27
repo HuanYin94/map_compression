@@ -1,7 +1,7 @@
-```
-- Code of a manuscript, submitted to IEEE Transactions on Intelligent Transportation Systems
-- Written by [Huan Yin](https://yinhuan.site/)
-```
+## Welcome
+Code of a manuscript, submitted to IEEE Transactions on Intelligent Transportation Systems
+Set by [Huan Yin](https://yinhuan.site/)
+
 
 # 3D LiDAR Map Compression for Efficient Localization on Resource Constrained Vehicles 
 
@@ -15,7 +15,7 @@ Some dependencies are needed to be prepared:
 * [libpointmatcher](https://github.com/ethz-asl/libpointmatcher)
 * [Gurobi](http://www.gurobi.com/) 
 
-## Introduction to every folder
+## Introduction to all folders
 
 * cfg  
 `contains configuration files:  .rviz & filter.yaml, for visualization & configuration`
