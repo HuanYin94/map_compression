@@ -1,7 +1,7 @@
 ## Welcome
-Code of a manuscript, submitted to IEEE Transactions on Intelligent Transportation Systems
+Code of a manuscript, submitted to IEEE Transactions on Intelligent Transportation Systems, under 2nd review.
 
-Set by [Huan Yin](https://yinhuan.site/)
+If you need the manuscript or have some questions on this project, please contact `zjuyinhuan@gmail.com` ([Huan Yin](https://yinhuan.site/)) .
 
 # 3D LiDAR Map Compression for Efficient Localization on Resource Constrained Vehicles 
 
@@ -12,6 +12,7 @@ Set by [Huan Yin](https://yinhuan.site/)
 This project is compiled on `ros` and `Ubuntu`. 
 And use `catkin_make` in your workspace to build this project.
 Some dependencies are needed to be prepared:
+* [pcl](http://pointclouds.org/)
 * [libpointmatcher](https://github.com/ethz-asl/libpointmatcher)
 * [Gurobi](http://www.gurobi.com/) 
 
