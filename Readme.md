@@ -1,16 +1,16 @@
-```diff
-- Submitted to IEEE Transactions on Intelligent Transportation Systems
+```
+- Code of a manuscript, submitted to IEEE Transactions on Intelligent Transportation Systems
+- Written by [Huan Yin][https://yinhuan.site]
 ```
 
-```
-- Any questions contact zjuyinhuan@gmail.com
-```
-
-## Learned map compression in 3D LiDAR
+# 3D LiDAR Map Compression for Efficient Localization on Resource Constrained Vehicles 
 
 ![image](https://github.com/ZJUYH/map_compression/blob/master/pics/system.png)
 
-### DIRECTORIES:
+## RELIES & BUILD
+
+
+## Introduction to every folder
 
 > + `cfg`  
 .rviz & filter.yaml, visualization & configuration
@@ -35,6 +35,10 @@ prediction and localization evaluation matlab files
 
 > + `pics`  
 some pictures of results
+
+## The purpose of files for map compression
+
+
 
 ### The order of programming/learning based map compression:
 
