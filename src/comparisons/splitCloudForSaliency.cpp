@@ -26,7 +26,7 @@
 using namespace std;
 using namespace PointMatcherSupport;
 
-class mapCutterTraj
+class splitCloud
 {
     typedef PointMatcher<float> PM;
     typedef PM::DataPoints DP;
@@ -36,26 +36,18 @@ class mapCutterTraj
     typedef typename NNS::SearchType NNSearchType;
 
 public:
-    mapCutterTraj(ros::NodeHandle &n);
-    ~mapCutterTraj();
+    splitCloud(ros::NodeHandle &n);
+    ~splitCloud();
     ros::NodeHandle& n;
 
     string loadMapName;
     string loadTrajName;
-    string saveTrainName;
-    string saveTestName;
-    string saveCloudName;
 
     DP mapCloud;
     DP trajCloud;
 
     string keepIndexName;
     vector<int> indexVector;
-
-    int cutPoint0;
-    int cutPoint1;
-    int cutPoint2;
-    int cutPoint3;
 
     vector<vector<double>> initPoses;
 
@@ -65,20 +57,14 @@ public:
 
 };
 
-mapCutterTraj::~mapCutterTraj()
+splitCloud::~splitCloud()
 {}
 
-mapCutterTraj::mapCutterTraj(ros::NodeHandle& n):
+splitCloud::splitCloud(ros::NodeHandle& n):
     n(n),
     loadMapName(getParam<string>("loadMapName", ".")),
     loadTrajName(getParam<string>("loadTrajName", ".")),
     keepIndexName(getParam<string>("keepIndexName", ".")),
-    cutPoint0(getParam<int>("cutPoint0", 0)),
-    cutPoint1(getParam<int>("cutPoint1", 0)),
-    cutPoint2(getParam<int>("cutPoint2", 0)),
-    cutPoint3(getParam<int>("cutPoint3", 0)),
-    saveTrainName(getParam<string>("saveTrainName", ".")),
-    saveTestName(getParam<string>("saveTestName", ".")),
     saveCloudName(getParam<string>("saveCloudName", "."))
 {
 
@@ -120,7 +106,7 @@ mapCutterTraj::mapCutterTraj(ros::NodeHandle& n):
 
 }
 
-void mapCutterTraj::process()
+void splitCloud::process()
 {
     mapCloud.addDescriptor("label", PM::Matrix::Zero(1, mapCloud.features.cols()));
     int rowLineLabel = mapCloud.getDescriptorStartingRow("label");
@@ -194,10 +180,10 @@ void mapCutterTraj::process()
 int main(int argc, char **argv)
 {
 
-    ros::init(argc, argv, "mapcuttertraj");
+    ros::init(argc, argv, "splitCloud");
     ros::NodeHandle n;
 
-    mapCutterTraj mapcuttertraj(n);
+    splitCloud splitcloud(n);
 
     // ugly code
 
