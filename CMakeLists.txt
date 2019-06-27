@@ -128,3 +128,9 @@ ${catkin_LIBRARIES}
 ${libpointmatcher_LIBRARIES}
 )
 
+add_executable(saliencyMap src/comparisons/saliencyMap.cpp)
+target_link_libraries(saliencyMap
+${catkin_LIBRARIES}
+${libpointmatcher_LIBRARIES}
+)
+
