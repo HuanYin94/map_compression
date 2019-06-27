@@ -31,6 +31,11 @@
 //#include <pcl/conversions.h>
 //#include <pcl_ros/transforms.h>
 
+#include <pcl/features/feature.h>
+#include <pcl/features/fpfh.h>
+#include <pcl/features/normal_3d.h>
+#include <pcl/common/projection_matrix.h>
+
 using namespace PointMatcherSupport;
 using namespace pcl;
 using namespace pcl::io;
@@ -81,11 +86,36 @@ void saliencyMap::process()
     // ref: ITSC 2017, ICCV 2013
 
 
-    // load , fpfh for each point, using pcl
+    // load cloud, fpfh for each point, using pcl
     pcl::PointCloud<pcl::PointXYZ> cloud;
-    if (loadPLYFile(filename, cloud) != 0) return false;
+    if (loadPLYFile(loadMapName, cloud) != 0) return false;
 
+    //Ptr
+    pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_Ptr(new pcl::PointCloud<pcl::PointXYZ>);
+    cloud_Ptr = cloud.makeShared();
 
+    // estimate the normal
+    pcl::NormalEstimation<pcl::PointXYZ, pcl::Normal> ne;
+    ne.setInputCloud (cloud_Ptr);
+    pcl::search::KdTree<pcl::PointXYZ>::Ptr tree (new pcl::search::KdTree<pcl::PointXYZ> ());
+    ne.setSearchMethod (tree);
+    pcl::PointCloud<pcl::Normal>::Ptr cloud_normals_Ptr (new pcl::PointCloud<pcl::Normal>);
+    ne.setRadiusSearch(0.5);
+    ne.compute(*cloud_normals_Ptr);
+
+    // fpfh
+    pcl::FPFHEstimation<pcl::PointXYZ, pcl::Normal, pcl::FPFHSignature33> fpfh;
+    fpfh.setInputCloud (cloud_Ptr);
+    fpfh.setInputNormals (cloud_normals_Ptr);
+    fpfh.setSearchMethod (tree);
+
+    // IMPORTANT: the radius used here has to be larger than the radius used to estimate the surface normals!!!
+    pcl::PointCloud<pcl::FPFHSignature33>::Ptr fpfhs (new pcl::PointCloud<pcl::FPFHSignature33> ());
+    fpfh.setRadiusSearch (1.0);
+
+    fpfh.compute (*fpfhs);
+
+    cout<<<<endl;
 
 }
 
