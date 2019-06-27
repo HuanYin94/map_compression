@@ -248,6 +248,20 @@ void mapCheck::process()
 //    }
 //    salientStream.close();
 //    pointStream.close();
+
+    // ZXM
+//    ofstream saverXYZ("/home/yh/xyz_b500.txt");
+//    ofstream saverLabel("/home/yh/labe_b500.txt");
+//    int rowLineS = mapCloud.getDescriptorStartingRow("salient");
+//    for(int i=0; i<mapCloud.descriptors.cols(); i++)
+//    {
+//        saverXYZ<<mapCloud.features(0,i)<<"  "
+//               <<mapCloud.features(1,i)<<"  "
+//              <<mapCloud.features(2,i)<<endl;
+//        saverLabel<<mapCloud.descriptors(rowLineS, i)<<endl;
+//    }
+//    saverXYZ.close();
+//    saverLabel.close();
 }
 
 int main(int argc, char **argv)

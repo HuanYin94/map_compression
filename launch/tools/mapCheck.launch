@@ -30,7 +30,9 @@ n
 
 
 
-	<param name="loadMapName" value="/home/yh/mapModel/2019/03.16/learned_6.ply"/>
+	<!--param name="loadMapName" value="/home/yh/mapModel/2019/03.16/learned_6.ply"/-->
+	<!--param name="loadMapName" value="/home/yh/mapModel/2019/01.08/iter_results/b_500.ply"/-->
+	<param name="loadMapName" value="/home/yh/map_2019-05-31-14-24-06.ply"/>
 
 	<param name="loadTrajName" value="/home/yh/mapModel/2019/01.08/icp_0301.txt"/>
 	<param name="keepIndexName" value="/home/yh/mapModel/2019/01.08/keep_0301_all.txt"/>
