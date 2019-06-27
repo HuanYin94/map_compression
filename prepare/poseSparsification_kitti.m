@@ -1,4 +1,4 @@
-function [ ground_Truth_new, ground_Truth_keep ] = ForKITTIPoses( savePoseName, saveIndexName, ground_Truth, meanDis )
+function [ ground_Truth_new, ground_Truth_keep ] = poseSparsification_kitti( savePoseName, saveIndexName, ground_Truth, meanDis )
 %FORKITTI Summary of this function goes here
 %   Detailed explanation goes here
 
