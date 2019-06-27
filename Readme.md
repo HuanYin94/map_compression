@@ -1,7 +1,7 @@
 ## Welcome
 Code of a manuscript, submitted to IEEE Transactions on Intelligent Transportation Systems
-Set by [Huan Yin](https://yinhuan.site/)
 
+Set by [Huan Yin](https://yinhuan.site/)
 
 # 3D LiDAR Map Compression for Efficient Localization on Resource Constrained Vehicles 
 
