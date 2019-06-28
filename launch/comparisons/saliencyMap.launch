@@ -2,8 +2,11 @@
 
   	<node pkg="map_compression" type="saliencyMap" name="saliencyMap" output="screen">
 
-	<param name="loadMapName" value="/home/yh/wholeMap_before.ply"/>
-  	<param name="saveMapName" value="/home/yh/mapModel/2019/01.10/locTest/voxel_b2000.ply"/>
+	<param name=“normalRadius” value="0.5"/>	
+	<param name=“fpfhRadius” value="1.0"/>	
+
+	<param name="loadMapName" value="/home/yh/mapModel/2019/06.27/split_1.ply"/>
+  	<param name="saveMapName" value="/home/yh/mapModel/2019/06.27/split_1_low.ply"/>
 
   </node>
 </launch>
