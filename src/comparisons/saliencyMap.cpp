@@ -41,11 +41,15 @@ using namespace pcl;
 using namespace pcl::io;
 
 using namespace std;
+using namespace Eigen;
 
 class saliencyMap
 {
     typedef PointMatcher<float> PM;
     typedef PM::DataPoints DP;
+
+    typedef typename Nabo::NearestNeighbourSearch<float> NNS;
+    typedef typename NNS::SearchType NNSearchType;
 
 public:
     saliencyMap(ros::NodeHandle &n);
@@ -60,8 +64,8 @@ public:
 
     void process();
 
-    float dissimilarityMeasure(pcl::Histogram<33> fpfhA, pcl::Histogram<33> fpfhB);
-
+    float dissimilarityMeasure(pcl::FPFHSignature33 fpfhA, pcl::FPFHSignature33 fpfhB);
+    float distanceMeasure(Vector3f xyz_i, Vector3f xyz_j);
 };
 
 saliencyMap::~saliencyMap()
@@ -124,18 +128,68 @@ void saliencyMap::process()
 
     DP pmCloud = PointMatcher_ros::rosMsgToPointMatcherCloud<float>(rosCloud);
 
-    pmCloud.addDescriptor();
+    pmCloud.addDescriptor("low-distc", PM::Matrix::Zero(1, pmCloud.features.cols()));
+    pmCloud.addDescriptor("point-assoc", PM::Matrix::Zero(1, pmCloud.features.cols()));
+    pmCloud.addDescriptor("high-distc", PM::Matrix::Zero(1, pmCloud.features.cols()));
 
-    for(int m=0; m<pmCloud.features.cols(); m++)
+
+    int rowLine_lowDistc = pmCloud.getDescriptorStartingRow("low-distc");
+    int rowLine_pointAssoc = pmCloud.getDescriptorStartingRow("point-assoc");
+    int rowLine_highDistc = pmCloud.getDescriptorStartingRow("high-distc");
+
+
+    // build kd tree for fpfh descriptors
+
+
+
+
+
+
+
+
+
+    for(int i=0; i < pmCloud.features.cols(); i++)
     {
+        cout<<i<<endl;
 
+        // calc each point's low-level distinctnes
+        float d_L_sum = 0;
+        for(int j=0; j < pmCloud.features.cols(); j++)
+        {
+            float diff_ = this->dissimilarityMeasure(fpfhs->points[i], fpfhs->points[j]);
+
+            Vector3f xyz_i(pmCloud.features(0,i), pmCloud.features(1,i), pmCloud.features(2,i));
+            Vector3f xyz_j(pmCloud.features(0,j), pmCloud.features(1,j), pmCloud.features(2,j));
+
+            float distance_= this->distanceMeasure(xyz_i, xyz_j);
+
+            float d_L = diff_ / (1 + diff_);
+            d_L_sum += d_L;
+        }
+
+        float low_distc = 1 - std::exp(-1*d_L_sum/pmCloud.features.cols());
+
+        pmCloud.descriptors(rowLine_lowDistc, i) = low_distc;
     }
+
+    pmCloud.save(saveMapName);
 
 }
 
-float saliencyMap::dissimilarityMeasure(pcl::Histogram<33> fpfhA, pcl::Histogram<33> fpfhB)
-{
+//float saliencyMap::dissimilarityMeasure(pcl::FPFHSignature33 fpfhA, pcl::FPFHSignature33 fpfhB)
+//{
+//    float D=0;
+//    for(int n=0; n<33; n++)
+//    {
+//        D += std::pow((fpfhA.histogram[n] - fpfhB.histogram[n]), 2) / (fpfhA.histogram[n] + fpfhB.histogram[n]);
+//    }
+//    return D;
+//}
 
+float saliencyMap::distanceMeasure(Vector3f xyz_i, Vector3f xyz_j)
+{
+    float dises = std::pow(xyz_i(0) - xyz_j(0), 2) + std::pow(xyz_i(1) - xyz_j(1), 2) + std::pow(xyz_i(2) - xyz_j(2), 2);
+    return sqrt(dises);
 }
 
 int main(int argc, char **argv)
