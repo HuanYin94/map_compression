@@ -60,6 +60,8 @@ public:
 
     void process();
 
+    float dissimilarityMeasure(pcl::Histogram<33> fpfhA, pcl::Histogram<33> fpfhB);
+
 };
 
 saliencyMap::~saliencyMap()
@@ -88,7 +90,8 @@ void saliencyMap::process()
 
     // load cloud, fpfh for each point, using pcl
     pcl::PointCloud<pcl::PointXYZ> cloud;
-    if (loadPLYFile(loadMapName, cloud) != 0) return false;
+    if (loadPLYFile(loadMapName, cloud) != 0)
+        return;
 
     //Ptr
     pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_Ptr(new pcl::PointCloud<pcl::PointXYZ>);
@@ -115,7 +118,23 @@ void saliencyMap::process()
 
     fpfh.compute (*fpfhs);
 
-    cout<<<<endl;
+    // from pcl to ros_msg to libpointmatcher
+    sensor_msgs::PointCloud2 rosCloud;
+    pcl::toROSMsg(cloud, rosCloud);
+
+    DP pmCloud = PointMatcher_ros::rosMsgToPointMatcherCloud<float>(rosCloud);
+
+    pmCloud.addDescriptor();
+
+    for(int m=0; m<pmCloud.features.cols(); m++)
+    {
+
+    }
+
+}
+
+float saliencyMap::dissimilarityMeasure(pcl::Histogram<33> fpfhA, pcl::Histogram<33> fpfhB)
+{
 
 }
 
