@@ -36,6 +36,10 @@
 #include <pcl/features/normal_3d.h>
 #include <pcl/common/projection_matrix.h>
 
+#include <pcl/io/pcd_io.h>
+#include <pcl/point_types.h>
+#include <pcl/common/common.h>
+
 using namespace PointMatcherSupport;
 using namespace pcl;
 using namespace pcl::io;
@@ -65,6 +69,7 @@ public:
 
     float normalRadius;
     float fpfhRadius;
+    float accRatio;
 
     shared_ptr<NNS> fpfhNNS;
     shared_ptr<NNS> pointNNS;
@@ -83,7 +88,8 @@ saliencyMap::saliencyMap(ros::NodeHandle& n):
     loadMapName(getParam<string>("loadMapName", ".")),
     saveMapName(getParam<string>("saveMapName", ".")),
     normalRadius(getParam<float>("normalRadius", 0)),
-    fpfhRadius(getParam<float>("fpfhRadius", 0))
+    fpfhRadius(getParam<float>("fpfhRadius", 0)),
+    accRatio(getParam<float>("accRatio", 0.01))
 {
 
     // load
@@ -107,6 +113,16 @@ void saliencyMap::process()
         return;
 
     //normalization, proj to 0~1 unit sphere
+    pcl::PointXYZ min;
+    pcl::PointXYZ max;
+    pcl::getMinMax3D(cloud, min, max);
+
+    for(int i=0; i<cloud.points.size(); i++)
+    {
+        cloud.points[i].x = (cloud.points[i].x - min.x) / (max.x-min.x);
+        cloud.points[i].y = (cloud.points[i].y - min.y) / (max.y-min.y);
+        cloud.points[i].z = (cloud.points[i].z - min.z) / (max.z-min.z);
+    }
 
 
     //Ptr
@@ -138,6 +154,7 @@ void saliencyMap::process()
     sensor_msgs::PointCloud2 rosCloud;
     pcl::toROSMsg(cloud, rosCloud);
 
+    // from ros_msg to DataPoints (libpointmatcher)
     DP pmCloud = PointMatcher_ros::rosMsgToPointMatcherCloud<float>(rosCloud);
 
     pmCloud.addDescriptor("low-distc", PM::Matrix::Zero(1, pmCloud.features.cols()));
@@ -158,10 +175,10 @@ void saliencyMap::process()
          fpfh_des(r,c) = fpfhs->points[c].histogram[r];
 
     fpfhNNS.reset(NNS::create(fpfh_des, pmCloud.features.cols()-1, NNS::KDTREE_LINEAR_HEAP, NNS::TOUCH_STATISTICS));
-//    pointNNS.reset(NNS::create(pmCloud.features, pmCloud.features.cols()-1, NNS::KDTREE_LINEAR_HEAP, NNS::TOUCH_STATISTICS));
+    pointNNS.reset(NNS::create(pmCloud.features, pmCloud.features.cols()-1, NNS::KDTREE_LINEAR_HEAP, NNS::TOUCH_STATISTICS));
 
     // 1% point are considered
-    int kSearch = pmCloud.features.cols()*0.01;
+    int kSearch = pmCloud.features.cols()*accRatio;
 
     // search the nearest
     PM::Matches matches_fpfh(
@@ -169,12 +186,20 @@ void saliencyMap::process()
         Matches::Ids(kSearch, pmCloud.features.cols())
     );
 
+    PM::Matches matches_xyz(
+        Matches::Dists(kSearch, pmCloud.features.cols()),
+        Matches::Ids(kSearch, pmCloud.features.cols())
+    );
+
     fpfhNNS->knn(fpfh_des, matches_fpfh.ids, matches_fpfh.dists, kSearch, 0);
+    fpfhNNS->knn(fpfh_des, matches_fpfh.ids, matches_fpfh.dists, kSearch, 0);
+
+    //
+
+    cout<<""<<endl;
 
     for(int i=0; i<pmCloud.features.cols(); i++)
     {
-        cout<<"-------------------------------------"<<endl;
-        cout<<i<<endl;
 
         float d_L_sum = 0;
 
@@ -189,7 +214,7 @@ void saliencyMap::process()
 
             float distance_= this->distanceMeasure(xyz_i, xyz_j);
 
-            d_L_sum += matches_fpfh.dists(j, i) / (1 + distance_);
+            d_L_sum += sqrt(matches_fpfh.dists(j, i)) / (1 + distance_);
 
 //            cout<<j<<"  "<<matches_fpfh.dists(j, i)<<"  "<<1 + distance_<<endl;
 
@@ -198,7 +223,16 @@ void saliencyMap::process()
         float low_distc = 1 - std::exp(-1*d_L_sum/kSearch);
 
         pmCloud.descriptors(rowLine_lowDistc, i) = low_distc;
+
     }
+
+    for(int i=0; i<pmCloud.features.cols(); i++)
+    {
+
+
+    }
+
+
 
     pmCloud.save(saveMapName);
 
