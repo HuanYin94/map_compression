@@ -47,6 +47,7 @@ class saliencyMap
 {
     typedef PointMatcher<float> PM;
     typedef PM::DataPoints DP;
+    typedef PM::Matches Matches;
 
     typedef typename Nabo::NearestNeighbourSearch<float> NNS;
     typedef typename NNS::SearchType NNSearchType;
@@ -62,9 +63,15 @@ public:
     DP mapCloud;
     DP saveCloud;
 
+    float normalRadius;
+    float fpfhRadius;
+
+    shared_ptr<NNS> fpfhNNS;
+    shared_ptr<NNS> pointNNS;
+
     void process();
 
-    float dissimilarityMeasure(pcl::FPFHSignature33 fpfhA, pcl::FPFHSignature33 fpfhB);
+//    float dissimilarityMeasure(pcl::FPFHSignature33 fpfhA, pcl::FPFHSignature33 fpfhB);
     float distanceMeasure(Vector3f xyz_i, Vector3f xyz_j);
 };
 
@@ -74,7 +81,9 @@ saliencyMap::~saliencyMap()
 saliencyMap::saliencyMap(ros::NodeHandle& n):
     n(n),
     loadMapName(getParam<string>("loadMapName", ".")),
-    saveMapName(getParam<string>("saveMapName", "."))
+    saveMapName(getParam<string>("saveMapName", ".")),
+    normalRadius(getParam<float>("normalRadius", 0)),
+    fpfhRadius(getParam<float>("fpfhRadius", 0))
 {
 
     // load
@@ -97,6 +106,9 @@ void saliencyMap::process()
     if (loadPLYFile(loadMapName, cloud) != 0)
         return;
 
+    //normalization, proj to 0~1 unit sphere
+
+
     //Ptr
     pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_Ptr(new pcl::PointCloud<pcl::PointXYZ>);
     cloud_Ptr = cloud.makeShared();
@@ -107,7 +119,7 @@ void saliencyMap::process()
     pcl::search::KdTree<pcl::PointXYZ>::Ptr tree (new pcl::search::KdTree<pcl::PointXYZ> ());
     ne.setSearchMethod (tree);
     pcl::PointCloud<pcl::Normal>::Ptr cloud_normals_Ptr (new pcl::PointCloud<pcl::Normal>);
-    ne.setRadiusSearch(0.5);
+    ne.setRadiusSearch(normalRadius);
     ne.compute(*cloud_normals_Ptr);
 
     // fpfh
@@ -118,7 +130,7 @@ void saliencyMap::process()
 
     // IMPORTANT: the radius used here has to be larger than the radius used to estimate the surface normals!!!
     pcl::PointCloud<pcl::FPFHSignature33>::Ptr fpfhs (new pcl::PointCloud<pcl::FPFHSignature33> ());
-    fpfh.setRadiusSearch (1.0);
+    fpfh.setRadiusSearch (fpfhRadius);
 
     fpfh.compute (*fpfhs);
 
@@ -139,35 +151,51 @@ void saliencyMap::process()
 
 
     // build kd tree for fpfh descriptors
+    Eigen::MatrixXf fpfh_des;
+    fpfh_des.resize(33, pmCloud.features.cols());
+    for(int c=0; c<pmCloud.features.cols(); c++)
+        for(int r=0; r<33; r++)
+         fpfh_des(r,c) = fpfhs->points[c].histogram[r];
 
+    fpfhNNS.reset(NNS::create(fpfh_des, pmCloud.features.cols()-1, NNS::KDTREE_LINEAR_HEAP, NNS::TOUCH_STATISTICS));
+//    pointNNS.reset(NNS::create(pmCloud.features, pmCloud.features.cols()-1, NNS::KDTREE_LINEAR_HEAP, NNS::TOUCH_STATISTICS));
 
+    // 1% point are considered
+    int kSearch = pmCloud.features.cols()*0.01;
 
+    // search the nearest
+    PM::Matches matches_fpfh(
+        Matches::Dists(kSearch, pmCloud.features.cols()),
+        Matches::Ids(kSearch, pmCloud.features.cols())
+    );
 
+    fpfhNNS->knn(fpfh_des, matches_fpfh.ids, matches_fpfh.dists, kSearch, 0);
 
-
-
-
-
-    for(int i=0; i < pmCloud.features.cols(); i++)
+    for(int i=0; i<pmCloud.features.cols(); i++)
     {
+        cout<<"-------------------------------------"<<endl;
         cout<<i<<endl;
 
-        // calc each point's low-level distinctnes
         float d_L_sum = 0;
-        for(int j=0; j < pmCloud.features.cols(); j++)
+
+        //calc one point's low-level distinctness
+        for(int j=0; j<kSearch; j++)
         {
-            float diff_ = this->dissimilarityMeasure(fpfhs->points[i], fpfhs->points[j]);
+
+            int id = matches_fpfh.ids(j, i);
 
             Vector3f xyz_i(pmCloud.features(0,i), pmCloud.features(1,i), pmCloud.features(2,i));
-            Vector3f xyz_j(pmCloud.features(0,j), pmCloud.features(1,j), pmCloud.features(2,j));
+            Vector3f xyz_j(pmCloud.features(0,id), pmCloud.features(1,id), pmCloud.features(2,id));
 
             float distance_= this->distanceMeasure(xyz_i, xyz_j);
 
-            float d_L = diff_ / (1 + diff_);
-            d_L_sum += d_L;
+            d_L_sum += matches_fpfh.dists(j, i) / (1 + distance_);
+
+//            cout<<j<<"  "<<matches_fpfh.dists(j, i)<<"  "<<1 + distance_<<endl;
+
         }
 
-        float low_distc = 1 - std::exp(-1*d_L_sum/pmCloud.features.cols());
+        float low_distc = 1 - std::exp(-1*d_L_sum/kSearch);
 
         pmCloud.descriptors(rowLine_lowDistc, i) = low_distc;
     }
@@ -191,6 +219,8 @@ float saliencyMap::distanceMeasure(Vector3f xyz_i, Vector3f xyz_j)
     float dises = std::pow(xyz_i(0) - xyz_j(0), 2) + std::pow(xyz_i(1) - xyz_j(1), 2) + std::pow(xyz_i(2) - xyz_j(2), 2);
     return sqrt(dises);
 }
+
+
 
 int main(int argc, char **argv)
 {
