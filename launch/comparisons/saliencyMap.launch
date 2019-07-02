@@ -2,12 +2,19 @@
 
   	<node pkg="map_compression" type="saliencyMap" name="saliencyMap" output="screen">
 
-	<param name="normalRadius" value="0.02"/>	
-	<param name="fpfhRadius" value="0.05"/>
+	<param name="normalRadius" value="0.005"/>	
+	<param name="fpfhRadius" value="0.02"/>
     <param name="accRatio" value="0.01"/>	
 
-	<param name="loadMapName" value="/home/yh/mapModel/2019/06.27/split_1.ply"/>
-  	<param name="saveMapName" value="/home/yh/mapModel/2019/06.27/split_1_low.ply"/>
+    <param name="highRatio_pointAssoc" value="0.2"/>	
+    <param name="sigma" value="0.1"/>	
+
+    <param name="highRatio_highDistinct" value="0.1"/>	
+    <param name="highRadius" value="0.5"/>
+    <param name="highSearchNum" value="100"/>
+
+	<param name="loadMapName" value="/home/yh/mapModel/2019/06.27/split_2.ply"/>
+  	<param name="saveMapName" value="/home/yh/mapModel/2019/06.27/split_2_low.ply"/>
 
   </node>
 </launch>

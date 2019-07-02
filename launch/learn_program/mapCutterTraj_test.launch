@@ -15,8 +15,8 @@
 	<param name="saveCloudName" value="/home/yh/mapModel/2019/06.27/nouse.ply"/>
 	
 	<param name="cutPoint0" value="0"/>	
-	<param name="cutPoint1" value="200"/>	
-	<param name="cutPoint2" value="201"/>	
+	<param name="cutPoint1" value="1140"/>	
+	<param name="cutPoint2" value="1141"/>	
 	<param name="cutPoint3" value="1162"/>
 
 
