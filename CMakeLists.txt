@@ -140,8 +140,8 @@ ${catkin_LIBRARIES}
 ${libpointmatcher_LIBRARIES}
 )
 
-add_executable(splitCloudForSaliency src/comparisons/splitCloudForSaliency.cpp)
-target_link_libraries(splitCloudForSaliency
+add_executable(mergeCloudForSaliency src/comparisons/mergeCloudForSaliency.cpp)
+target_link_libraries(mergeCloudForSaliency
 ${catkin_LIBRARIES}
 ${libpointmatcher_LIBRARIES}
 )

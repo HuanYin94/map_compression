@@ -78,12 +78,16 @@ public:
     float highRadius;
     int highSearchNum;
 
+    float normalRadius_;
+    float fpfhRadius_;
+    float highRadius_;
+
     shared_ptr<NNS> fpfhNNS;
     shared_ptr<NNS> pointNNS_1;
     shared_ptr<NNS> pointNNS_2;
 
 
-    void process(string loadMapName, string saveSaliencyName);
+    void process(string loadMapName, string saveSaliencyName, string saveMapName);
 
     float ChiSquareMeasure(pcl::FPFHSignature33 fpfhA, pcl::FPFHSignature33 fpfhB);
     float distanceMeasure(Vector3f xyz_i, Vector3f xyz_j);
@@ -103,7 +107,8 @@ saliencyMap::saliencyMap(ros::NodeHandle& n):
     highRadius(getParam<float>("highRadius", 0)),
     loadMapDir(getParam<string>("loadMapDir", ".")),
     saveSaliencyDir(getParam<string>("saveSaliencyDir", ".")),
-    subMapCnt(getParam<int>("subMapCnt", 0))
+    subMapCnt(getParam<int>("subMapCnt", 0)),
+    highSearchNum(getParam<int>("highSearchNum", 0))
 {
     // process
 
@@ -111,8 +116,9 @@ saliencyMap::saliencyMap(ros::NodeHandle& n):
     {
         string loadMapName = loadMapDir + to_string(i) + ".ply";
         string saveSaliencyName = saveSaliencyDir + to_string(i) + ".txt";
+        string saveMapName = saveSaliencyDir + to_string(i) + ".ply";
 
-        this->process(loadMapName, saveSaliencyName);
+        this->process(loadMapName, saveSaliencyName, saveMapName);
     }
 
 }
@@ -120,7 +126,7 @@ saliencyMap::saliencyMap(ros::NodeHandle& n):
 
 
 
-void saliencyMap::process(string loadMapName, string saveSaliencyName)
+void saliencyMap::process(string loadMapName, string saveSaliencyName, string saveMapName)
 {
     cout<<loadMapName<<endl;
 
@@ -152,6 +158,10 @@ void saliencyMap::process(string loadMapName, string saveSaliencyName)
         cloud.points[i].z = (cloud.points[i].z - min_xyz) / (max_xyz-min_xyz);
     }
 
+    // scale change
+    normalRadius_ = normalRadius / (max_xyz-min_xyz);
+    fpfhRadius_ = fpfhRadius / (max_xyz-min_xyz);
+    highRadius_ = highRadius / (max_xyz-min_xyz);
 
     //Ptr
     pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_Ptr(new pcl::PointCloud<pcl::PointXYZ>);
@@ -163,7 +173,7 @@ void saliencyMap::process(string loadMapName, string saveSaliencyName)
     pcl::search::KdTree<pcl::PointXYZ>::Ptr tree (new pcl::search::KdTree<pcl::PointXYZ> ());
     ne.setSearchMethod (tree);
     pcl::PointCloud<pcl::Normal>::Ptr cloud_normals_Ptr (new pcl::PointCloud<pcl::Normal>);
-    ne.setRadiusSearch(normalRadius);
+    ne.setRadiusSearch(normalRadius_);
     ne.compute(*cloud_normals_Ptr);
 
     // fpfh
@@ -174,7 +184,7 @@ void saliencyMap::process(string loadMapName, string saveSaliencyName)
 
     // IMPORTANT: the radius used here has to be larger than the radius used to estimate the surface normals!!!
     pcl::PointCloud<pcl::FPFHSignature33>::Ptr fpfhs (new pcl::PointCloud<pcl::FPFHSignature33> ());
-    fpfh.setRadiusSearch (fpfhRadius);
+    fpfh.setRadiusSearch (fpfhRadius_);
 
     fpfh.compute (*fpfhs);
 
@@ -194,8 +204,6 @@ void saliencyMap::process(string loadMapName, string saveSaliencyName)
     int rowLine_pointAssoc = pmCloud.getDescriptorStartingRow("point-assoc");
     int rowLine_highDistc = pmCloud.getDescriptorStartingRow("high-distc");
     int rowLine_saliency = pmCloud.getDescriptorStartingRow("saliency");
-
-
 
     double t1 = ros::Time::now().toSec();
     cout<<"Prepare Time Cost (s):   "<<t1-t0<<endl;
@@ -288,13 +296,15 @@ void saliencyMap::process(string loadMapName, string saveSaliencyName)
     int cnt = 0;
     for(int i=0; i<pmCloud.features.cols(); i++)
     {
-        if(pmCloud.descriptors(rowLine_lowDistc, i) > high_thresh_Assoc)
+        if(pmCloud.descriptors(rowLine_lowDistc, i) >= high_thresh_Assoc)
         {
             pmCloud_high.setColFrom(cnt, pmCloud, i);
             cnt++;
         }
     }
     pmCloud_high.conservativeResize(cnt);
+
+    cout<<"---  "<<high_thresh_Assoc<<"   "<<pmCloud_high.features.cols()<<endl;
 
     pointNNS_1.reset(NNS::create(pmCloud_high.features, pmCloud_high.features.cols()-1, NNS::KDTREE_LINEAR_HEAP, NNS::TOUCH_STATISTICS));
 
@@ -322,12 +332,16 @@ void saliencyMap::process(string loadMapName, string saveSaliencyName)
 
 
 
+
+
     ///calc one point's high-level distinctness
 
     // top high low_distinct points
     // 10% in the paper, change highest themselves
     int high_thresh_num_High = (1-highRatio_highDistinct)*pmCloud.features.cols();
     float high_thresh_High = low_distinc_array[high_thresh_num_High];
+
+    cout<<pmCloud.features.cols()<<"    "<<pmCloud.features.rows()<<endl;
 
     pointNNS_2.reset(NNS::create(pmCloud.features, pmCloud.features.cols()-1, NNS::KDTREE_LINEAR_HEAP, NNS::TOUCH_STATISTICS));
 
@@ -352,7 +366,7 @@ void saliencyMap::process(string loadMapName, string saveSaliencyName)
         {
             float Euc_distance_ = std::sqrt(matches_xyz_2.dists(j, i));
 
-            if(Euc_distance_ > this->highRadius)
+            if(Euc_distance_ > highRadius_)
             {
                 break;
             }
@@ -375,7 +389,6 @@ void saliencyMap::process(string loadMapName, string saveSaliencyName)
     cout<<"High-Sid Cost (s):   "<<t4-t3<<endl;
 
 
-
     ///calc one point's saliency
     ofstream saver(saveSaliencyName);
 
@@ -386,12 +399,12 @@ void saliencyMap::process(string loadMapName, string saveSaliencyName)
         float c = pmCloud.descriptors(rowLine_highDistc,i);
         pmCloud.descriptors(rowLine_saliency, i) = 0.5*(a+b) + 0.5*c;
 
-        saver << a << "  "
-                << b << "  "
-                   << c << "  "
-                      << 0.5*(a+b) + 0.5*c << endl;
+        saver << a << "  " << b << "  " << c << "  " << pmCloud.descriptors(rowLine_saliency, i) << endl;
     }
+
     saver.close();
+
+    pmCloud.save(saveMapName);
 
 }
 
