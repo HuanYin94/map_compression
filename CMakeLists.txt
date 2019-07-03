@@ -140,10 +140,18 @@ ${catkin_LIBRARIES}
 ${libpointmatcher_LIBRARIES}
 )
 
+<<<<<<< HEAD
 add_executable(mergeCloudForSaliency src/comparisons/mergeCloudForSaliency.cpp)
 target_link_libraries(mergeCloudForSaliency
 ${catkin_LIBRARIES}
 ${libpointmatcher_LIBRARIES}
 )
+=======
+#add_executable(mergeCloudForSaliency src/comparisons/mergeCloudForSaliency.cpp)
+#target_link_libraries(mergeCloudForSaliency
+#${catkin_LIBRARIES}
+#${libpointmatcher_LIBRARIES}
+#)
+>>>>>>> e67f30bb7232cc59552b626128d54808f4d689b9
 
 
