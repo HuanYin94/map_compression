@@ -62,8 +62,9 @@ public:
     ~saliencyMap();
     ros::NodeHandle& n;
 
-    string loadMapName;
-    string saveMapName;
+    string loadMapDir;
+    string saveSaliencyDir;
+    int subMapCnt;
 
     DP mapCloud;
     DP saveCloud;
@@ -82,7 +83,7 @@ public:
     shared_ptr<NNS> pointNNS_2;
 
 
-    void process();
+    void process(string loadMapName, string saveSaliencyName);
 
     float ChiSquareMeasure(pcl::FPFHSignature33 fpfhA, pcl::FPFHSignature33 fpfhB);
     float distanceMeasure(Vector3f xyz_i, Vector3f xyz_j);
@@ -93,8 +94,6 @@ saliencyMap::~saliencyMap()
 
 saliencyMap::saliencyMap(ros::NodeHandle& n):
     n(n),
-    loadMapName(getParam<string>("loadMapName", ".")),
-    saveMapName(getParam<string>("saveMapName", ".")),
     normalRadius(getParam<float>("normalRadius", 0)),
     fpfhRadius(getParam<float>("fpfhRadius", 0)),
     accRatio(getParam<float>("accRatio", 0)),
@@ -102,23 +101,32 @@ saliencyMap::saliencyMap(ros::NodeHandle& n):
     sigma(getParam<float>("sigma", 0)),
     highRatio_highDistinct(getParam<float>("highRatio_highDistinct", 0)),
     highRadius(getParam<float>("highRadius", 0)),
-    highSearchNum(getParam<int>("highSearchNum", 0))
+    loadMapDir(getParam<string>("loadMapDir", ".")),
+    saveSaliencyDir(getParam<string>("saveSaliencyDir", ".")),
+    subMapCnt(getParam<int>("subMapCnt", 0))
 {
-
-    // load
-//    mapCloud = DP::load(loadMapName);
-
     // process
-    this->process();
+
+    for(int i=0; i<subMapCnt; i++)
+    {
+        string loadMapName = loadMapDir + to_string(i) + ".ply";
+        string saveSaliencyName = saveSaliencyDir + to_string(i) + ".txt";
+
+        this->process(loadMapName, saveSaliencyName);
+    }
 
 }
 
-void saliencyMap::process()
+
+
+
+void saliencyMap::process(string loadMapName, string saveSaliencyName)
 {
+    cout<<loadMapName<<endl;
 
     // saliency detection
     // ref: ITSC 2017, ICCV 2013
-
+    // change the kd treeiun metric
 
     // load cloud, fpfh for each point, using pcl
     pcl::PointCloud<pcl::PointXYZ> cloud;
@@ -369,6 +377,7 @@ void saliencyMap::process()
 
 
     ///calc one point's saliency
+    ofstream saver(saveSaliencyName);
 
     for(int i=0; i<pmCloud.features.cols(); i++)
     {
@@ -376,9 +385,13 @@ void saliencyMap::process()
         float b = pmCloud.descriptors(rowLine_pointAssoc,i);
         float c = pmCloud.descriptors(rowLine_highDistc,i);
         pmCloud.descriptors(rowLine_saliency, i) = 0.5*(a+b) + 0.5*c;
-    }
 
-    pmCloud.save(saveMapName);
+        saver << a << "  "
+                << b << "  "
+                   << c << "  "
+                      << 0.5*(a+b) + 0.5*c << endl;
+    }
+    saver.close();
 
 }
 

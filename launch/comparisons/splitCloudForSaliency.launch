@@ -3,13 +3,10 @@
   <node pkg="map_compression" type="splitCloudForSaliency" name="splitCloudForSaliency" output="screen">
 
 
-	<param name="loadMapName" value="/home/yh/mapModel/2019/01.08/learn/re.ply"/>
-
-	<param name="loadTrajName" value="/home/yh/mapModel/2019/01.08/icp_0301.txt"/>
-	<param name="keepIndexName" value="/home/yh/mapModel/2019/01.08/keep_0301_all.txt"/>
-
-	<param name="saveCloudDir" value="/home/yh/mapModel/2019/06.27/yq_split_cloud/"/>
-	<param name="splitPathLength value="100""/>
+	<param name="loadMapName" value="/home/yh/mapModel/2019//07.03/wholeMap_yq.ply"/>
+	<param name="loadTrajName" value="/home/yh/mapModel/2019/07.03/icp_0301_sparse.txt"/>
+	<param name="splitPathLength" value="100"/>
+	<param name="saveCloudDir" value="/home/yh/mapModel/2019/07.03/split_cloud/"/>
 	
 
   </node>

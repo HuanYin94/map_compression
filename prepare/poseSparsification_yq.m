@@ -1,4 +1,4 @@
-function [ icpPoseNew ] = poseSparsification_yq( icpPose, saveIndexFileName, expDis )
+function [ icpPoseNew ] = poseSparsification_yq( icpPose, saveFileName, expDis )
 %POSESPARCIFICATION Summary of this function goes here
 %   Detailed explanation goes here
     
@@ -25,7 +25,9 @@ function [ icpPoseNew ] = poseSparsification_yq( icpPose, saveIndexFileName, exp
     length(keepIndex)
     
     % save the index to the file
-    dlmwrite(saveIndexFileName, keepIndex, 'delimiter', '\t');
+%     dlmwrite(saveFileName, keepIndex, 'delimiter', '\t');
+
+    dlmwrite(saveFileName, icpPoseNew, 'delimiter', '\t');
 
 end
 
