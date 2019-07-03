@@ -16,9 +16,9 @@
 	<!--param name="loadMapName" value="/home/yh/mapModel/2019/06.27/split_2.ply"/>
   	<param name="saveMapName" value="/home/yh/mapModel/2019/06.27/split_2_low.ply"/-->
 
-	<param name="loadMapDir" value="/home/yh/mapModel/2019/07.03/split_cloud/"/>
+	<param name="loadMapDir" value="/home/yinhuan/Data/mapModel/07.03/split_cloudd/"/>
 	<param name="subMapCnt" value="49"/>
-  	<param name="saveSaliencyDir" value="/home/yh/mapModel/2019/07.03/split_saliency/"/>
+  	<param name="saveSaliencyDir" value="/home/yinhuan/Data/mapModel/07.03/split_saliency/"/>
 
   </node>
 </launch>
