@@ -14,6 +14,7 @@
 #include <fstream>
 #include <vector>
 #include <algorithm>
+#include <math.h>
 
 #include <visualization_msgs/Marker.h>
 #include <geometry_msgs/PoseStamped.h>
@@ -241,6 +242,13 @@ void saliencyMap::process()
 
 //            cout<<j<<"  "<<matches_fpfh.dists(j, i)<<"  "<<1 + distance_<<endl;
 
+            if(d_L_sum != d_L_sum)
+            {
+                cout<<""<<endl;
+                break;
+
+            }
+
         }
 
         float low_distc = 1 - std::exp(-1*d_L_sum/kSearch);
@@ -334,7 +342,7 @@ void saliencyMap::process()
 
         for(int j=0; j<highSearchNum; j++)
         {
-            int Euc_distance_ = matches_xyz_2.dists(j, i);
+            float Euc_distance_ = std::sqrt(matches_xyz_2.dists(j, i));
 
             if(Euc_distance_ > this->highRadius)
             {
@@ -367,7 +375,6 @@ void saliencyMap::process()
         float a = pmCloud.descriptors(rowLine_lowDistc,i);
         float b = pmCloud.descriptors(rowLine_pointAssoc,i);
         float c = pmCloud.descriptors(rowLine_highDistc,i);
-        cout<<0.5*(a+b)<<"   "<<0.5*c<<endl;
         pmCloud.descriptors(rowLine_saliency, i) = 0.5*(a+b) + 0.5*c;
     }
 
@@ -380,6 +387,9 @@ float saliencyMap::ChiSquareMeasure(pcl::FPFHSignature33 fpfhA, pcl::FPFHSignatu
     float D=0;
     for(int n=0; n<33; n++)
     {
+        if((fpfhA.histogram[n] + fpfhB.histogram[n]) == 0)
+            continue;
+
         D += std::pow((fpfhA.histogram[n] - fpfhB.histogram[n]), 2) / (fpfhA.histogram[n] + fpfhB.histogram[n]);
     }
     return D;
@@ -390,8 +400,6 @@ float saliencyMap::distanceMeasure(Vector3f xyz_i, Vector3f xyz_j)
     float dises = std::pow(xyz_i(0) - xyz_j(0), 2) + std::pow(xyz_i(1) - xyz_j(1), 2) + std::pow(xyz_i(2) - xyz_j(2), 2);
     return sqrt(dises);
 }
-
-
 
 int main(int argc, char **argv)
 {
