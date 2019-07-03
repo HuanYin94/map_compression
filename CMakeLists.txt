@@ -140,4 +140,10 @@ ${catkin_LIBRARIES}
 ${libpointmatcher_LIBRARIES}
 )
 
+add_executable(splitCloudForSaliency src/comparisons/splitCloudForSaliency.cpp)
+target_link_libraries(splitCloudForSaliency
+${catkin_LIBRARIES}
+${libpointmatcher_LIBRARIES}
+)
+
 

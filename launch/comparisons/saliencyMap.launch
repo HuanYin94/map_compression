@@ -10,11 +10,15 @@
     <param name="sigma" value="0.1"/>	
 
     <param name="highRatio_highDistinct" value="0.2"/>	
-    <param name="highRadius" value="0.2"/>
+    <param name="highRadius" value="0.5"/>
     <param name="highSearchNum" value="100"/>
 
-	<param name="loadMapName" value="/home/yh/mapModel/2019/06.27/split_2.ply"/>
-  	<param name="saveMapName" value="/home/yh/mapModel/2019/06.27/split_2_low.ply"/>
+	<!--param name="loadMapName" value="/home/yh/mapModel/2019/06.27/split_2.ply"/>
+  	<param name="saveMapName" value="/home/yh/mapModel/2019/06.27/split_2_low.ply"/-->
+
+	<param name="loadMapDir" value="/home/yh/mapModel/2019/07.03/split_cloud/"/>
+	<param name="subMapCnt" value="49"/>
+  	<param name="saveSaliencyDir" value="/home/yh/mapModel/2019/07.03/split_saliency/"/>
 
   </node>
 </launch>
