@@ -1,0 +1,15 @@
+<launch>
+
+  <node pkg="map_compression" type="mergeCloudForSaliency" name="mergeCloudForSaliency" output="screen">
+
+
+	<param name="loadMapName" value="/home/yh/mapModel/2019//07.03/wholeMap_yq.ply"/>
+	<param name="loadTrajName" value="/home/yh/mapModel/2019/07.03/icp_0301_sparse.txt"/>
+	<param name="loadSaliencyDir" value="/home/yh/mapModel/2019//07.03/wholeMap_yq.ply"/>
+	<param name="splitPathLength" value="100"/>
+	<param name="saveMapName" value="/home/yh/mapModel/2019/07.03/split_cloud/"/>
+	
+
+  </node>
+
+</launch>
