@@ -159,21 +159,22 @@ void mergeCloud::process()
         string saliencyFile = loadSaliencyDir + to_string(v) + ".txt";
 
         int x, y;
-        float temp;
-        vector<float> test;
-        vector<vector<float>> features;
+        double temp;
+        vector<double> test;
+        vector<vector<double>> features;
         ifstream in(saliencyFile);
         if (!in) {
             cout << "Cannot open file.\n";
         }
         for (y = 0; y < 999999; y++) {
             test.clear();
-            if(in.eof()) break;
+            if(in.eof())
+                break;
         for (x = 0; x < 4; x++) {
-          in >> temp;
-          test.push_back(temp);
+            in >> temp;
+            test.push_back(temp);
         }
-          features.push_back(test);
+            features.push_back(test);
         }
         in.close();
 
@@ -188,6 +189,11 @@ void mergeCloud::process()
             mapCloud.descriptors(rowLine_pointAssoc, c) = features[cnt][1];
             mapCloud.descriptors(rowLine_highDistc, c) = features[cnt][2];
             mapCloud.descriptors(rowLine_saliency, c) = features[cnt][3];
+
+//            if(v==0)
+//            {
+//                cout<<cnt<<"    "<<features[cnt][3]<<endl;
+//            }
 
             cnt ++;
         }
