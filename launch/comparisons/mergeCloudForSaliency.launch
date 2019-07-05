@@ -3,11 +3,19 @@
   <node pkg="map_compression" type="mergeCloudForSaliency" name="mergeCloudForSaliency" output="screen">
 
 
+<<<<<<< HEAD
 	<param name="loadMapName" value="/home/yinhuan/Data/mapModel/07.03/wholeMap_yq.ply"/>
 	<param name="loadTrajName" value="/home/yinhuan/Data/mapModel/07.03/icp_0301_sparse.txt"/>
 	<param name="loadSaliencyDir" value="/home/yinhuan/Data/mapModel/07.03/split_saliency/"/>
 	<param name="splitPathLength" value="500"/>
 	<param name="saveMapName" value="/home/yinhuan/Data/mapModel/07.03/wholeMap_yq_merge.ply"/>
+=======
+	<param name="loadMapName" value="/home/yh/mapModel/2019/07.03/wholeMap_yq.ply"/>
+	<param name="loadTrajName" value="/home/yh/mapModel/2019/07.03/icp_0301_sparse.txt"/>
+	<param name="loadSaliencyDir" value="/home/yh/mapModel/2019/07.03/split_saliency/"/>
+	<param name="splitPathLength" value="100"/>
+	<param name="saveMapName" value="/home/yh/mapModel/2019/07.03/wholeMap_yq_merge.ply"/>
+>>>>>>> dde85178f79ffc2095ed660fb6a10455beb1b1d3
 	
 
   </node>
