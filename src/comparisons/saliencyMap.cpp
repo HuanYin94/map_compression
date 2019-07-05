@@ -86,6 +86,8 @@ public:
     shared_ptr<NNS> pointNNS_1;
     shared_ptr<NNS> pointNNS_2;
 
+    int accKSearch;
+
 
     void process(string loadMapName, string saveSaliencyName, string saveMapName);
 
@@ -100,7 +102,7 @@ saliencyMap::saliencyMap(ros::NodeHandle& n):
     n(n),
     normalRadius(getParam<float>("normalRadius", 0)),
     fpfhRadius(getParam<float>("fpfhRadius", 0)),
-    accRatio(getParam<float>("accRatio", 0)),
+    accKSearch(getParam<int>("accKSearch", 0)),
     highRatio_pointAssoc(getParam<float>("highRatio_pointAssoc", 0)),
     sigma(getParam<float>("sigma", 0)),
     highRatio_highDistinct(getParam<float>("highRatio_highDistinct", 0)),
@@ -210,9 +212,6 @@ void saliencyMap::process(string loadMapName, string saveSaliencyName, string sa
 
 
 
-
-
-
     ///calc one point's low-level distinctness
     /// use l2 distance in kd-tree in this case
 
@@ -226,7 +225,9 @@ void saliencyMap::process(string loadMapName, string saveSaliencyName, string sa
     fpfhNNS.reset(NNS::create(fpfh_des, pmCloud.features.cols()-1, NNS::KDTREE_LINEAR_HEAP, NNS::TOUCH_STATISTICS));
 
     // 1% point are considered
-    int kSearch = pmCloud.features.cols()*accRatio;
+//    int kSearch = pmCloud.features.cols()*accRatio;
+//    cout<<pmCloud.features.cols()<<"    K:  "<<kSearch<<endl;
+    int kSearch = this->accKSearch;
 
     // search the nearest
     PM::Matches matches_fpfh(
@@ -245,25 +246,27 @@ void saliencyMap::process(string loadMapName, string saveSaliencyName, string sa
 
         for(int j=0; j<kSearch; j++)
         {
-
+//            cout<<j<<"  "<<matches_fpfh.dists(j, i)<<endl;
             int id = matches_fpfh.ids(j, i);
 
             Vector3f xyz_i(pmCloud.features(0,i), pmCloud.features(1,i), pmCloud.features(2,i));
             Vector3f xyz_j(pmCloud.features(0,id), pmCloud.features(1,id), pmCloud.features(2,id));
 
             float Euc_distance = this->distanceMeasure(xyz_i, xyz_j);
-            float Chi_distance = this->ChiSquareMeasure(fpfhs->points[i], fpfhs->points[id]);
+//            float Chi_distance = this->ChiSquareMeasure(fpfhs->points[i], fpfhs->points[id]);
+            float Chi_distance = sqrt(matches_fpfh.dists(j, i));
 
             d_L_sum += Chi_distance / (1 + Euc_distance);
 
 //            cout<<j<<"  "<<matches_fpfh.dists(j, i)<<"  "<<1 + distance_<<endl;
 
-            if(d_L_sum != d_L_sum)
-            {
-                cout<<""<<endl;
-                break;
+//            // NaN?
+//            if(d_L_sum != d_L_sum)
+//            {
+//                cout<<""<<endl;
+//                break;
 
-            }
+//            }
 
         }
 
@@ -341,8 +344,6 @@ void saliencyMap::process(string loadMapName, string saveSaliencyName, string sa
     int high_thresh_num_High = (1-highRatio_highDistinct)*pmCloud.features.cols();
     float high_thresh_High = low_distinc_array[high_thresh_num_High];
 
-    cout<<pmCloud.features.cols()<<"    "<<pmCloud.features.rows()<<endl;
-
     pointNNS_2.reset(NNS::create(pmCloud.features, pmCloud.features.cols()-1, NNS::KDTREE_LINEAR_HEAP, NNS::TOUCH_STATISTICS));
 
     PM::Matches matches_xyz_2(
@@ -377,8 +378,12 @@ void saliencyMap::process(string loadMapName, string saveSaliencyName, string sa
 
             neighbor_cnt++;
         }
-
-        float high_distinc = 1 - std::exp(-1*d_H_sum/neighbor_cnt);
+		
+		float high_distinc;
+		if(neighbor_cnt > 0)
+			high_distinc = 1 - std::exp(-1*d_H_sum/neighbor_cnt);
+		else
+			high_distinc = 0;
 
         pmCloud.descriptors(rowLine_highDistc, i) = high_distinc;
 
