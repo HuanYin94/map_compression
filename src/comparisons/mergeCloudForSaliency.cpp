@@ -151,7 +151,7 @@ void mergeCloud::process()
 
 
     // one by one for merging
-    for(int v=0; v<(trajCloud.features.cols()/splitPathLength) ; v++ )
+    for(int v=0; v<=(trajCloud.features.cols()/splitPathLength) ; v++ )
     {
 
         // read saliency

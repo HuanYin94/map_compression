@@ -6,7 +6,7 @@
 	<param name="loadMapName" value="/home/yinhuan/Data/mapModel/07.03/wholeMap_yq.ply"/>
 	<param name="loadTrajName" value="/home/yinhuan/Data/mapModel/07.03/icp_0301_sparse.txt"/>
 	<param name="loadSaliencyDir" value="/home/yinhuan/Data/mapModel/07.03/split_saliency/"/>
-	<param name="splitPathLength" value="50"/>
+	<param name="splitPathLength" value="500"/>
 	<param name="saveMapName" value="/home/yinhuan/Data/mapModel/07.03/wholeMap_yq_merge.ply"/>
 	
 
