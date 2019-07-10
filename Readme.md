@@ -3,7 +3,7 @@
 ## Welcome
 Code of a manuscript, submitted to IEEE Transactions on Intelligent Transportation Systems, under 2nd review.
 
-If you need the manuscript or have some questions on this project, please contact [Huan Yin](https://yinhuan.site/) `zjuyinhuan@gmail.com`  :blush:
+If you need the manuscript or have some questions on this project, please contact [Huan Yin](https://yinhuan.site/) `zjuyinhuan@gmail.com` 
 
 ## Images
 ![image](https://github.com/ZJUYH/map_compression/blob/master/pics/system.png)
@@ -184,6 +184,8 @@ __output:__ saliency evaluation saved in txt files ina folder
 merge the saliency and sub-maps into a whole map
 __input:__　 map, trajectory and saliency files  
 __output:__ one global map with saliency evaluation   
+
+## Results
 
 ## License 
 
