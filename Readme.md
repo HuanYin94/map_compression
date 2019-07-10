@@ -18,7 +18,7 @@ Some dependencies are needed to be prepared:
 
 ## Introduction to all folders
 
-* `**cfg**` 
+* `cfg`  
 contains configuration files:  .rviz & filter.yaml, for visualization & configuration`
 
 * `gurobi`  
@@ -48,8 +48,8 @@ some pictures of results long time ago
 
 * `prepare poses and scans`  
 get the sparser poses for robot stopping cases, distance threshold used for more uniform of poses  
-input:  origin poses or trajectories  
-output: uniform poses or trajectories
+**input:**  origin poses or trajectories  
+**output:** uniform poses or trajectories
 
 ### map generation in src folder
 
