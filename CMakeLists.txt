@@ -146,4 +146,10 @@ ${catkin_LIBRARIES}
 ${libpointmatcher_LIBRARIES}
 )
 
+add_executable(selectByObserver src/comparisons/selectByObserver.cpp)
+target_link_libraries(selectByObserver
+${catkin_LIBRARIES}
+${libpointmatcher_LIBRARIES}
+)
+
 
