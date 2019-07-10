@@ -79,11 +79,11 @@ ${libpointmatcher_LIBRARIES}
 )
 
 
-#add_executable(locTest src/loc_test/locTest.cpp)
-#target_link_libraries(locTest
-#${catkin_LIBRARIES}
-#${libpointmatcher_LIBRARIES}
-#)
+add_executable(locTest src/loc_test/locTest.cpp)
+target_link_libraries(locTest
+${catkin_LIBRARIES}
+${libpointmatcher_LIBRARIES}
+)
 
 add_executable(mapScoringIndex src/map_generation/mapScoringIndex.cpp)
 target_link_libraries(mapScoringIndex
