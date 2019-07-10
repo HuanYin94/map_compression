@@ -18,10 +18,10 @@ Some dependencies are needed to be prepared:
 
 ## Introduction to all folders
 
-* `cfg`  
+* **`cfg`**  
 contains configuration files:  .rviz & filter.yaml, for visualization & configuration`
 
-* `gurobi`  
+* **`gurobi`**  
 integer linear programming code, written in Matlab
 
 * `launch`  
@@ -46,10 +46,10 @@ some pictures of results long time ago
 
 ### prepare folder
 
-* `prepare poses and scans`  
+* **`prepare poses and scans`**  
 get the sparser poses for robot stopping cases, distance threshold used for more uniform of poses  
 **input:**  origin poses or trajectories  
-**output:** uniform poses or trajectories
+__output:__ uniform poses or trajectories
 
 ### map generation in src folder
 
