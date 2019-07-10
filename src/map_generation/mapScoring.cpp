@@ -26,7 +26,7 @@
 using namespace std;
 using namespace PointMatcherSupport;
 
-class mapScoringIndex
+class mapScoring
 {
     typedef PointMatcher<float> PM;
     typedef PM::DataPoints DP;
@@ -36,8 +36,8 @@ class mapScoringIndex
     typedef typename NNS::SearchType NNSearchType;
 
 public:
-    mapScoringIndex(ros::NodeHandle &n);
-    ~mapScoringIndex();
+    mapScoring(ros::NodeHandle &n);
+    ~mapScoring();
     ros::NodeHandle& n;
 
     bool isKITTI;
@@ -65,18 +65,17 @@ public:
 
     vector<vector<double>> initPoses;
     shared_ptr<NNS> featureNNS;
-    vector<int> indexVector;
 
-    void process(int indexCnt);
+    void process(int cnt);
     DP readYQBin(string filename);
     DP readKITTIBin(string filename);
 
 };
 
-mapScoringIndex::~mapScoringIndex()
+mapScoring::~mapScoring()
 {}
 
-mapScoringIndex::mapScoringIndex(ros::NodeHandle& n):
+mapScoring::mapScoring(ros::NodeHandle& n):
     n(n),
     wholeMapName(getParam<string>("wholeMapName", ".")),
     isFirstTime(getParam<bool>("isFirstTime", true)),
@@ -86,7 +85,6 @@ mapScoringIndex::mapScoringIndex(ros::NodeHandle& n):
     saveVTKname(getParam<string>("saveVTKname", ".")),
     kSearch(getParam<int>("kSearch", 0)),
     horizontalResRad(getParam<double>("horizontalResRad", 0)),
-    keepIndexName(getParam<string>("keepIndexName", ".")),
     limitRange(getParam<double>("limitRange", 0)),
     isKITTI(getParam<bool>("isKITTI", 0)),
     isChery(getParam<bool>("isChery", 0))
@@ -115,6 +113,7 @@ mapScoringIndex::mapScoringIndex(ros::NodeHandle& n):
     }
     for (y = 0; y < 999999; y++) {
         test.clear();
+        if(in.eof()) break;
     for (x = 0; x < 16; x++) {
       in >> temp;
       test.push_back(temp);
@@ -123,26 +122,12 @@ mapScoringIndex::mapScoringIndex(ros::NodeHandle& n):
     }
     in.close();
 
-    // read all the effective index from list in the txt
-    int l;
-    ifstream in_(keepIndexName);
-    if (!in_) {
-        cout << "Cannot open file.\n";
-    }
-    while(!in_.eof())
-    {
-        in_>>l;
-        indexVector.push_back(l);
-    }
-    indexVector.pop_back();  // last one repeated
-
     // process
-    int indexCnt = 0;
-    for(; indexCnt < indexVector.size(); indexCnt++)
+    for(int cnt=0; cnt < initPoses.size(); cnt++)
     {
         cout<<"------------------------------------------------------------------"<<endl;
-        cout<<"The:  "<<indexCnt<<endl;
-        this->process(indexCnt);
+        cout<<"The:  "<<cnt<<endl;
+        this->process(cnt);
     }
 
     //save map
@@ -151,19 +136,17 @@ mapScoringIndex::mapScoringIndex(ros::NodeHandle& n):
     cout<<"All Finished!"<<endl;
 }
 
-void mapScoringIndex::process(int indexCnt)
+void mapScoring::process(int cnt)
 {
-    int index = indexVector.at(indexCnt);
-
     DP velodyneCloud;
 
     if(!isChery)
     {
         stringstream ss;
         if(isKITTI)
-            ss<<setw(6)<<setfill('0')<<index;
+            ss<<setw(6)<<setfill('0')<<cnt;
         else
-            ss<<setw(10)<<setfill('0')<<index;
+            ss<<setw(10)<<setfill('0')<<cnt;
 
         string str;
         ss>>str;
@@ -177,15 +160,15 @@ void mapScoringIndex::process(int indexCnt)
     }
     else
     {
-        string vtkFileName = velodyneDirName + std::to_string(index) + ".vtk";
+        string vtkFileName = velodyneDirName + std::to_string(cnt) + ".vtk";
         velodyneCloud = DP::load(vtkFileName);  // Chery dataset
     }
 
     Trobot = PM::TransformationParameters::Identity(4, 4);
-    Trobot(0,0)=initPoses[index][0];Trobot(0,1)=initPoses[index][1];Trobot(0,2)=initPoses[index][2];Trobot(0,3)=initPoses[index][3];
-    Trobot(1,0)=initPoses[index][4];Trobot(1,1)=initPoses[index][5];Trobot(1,2)=initPoses[index][6];Trobot(1,3)=initPoses[index][7];
-    Trobot(2,0)=initPoses[index][8];Trobot(2,1)=initPoses[index][9];Trobot(2,2)=initPoses[index][10];Trobot(2,3)=initPoses[index][11];
-    Trobot(3,0)=initPoses[index][12];Trobot(3,1)=initPoses[index][13];Trobot(3,2)=initPoses[index][14];Trobot(3,3)=initPoses[index][15];
+    Trobot(0,0)=initPoses[cnt][0];Trobot(0,1)=initPoses[cnt][1];Trobot(0,2)=initPoses[cnt][2];Trobot(0,3)=initPoses[cnt][3];
+    Trobot(1,0)=initPoses[cnt][4];Trobot(1,1)=initPoses[cnt][5];Trobot(1,2)=initPoses[cnt][6];Trobot(1,3)=initPoses[cnt][7];
+    Trobot(2,0)=initPoses[cnt][8];Trobot(2,1)=initPoses[cnt][9];Trobot(2,2)=initPoses[cnt][10];Trobot(2,3)=initPoses[cnt][11];
+    Trobot(3,0)=initPoses[cnt][12];Trobot(3,1)=initPoses[cnt][13];Trobot(3,2)=initPoses[cnt][14];Trobot(3,3)=initPoses[cnt][15];
 
     transformation->correctParameters(Trobot);
 
@@ -231,7 +214,7 @@ void mapScoringIndex::process(int indexCnt)
 
 }
 
-mapScoringIndex::DP mapScoringIndex::readYQBin(string filename)
+mapScoring::DP mapScoring::readYQBin(string filename)
 {
     DP data;
 
@@ -275,7 +258,7 @@ mapScoringIndex::DP mapScoringIndex::readYQBin(string filename)
 }
 
 //For kitti dataset
-mapScoringIndex::DP mapScoringIndex::readKITTIBin(string fileName)
+mapScoring::DP mapScoring::readKITTIBin(string fileName)
 {
     DP tempScan;
 
@@ -326,10 +309,10 @@ mapScoringIndex::DP mapScoringIndex::readKITTIBin(string fileName)
 int main(int argc, char **argv)
 {
 
-    ros::init(argc, argv, "mapScoringIndex");
+    ros::init(argc, argv, "mapScoring");
     ros::NodeHandle n;
 
-    mapScoringIndex mapScoringIndex_(n);
+    mapScoring mapScoring_(n);
 
     // ugly code
 
