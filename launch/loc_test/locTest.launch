@@ -23,7 +23,6 @@
 	<param name="wholeMapName" value="$(arg wholeMapName)"/> 
 
 	<param name="velodyneDirName" value="/media/yh/YH/DataSet/YQ21/2017_03_09/2017_03_09_drive_0001_sync/velodyne_points/data/"/>
-	<param name="keepIndexName" value="/home/yh/mapModel/2019/01.08/locTest/keep_0901.txt"/> 
 	<param name="icpFileName" value="/home/yh/mapModel/2019/01.08/locTest/icp_0901.txt"/>
 
 	<param name="startIndex" value="3500"/>
@@ -54,7 +53,6 @@
 	<!--PARK-->
 	<!--param name="wholeMapName" value="/home/yh/mapModel/2018/09.22/locTest/Voxel_park_map_0.02.ply"/> 
 	<param name="velodyneDirName" value="/home/yh/mapModel/2018/09.22/scan/"/>
-	<param name="keepIndexName" value="/home/yh/mapModel/2018/09.22/keep_chery.txt"/> 
 	<param name="icpFileName" value="/home/yh/mapModel/2018/09.22/global_pose.txt"/>
 
 	<param name="startIndex" value="0"/>
@@ -77,7 +75,6 @@
 	<!--KITTI-->
 	<!--param name="wholeMapName" value="/home/yh/mapModel/2018/08.02/test/Learned_kitti10_map_test_0.05_locTest.ply"/> 
 	<param name="velodyneDirName" value="/media/yh/YH/DataSet/kitti_benchmark_velodyne/dataset/sequences/10/velodyne/"/>
-	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.02/kitti10_keep.txt"/> 
 	<param name="icpFileName" value="/home/yh/mapModel/2018/08.02/kitti10_pose.txt"/>
 	
 	<param name="startIndex" value="650"/>
