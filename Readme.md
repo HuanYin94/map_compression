@@ -52,6 +52,16 @@ get the sparser poses for robot stopping cases, distance threshold used for more
 __input:__  origin poses or trajectories  
 __output:__ uniform poses or trajectories  
 
+### gurobi folder
+
+* `before`   
+previous try on programming, no use  
+
+* `q_ILP_lamda`   
+implementation for weighted ILP on map compression, including spliting and merging iteratively  
+
+### random_forest folder
+
 ### map_generation in src folder
 
 * `scanRegister`  
@@ -114,7 +124,7 @@ __output:__	distances in a saved txt file
 * `errorDistribution`  
 get the nearest distances between salient & salient_predicted in cloud (learning & programming)  
 __input:__　 one map with two descriptors (s & s_predicted)  
-__output:__ distances in a saved txt file	  
+__output:__ distances in a saved txt file  
 
 
 
