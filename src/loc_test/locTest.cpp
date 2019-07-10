@@ -41,7 +41,6 @@ public:
     string wholeMapName;
     string icpFileName;
     string velodyneDirName;
-    string keepIndexName;
 
     string savePoseName;
     string saveTimeName;
@@ -72,9 +71,8 @@ public:
     PM::TransformationParameters Ttemp;
 
     vector<vector<double>> initPoses;
-    vector<int> indexVector;
 
-    void process(int indexCnt);
+    void process(int cnt);
     DP readYQBin(string filename);
     DP readKITTIBin(string filename);
 
@@ -104,7 +102,6 @@ locTest::locTest(ros::NodeHandle& n):
     mapFilterYaml(getParam<string>("mapFilterYaml", ".")),
     isKITTI(getParam<bool>("isKITTI", 0)),
     isChery(getParam<bool>("isChery", 0)),
-    keepIndexName(getParam<string>("keepIndexName", ".")),
     transformation(PM::get().REG(Transformation).create("RigidTransformation"))
 {
     mapCloudPub = n.advertise<sensor_msgs::PointCloud2>("map_cloud", 2, true);
@@ -134,6 +131,7 @@ locTest::locTest(ros::NodeHandle& n):
     }
     for (y = 0; y < 99999; y++) {
         test.clear();
+        if(in.eof()) break;
     for (x = 0; x < 16; x++) {
       in >> temp;
       test.push_back(temp);
@@ -141,19 +139,6 @@ locTest::locTest(ros::NodeHandle& n):
       initPoses.push_back(test);
     }
     in.close();
-
-    // read all the effective index from list in the txt
-    int l;
-    ifstream in_(keepIndexName);
-    if (!in_) {
-        cout << "Cannot open file.\n";
-    }
-    while(!in_.eof())
-    {
-        in_>>l;
-        indexVector.push_back(l);
-    }
-    indexVector.pop_back();  // last one repeated
 
     cout<<"start locTest"<<endl;
 
@@ -170,12 +155,12 @@ locTest::locTest(ros::NodeHandle& n):
 
     // process
     // from start to end
-    for(int indexCnt = startIndex; indexCnt<=endIndex; indexCnt++)
+    for(int cnt = startIndex; cnt<=endIndex; cnt++)
     {
-        this->process(indexCnt);
+        this->process(cnt);
 
         //saving...
-        if(indexCnt!=startIndex)
+        if(cnt!=startIndex)
         {
             saverTime<<deltaTime<<endl;
             saverIter<<iterCount<<endl;
@@ -190,21 +175,20 @@ locTest::locTest(ros::NodeHandle& n):
     }
 }
 
-void locTest::process(int indexCnt)
+void locTest::process(int cnt)
 {
-    int index = indexVector.at(indexCnt);
 
-    cout<<indexCnt<<"   "<<index<<endl;
+    cout<<cnt<<endl;
 
     // first time, just set the initial value
-    if(indexCnt == startIndex)
+    if(cnt == startIndex)
     {
         cout<<"!!!!!!"<<endl;
         Tinit = PM::TransformationParameters::Identity(4, 4);
-        Tinit(0,0)=initPoses[index][0];Tinit(0,1)=initPoses[index][1];Tinit(0,2)=initPoses[index][2];Tinit(0,3)=initPoses[index][3];
-        Tinit(1,0)=initPoses[index][4];Tinit(1,1)=initPoses[index][5];Tinit(1,2)=initPoses[index][6];Tinit(1,3)=initPoses[index][7];
-        Tinit(2,0)=initPoses[index][8];Tinit(2,1)=initPoses[index][9];Tinit(2,2)=initPoses[index][10];Tinit(2,3)=initPoses[index][11];
-        Tinit(3,0)=initPoses[index][12];Tinit(3,1)=initPoses[index][13];Tinit(3,2)=initPoses[index][14];Tinit(3,3)=initPoses[index][15];
+        Tinit(0,0)=initPoses[cnt][0];Tinit(0,1)=initPoses[cnt][1];Tinit(0,2)=initPoses[cnt][2];Tinit(0,3)=initPoses[cnt][3];
+        Tinit(1,0)=initPoses[cnt][4];Tinit(1,1)=initPoses[cnt][5];Tinit(1,2)=initPoses[cnt][6];Tinit(1,3)=initPoses[cnt][7];
+        Tinit(2,0)=initPoses[cnt][8];Tinit(2,1)=initPoses[cnt][9];Tinit(2,2)=initPoses[cnt][10];Tinit(2,3)=initPoses[cnt][11];
+        Tinit(3,0)=initPoses[cnt][12];Tinit(3,1)=initPoses[cnt][13];Tinit(3,2)=initPoses[cnt][14];Tinit(3,3)=initPoses[cnt][15];
         return;
     }
 
@@ -212,9 +196,9 @@ void locTest::process(int indexCnt)
     {
         stringstream ss;
         if(isKITTI)
-            ss<<setw(6)<<setfill('0')<<index;
+            ss<<setw(6)<<setfill('0')<<cnt;
         else
-            ss<<setw(10)<<setfill('0')<<index;
+            ss<<setw(10)<<setfill('0')<<cnt;
 
         string str;
         ss>>str;
@@ -228,7 +212,7 @@ void locTest::process(int indexCnt)
     }
     else
     {
-        string vtkFileName = velodyneDirName + std::to_string(index) + ".vtk";
+        string vtkFileName = velodyneDirName + std::to_string(cnt) + ".vtk";
         velodyneCloud = DP::load(vtkFileName);  // Chery dataset
     }
 

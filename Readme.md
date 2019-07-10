@@ -63,7 +63,18 @@ implementation for weighted ILP on map compression, including spliting and mergi
 ### random_forest folder
 
 * `build`   
-training and testing in bash files   
+training and testing in bash files
+
+### tools in src folder
+
+* `formatTransfer`  
+change the cloud files in a folder (.vtk to .ply for example)   
+__input:__　the folder address  
+__output:__ new format in this folder  
+
+* `mapCheck`  
+check the map in Rviz  
+__input:__map and poses (trajectory)  
 
 ### map_generation in src folder
 
@@ -128,6 +139,57 @@ __output:__	distances in a saved txt file
 get the nearest distances between salient & salient_predicted in cloud (learning & programming)  
 __input:__　 one map with two descriptors (s & s_predicted)  
 __output:__ distances in a saved txt file  
+
+### loc_test in src folder
+
+* `locTest`  
+localization test by registration   
+__input:__　 point cloud map, laser scans, trajectory(for position initial)   
+__output:__ pose saved txt, time saved txt, icp iteration saved txt  
+
+### comparisons in src folder
+
+* `clusterMap`  
+achieve map compression by clustering point clouds  
+__input:__　 map, and some params   
+__output:__ saved clustered map   
+
+* `voxelMap`  
+achieve map compression by voxel grid (similar as octree grid)  
+__input:__　 map   
+__output:__ saved sparse map  
+
+
+* `randomSampleMap`  
+achieve map compression by random selection  
+__input:__　 map   
+__output:__ saved random map   
+
+* `selectByObserver`  
+achieve map compression by thresholding the observation count  
+__input:__　 map   
+__output:__ saved threshold map   
+
+* `splitCloudForSaliency`  
+split map to sub-maps for geometry saliency detection  
+__input:__　 map, and the trajectory   
+__output:__ sub-maps in a folder   
+
+* `saliencyMap`  
+genrate saliency map on point clouds  
+__input:__　 the folder contains sub-maps,    
+__output:__ saliency evaluation saved in txt files ina folder   
+
+* `mergeCloudForSaliency`  
+merge the saliency and sub-maps into a whole map
+__input:__　 map, trajectory and saliency files  
+__output:__ one global map with saliency evaluation   
+
+## License 
+
+MIT
+
+
 
 
 
