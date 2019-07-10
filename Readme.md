@@ -1,7 +1,7 @@
 ## Welcome
 Code of a manuscript, submitted to IEEE Transactions on Intelligent Transportation Systems, under 2nd review.
 
-If you need the manuscript or have some questions on this project, please contact `zjuyinhuan@gmail.com` ([Huan Yin](https://yinhuan.site/)) .
+If you need the manuscript or have some questions on this project, please contact `zjuyinhuan@gmail.com` ([Huan Yin](https://yinhuan.site/)) . :blush:
 
 # 3D LiDAR Map Compression for Efficient Localization on Resource Constrained Vehicles 
 
@@ -12,16 +12,16 @@ If you need the manuscript or have some questions on this project, please contac
 This project is compiled on `ros` and `Ubuntu`. 
 And use `catkin_make` in your workspace to build this project.
 Some dependencies are needed to be prepared:
-* [pcl](http://pointclouds.org/)
+* [pcl](http://pointclouds.org/) (relies heavily)
 * [libpointmatcher](https://github.com/ethz-asl/libpointmatcher)
 * [Gurobi](http://www.gurobi.com/) 
 
 ## Introduction to all folders
 
-* **`cfg`**  
+* `cfg`  
 contains configuration files:  .rviz & filter.yaml, for visualization & configuration`
 
-* **`gurobi`**  
+* `gurobi`  
 integer linear programming code, written in Matlab
 
 * `launch`  
@@ -46,15 +46,30 @@ some pictures of results long time ago
 
 ### prepare folder
 
-* **`prepare poses and scans`**  
+* `prepare poses and scans`  
 get the sparser poses for robot stopping cases, distance threshold used for more uniform of poses  
-**input:**  origin poses or trajectories  
+__input:__  origin poses or trajectories  
 __output:__ uniform poses or trajectories
 
 ### map generation in src folder
 
-> + `scanRegister`  
-input:	
+* `scanRegister`  
+use origin raw scans and popses to get the origin full map, filter raw scans to reduce large size  
+__input:__　uniform poses and origin scans
+__output:__	dense origin full map
   
+* `mapFilter`
+filter the dense origin full map using Octree Grid, and generate surface normals
+__input:__ dense origin full map 
+__output:__ origin full map 
 
+* `mapScoring`
+score each laer point in map according to the strategy in paper
+__input:__ origin full map, laser scans and poses
+__output:__ scored origin full map
+
+* `mapFilter`
+filter the dense origin full map using Octree Grid, and generate surface normals
+__input:__
+__output:__
    

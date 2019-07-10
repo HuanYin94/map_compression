@@ -85,8 +85,8 @@ ${catkin_LIBRARIES}
 ${libpointmatcher_LIBRARIES}
 )
 
-add_executable(mapScoringIndex src/map_generation/mapScoringIndex.cpp)
-target_link_libraries(mapScoringIndex
+add_executable(mapScoring src/map_generation/mapScoring.cpp)
+target_link_libraries(mapScoring
 ${catkin_LIBRARIES}
 ${libpointmatcher_LIBRARIES}
 )

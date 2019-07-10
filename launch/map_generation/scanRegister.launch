@@ -13,7 +13,6 @@
 	<!--There are dynamic objects in YQ dataset-->
 
 	<!--param name="icpFileName" value="/home/yh/mapModel/2019/01.08/icp_0301.txt"/> 
-	<param name="keepIndexName" value="/home/yh/mapModel/2019/01.08/keep_0301_all.txt"/>
 	<param name="velodyneDirName" value="/media/yh/YH/DataSet/YQ21/2017_03_03/2017_03_03_drive_0001_sync/velodyne_points/data/"/>
 	<param name="saveVTKname" value="/home/yh/mapModel/2019/01.08/wholeMap_yq_origin.vtk"/-->
 
@@ -21,7 +20,6 @@
 
 
 	<!--param name="icpFileName" value="/home/yh/mapModel/2019/01.09/kitti10_pose.txt"/> 
-	<param name="keepIndexName" value="/home/yh/mapModel/2019/01.09/keep_kitti10_all.txt"/>
 	<param name="velodyneDirName" value="/media/yh/YH/DataSet/kitti_benchmark_velodyne/dataset/sequences/10/velodyne/"/> 
 	<param name="saveVTKname" value="/home/yh/mapModel/2019/01.09/wholeMap_kitti_10_origin.ply"/-->
 
@@ -29,7 +27,6 @@
 
 
 	<param name="icpFileName" value="/home/yh/mapModel/2019/01.10/park_pose.txt"/> 
-	<param name="keepIndexName" value="/home/yh/mapModel/2019/01.10/keep_park_all.txt"/>
 	<param name="velodyneDirName" value="/media/yh/YH/DataSet/chery/scan/"/>
 	<param name="saveVTKname" value="/home/yh/mapModel/2019/01.10/wholeMap_park_origin.ply"/>
 
