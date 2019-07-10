@@ -13,8 +13,8 @@ If you need the manuscript or have some questions on this project, please contac
 This project is compiled on `ros` and `Ubuntu`. 
 And use `catkin_make` in your workspace to build this project.
 Some dependencies are needed to be prepared:
-* [pcl](http://pointclouds.org/) (relies heavily)
-* [libpointmatcher](https://github.com/ethz-asl/libpointmatcher)
+* [pcl](http://pointclouds.org/) 
+* [libpointmatcher](https://github.com/ethz-asl/libpointmatcher)  (relies heavily)
 * [Gurobi](http://www.gurobi.com/) 
 
 ## Introduction to all folders
@@ -52,7 +52,7 @@ get the sparser poses for robot stopping cases, distance threshold used for more
 __input:__  origin poses or trajectories  
 __output:__ uniform poses or trajectories  
 
-### map generation in src folder
+### map_generation in src folder
 
 * `scanRegister`  
 use origin raw scans and popses to get the origin full map, filter raw scans to reduce large size  
@@ -79,7 +79,42 @@ get the Visbility Matrix for integer linear programming
 __input:__ origin full map, laser scans and poses (same as `mapScoring`)  
 __output:__ saved vis-files one by one in a folder  
 
+### learn_program in src folder
 
+* `mapCutterTraj`  
+split/Cut the whole Map into two parts: train or test, according to the nearest search on trajectory  
+__input:__　oringn full map, poses and cutPoition  
+__output:__	train map, test map and labeled full map   
+  
+* `generateAllFeatures`  
+generate point feature for training or testing  
+__input:__　oringn full map, poses  
+__output:__	map with features in descriptors and features in a saved txt file  
+  
+* `loadFinalResults`  
+annotate the origin full map with the final learned result   
+__input:__ origin full map and learned result in txt file  
+__output:__	labeled learned result in cloud file  
+
+* `loadProResult`  
+annotate the origin full map with the supervised result by programming  
+__input:__　origin file map and programmed results in files in a folder  
+__output:__	labeled programmed result in cloud file  
+
+* `mapCompresser`  
+generate compressed map according to the annotated map on descriptor  
+__input:__　annotated map by learning or programming, and the descriptor name  
+__output:__	compressed map  
+
+* `compareDistribution`  
+get the nearest distances between two compressed clouds  
+__input:__　two maps  
+__output:__	distances in a saved txt file   
+  
+* `errorDistribution`  
+get the nearest distances between salient & salient_predicted in cloud (learning & programming)  
+__input:__　 one map with two descriptors (s & s_predicted)  
+__output:__ distances in a saved txt file	  
 
 
 

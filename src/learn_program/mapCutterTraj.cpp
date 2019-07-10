@@ -49,9 +49,6 @@ public:
     DP mapCloud;
     DP trajCloud;
 
-    string keepIndexName;
-    vector<int> indexVector;
-
     int cutPoint0;
     int cutPoint1;
     int cutPoint2;
@@ -72,7 +69,6 @@ mapCutterTraj::mapCutterTraj(ros::NodeHandle& n):
     n(n),
     loadMapName(getParam<string>("loadMapName", ".")),
     loadTrajName(getParam<string>("loadTrajName", ".")),
-    keepIndexName(getParam<string>("keepIndexName", ".")),
     cutPoint0(getParam<int>("cutPoint0", 0)),
     cutPoint1(getParam<int>("cutPoint1", 0)),
     cutPoint2(getParam<int>("cutPoint2", 0)),
@@ -95,6 +91,7 @@ mapCutterTraj::mapCutterTraj(ros::NodeHandle& n):
     }
     for (y = 0; y < 999999; y++) {
         test.clear();
+        if(in.eof()) break;
     for (x = 0; x < 16; x++) {
       in >> temp;
       test.push_back(temp);
@@ -102,18 +99,6 @@ mapCutterTraj::mapCutterTraj(ros::NodeHandle& n):
       initPoses.push_back(test);
     }
     in.close();
-
-    // read all the effective index from list in the txt
-    int l;
-    ifstream in_(keepIndexName);
-    if (!in_) {
-        cout << "Cannot open file.\n";
-    }
-    while(!in_.eof())
-    {
-        in_>>l;
-        indexVector.push_back(l);
-    }
 
     // process
     this->process();
@@ -128,15 +113,13 @@ void mapCutterTraj::process()
     // turn trajectory(poses) to a DP::CLOUD
     // feature-rows: x, y, z, directly
     trajCloud = mapCloud.createSimilarEmpty();
-    for(int p=0; p<indexVector.size(); p++)
+    for(int p=0; p<initPoses.size(); p++)
     {
-        int index =indexVector.at(p);
-
-        trajCloud.features(0, p) = initPoses[index][3];
-        trajCloud.features(1, p) = initPoses[index][7];
-        trajCloud.features(2, p) = initPoses[index][11];
+        trajCloud.features(0, p) = initPoses[p][3];
+        trajCloud.features(1, p) = initPoses[p][7];
+        trajCloud.features(2, p) = initPoses[p][11];
     }
-    trajCloud.conservativeResize(indexVector.size());
+    trajCloud.conservativeResize(initPoses.size());
 
     // map on traj, too slow to build a large one, use index to search
 
