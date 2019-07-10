@@ -3,7 +3,7 @@
 ## Welcome
 Code of a manuscript, submitted to IEEE Transactions on Intelligent Transportation Systems, under 2nd review.
 
-If you need the manuscript or have some questions on this project, please contact `zjuyinhuan@gmail.com` ([Huan Yin](https://yinhuan.site/)) . :blush:
+If you need the manuscript or have some questions on this project, please contact [Huan Yin](https://yinhuan.site/) `zjuyinhuan@gmail.com`  :blush:
 
 ## Images
 ![image](https://github.com/ZJUYH/map_compression/blob/master/pics/system.png)
@@ -187,7 +187,7 @@ __output:__ one global map with saliency evaluation
 
 ## License 
 
-MIT
+[MIT](https://mit-license.org/)
 
 
 
