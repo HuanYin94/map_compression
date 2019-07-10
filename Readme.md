@@ -47,10 +47,14 @@ some pictures of results long time ago
 ### prepare folder
 
 > + `prepare poses and scans`  
-get the sparser poses for robot stopping cases, magic number used for uniform density of poses
+get the sparser poses for robot stopping cases, magic number used for uniform density of poses  
+input:  origin poses or trajectories  
+output: uniform poses or trajectories
 
 ### map generation in src folder
 
-> + `prepare po`  
+> + `scanRegister`  
+input:	
+  
 
    
