@@ -36,6 +36,12 @@ target_link_libraries(formatTransfer
 ${catkin_LIBRARIES}
 )
 
+add_executable(renameLaserScans src/tools/renameLaserScans.cpp)
+target_link_libraries(renameLaserScans
+${catkin_LIBRARIES}
+${libpointmatcher_LIBRARIES}
+)
+
 add_executable(mapCompresser src/learn_program/mapCompresser.cpp)
 target_link_libraries(mapCompresser
 ${catkin_LIBRARIES}
@@ -151,5 +157,4 @@ target_link_libraries(selectByObserver
 ${catkin_LIBRARIES}
 ${libpointmatcher_LIBRARIES}
 )
-
 
