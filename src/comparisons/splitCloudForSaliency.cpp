@@ -131,7 +131,7 @@ void splitCloud::process()
     }
 
     // save one by one for splitting
-    for(int v=0; v<(trajCloud.features.cols()/splitPathLength) ; v++ )
+    for(int v=0; v<=(trajCloud.features.cols()/splitPathLength) ; v++ )
     {
         DP cloudTemp = mapCloud.createSimilarEmpty();
         int cnt =0;
