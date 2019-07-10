@@ -43,12 +43,12 @@ prediction and localization evaluation matlab files
 * `pics`  
 some pictures of results long time ago
 
-## The purpose of files in each folder for map compression
+## Files in each folder for map compression
 
 ### prepare folder
 
 * `prepare poses and scans`  
-get the sparser poses for robot stopping cases, distance threshold used for more uniform of poses  
+Maltab files, get the sparser poses for robot stopping cases, distance threshold used for more uniform of poses  
 __input:__  origin poses or trajectories  
 __output:__ uniform poses or trajectories  
 
@@ -61,6 +61,9 @@ previous try on programming, no use
 implementation for weighted ILP on map compression, including spliting and merging iteratively  
 
 ### random_forest folder
+
+* `build`   
+training and testing in bash files   
 
 ### map_generation in src folder
 
