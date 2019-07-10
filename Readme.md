@@ -1,10 +1,11 @@
+# 3D LiDAR Map Compression for Efficient Localization on Resource Constrained Vehicles 
+
 ## Welcome
 Code of a manuscript, submitted to IEEE Transactions on Intelligent Transportation Systems, under 2nd review.
 
 If you need the manuscript or have some questions on this project, please contact `zjuyinhuan@gmail.com` ([Huan Yin](https://yinhuan.site/)) . :blush:
 
-# 3D LiDAR Map Compression for Efficient Localization on Resource Constrained Vehicles 
-
+## Images
 ![image](https://github.com/ZJUYH/map_compression/blob/master/pics/system.png)
 
 ## Prepare to build
@@ -49,27 +50,36 @@ some pictures of results long time ago
 * `prepare poses and scans`  
 get the sparser poses for robot stopping cases, distance threshold used for more uniform of poses  
 __input:__  origin poses or trajectories  
-__output:__ uniform poses or trajectories
+__output:__ uniform poses or trajectories  
 
 ### map generation in src folder
 
 * `scanRegister`  
 use origin raw scans and popses to get the origin full map, filter raw scans to reduce large size  
-__input:__　uniform poses and origin scans
-__output:__	dense origin full map
+__input:__　uniform poses and origin scans  
+__output:__	dense origin full map  
   
-* `mapFilter`
-filter the dense origin full map using Octree Grid, and generate surface normals
-__input:__ dense origin full map 
-__output:__ origin full map 
+* `mapFilter`  
+filter the dense origin full map using Octree Grid, and generate surface normals  
+__input:__ dense origin full map  
+__output:__ origin full map  
 
-* `mapScoring`
-score each laer point in map according to the strategy in paper
-__input:__ origin full map, laser scans and poses
-__output:__ scored origin full map
+* `mapScoring`  
+score each laser point in map according to the strategy in paper, which is also for observation filter as a comparison
+__input:__ origin full map, laser scans and poses  
+__output:__ scored origin full map  
 
-* `mapFilter`
-filter the dense origin full map using Octree Grid, and generate surface normals
-__input:__
-__output:__
-   
+* `genWeightVector`  
+get the weight vector for integer linear programming  
+__input:__ scored origin full map  
+__output:__ all points' weight in a saved txt  
+
+* `genVisMatrix`  
+get the Visbility Matrix for integer linear programming  
+__input:__ origin full map, laser scans and poses (same as `mapScoring`)  
+__output:__ saved vis-files one by one in a folder  
+
+
+
+
+

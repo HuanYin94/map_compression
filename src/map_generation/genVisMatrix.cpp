@@ -44,7 +44,6 @@ public:
     string loadMapName;
     string loadTrajName;
     string velodyneDirName;
-    string keepIndexName;
 
     DP mapCloud;
     DP velodyneCloud;
@@ -57,7 +56,6 @@ public:
     vector<vector<double>> initPoses;
     PM::TransformationParameters Trobot;
     unique_ptr<PM::Transformation> transformation;
-    vector<int> indexVector;
     shared_ptr<NNS> featureNNS;
 
     // if need the inout filter? confused
@@ -65,7 +63,7 @@ public:
 
     string saveDirName;
 
-    void process(int index);
+    void process(int cnt);
     DP readYQBin(string filename);
     DP readKITTIBin(string filename);
 };
@@ -78,7 +76,6 @@ genVisMatrix::genVisMatrix(ros::NodeHandle& n):
     loadMapName(getParam<string>("loadMapName", ".")),
     loadTrajName(getParam<string>("loadTrajName", ".")),
     velodyneDirName(getParam<string>("velodyneDirName", ".")),
-    keepIndexName(getParam<string>("keepIndexName", ".")),
     limitRange(getParam<double>("limitRange", 0)),
     kSearch(getParam<int>("kSearch", 0)),
     transformation(PM::get().REG(Transformation).create("RigidTransformation")),
@@ -105,6 +102,7 @@ genVisMatrix::genVisMatrix(ros::NodeHandle& n):
     }
     for (y = 0; y < 999999; y++) {
         test.clear();
+        if(in.eof()) break;
     for (x = 0; x < 16; x++) {
       in >> temp;
       test.push_back(temp);
@@ -113,44 +111,27 @@ genVisMatrix::genVisMatrix(ros::NodeHandle& n):
     }
     in.close();
 
-    // read all the effective index from list in the txt
-    int l;
-    ifstream in_(keepIndexName);
-    if (!in_) {
-        cout << "Cannot open file.\n";
-    }
-    while(!in_.eof())
-    {
-        in_>>l;
-        indexVector.push_back(l);
-    }
-    indexVector.pop_back();  // last one repeated
-
     // process, wanna see all
-    int indexCnt = 0;
-    for(; indexCnt < indexVector.size(); indexCnt++) // ???
+    for(int cnt=0; cnt < initPoses.size(); cnt++) // ???
     {
         cout<<"---------------------------------------------------------------------------------"<<endl;
-        cout<<"index:   "<<indexCnt<<endl;
-        this->process(indexCnt);
+        cout<<"Num:   "<<cnt<<endl;
+        this->process(cnt);
     }
 
 }
 
-void genVisMatrix::process(int indexCnt)
+void genVisMatrix::process(int cnt)
 {
-
-    int index = indexVector.at(indexCnt);
-
     DP velodyneCloud;
 
     if(!isChery)
     {
         stringstream ss;
         if(isKITTI)
-            ss<<setw(6)<<setfill('0')<<index;
+            ss<<setw(6)<<setfill('0')<<cnt;
         else
-            ss<<setw(10)<<setfill('0')<<index;
+            ss<<setw(10)<<setfill('0')<<cnt;
 
         string str;
         ss>>str;
@@ -164,23 +145,23 @@ void genVisMatrix::process(int indexCnt)
     }
     else
     {
-        string vtkFileName = velodyneDirName + std::to_string(index) + ".vtk";
+        string vtkFileName = velodyneDirName + std::to_string(cnt) + ".vtk";
         velodyneCloud = DP::load(vtkFileName);  // Chery dataset
     }
 
     inputFilter.apply(velodyneCloud);
 
     Trobot= PM::TransformationParameters::Identity(4, 4);
-    Trobot(0,0)=initPoses[index][0];Trobot(0,1)=initPoses[index][1];Trobot(0,2)=initPoses[index][2];Trobot(0,3)=initPoses[index][3];
-    Trobot(1,0)=initPoses[index][4];Trobot(1,1)=initPoses[index][5];Trobot(1,2)=initPoses[index][6];Trobot(1,3)=initPoses[index][7];
-    Trobot(2,0)=initPoses[index][8];Trobot(2,1)=initPoses[index][9];Trobot(2,2)=initPoses[index][10];Trobot(2,3)=initPoses[index][11];
-    Trobot(3,0)=initPoses[index][12];Trobot(3,1)=initPoses[index][13];Trobot(3,2)=initPoses[index][14];Trobot(3,3)=initPoses[index][15];
+    Trobot(0,0)=initPoses[cnt][0];Trobot(0,1)=initPoses[cnt][1];Trobot(0,2)=initPoses[cnt][2];Trobot(0,3)=initPoses[cnt][3];
+    Trobot(1,0)=initPoses[cnt][4];Trobot(1,1)=initPoses[cnt][5];Trobot(1,2)=initPoses[cnt][6];Trobot(1,3)=initPoses[cnt][7];
+    Trobot(2,0)=initPoses[cnt][8];Trobot(2,1)=initPoses[cnt][9];Trobot(2,2)=initPoses[cnt][10];Trobot(2,3)=initPoses[cnt][11];
+    Trobot(3,0)=initPoses[cnt][12];Trobot(3,1)=initPoses[cnt][13];Trobot(3,2)=initPoses[cnt][14];Trobot(3,3)=initPoses[cnt][15];
 
     transformation->correctParameters(Trobot);
 
     // save the indexes to the txt
     ofstream rowOfMatrix;
-    string fileName = saveDirName + std::to_string(indexCnt) + ".txt";
+    string fileName = saveDirName + std::to_string(cnt) + ".txt";
     rowOfMatrix.open(fileName);
     int matchedMapCnt = 0;
 
