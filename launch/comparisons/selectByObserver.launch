@@ -1,0 +1,11 @@
+<launch>
+
+  	<node pkg="map_compression" type="selectByObserver" name="selectByObserver" output="screen" >
+
+	<param name="loadMapName" value="/home/yh/mapModel/2019/07.10/wholeMap_yq_scored.ply"/>
+	<param name="subMapCnt" value="49"/>
+	<param name="isSave" value="false"/>
+  	<param name="saveMapName" value="/home/yh/mapModel/2019/07.10/wholeMap_yq_filtered.ply"/>
+
+  </node>
+</launch>
