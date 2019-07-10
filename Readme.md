@@ -18,35 +18,35 @@ Some dependencies are needed to be prepared:
 
 ## Introduction to all folders
 
-* cfg  
-`contains configuration files:  .rviz & filter.yaml, for visualization & configuration`
+* `cfg` 
+contains configuration files:  .rviz & filter.yaml, for visualization & configuration`
 
-> + `gurobi`  
+* `gurobi`  
 integer linear programming code, written in Matlab
 
-> + `launch`  
+* `launch`  
 roslaunch files to start-up ros nodes, C++
 
-> + `prepare`  
+* `prepare`  
 sparcify the dense poses, generate keep.txt
 
-> + `random_forest`  
+* `random_forest`  
 train & test, learning part, copy from GitHub, thanks to [ranger](https://github.com/your/project/tags)
 
-> + `src`  
+* `src`  
 .cpp files using ros api & libpointmatcher
 
-> + `evaluation`  
+* `evaluation`  
 prediction and localization evaluation matlab files
 
-> + `pics`  
+* `pics`  
 some pictures of results long time ago
 
 ## The purpose of files in each folder for map compression
 
 ### prepare folder
 
-> + `prepare poses and scans`  
+* `prepare poses and scans`  
 get the sparser poses for robot stopping cases, magic number used for uniform density of poses  
 input:  origin poses or trajectories  
 output: uniform poses or trajectories
