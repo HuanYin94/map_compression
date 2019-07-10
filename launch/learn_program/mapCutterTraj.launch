@@ -16,7 +16,6 @@
 
 
 	<param name="loadTrajName" value="/home/yh/mapModel/2019/01.08/icp_0301.txt"/>
-	<param name="keepIndexName" value="/home/yh/mapModel/2019/01.08/keep_0301_all.txt"/>
 	<!--param name="saveTrainName" value="/home/yh/mapModel/2019/01.08/learn/results/no.ply"/>
 	<param name="saveTestName" value="/home/yh/mapModel/2019/01.08/learn/results/predict_b2000_locTest.ply"/-->
 	<param name="saveTrainName" value="/home/yh/mapModel/2019/01.08/no.ply"/>
@@ -24,6 +23,8 @@
 
 	<param name="saveTestName" value="$(arg saveTestName)"/>
 	
+	<!--all?-->
+
 	<!--Cut for loc Test-->
 	<param name="cutPoint0" value="0"/>	
 	<param name="cutPoint1" value="6999"/>	
@@ -42,7 +43,6 @@
 
 	<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.02/ILP_kitti10_map_0.05.vtk"/>
 	<param name="loadTrajName" value="/home/yh/mapModel/2018/08.02/kitti10_pose.txt"/>
-	<param name="keepIndexName" value="/home/yh/mapModel/2018/08.02/kitti10_keep.txt"/>
 	<param name="saveTrainName" value="/home/yh/mapModel/2018/08.02/learn/ILP_kitti10_map_train_0.05.vtk"/>
 	<param name="saveTestName" value="/home/yh/mapModel/2018/08.02/learn/ILP_kitti10_map_test_0.05.vtk"/>
 	<param name="saveCloudName" value="/home/yh/mapModel/2018/08.02/learn/ILP_kitti10_map_train_test.vtk"/>
@@ -64,7 +64,6 @@
 
 	<!--param name="loadMapName" value="/home/yh/mapModel/2019/01.08/test/ILP_YQ_map_test_0.02_locTest.ply"/>
 	<param name="loadTrajName" value="/home/yh/mapModel/2019/01.08/icp_0301.txt"/>
-	<param name="keepIndexName" value="/home/yh/mapModel/2019/01.08/keep_0301.txt"/>
 	<param name="saveTrainName" value="/home/yh/mapModel/2019/01.08/test/ILP_YQ_map_test_0.02_delete.ply"/>
 	<param name="saveTestName" value="/home/yh/mapModel/2019/01.08/test/ILP_YQ_map_test_0.02_locTest.ply"/>
 	<param name="saveCloudName" value="/home/yh/mapModel/2019/01.08/test/AAA.ply"/>

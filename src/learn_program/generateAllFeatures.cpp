@@ -45,9 +45,6 @@ public:
     string saveCloudName;
     string saveFeaturesName;
 
-    string keepIndexName;
-    vector<int> indexVector;
-
     DP mapCloud;
     DP trajCloud;
 
@@ -74,8 +71,7 @@ Generation::Generation(ros::NodeHandle& n):
     saveCloudName(getParam<string>("saveCloudName", ".")),
     roadDNA(getParam<int>("roadDNA", 0)),
     saveFeaturesName(getParam<string>("saveFeaturesName", ".")),
-    maxDensity(getParam<int>("maxDensity", 0)),
-    keepIndexName(getParam<string>("keepIndexName", "."))
+    maxDensity(getParam<int>("maxDensity", 0))
 {
     // load
     mapCloud = DP::load(loadMapName);
@@ -90,6 +86,7 @@ Generation::Generation(ros::NodeHandle& n):
     }
     for (y = 0; y < 999999; y++) {
         test.clear();
+        if(in.eof()) break;
     for (x = 0; x < 16; x++) {
       in >> temp;
       test.push_back(temp);
@@ -97,18 +94,6 @@ Generation::Generation(ros::NodeHandle& n):
       initPoses.push_back(test);
     }
     in.close();
-
-    // read all the effective index from list in the txt
-    int l;
-    ifstream in_(keepIndexName);
-    if (!in_) {
-        cout << "Cannot open file.\n";
-    }
-    while(!in_.eof())
-    {
-        in_>>l;
-        indexVector.push_back(l);
-    }
 
     // process
     this->process();
@@ -136,15 +121,13 @@ void Generation::process()
     // turn trajectory(poses) to a DP::CLOUD
     // feature-rows: x, y, z, directly
     trajCloud = mapCloud.createSimilarEmpty();
-    for(int p=0; p<indexVector.size(); p++)
+    for(int p=0; p<initPoses.size(); p++)
     {
-        int index =indexVector.at(p);
-
-        trajCloud.features(0, p) = initPoses[index][3];
-        trajCloud.features(1, p) = initPoses[index][7];
-        trajCloud.features(2, p) = initPoses[index][11];
+        trajCloud.features(0, p) = initPoses[p][3];
+        trajCloud.features(1, p) = initPoses[p][7];
+        trajCloud.features(2, p) = initPoses[p][11];
     }
-    trajCloud.conservativeResize(indexVector.size());
+    trajCloud.conservativeResize(initPoses.size());
 
     /*
     //Ort:Traj   ;   Oritentation:MapCloud;  diff-descritors
