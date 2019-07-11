@@ -3,8 +3,8 @@
   <node pkg="map_compression" type="scanRegister" name="scanRegister" output="screen">
 	
 	<!--KITTI or YQ & actually SLAM in YQ, no registration from gt & add Chery-->
-	<param name="isChery" value="true" />	
-	<param name="isKITTI" value="false" />	
+	<param name="isChery" value="false" />	
+	<param name="isKITTI" value="true" />	
 
     <param name="inputFilterName" value="$(find map_compression)/cfg/input_filters.yaml"/>
 
