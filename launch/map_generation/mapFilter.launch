@@ -5,12 +5,12 @@
 	<param name="mapPostFilters" value="/home/yh/mine_ws/src/map_compression/cfg/map_filters.yaml"/>
 	
 
-	<!--param name="loadMapName" value="/home/yh/mapModel/2018/12.14/wholeMap_yq_origin.vtk"/>
+	<!--param name="loadMapName" valuse="/home/yh/mapModel/2018/12.14/wholeMap_yq_origin.vtk"/>
     <param name="saveMapName" value="/home/yh/mapModel/2018/12.14/wholeMap_yq.vtk"/-->	
 
 
-	<param name="loadMapName" value="/home/yh/mapModel/2019/01.10/wholeMap_park_origin.ply"/>
-	<param name="saveMapName" value="/home/yh/mapModel/2019/01.10/wholeMap_park.ply"/>
+	<param name="loadMapName" value="/home/yh/mapModel/2019/07.11/wholeMap_kitti_10_origin.ply"/>
+	<param name="saveMapName" value="/home/yh/mapModel/2019/07.11/wholeMap_kitti10.ply"/>
 	
 
 

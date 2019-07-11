@@ -91,7 +91,6 @@ genVisMatrix::genVisMatrix(ros::NodeHandle& n):
     mapCloud.addDescriptor("isLabel", PM::Matrix::Zero(1, mapCloud.features.cols()));
     rowLineLabel = mapCloud.getDescriptorStartingRow("isLabel");
 
-
     // read initial transformation
     int x, y;
     double temp;
@@ -110,6 +109,8 @@ genVisMatrix::genVisMatrix(ros::NodeHandle& n):
       initPoses.push_back(test);
     }
     in.close();
+
+    initPoses.pop_back();
 
     // process, wanna see all
     for(int cnt=0; cnt < initPoses.size(); cnt++) // ???

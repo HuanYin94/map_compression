@@ -5,8 +5,10 @@ Code of a manuscript, submitted to IEEE Transactions on Intelligent Transportati
 
 If you need the manuscript or have some questions on this project, please contact [Huan Yin](https://yinhuan.site/) `zjuyinhuan@gmail.com` 
 
-## Images
+## Image
 ![image](https://github.com/ZJUYH/map_compression/blob/master/pics/system.png)
+
+## Results
 
 ## Prepare to build
 
@@ -181,11 +183,9 @@ __input:__　 the folder contains sub-maps,
 __output:__ saliency evaluation saved in txt files ina folder   
 
 * `mergeCloudForSaliency`  
-merge the saliency and sub-maps into a whole map
+merge the saliency and sub-maps into a whole map  
 __input:__　 map, trajectory and saliency files  
 __output:__ one global map with saliency evaluation   
-
-## Results
 
 ## License 
 

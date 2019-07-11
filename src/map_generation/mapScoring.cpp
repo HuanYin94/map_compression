@@ -122,6 +122,8 @@ mapScoring::mapScoring(ros::NodeHandle& n):
     }
     in.close();
 
+    initPoses.pop_back();
+
     // process
     for(int cnt=0; cnt < initPoses.size(); cnt++)
     {
