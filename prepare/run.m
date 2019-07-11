@@ -26,11 +26,28 @@
 % getDistribution(chery_pose);
 
 %% New YQ data pepare, the former are too dense\
+% 
+% icp0301_new = poseSparsification( icp0301, '/home/yh/mapModel/2018/10.18/keep_0301.txt', 1.0);
+% getDistribution(icp0301);
+% hold on;
+% getDistribution(icp0301_new);
 
-icp0301_new = poseSparsification( icp0301, '/home/yh/mapModel/2018/10.18/keep_0301.txt', 1.0);
-getDistribution(icp0301);
-hold on;
-getDistribution(icp0301_new);
+%% Re-index for exp , 2019.07
+
+% icp0301_new = poseSparsification_yq( '/home/yh/mapModel/2019/07.11/keep_0301.txt', '/home/yh/mapModel/2019/07.11/index_0301.txt', icp0301, 0.2);
+
+% icp0301_new = poseSparsification_yq( '/home/yh/mapModel/2019/07.11/keep_0901.txt', '/home/yh/mapModel/2019/07.11/index_0901.txt', icp0901, 0.2);
+
+% park_new = poseSparsification_yq( '/home/yh/mapModel/2019/07.11/keep_park.txt', '/home/yh/mapModel/2019/07.11/index_park.txt', parkpose, 0.2);
+
+kitti_new = poseSparsification_kitti( '/home/yh/mapModel/2019/07.11/keep_kitti.txt', '/home/yh/mapModel/2019/07.11/index_kitti.txt', kitti10pose, 1.0);
+
+
+
+
+
+
+
 
 
 

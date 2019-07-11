@@ -1,8 +1,9 @@
-function [ icpPoseNew ] = poseSparsification_yq( icpPose, saveFileName, expDis )
+function [ icpPoseNew ] = poseSparsification_yq( savePoseName, saveIndexName, icpPose, expDis )
 %POSESPARCIFICATION Summary of this function goes here
 %   Detailed explanation goes here
     
     % YQ dataset, data preparation
+    % same for park dataset
 
     keepIndex = [1];
     icpPoseNew(1,:) = icpPose(1,:); % for plotting
@@ -25,9 +26,9 @@ function [ icpPoseNew ] = poseSparsification_yq( icpPose, saveFileName, expDis )
     length(keepIndex)
     
     % save the index to the file
-%     dlmwrite(saveFileName, keepIndex, 'delimiter', '\t');
+    dlmwrite(saveIndexName, keepIndex, 'delimiter', '\t');
 
-    dlmwrite(saveFileName, icpPoseNew, 'delimiter', '\t');
+    dlmwrite(savePoseName, icpPoseNew, 'delimiter', '\t');
 
 end
 
