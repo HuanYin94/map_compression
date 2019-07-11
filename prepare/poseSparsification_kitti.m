@@ -12,8 +12,6 @@ function [ ground_Truth_new, ground_Truth_keep ] = poseSparsification_kitti( sav
        ground_Truth_new(i,:) = [ground_Truth_Tr_new(1, :), ground_Truth_Tr_new(2, :), ground_Truth_Tr_new(3, :), ground_Truth_Tr_new(4, :) ];
     end
         
-    dlmwrite(savePoseName, ground_Truth_new, 'delimiter', '\t');
-
     keepIndex = [1];    
     ground_Truth_keep(1,:) = ground_Truth_new(1,:);
     
@@ -36,6 +34,8 @@ function [ ground_Truth_new, ground_Truth_keep ] = poseSparsification_kitti( sav
     
     % save the index to the file
     dlmwrite(saveIndexName, keepIndex, 'delimiter', '\t');
+    dlmwrite(savePoseName, ground_Truth_keep, 'delimiter', '\t');
+
     
 end
 

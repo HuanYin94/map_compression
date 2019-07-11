@@ -49,11 +49,28 @@ renameLaserScans::~renameLaserScans()
 
 renameLaserScans::renameLaserScans(ros::NodeHandle& n):
     n(n),
+    isChery(getParam<bool>("indexFileName", false)),
+    isKITTI(getParam<bool>("indexFileName", false)),
     indexFileName(getParam<string>("indexFileName", ".")),
     loadScanDir(getParam<string>("loadScanDir", ".")),
     saveScanDir(getParam<string>("saveScanDir", "."))
 {
 
+    vector<int> indexVector;
+    int temp;
+    ifstream in(indexFileName);
+    for(int y=0; y<999999; y++)
+    {
+        if(in.eof()) break;
+        in >> temp;
+        indexVector.push_back(temp);
+    }
+    in.close();
+
+    for(int i=0; i<indexVector.size(); i++)
+    {
+
+    }
 
 }
 
