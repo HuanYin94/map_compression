@@ -19,16 +19,16 @@
 
 
 
-	<!--param name="icpFileName" value="/home/yh/mapModel/2019/01.09/kitti10_pose.txt"/> 
-	<param name="velodyneDirName" value="/media/yh/YH/DataSet/kitti_benchmark_velodyne/dataset/sequences/10/velodyne/"/> 
-	<param name="saveVTKname" value="/home/yh/mapModel/2019/01.09/wholeMap_kitti_10_origin.ply"/-->
+	<param name="icpFileName" value="/home/yh/mapModel/2019/07.11/keep_kitti.txt"/> 
+	<param name="velodyneDirName" value="/media/yh/YH/its/kitti_10/"/> 
+	<param name="saveVTKname" value="/home/yh/mapModel/2019/07.11/wholeMap_kitti_10_origin.ply"/>
 
 
 
 
-	<param name="icpFileName" value="/home/yh/mapModel/2019/01.10/park_pose.txt"/> 
+	<!--param name="icpFileName" value="/home/yh/mapModel/2019/01.10/park_pose.txt"/> 
 	<param name="velodyneDirName" value="/media/yh/YH/DataSet/chery/scan/"/>
-	<param name="saveVTKname" value="/home/yh/mapModel/2019/01.10/wholeMap_park_origin.ply"/>
+	<param name="saveVTKname" value="/home/yh/mapModel/2019/01.10/wholeMap_park_origin.ply"/-->
 
 
 

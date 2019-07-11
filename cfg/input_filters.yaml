@@ -1,6 +1,6 @@
 - FixStepSamplingDataPointsFilter:
-#    startStep: 50  # for YQ and KITTI
-    startStep: 10
+    startStep: 50  # for YQ and KITTI ?
+#    startStep: 10
 
 # for YQ, remove TL
 #- BoundingBoxDataPointsFilter:
@@ -12,19 +12,19 @@
 #    zMax: 2.2
 
 # for KITTI, remove the car itself
-#- BoundingBoxDataPointsFilter:
-#    xMin: -1.8
-#    xMax: 1.8
-#    yMin: -1.8
-#    yMax: 1.8
-#    zMin: 1.8
-#    zMax: -1.8
+- BoundingBoxDataPointsFilter:
+    xMin: -1.8
+    xMax: 1.8
+    yMin: -1.8
+    yMax: 1.8
+    zMin: 1.8
+    zMax: -1.8
 
 # for Chery, remove sensors
-- BoundingBoxDataPointsFilter:
-    xMin: -1.5
-    xMax: 1.5
-    yMin: -1.5
-    yMax: 1.5
-    zMin: 1.5
-    zMax: -1.5
+#- BoundingBoxDataPointsFilter:
+#    xMin: -1.5
+#    xMax: 1.5
+#    yMin: -1.5
+#    yMax: 1.5
+#    zMin: 1.5
+#    zMax: -1.5

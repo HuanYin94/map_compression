@@ -51,8 +51,8 @@ renameLaserScans::~renameLaserScans()
 
 renameLaserScans::renameLaserScans(ros::NodeHandle& n):
     n(n),
-    isChery(getParam<bool>("indexFileName", false)),
-    isKITTI(getParam<bool>("indexFileName", false)),
+    isChery(getParam<bool>("isChery", false)),
+    isKITTI(getParam<bool>("isKITTI", false)),
     indexFileName(getParam<string>("indexFileName", ".")),
     loadScanDir(getParam<string>("loadScanDir", ".")),
     saveScanDir(getParam<string>("saveScanDir", "."))
@@ -68,13 +68,13 @@ renameLaserScans::renameLaserScans(ros::NodeHandle& n):
     }
     in.close();
 
-    int totalCnt = indexVector.size()-1;
+    indexVector.pop_back();
 
-    for(int cnt=0; cnt<totalCnt; cnt++)
+    for(int cnt=0; cnt<indexVector.size(); cnt++)
     {
         this->process(cnt);
 
-        cout<<cnt<<"    "<<totalCnt<<endl;
+        cout<<cnt<<"    "<<indexVector.size()<<endl;
     }
 
 }
@@ -127,15 +127,45 @@ void renameLaserScans::process(int cnt)
 //        perror( "Error renaming file  ");
 //    }
 
-    std::ifstream srce( veloNameOld.c_str(), std::ios::binary ) ;
-    std::ofstream dest( veloNameNew.c_str(), std::ios::binary ) ;
-    dest << srce.rdbuf() ;
+
+
+//    std::ifstream srce( veloNameOld.c_str(), std::ios::binary ) ;
+//    std::ofstream dest( veloNameNew.c_str(), std::ios::binary ) ;
+//    dest << srce.rdbuf() ;
+
+
 
 //    FILE * infile  = fopen(veloNameOld.c_str(),  "rb");
 //    FILE * outfile = fopen(veloNameNew.c_str(), "wb");
 //    filecopy(outfile, infile);
 //    fclose(infile);
 //    fclose(outfile);
+
+
+
+
+
+//    FILE * infile  = fopen(veloNameOld.c_str(), "rb");
+//    FILE * outfile = fopen(veloNameNew.c_str(), "wb");
+
+//    char  buffer[1024];
+
+//    fseek(infile, 8, SEEK_SET); /* omit first 8 bytes */
+
+//    size_t count_in;
+
+//    /* copy from input to output */
+//    while (count_in = fread(buffer, 1, sizeof(buffer), infile))
+//        fwrite(buffer, 1, count_in, outfile);
+
+//    fclose(infile);
+//    fclose(outfile);
+
+    string command = "cp " + veloNameOld + " " + veloNameNew;
+    char command_[256];
+    strcpy(command_, command.c_str());
+    system(command_);
+
 
 }
 
