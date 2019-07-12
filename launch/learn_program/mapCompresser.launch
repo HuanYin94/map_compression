@@ -4,14 +4,14 @@
 	
 	<!--get the compressed map by the descriptor name directly-->
 	
-	<!--param name="loadMapName" value="/home/yh/mapModel/2019/01.08/learn/results/predict_b500_from_1000_test.ply"/> 
-	　<param name="desName" value="salient_predicted"/> 
-	<param name="saveMapName" value="/home/yh/mapModel/2019/01.08/learn/results/predict_b500_from_1000_test_compressed.ply"/-->
+	<!--param name="loadMapName" value="/home/yh/mapModel/2019/07.11/program/wholeMap_kitti_b1000.ply"/> 
+	　<param name="desName" value="salient"/> 
+	<param name="saveMapName" value="/home/yh/mapModel/2019/07.11/program/wholeMap_kitti_b1000_compressed.ply"/-->
 
 
-	<param name="loadMapName" value="/home/yh/mapModel/2019/03.16/map_6.ply"/> 
+	<param name="loadMapName" value="/home/yh/mapModel/2019/07.12/learn/test_yq_b1000_predict_from_b4000.ply"/> 
 	<param name="desName" value="salient_predicted"/> 
-	<param name="saveMapName" value="/home/yh/mapModel/2019/03.16/learned_6.ply"/>
+	<param name="saveMapName" value="/home/yh/mapModel/2019/07.12/learn/test_yq_b1000_predict_from_b4000_compressed.ply"/>
 	
 
   </node>

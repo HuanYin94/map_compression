@@ -2,9 +2,9 @@
 
 	<node pkg="map_compression" type="compareDistribution" name="compareDistribution" output="screen">
 
-	<param name="loadMapName1" value="/home/yh/mapModel/2019/01.08/locTest/random/random_b500_1.ply"/>
-	<param name="loadMapName2" value="/home/yh/mapModel/2019/01.08/locTest/random/random_b500_2.ply"/>
-	<param name="saveDisName" value="/home/yh/test.txt"/>
+	<param name="loadMapName1" value="/home/yh/mapModel/2019/07.12/learn/test_yq_b1000_predict_from_b4000_compressed.ply"/>
+	<param name="loadMapName2" value="/home/yh/mapModel/2019/07.12/learn/test_yq_b1000_predict_compressed.ply"/>
+	<param name="saveDisName" value="/home/yh/mapModel/2019/07.12/learn/dis/predict_yq_b1000_disError_two_methods.txt"/>
 
   </node>
 </launch>

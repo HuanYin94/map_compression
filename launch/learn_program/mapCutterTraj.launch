@@ -1,6 +1,7 @@
 <launch>
 
 	<arg name="loadMapName"/> 
+	<arg name="saveTrainName"/> 	
 	<arg name="saveTestName"/> 	
 
   <node pkg="map_compression" type="mapCutterTraj" name="mapCutterTraj" output="screen" required="true">
@@ -15,10 +16,10 @@
 
 
 
-	<param name="loadTrajName" value="/home/yh/mapModel/2019/01.08/icp_0301.txt"/>
+	<param name="loadTrajName" value="/home/yh/mapModel/2019/07.11/keep_kitti.txt"/>
 	<!--param name="saveTrainName" value="/home/yh/mapModel/2019/01.08/learn/results/no.ply"/>
 	<param name="saveTestName" value="/home/yh/mapModel/2019/01.08/learn/results/predict_b2000_locTest.ply"/-->
-	<param name="saveTrainName" value="/home/yh/mapModel/2019/01.08/no.ply"/>
+	<param name="saveTrainName" value="$(arg saveTrainName)"/>
 	<!--param name="saveTestName" value="/home/yh/mapModel/2019/01.08/locTest/predict_b500_locTest_.ply"/-->
 
 	<param name="saveTestName" value="$(arg saveTestName)"/>
@@ -27,9 +28,9 @@
 
 	<!--Cut for loc Test-->
 	<param name="cutPoint0" value="0"/>	
-	<param name="cutPoint1" value="6999"/>	
-	<param name="cutPoint2" value="7000"/>	
-	<param name="cutPoint3" value="10559"/>	
+	<param name="cutPoint1" value="211"/>	
+	<param name="cutPoint2" value="212"/>	
+	<param name="cutPoint3" value="632"/>	
 
 	<!--Cut for training and test-->
 	<!--param name="cutPoint0" value="0"/>	
