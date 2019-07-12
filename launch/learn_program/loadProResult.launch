@@ -1,16 +1,14 @@
 <launch>
 
-  <node pkg="map_compression" type="loadProResult" name="loadProResult" output="screen">
+  <node pkg="map_compression" type="loadProResult" name="loadProResult" output="screen" >
 
-	<!--param name="loadResultDir" value="/home/yh/mapModel/2019/01.08/iter_results/iter_b_200/final/"/>
-	<param name="sectionNum" value="1"/>
-	<param name="loadMapName" value="/home/yh/mapModel/2019/01.08/wholeMap_yq.vtk"/>
-	<param name="saveCloudName" value="/home/yh/mapModel/2019/01.08/iter_results/b_200.ply"/-->
+	<param name="loadCompressIndex" value="/home/yh/mapModel/2019/07.11/program/compressIndex_final_b3000.txt"/>
+	<param name="loadMapName" value="/home/yh/mapModel/2019/07.11/wholeMap_kitti_10.ply"/>
+	<param name="saveCloudName" value="/home/yh/mapModel/2019/07.11/program/wholeMap_kitti_b3000.ply"/>
 	
-	<param name="loadResultDir" value="/home/yh/mapModel/2019/01.10/opti/iter_b_2000/final/"/>
-	<param name="sectionNum" value="1"/>
-	<param name="loadMapName" value="/home/yh/mapModel/2019/01.10/wholeMap_park.ply"/>
-	<param name="saveCloudName" value="/home/yh/mapModel/2019/01.10/opti/b_2000.ply"/>
+	<!--param name="loadCompressIndex" value="/home/yh/mapModel/2019/07.12/program/compressIndex_final_b1000.txt"/>
+	<param name="loadMapName" value="/home/yh/mapModel/2019/07.12/wholeMap_yq.ply"/>
+	<param name="saveCloudName" value="/home/yh/mapModel/2019/07.12/program/wholeMap_yq_b1000.ply"/-->
 
   </node>
 </launch>
