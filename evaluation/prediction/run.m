@@ -35,8 +35,9 @@
 %%  kitti 2019.07 first review
 
 
-% just_save( testkittib4000, 0.8089, '/home/yh/mapModel/2019/07.11/learn/learned/predict_kitti_b4000.txt', 1 );
-
+just_save( testkittib3000, 0.8351, '/home/yh/mapModel/2019/07.11/learn/learned/predict_kitti_b3000.txt', 1 );
+just_save( testkittib2000, 0.8654, '/home/yh/mapModel/2019/07.11/learn/learned/predict_kitti_b2000.txt', 1 );
+just_save( testkittib1000, 0.9073, '/home/yh/mapModel/2019/07.11/learn/learned/predict_kitti_b1000.txt', 1 );
 
 
 %%  yq 2019.07 first review
@@ -49,7 +50,7 @@
 % just_save( testyqb2000, 0.7451, '/home/yh/mapModel/2019/07.12/learn/learned/predict_yq_b2000.txt', 1 );
 % just_save( testyqb1000, 0.8141, '/home/yh/mapModel/2019/07.12/learn/learned/predict_yq_b1000.txt', 1 );
 
-just_save( testyqb4000, 0.4634, '/home/yh/mapModel/2019/07.12/learn/learned/predict_yq_b1000_from_b4000.txt', 1 );
+% just_save( testyqb4000, 0.4634, '/home/yh/mapModel/2019/07.12/learn/learned/predict_yq_b1000_from_b4000.txt', 1 );
 
 
 
