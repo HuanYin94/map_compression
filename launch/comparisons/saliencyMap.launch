@@ -13,9 +13,19 @@
     <param name="highRadius" value="2.0"/>
     <param name="highSearchNum" value="100"/>
 
+<<<<<<< HEAD
 	<param name="loadMapDir" value="/home/yinhuan/Data/mapModel/saliency/split_cloud/"/>
 	<param name="subMapCnt" value="64"/>
   	<param name="saveSaliencyDir" value="/home/yinhuan/Data/mapModel/saliency/split_saliency/"/>
+=======
+	<!--param name="loadMapDir" value="/home/yh/mapModel/2019/06.27/test/"/>
+	<param name="subMapCnt" value="1"/>
+  	<param name="saveSaliencyDir" value="/home/yh/mapModel/2019/06.27/test/"/-->
+
+	<param name="loadMapDir" value="/home/yh/mapModel/2019/07.11/compare/split_cloud/"/>
+	<param name="subMapCnt" value="13"/>
+  	<param name="saveSaliencyDir" value="/home/yh/mapModel/2019/07.11/compare/split_cloud/"/>
+>>>>>>> c77e0212e5b1a1049c8fd58103c53b13eaff0256
 
   </node>
 </launch>

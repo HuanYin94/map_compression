@@ -40,7 +40,7 @@
 
 % park_new = poseSparsification_yq( '/home/yh/mapModel/2019/07.11/keep_park.txt', '/home/yh/mapModel/2019/07.11/index_park.txt', parkpose, 0.2);
 
-kitti_new = poseSparsification_kitti( '/home/yh/mapModel/2019/07.11/keep_kitti.txt', '/home/yh/mapModel/2019/07.11/index_kitti.txt', kitti10pose, 1.0);
+% kitti_new = poseSparsification_kitti( '/home/yh/mapModel/2019/07.11/keep_kitti.txt', '/home/yh/mapModel/2019/07.11/index_kitti.txt', kitti10pose, 1.0);
 
 
 

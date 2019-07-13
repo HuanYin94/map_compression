@@ -1,0 +1,12 @@
+<launch>
+
+  	<node pkg="map_compression" type="selectBySaliency" name="selectBySaliency" output="screen" >
+
+	<param name="loadMapName" value="/home/yh/mapModel/2019/07.11/loc/loc_kitti_saliency.ply"/>
+	<param name="isSave" value="true"/>
+  	<param name="saveMapName" value="/home/yh/mapModel/2019/07.11/loc/loc_kitti_b1000_saliency.ply"/>
+
+	<param name="saliencyThreshold" value="1.13"/>
+
+  </node>
+</launch>

@@ -1,20 +1,22 @@
+# only surface normal
 - SurfaceNormalDataPointsFilter:
-#    knn: 20
     knn: 10
     epsilon: 3.16
     keepNormals: 1
     keepDensities: 1
     keepEigenValues: 1
     keepEigenVectors: 0
-- OctreeGridDataPointsFilter:
-    buildParallel: 1
-    maxPointByNode: 1
-    maxSizeByNode: 0.2
-    samplingMethod: 3
-- MaxDensityDataPointsFilter:
+
+## abandoned
+#- OctreeGridDataPointsFilter:
+#    buildParallel: 1
+#    maxPointByNode: 1
+#    maxSizeByNode: 0.2
+#    samplingMethod: 3
+#- MaxDensityDataPointsFilter:
 #    maxDensity: 125
-    maxDensity: 75
-- ShadowDataPointsFilter:
+#    maxDensity: 75
+#- ShadowDataPointsFilter:
 #- VoxelGridDataPointsFilter:
 #    vSizeX: 0.2
 #    vSizeY: 0.2

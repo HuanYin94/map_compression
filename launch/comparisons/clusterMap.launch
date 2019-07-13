@@ -5,13 +5,13 @@
   	<!--param name="loadMapName" value="/home/yh/mapModel/2019/01.08/wholeMap_yq.ply"/>
   	<param name="saveMapName" value="/home/yh/mapModel/2019/01.08/locTest/cluster_b500.ply"/-->
 
-  	<param name="loadMapName" value="/home/yh/mapModel/2019/01.10/wholeMap_park.ply"/>
-  	<param name="saveMapName" value="/home/yh/mapModel/2019/01.10/locTest/cluster_b2000.ply"/>
+  	<param name="loadMapName" value="/home/yh/mapModel/2019/07.11/wholeMap_kitti_10.ply"/>
+  	<param name="saveMapName" value="/home/yh/mapModel/2019/07.11/loc/loc_kitti_b1000_cluster.ply"/>
 
-    <param name="disThreshold" value="0.25"/>
+    <param name="disThreshold" value="0.15"/>
     <param name="minNum" value="20"/>
     <param name="maxNum" value="150"/>
-    <param name="expectedNum" value="41198"/>
+    <param name="expectedNum" value="22283"/>
 
   </node>
 </launch>

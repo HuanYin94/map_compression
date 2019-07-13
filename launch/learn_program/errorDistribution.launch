@@ -7,13 +7,12 @@
 
 
 
-	<!--param name="loadMapName" value="/home/yh/mapModel/2018/08.02/learn/Learned_kitti10_map_test_0.05.vtk"/>
-	<param name="saveDisName" value="/home/yh/mapModel/2018/08.02/learn/Learned_kitti10_error_0.05.txt"/-->
+	<!--param name="loadMapName" value="/home/yh/mapModel/2019/07.11/learn/test_kitti_b4000_predict.ply"/>
+	<param name="saveDisName" value="/home/yh/mapModel/2019/07.11/learn/learned/predict_kitti_b4000_disError.txt"/-->
 
 
-
-	<param name="loadMapName" value="/home/yh/mapModel/2019/01.08/learn/results/predict_b500_from_1000_test.ply"/>
-	<param name="saveDisName" value="/home/yh/mapModel/2019/01.08/learn/results/predict_b500_from_1000_error_dis.txt"/>
+	<param name="loadMapName" value="/home/yh/mapModel/2019/07.12/learn/test_yq_b1000_predict_from_b4000.ply"/>
+	<param name="saveDisName" value="/home/yh/mapModel/2019/07.12/learn/dis/predict_yq_b1000_disError_from_b4000.txt"/>
 
   </node>
 </launch>
