@@ -158,3 +158,9 @@ ${catkin_LIBRARIES}
 ${libpointmatcher_LIBRARIES}
 )
 
+add_executable(selectBySaliency src/comparisons/selectBySaliency.cpp)
+target_link_libraries(selectBySaliency
+${catkin_LIBRARIES}
+${libpointmatcher_LIBRARIES}
+)
+

@@ -18,9 +18,9 @@
 	<param name="subMapCnt" value="1"/>
   	<param name="saveSaliencyDir" value="/home/yh/mapModel/2019/06.27/test/"/-->
 
-	<param name="loadMapDir" value="/home/yinhuan/Data/mapModel/07.03/split_cloud/"/>
-	<param name="subMapCnt" value="10"/>
-  	<param name="saveSaliencyDir" value="/home/yinhuan/Data/mapModel/07.03/split_saliency/"/>
+	<param name="loadMapDir" value="/home/yh/mapModel/2019/07.11/compare/split_cloud/"/>
+	<param name="subMapCnt" value="13"/>
+  	<param name="saveSaliencyDir" value="/home/yh/mapModel/2019/07.11/compare/split_cloud/"/>
 
   </node>
 </launch>
