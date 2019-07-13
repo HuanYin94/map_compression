@@ -24,32 +24,32 @@
 using namespace std;
 using namespace PointMatcherSupport;
 
-class selectByObserver
+class selectBySaliency
 {
     typedef PointMatcher<float> PM;
     typedef PM::DataPoints DP;
 
 public:
-    selectByObserver(ros::NodeHandle &n);
-    ~selectByObserver();
+    selectBySaliency(ros::NodeHandle &n);
+    ~selectBySaliency();
     ros::NodeHandle& n;
 
     string loadMapName;
     string saveMapName;
 
-    int observeThreshold;
+    float saliencyThreshold;
 
     bool isSave;
 
 };
 
-selectByObserver::~selectByObserver()
+selectBySaliency::~selectBySaliency()
 {}
 
-selectByObserver::selectByObserver(ros::NodeHandle& n):
+selectBySaliency::selectBySaliency(ros::NodeHandle& n):
     n(n),
     loadMapName(getParam<string>("loadMapName", ".")),
-    observeThreshold(getParam<int>("observeThreshold", 0)),
+    saliencyThreshold(getParam<float>("saliencyThreshold", 0)),
     saveMapName(getParam<string>("saveMapName", ".")),
     isSave(getParam<bool>("isSave",true))
 {
@@ -58,10 +58,10 @@ selectByObserver::selectByObserver(ros::NodeHandle& n):
     // process
     DP saveCloud = mapCloud.createSimilarEmpty();
     int cnt = 0;
-    int rowLine_observeCnt = mapCloud.getDescriptorStartingRow("session");
+    int rowLine_saliency_estimated = mapCloud.getDescriptorStartingRow("saliency");
     for(int i=0; i<mapCloud.features.cols(); i++)
     {
-        if(mapCloud.descriptors(rowLine_observeCnt, i) > observeThreshold)
+        if(mapCloud.descriptors(rowLine_saliency_estimated, i) > saliencyThreshold)
         {
             saveCloud.setColFrom(cnt, mapCloud, i);
             cnt++;
@@ -79,10 +79,10 @@ selectByObserver::selectByObserver(ros::NodeHandle& n):
 int main(int argc, char **argv)
 {
 
-    ros::init(argc, argv, "selectByObserver");
+    ros::init(argc, argv, "selectBySaliency");
     ros::NodeHandle n;
 
-    selectByObserver selectByObserver(n);
+    selectBySaliency selectBySaliency_(n);
 
     // ugly code
 

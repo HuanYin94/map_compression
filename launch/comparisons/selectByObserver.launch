@@ -2,10 +2,13 @@
 
   	<node pkg="map_compression" type="selectByObserver" name="selectByObserver" output="screen" >
 
-	<param name="loadMapName" value="/home/yh/mapModel/2019/07.10/wholeMap_yq_scored.ply"/>
-	<param name="subMapCnt" value="49"/>
-	<param name="isSave" value="false"/>
-  	<param name="saveMapName" value="/home/yh/mapModel/2019/07.10/wholeMap_yq_filtered.ply"/>
+	<param name="loadMapName" value="/home/yh/mapModel/2019/07.11/wholeMap_kitti_10_scored.ply"/>
+	<param name="isSave" value="true"/>
+  	<param name="saveMapName" value="/home/yh/mapModel/2019/07.11/loc/loc_kitti_b1000_observe.ply"/>
+
+
+	<!--param name="observeThreshold" value="26"/-->
+	<param name="observeThreshold" value="33"/>
 
   </node>
 </launch>

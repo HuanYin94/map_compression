@@ -34,13 +34,11 @@ public:
     ~loadProResult();
     ros::NodeHandle& n;
 
-    string loadResultDir;
+    string loadCompressIndex;
     string loadMapName;
     string saveCloudName;
 
     DP mapCloud;
-
-    int sectionNum;
 
 };
 
@@ -49,10 +47,9 @@ loadProResult::~loadProResult()
 
 loadProResult::loadProResult(ros::NodeHandle& n):
     n(n),
-    loadResultDir(getParam<string>("loadResultDir", ".")),
+    loadCompressIndex(getParam<string>("loadCompressIndex", ".")),
     loadMapName(getParam<string>("loadMapName", ".")),
-    saveCloudName(getParam<string>("saveCloudName", ".")),
-    sectionNum(getParam<int>("sectionNum", 0))
+    saveCloudName(getParam<string>("saveCloudName", "."))
 {
     //map
     mapCloud = DP::load(loadMapName);
@@ -62,21 +59,16 @@ loadProResult::loadProResult(ros::NodeHandle& n):
     //results
     // read all result files
     int temp;
-    for (int y = 0; y < sectionNum; y++)
+    cout<<"File:  "<<loadCompressIndex<<endl;
+    ifstream in(loadCompressIndex);
+    while(!in.eof())
     {
-        cout<<"----------------------------------------------------------"<<endl;
-        string loadResultName = loadResultDir + std::to_string(y) + ".txt";
-        cout<<"File:  "<<loadResultName<<endl;
-        ifstream in(loadResultName);
-        while(!in.eof())
-        {
-            in>>temp;
-            temp = temp - 1;
-//            cout<<"index:  "<<temp<<endl;
-            mapCloud.descriptors(rowLineResults, temp) = 1;
-        }
-        in.close();
+        in>>temp;
+//        temp = temp-1;
+//        cout<<"index:  "<<temp<<endl;
+        mapCloud.descriptors(rowLineResults, temp) = 1;
     }
+    in.close();
 
     int predictCnt = 0;
     for(int m=0; m<mapCloud.features.cols(); m++)
@@ -85,6 +77,8 @@ loadProResult::loadProResult(ros::NodeHandle& n):
             predictCnt++;
     }
     cout<<"Predicted Cnt:  "<<predictCnt<<endl;
+    float ratio = 1.0 * predictCnt / mapCloud.descriptors.cols();
+    cout<<"Ratio:   "<<ratio<<endl;
 
     mapCloud.save(saveCloudName);
     cout<<"Saved"<<endl;
