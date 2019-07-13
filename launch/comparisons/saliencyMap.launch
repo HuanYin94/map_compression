@@ -2,10 +2,9 @@
 
   	<node pkg="map_compression" type="saliencyMap" name="saliencyMap" output="screen" >
 
-	<param name="normalRadius" value="1.0"/>	
-	<param name="fpfhRadius" value="2.0"/>
-    <!--param name="accRatio" value="0.00005"/-->
-    <param name="accKSearch" value="20"/>	
+	<param name="normalRadius" value="0.5"/>	
+	<param name="fpfhRadius" value="1.0"/>
+    <param name="accKSearch" value="100"/>	
 
     <param name="highRatio_pointAssoc" value="0.3"/>	
     <param name="sigma" value="0.5"/>	
@@ -14,13 +13,9 @@
     <param name="highRadius" value="2.0"/>
     <param name="highSearchNum" value="100"/>
 
-	<!--param name="loadMapDir" value="/home/yh/mapModel/2019/06.27/test/"/>
-	<param name="subMapCnt" value="1"/>
-  	<param name="saveSaliencyDir" value="/home/yh/mapModel/2019/06.27/test/"/-->
-
-	<param name="loadMapDir" value="/home/yinhuan/Data/mapModel/07.03/split_cloud/"/>
-	<param name="subMapCnt" value="10"/>
-  	<param name="saveSaliencyDir" value="/home/yinhuan/Data/mapModel/07.03/split_saliency/"/>
+	<param name="loadMapDir" value="/home/yinhuan/Data/mapModel/saliency/split_cloud/"/>
+	<param name="subMapCnt" value="64"/>
+  	<param name="saveSaliencyDir" value="/home/yinhuan/Data/mapModel/saliency/split_saliency/"/>
 
   </node>
 </launch>
