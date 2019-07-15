@@ -8,7 +8,7 @@ outlierFilters:
 #  - TrimmedDistOutlierFilter:
 #     ratio: 0.8
   - MaxDistOutlierFilter:
-     maxDist: 0.7
+     maxDist: 1.0
   - SurfaceNormalOutlierFilter:
      maxAngle: 0.78
 
@@ -21,7 +21,7 @@ transformationCheckers:
       minDiffTransErr: 0.01
       smoothLength: 2
   - CounterTransformationChecker:
-      maxIterationCount: 20
+      maxIterationCount: 40
   - BoundTransformationChecker:
       maxRotationNorm: 0.78
       maxTranslationNorm: 30.00
