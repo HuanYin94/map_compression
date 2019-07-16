@@ -1,9 +1,10 @@
-:<<BLOCK
+
+
+
+
 roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b4000_ILP.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b4000_ILP.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
 
 roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b4000_learn.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b4000_learn.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
-
-roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b4000_random.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b4000_random.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
 
 roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b4000_voxel.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b4000_voxel.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
 
@@ -16,13 +17,27 @@ roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhu
 
 
 
+roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b4000_random_1.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b4000_random_1.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
+
+roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b4000_random_2.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b4000_random_2.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
+
+roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b4000_random_3.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b4000_random_3.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
+
+roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b4000_random_4.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b4000_random_4.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
+
+roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b4000_random_5.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b4000_random_5.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
+
+
+
+
+
+
+
 
 
 roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b3000_ILP.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b3000_ILP.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
 
 roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b3000_learn.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b3000_learn.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
-
-roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b3000_random.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b3000_random.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
 
 roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b3000_voxel.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b3000_voxel.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
 
@@ -31,6 +46,25 @@ roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhu
 roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b3000_observe.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b3000_observe.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
 
 roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b3000_saliency.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b3000_saliency.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
+
+
+
+roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b3000_random_1.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b3000_random_1.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
+
+roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b3000_random_2.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b3000_random_2.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
+
+roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b3000_random_3.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b3000_random_3.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
+
+roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b3000_random_4.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b3000_random_4.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
+
+roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b3000_random_5.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b3000_random_5.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
+
+
+
+
+
+
+
 
 
 
@@ -43,8 +77,6 @@ roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhu
 
 roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b2000_learn.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b2000_learn.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
 
-roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b2000_random.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b2000_random.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
-
 roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b2000_voxel.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b2000_voxel.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
 
 roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b2000_cluster.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b2000_cluster.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
@@ -56,8 +88,26 @@ roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhu
 
 
 
-BLOCK
 
+roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b2000_random_1.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b2000_random_1.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
+
+roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b2000_random_2.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b2000_random_2.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
+
+roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b2000_random_3.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b2000_random_3.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
+
+roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b2000_random_4.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b2000_random_4.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
+
+roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b2000_random_5.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b2000_random_5.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
+
+
+
+
+
+
+
+
+
+:<<BLOCK
 
 
 
@@ -67,8 +117,6 @@ roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhu
 
 roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b1000_learn.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b1000_learn.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
 
-roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b1000_random.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b1000_random.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
-
 roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b1000_voxel.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b1000_voxel.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
 
 roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b1000_cluster.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b1000_cluster.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
@@ -76,6 +124,26 @@ roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhu
 roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b1000_observe.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b1000_observe.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
 
 roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b1000_saliency.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b1000_saliency.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
+
+
+
+
+
+
+roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b1000_random_1.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b1000_random_1.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
+
+roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b1000_random_2.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b1000_random_2.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
+
+roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b1000_random_3.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b1000_random_3.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
+
+roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b1000_random_4.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b1000_random_4.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
+
+roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b1000_random_5.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b1000_random_5.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
+
+
+BLOCK
+
+
 
 
 
