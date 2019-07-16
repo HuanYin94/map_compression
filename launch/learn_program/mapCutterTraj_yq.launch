@@ -7,11 +7,11 @@
 	
 	<!--For Localization Test-->
 
-	<param name="loadMapName" value="/home/yh/mapModel/2019/07.12/loc/loc_yq_b1000_observe.ply"/>
+	<param name="loadMapName" value="/home/yh/mapModel/2019/07.12/loc/loc_yq_b1000_random_5.ply"/>
 	<param name="loadTrajName" value="/home/yh/mapModel/2019/07.12/keep_0301.txt"/>
 	<!--param name="saveTrainName" value="/home/yh/mapModel/2019/07.12/learn/train_yq_b1000.ply"/-->
 	<param name="saveTrainName" value="/home/yh/mapModel/2019/07.12/loc/no.ply"/>
-	<param name="saveTestName" value="/home/yh/mapModel/2019/07.12/loc/loc_yq_b1000_observe.ply"/>
+	<param name="saveTestName" value="/home/yh/mapModel/2019/07.12/loc/loc_yq_b1000_random_5.ply"/>
 	<param name="saveCloudName" value="/home/yh/mapModel/2019/07.12/loc/no.ply"/>
 	
 	<!--param name="cutPoint0" value="0"/>	
