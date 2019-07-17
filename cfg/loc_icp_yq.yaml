@@ -1,14 +1,14 @@
 matcher:
   KDTreeMatcher:
-    knn: 10
-    maxDist: 5.0
+    knn: 5
+    maxDist: 3.0
     epsilon: 0
 
 outlierFilters:
 #  - TrimmedDistOutlierFilter:
 #     ratio: 0.8
   - MaxDistOutlierFilter:
-     maxDist: 3.0
+     maxDist: 1.0
   - SurfaceNormalOutlierFilter:
      maxAngle: 0.78
 
@@ -19,9 +19,9 @@ transformationCheckers:
   - DifferentialTransformationChecker:
       minDiffRotErr: 0.001
       minDiffTransErr: 0.01
-      smoothLength: 2
+      smoothLength: 5
   - CounterTransformationChecker:
-      maxIterationCount: 40
+      maxIterationCount: 20
   - BoundTransformationChecker:
       maxRotationNorm: 1.0
       maxTranslationNorm: 10.00
