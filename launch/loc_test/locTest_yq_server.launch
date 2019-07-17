@@ -26,7 +26,7 @@
 	<param name="icpFileName" value="/home/yinhuan/Data/mapModel/locTest/yq_loc_pose_0901.txt"/>
 
 	<param name="startIndex" value="7500"/>
-	<param name="endIndex" value="10000"/>
+	<param name="endIndex" value="9900"/>
 	
 	<param name="inputFilterYaml" value="$(find map_compression)/cfg/loc_laser_filters_yq.yaml"/>
 	<param name="mapFilterYaml" value="$(find map_compression)/cfg/loc_map_filters_yq.yaml"/>

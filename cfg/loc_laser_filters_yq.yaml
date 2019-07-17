@@ -1,12 +1,12 @@
 - RandomSamplingDataPointsFilter:
-    prob: 0.1
+    prob: 0.05
 - SurfaceNormalDataPointsFilter:
-    knn: 10
+    knn: 5
     epsilon: 0
     keepNormals: 1
     keepDensities: 0
-#- ObservationDirectionDataPointsFilter
-#- OrientNormalsDataPointsFilter 
+- ObservationDirectionDataPointsFilter
+- OrientNormalsDataPointsFilter 
 - BoundingBoxDataPointsFilter:
     xMin: -2.2
     xMax: 2.2
