@@ -6,12 +6,12 @@ Code of a manuscript, submitted to IEEE Transactions on Intelligent Transportati
 If have some questions on this project, please contact [Huan Yin](https://yinhuan.site/) `zjuyinhuan@gmail.com` 
 
 ## System
-![image](https://github.com/ZJUYH/map_compression/blob/master/images/system.png)
+<img src="https://github.com/ZJUYH/map_compression/blob/master/images/system.png" width= 600>
 
 ## Results
-![image](https://github.com/ZJUYH/map_compression/blob/master/images/yq_origin.png)
-![image](https://github.com/ZJUYH/map_compression/blob/master/images/yq_b4000_ILP_part.png)
-![image](https://github.com/ZJUYH/map_compression/blob/master/images/yq_b4000_learn_part.png)
+<img src="https://github.com/ZJUYH/map_compression/blob/master/images/yq_origin.png" width= 200>
+<img src="https://github.com/ZJUYH/map_compression/blob/master/images/yq_b4000_ILP_part.png" width= 200>
+<img src="https://github.com/ZJUYH/map_compression/blob/master/images/yq_b4000_learns_part.png" width= 200>
 
 ## Prepare to build
 
