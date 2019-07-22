@@ -1,4 +1,4 @@
-# Re-generate surface normals in Learned or Random map
+# Re-generate surface normals in Learned or Random mapx
 - SurfaceNormalDataPointsFilter:
     knn: 20
     epsilon: 0

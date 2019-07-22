@@ -2,11 +2,15 @@
 
   <node pkg="map_compression" type="splitCloudForSaliency" name="splitCloudForSaliency" output="screen">
 
+	<!--param name="loadMapName" value="/home/yinhuan/Data/mapModel/saliency/wholeMap_kitti_10.ply"/>
+	<param name="loadTrajName" value="/home/yinhuan/Data/mapModel/saliency/keep_kitti.txt"/>
+	<param name="splitPathLength" value="10"/>
+	<param name="saveCloudDir" value="/home/yinhuan/Data/mapModel/saliency/split_cloud_kitti/"/-->
 
-	<param name="loadMapName" value="/home/yh/mapModel/2019/07.11/wholeMap_kitti_10.ply"/>
-	<param name="loadTrajName" value="/home/yh/mapModel/2019/07.11/keep_kitti.txt"/>
+	<param name="loadMapName" value="/home/yinhuan/Data/mapModel/saliency/wholeMap_yq.ply"/>
+	<param name="loadTrajName" value="/home/yinhuan/Data/mapModel/saliency/keep_0301.txt"/>
 	<param name="splitPathLength" value="50"/>
-	<param name="saveCloudDir" value="/home/yh/mapModel/2019/07.11/compare/split_cloud/"/>
+	<param name="saveCloudDir" value="/home/yinhuan/Data/mapModel/saliency/split_cloud_yq/"/>
 	
 
   </node>

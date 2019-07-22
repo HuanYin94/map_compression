@@ -39,9 +39,6 @@ train & test, learning part, copy from GitHub, thanks to [ranger](https://github
 * `src`  
 .cpp files using ros api & libpointmatcher
 
-* `evaluation`  
-prediction and localization evaluation matlab files
-
 * `pics`  
 some pictures of results long time ago
 
