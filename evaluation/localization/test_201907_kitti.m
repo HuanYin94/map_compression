@@ -253,10 +253,10 @@ set(gca,'ytick', [0:0.1:1])
 subplot(1,4,4)
 h = boxplot([999*ones(400,1), trsError_1000_learn, 999*ones(400,1),999*ones(400,1),  999*ones(400,1), 999*ones(400,1),  999*ones(400,1)], 'Labels',{'Mp','Ml','Mr','Mv', 'Mc', 'Mt', 'Ms'}, 'OutlierSize', 8);
 title('b=1000');
-ylim([0 0.5]);
+ylim([0 1]);
 ylabel('Translation error (m)', 'FontWeight', 'bold', 'FontSize', 30);
 set(gca,'FontSize',18)  
-set(gca,'ytick', [0:0.05:0.5])
+set(gca,'ytick', [0:0.1:1])
 
 
 
