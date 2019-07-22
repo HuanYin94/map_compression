@@ -52,7 +52,7 @@ public:
 
     nav_msgs::Path mapPath;
     string keepIndexName;
-    vector<int> indexVector;
+
     vector<vector<double>> initPoses;
 
     int showType;
@@ -70,8 +70,7 @@ mapCheck::mapCheck(ros::NodeHandle& n):
     loadMapName(getParam<string>("loadMapName", ".")),
     staticInt(getParam<int>("staticInt", 0)),
     loadTrajName(getParam<string>("loadTrajName", ".")),
-    showType(getParam<int>("showType", 0)),
-    keepIndexName(getParam<string>("keepIndexName", "."))
+    showType(getParam<int>("showType", 0))
 {
     mapCloudPub = n.advertise<sensor_msgs::PointCloud2>("mapCloud", 2, true);
     staticCloudPub = n.advertise<sensor_msgs::PointCloud2>("staticCloud", 2, true);
@@ -99,12 +98,13 @@ mapCheck::mapCheck(ros::NodeHandle& n):
     int x, y;
     double temp;
     vector<double> test;
-    ifstream in(loadTrajName);  // loadTrajName == icpFileName
+    ifstream in(loadTrajName);
     if (!in) {
         cout << "Cannot open file.\n";
     }
     for (y = 0; y < 9999999; y++) {
         test.clear();
+        if(in.eof()) break;
     for (x = 0; x < 16; x++) {
       in >> temp;
       test.push_back(temp);
@@ -113,31 +113,18 @@ mapCheck::mapCheck(ros::NodeHandle& n):
     }
     in.close();
 
-    // read all the effective index from list in the txt
-    int l;
-    ifstream in_(keepIndexName);
-    if (!in_) {
-        cout << "Cannot open file.\n";
-    }
-    while(!in_.eof())
-    {
-        in_>>l;
-        indexVector.push_back(l);
-    }
-
     // read initial transformation
     mapPath.header.frame_id = "global";
     mapPath.header.stamp = ros::Time::now();
-    for (y = 0; y < indexVector.size(); y++)
+    for (y = 0; y < initPoses.size(); y++)
     {
-        int index =indexVector.at(y);
 
         geometry_msgs::PoseStamped pose;
         pose.header.frame_id = mapPath.header.frame_id;
         pose.header.stamp = mapPath.header.stamp;
-        pose.pose.position.x = initPoses[index][3];
-        pose.pose.position.y = initPoses[index][7];
-        pose.pose.position.z = initPoses[index][11];
+        pose.pose.position.x = initPoses[y][3];
+        pose.pose.position.y = initPoses[y][7];
+        pose.pose.position.z = initPoses[y][11];
         pose.pose.orientation = tf::createQuaternionMsgFromYaw(0);  // always 0;
 
         mapPath.poses.push_back(pose);
@@ -145,22 +132,26 @@ mapCheck::mapCheck(ros::NodeHandle& n):
 
     // transfer the path to thecloud
     pathCloud = mapCloud.createSimilarEmpty();
-    for(int p = 0; p< indexVector.size(); p++)
+    for(int p = 0; p< initPoses.size(); p++)
     {
-        int pindex =indexVector.at(p);
-        pathCloud.features(0, p) = initPoses[pindex][3];
-        pathCloud.features(1, p) = initPoses[pindex][7];
-        pathCloud.features(2, p) = initPoses[pindex][11];
+        pathCloud.features(0, p) = initPoses[p][3];
+        pathCloud.features(1, p) = initPoses[p][7];
+        pathCloud.features(2, p) = initPoses[p][11];
     }
-    pathCloud.conservativeResize(indexVector.size());
+    pathCloud.conservativeResize(initPoses.size());
 
     // process
     this->process();
 
     staticCloudPub.publish(PointMatcher_ros::pointMatcherCloudToRosMsg<float>(staticCloud, "global", ros::Time(0)));
-    mapCloudPub.publish(PointMatcher_ros::pointMatcherCloudToRosMsg<float>(mapCloud, "global", ros::Time(0)));
     mapPathPub.publish(mapPath);
     pathCloudPub.publish(PointMatcher_ros::pointMatcherCloudToRosMsg<float>(pathCloud, "global", ros::Time(0)));
+
+    if(ros::ok())
+    {
+        mapCloudPub.publish(PointMatcher_ros::pointMatcherCloudToRosMsg<float>(mapCloud, "global", ros::Time(0)));
+        ros::Duration(10).sleep();
+    }
 }
 
 void mapCheck::process()
