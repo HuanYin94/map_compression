@@ -1,14 +1,17 @@
 # 3D LiDAR Map Compression for Efficient Localization on Resource Constrained Vehicles 
 
 ## Welcome
-Code of a manuscript, submitted to IEEE Transactions on Intelligent Transportation Systems, under 2nd review.
+Code of a manuscript, submitted to IEEE Transactions on Intelligent Transportation Systems. [video](https://youtu.be/sdETOor2Jck)
 
-If you need the manuscript or have some questions on this project, please contact [Huan Yin](https://yinhuan.site/) `zjuyinhuan@gmail.com` 
+If have some questions on this project, please contact [Huan Yin](https://yinhuan.site/) `zjuyinhuan@gmail.com` 
 
-## Image
-![image](https://github.com/ZJUYH/map_compression/blob/master/pics/system.png)
+## System
+![image](https://github.com/ZJUYH/map_compression/blob/master/images/system.png)
 
 ## Results
+![image](https://github.com/ZJUYH/map_compression/blob/master/images/yq_origin.png)
+![image](https://github.com/ZJUYH/map_compression/blob/master/images/yq_b4000_ILP_part.png)
+![image](https://github.com/ZJUYH/map_compression/blob/master/images/yq_b4000_learn_part.png)
 
 ## Prepare to build
 
@@ -39,7 +42,7 @@ train & test, learning part, copy from GitHub, thanks to [ranger](https://github
 * `src`  
 .cpp files using ros api & libpointmatcher
 
-* `pics`  
+* `images`  
 some pictures of results long time ago
 
 ## Files in each folder for map compression

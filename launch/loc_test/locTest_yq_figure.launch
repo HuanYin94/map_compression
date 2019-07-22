@@ -1,0 +1,36 @@
+<launch>
+
+	<node pkg="rviz" type="rviz" name="rviz" args="-d $(find map_compression)/cfg/locTest_yq.rviz" output="screen"/>	
+
+  	<node pkg="map_compression" type="locTest" name="locTest" output="screen">
+	
+	<!--KITTI or YQ # add Chery.vtk-->
+	<param name="isChery" value="false" />	
+	<param name="isKITTI" value="false" />	
+	
+
+	<!--YQ-->
+	<!--Not close to the beginning and end of the cutted map-->
+	<!--Multi-session test, in Day three-->
+
+
+	<!--param name="wholeMapName" value="/home/yh/mapModel/2019/01.08/locTest/random/random_b500_1_locTest.ply"/--> 
+	<param name="wholeMapName" value=""/> 
+
+	<param name="velodyneDirName" value="/home/yinhuan/Data/0901/"/>
+	<param name="icpFileName" value="/home/yinhuan/Data/mapModel/locTest/yq_loc_pose_0901.txt"/>
+
+	<param name="startIndex" value="7500"/>
+	<param name="endIndex" value="9900"/>
+	
+	<param name="inputFilterYaml" value="$(find map_compression)/cfg/loc_laser_filters_yq.yaml"/>
+	<param name="mapFilterYaml" value="$(find map_compression)/cfg/loc_map_filters_yq.yaml"/>
+	<param name="icpYaml" value="$(find map_compression)/cfg/loc_icp_yq.yaml"/>
+	
+	<param name="savePoseName" value="/home/yh/no.txt"/> 
+	<param name="saveTimeName" value="/home/yh/no.txt"/> 
+	<param name="saveIterName" value="/home/yh/no.txt"/> 
+
+
+  </node>
+</launch>
