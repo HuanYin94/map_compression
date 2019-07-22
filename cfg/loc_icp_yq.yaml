@@ -1,0 +1,35 @@
+matcher:
+  KDTreeMatcher:
+    knn: 5
+    maxDist: 1.0
+    epsilon: 0
+
+outlierFilters:
+#  - TrimmedDistOutlierFilter:
+#     ratio: 0.8
+  - MaxDistOutlierFilter:
+     maxDist: 0.3
+  - SurfaceNormalOutlierFilter:
+     maxAngle: 0.78
+
+errorMinimizer:
+  PointToPlaneErrorMinimizer
+
+transformationCheckers:
+  - DifferentialTransformationChecker:
+      minDiffRotErr: 0.001
+      minDiffTransErr: 0.01
+      smoothLength: 2
+  - CounterTransformationChecker:
+      maxIterationCount: 20
+  - BoundTransformationChecker:
+      maxRotationNorm: 1.0
+      maxTranslationNorm: 10.00
+
+inspector:
+#  VTKFileInspector
+  NullInspector
+
+logger:
+#  FileLogger
+  NullLogger

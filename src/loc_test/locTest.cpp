@@ -240,7 +240,8 @@ void locTest::process(int cnt)
     double t1 = ros::Time::now().toSec();
 
     this->deltaTime = t1-t0;
-    this->iterCount = icp.maxIteration;
+//    this->iterCount = icp.maxIteration;
+    this->iterCount = 0;
 
     cout<<"ICP...   "<<deltaTime<<endl;
 

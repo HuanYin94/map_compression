@@ -21,10 +21,10 @@ transformationCheckers:
       minDiffTransErr: 0.01
       smoothLength: 2
   - CounterTransformationChecker:
-      maxIterationCount: 40
+      maxIterationCount: 20
   - BoundTransformationChecker:
-      maxRotationNorm: 0.78
-      maxTranslationNorm: 30.00
+      maxRotationNorm: 1.0
+      maxTranslationNorm: 10.00
 
 inspector:
 #  VTKFileInspector
