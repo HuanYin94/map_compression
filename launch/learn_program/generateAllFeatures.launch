@@ -1,10 +1,16 @@
 <launch>
 
-  <node pkg="map_compression" type="generateAllFeatures" name="generateAllFeatures" output="screen">
+	<arg name="loadTrajName"/> 
+	<arg name="loadMapName"/> 
+	<arg name="saveCloudName"/> 
+	<arg name="saveFeaturesName"/> 
+
+  <node pkg="map_compression" type="generateAllFeatures" name="generateAllFeatures" output="screen" required="true">
 	
-	<!--Do not save the featured map, temp-->
-
-
+	<param name="loadTrajName" value="$(arg loadTrajName)"/>
+	<param name="loadMapName" value="$(arg loadMapName)"/>
+	<param name="saveCloudName" value="$(arg saveCloudName)"/>
+	<param name="saveFeaturesName" value="$(arg saveFeaturesName)"/>
 
 	<!--param name="loadTrajName" value="/home/yh/mapModel/2019/07.12/keep_0301.txt"/>
 
@@ -14,11 +20,11 @@
 
 
 
-	<param name="loadTrajName" value="/home/yh/mapModel/2019/07.11/keep_kitti.txt"/>
+	<!--param name="loadTrajName" value="/home/yh/mapModel/2019/07.11/keep_kitti.txt"/>
 
 	<param name="loadMapName" value="/home/yh/mapModel/2019/07.11/learn/train_kitti_b1000.ply"/>
 	<param name="saveCloudName" value="/home/yh/mapModel/2019/07.11/learn/train_kitti_b1000_features.vtk"/>
-	<param name="saveFeaturesName" value="/home/yh/mapModel/2019/07.11/learn/txt/train_kitti_b1000_label.txt"/>
+	<param name="saveFeaturesName" value="/home/yh/mapModel/2019/07.11/learn/txt/train_kitti_b1000_label.txt"/-->
 
 
 

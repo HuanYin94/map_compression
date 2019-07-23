@@ -259,14 +259,14 @@ void locTest::process(int cnt)
     DP velodyneCloud_ = transformation->compute(velodyneCloud, Ttemp);
 
     PM::Matches matches_velo(
-        Matches::Dists(1, velodyneCloud_.features.cols()),
-        Matches::Ids(1, velodyneCloud_.features.cols())
+        Matches::Dists(5, velodyneCloud_.features.cols()),
+        Matches::Ids(5, velodyneCloud_.features.cols())
     );
     NNSMap->knn(velodyneCloud_.features, matches_velo.ids, matches_velo.dists, 1, 0);
 
     for(int p=0; p<velodyneCloud_.features.cols(); p++)
     {
-        if(sqrt(matches_velo.dists(0,p)) < 0.5)
+        if(sqrt(matches_velo.dists(0,p)) < 0.3)
             velodyneCloud.descriptors(rowLinemaMatched, p) = 1;
     }
 

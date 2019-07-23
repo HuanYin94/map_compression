@@ -4,12 +4,15 @@
 
 	<param name="mapPostFilters" value="$(find map_compression)/cfg/map_filters.yaml"/>
 	
-	<param name="loadMapName" value="/home/yh/mapModel/2019/07.12/wholeMap_yq_origin.ply"/>
-    <param name="saveMapName" value="/home/yh/mapModel/2019/07.12/wholeMap_yq.ply"/>	
+	<!--param name="loadMapName" value="/home/yh/mapModel/2019/07.22/wholeMap_yq_origin.ply"/>
+    <param name="saveMapName" value="/home/yh/mapModel/2019/07.22/wholeMap_yq.ply"/-->	
 
 
-	<!--param name="loadMapName" value="/home/yh/mapModel/2019/07.11/wholeMap_kitti_10_origin.ply"/>
-	<param name="saveMapName" value="/home/yh/mapModel/2019/07.11/wholeMap_kitti_10.ply"/-->
+	<!--param name="loadMapName" value="/home/yh/mapModel/2019/07.21/wholeMap_kitti_origin.ply"/>
+	<param name="saveMapName" value="/home/yh/mapModel/2019/07.21/wholeMap_kitti.ply"/-->
+
+	<param name="loadMapName" value="/home/yh/mapModel/2019/07.23/wholeMap_park_origin.ply"/>
+	<param name="saveMapName" value="/home/yh/mapModel/2019/07.23/wholeMap_park.ply"/>
 	
 
 

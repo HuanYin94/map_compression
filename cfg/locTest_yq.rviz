@@ -62,7 +62,7 @@ Visualization Manager:
       Position Transformer: XYZ
       Queue Size: 10
       Selectable: true
-      Size (Pixels): 2
+      Size (Pixels): 3
       Size (m): 0.3
       Style: Points
       Topic: /map_cloud
@@ -92,7 +92,7 @@ Visualization Manager:
       Position Transformer: XYZ
       Queue Size: 10
       Selectable: true
-      Size (Pixels): 4
+      Size (Pixels): 5
       Size (m): 0.5
       Style: Points
       Topic: /velodyne_cloud
@@ -124,22 +124,22 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 191.468
+      Distance: 0.122404
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.06
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -37.7576
-        Y: 66.2063
-        Z: 49.6271
+        X: -31.0886
+        Y: -79.5649
+        Z: 43.3655
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 1.5698
+      Pitch: 1.5448
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 4.60272
+      Yaw: 1.57954
     Saved: ~
 Window Geometry:
   Displays:
@@ -157,5 +157,5 @@ Window Geometry:
   Views:
     collapsed: true
   Width: 1879
-  X: 41
-  Y: 24
+  X: 31
+  Y: -14

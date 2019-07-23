@@ -8,8 +8,8 @@ If have some questions on this project, please contact [Huan Yin](https://yinhua
 ## System
 <img src="https://github.com/ZJUYH/map_compression/blob/master/images/system.png" width= 1000>
 
-## Results
-<img src="https://github.com/ZJUYH/map_compression/blob/master/images/yq_origin.png" width= 300> <img src="https://github.com/ZJUYH/map_compression/blob/master/images/yq_b4000_ILP_part.png" width= 300> <img src="https://github.com/ZJUYH/map_compression/blob/master/images/yq_b4000_learns_part.png" width= 300>
+## Examples
+<img src="https://github.com/ZJUYH/map_compression/blob/master/images/yq_origin.png" width= 300> <img src="https://github.com/ZJUYH/map_compression/blob/master/images/yq_b4000_ILP_part.png" width= 300> <img src="https://github.com/ZJUYH/map_compression/blob/master/images/yq_b4000_learn_part.png" width= 300>
 
 ## Prepare to build
 
