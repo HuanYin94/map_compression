@@ -38,7 +38,7 @@
 
 % icp0301_new = poseSparsification_yq( '/home/yh/mapModel/2019/07.11/keep_0901.txt', '/home/yh/mapModel/2019/07.11/index_0901.txt', icp0901, 0.2);
 
-% park_new = poseSparsification_yq( '/home/yh/mapModel/2019/07.11/keep_park.txt', '/home/yh/mapModel/2019/07.11/index_park.txt', parkpose, 0.2);
+park_new = poseSparsification_yq( '/home/yh/mapModel/2019/07.23/keep_park.txt', '/home/yh/mapModel/2019/07.23/index_park.txt', parkpose, 0.2);
 
 % kitti_new = poseSparsification_kitti( '/home/yh/mapModel/2019/07.11/keep_kitti.txt', '/home/yh/mapModel/2019/07.11/index_kitti.txt', kitti10pose, 1.0);
 

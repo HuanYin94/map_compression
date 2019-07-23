@@ -6,15 +6,15 @@
 	<param name="isChery" value="false" />
 	<param name="isKITTI" value="false"/>
     
-	<param name="loadMapName" value="/home/yh/mapModel/2019/07.12/wholeMap_yq.ply"/>
-	<param name="loadTrajName" value="/home/yh/mapModel/2019/07.12/keep_0301.txt"/>
+	<param name="loadMapName" value="/home/yh/mapModel/2019/07.22/wholeMap_yq.ply"/>
+	<param name="loadTrajName" value="/home/yh/mapModel/2019/07.22/keep_0301.txt"/>
 	<param name="velodyneDirName" value="/media/yh/YH/its/yq_0301/"/>
-　　　 <param name="saveDirName" value="/home/yh/mapModel/2019/07.12/visMatrix/"/>
+　　　 <param name="saveDirName" value="/home/yh/mapModel/2019/07.22/visMatrix/"/>
 
-	<!--param name="loadMapName" value="/home/yh/mapModel/2019/07.11/wholeMap_kitti_10.ply"/>
-	<param name="loadTrajName" value="/home/yh/mapModel/2019/07.11/keep_kitti.txt"/>
+	<!--param name="loadMapName" value="/home/yh/mapModel/2019/07.21/wholeMap_kitti.ply"/>
+	<param name="loadTrajName" value="/home/yh/mapModel/2019/07.21/keep_kitti.txt"/>
 	<param name="velodyneDirName" value="/media/yh/YH/its/kitti_10/"/>
-　　　 <param name="saveDirName" value="/home/yh/mapModel/2019/07.11/visMatrix/"/-->
+　　　 <param name="saveDirName" value="/home/yh/mapModel/2019/07.21/visMatrix/"/-->
 
 	<!--param name="loadMapName" value="/home/yh/mapModel/2019/01.10/wholeMap_park.ply"/>
 	<param name="loadTrajName" value="/home/yh/mapModel/2019/01.10/park_pose.txt"/>
