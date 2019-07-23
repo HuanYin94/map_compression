@@ -8,7 +8,7 @@ outlierFilters:
 #  - TrimmedDistOutlierFilter:
 #     ratio: 0.8
   - MaxDistOutlierFilter:
-     maxDist: 0.3
+     maxDist: 0.5
   - SurfaceNormalOutlierFilter:
      maxAngle: 0.78
 

@@ -1,10 +1,10 @@
 % params
-totalNum = 2304096;
+totalNum = 6159264;
 bValue = 2000;
 lamda = 0.1;
 qFile = '/home/yinhuan/Data/mapModel/yq/weightVector.txt';
 visFilesDir = '/home/yinhuan/Data/mapModel/yq/visMatrix/';
-maxQ = 186;
+maxQ = 179;
 minQ = 1;
 
 splitLength_0 = 50;
