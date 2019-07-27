@@ -6,5 +6,5 @@
     keepDensities: 0
     keepEigenValues: 0
     keepEigenVectors: 0
-#- ObservationDirectionDataPointsFilter
-#- OrientNormalsDataPointsFilter 
+- ObservationDirectionDataPointsFilter
+- OrientNormalsDataPointsFilter 
