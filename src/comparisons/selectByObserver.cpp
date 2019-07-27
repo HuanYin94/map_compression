@@ -62,7 +62,7 @@ selectByObserver::selectByObserver(ros::NodeHandle& n):
 
     for(int i=0; i<mapCloud.features.cols(); i++)
     {
-        if(mapCloud.descriptors(rowLine_observeCnt, i) > observeThreshold)
+        if(mapCloud.descriptors(rowLine_observeCnt, i) >= observeThreshold)
         {
             saveCloud.setColFrom(cnt, mapCloud, i);
             cnt++;
