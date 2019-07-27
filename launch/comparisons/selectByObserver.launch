@@ -1,6 +1,10 @@
 <launch>
+	
+	<arg name="loadMapName"/> 
+	<arg name="observeThreshold"/> 
+	<arg name="saveMapName"/> 
 
-  	<node pkg="map_compression" type="selectByObserver" name="selectByObserver" output="screen" >
+  	<node pkg="map_compression" type="selectByObserver" name="selectByObserver" output="screen" required="true">
 
 	<!--param name="loadMapName" value="/home/yh/mapModel/2019/07.11/wholeMap_kitti_10_scored.ply"/>
 	<param name="isSave" value="true"/>
@@ -11,11 +15,11 @@
 
 
 
-	<param name="loadMapName" value="/home/yh/mapModel/2019/07.12/wholeMap_yq_scored.ply"/>
+	<param name="loadMapName" value="$(arg loadMapName)"/>
 	<param name="isSave" value="true"/>
-  	<param name="saveMapName" value="/home/yh/mapModel/2019/07.12/loc/loc_yq_b1000_observe.ply"/>
+	<param name="saveMapName" value="$(arg saveMapName)"/>
 
-	<param name="observeThreshold" value="79"/>
+	<param name="observeThreshold" value="$(arg observeThreshold)"/>
 
 
   </node>

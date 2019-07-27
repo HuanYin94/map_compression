@@ -1,16 +1,20 @@
 <launch>
 
-  	<node pkg="map_compression" type="selectBySaliency" name="selectBySaliency" output="screen" >
+	<arg name="loadMapName"/> 
+	<arg name="saliencyThreshold"/> 
+	<arg name="saveMapName"/>
+
+  	<node pkg="map_compression" type="selectBySaliency" name="selectBySaliency" output="screen" required="true">
 
 	<!--param name="loadMapName" value="/home/yh/mapModel/2019/07.11/loc/loc_kitti_saliency.ply"/>
 	<param name="isSave" value="true"/>
   	<param name="saveMapName" value="/home/yh/mapModel/2019/07.11/loc/loc_kitti_b1000_saliency.ply"/-->
 
-	<param name="loadMapName" value="/home/yh/mapModel/2019/07.12/compare/wholeMap_yq_saliency_loc.ply"/>
+	<param name="loadMapName" value="$(arg loadMapName)"/>
 	<param name="isSave" value="true"/>
-  	<param name="saveMapName" value="/home/yh/mapModel/2019/07.12/loc/loc_yq_b1000_saliency.ply"/>
+	<param name="saveMapName" value="$(arg saveMapName)"/>
 
-	<param name="saliencyThreshold" value="1.355"/>
+	<param name="saliencyThreshold" value="$(arg saliencyThreshold)"/>
 
   </node>
 </launch>
