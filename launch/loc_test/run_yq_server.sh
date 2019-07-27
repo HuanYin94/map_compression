@@ -5,8 +5,6 @@
 
 roslaunch map_compression locTest_yq_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/yq/loc_yq_b4000_ILP.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/yq_pose/pose_yq_b4000_ILP.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
 
-
-
 roslaunch map_compression locTest_yq_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/yq/loc_yq_b4000_learn.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/yq_pose/pose_yq_b4000_learn.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
 
 roslaunch map_compression locTest_yq_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/yq/loc_yq_b4000_voxel.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/yq_pose/pose_yq_b4000_voxel.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
@@ -106,22 +104,17 @@ roslaunch map_compression locTest_yq_server.launch wholeMapName:="/home/yinhuan/
 
 
 
+:<<BLOCK
 
 
 
 
 
-
-
-
-
-
+roslaunch map_compression locTest_yq_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/yq/loc_yq_b1000_voxel.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/yq_pose/pose_yq_b1000_voxel.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
 
 roslaunch map_compression locTest_yq_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/yq/loc_yq_b1000_ILP.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/yq_pose/pose_yq_b1000_ILP.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
 
 roslaunch map_compression locTest_yq_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/yq/loc_yq_b1000_learn.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/yq_pose/pose_yq_b1000_learn.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
-
-roslaunch map_compression locTest_yq_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/yq/loc_yq_b1000_voxel.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/yq_pose/pose_yq_b1000_voxel.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
 
 roslaunch map_compression locTest_yq_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/yq/loc_yq_b1000_cluster.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/yq_pose/pose_yq_b1000_cluster.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
 
@@ -142,7 +135,10 @@ roslaunch map_compression locTest_yq_server.launch wholeMapName:="/home/yinhuan/
 roslaunch map_compression locTest_yq_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/yq/loc_yq_b1000_random_5.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/yq_pose/pose_yq_b1000_random_5.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
 
 
+BLOCK
 
+
+BLOCK
 
 
 
