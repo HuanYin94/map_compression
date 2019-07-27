@@ -1,7 +1,6 @@
 # Re-generate surface normals in Learned or Random mapx
 - SurfaceNormalDataPointsFilter:
-    knn: 20
-    epsilon: 0
+    epsilon: 10
     keepNormals: 1
     keepDensities: 0
     keepEigenValues: 0

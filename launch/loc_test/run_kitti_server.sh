@@ -1,6 +1,6 @@
 
 
-
+:<<BLOCK
 
 roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b4000_ILP.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b4000_ILP.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
 
@@ -72,7 +72,6 @@ roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhu
 
 
 
-
 roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b2000_ILP.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b2000_ILP.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
 
 roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b2000_learn.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b2000_learn.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
@@ -105,9 +104,9 @@ roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhu
 
 
 
+BLOCK
 
 
-:<<BLOCK
 
 
 
@@ -128,6 +127,9 @@ roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhu
 
 
 
+roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b3000_ILP.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b3000_ILP.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
+
+
 
 
 roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b1000_random_1.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b1000_random_1.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
@@ -141,7 +143,7 @@ roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhu
 roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b1000_random_5.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b1000_random_5.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
 
 
-BLOCK
+
 
 
 
