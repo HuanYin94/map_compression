@@ -59,6 +59,7 @@ selectByObserver::selectByObserver(ros::NodeHandle& n):
     DP saveCloud = mapCloud.createSimilarEmpty();
     int cnt = 0;
     int rowLine_observeCnt = mapCloud.getDescriptorStartingRow("session");
+
     for(int i=0; i<mapCloud.features.cols(); i++)
     {
         if(mapCloud.descriptors(rowLine_observeCnt, i) > observeThreshold)
