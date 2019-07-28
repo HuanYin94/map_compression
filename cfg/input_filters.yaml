@@ -2,13 +2,13 @@
     startStep: 5
 
 # for YQ, remove TL
-#- BoundingBoxDataPointsFilter:
-#    xMin: -2.2
-#    xMax: 2.2
-#    yMin: -2.2
-#    yMax: 2.2
-#    zMin: -2.2
-#    zMax: 2.2
+- BoundingBoxDataPointsFilter:
+    xMin: -2.2
+    xMax: 2.2
+    yMin: -2.2
+    yMax: 2.2
+    zMin: -2.2
+    zMax: 2.2
 
 # for KITTI, remove the car itself
 #- BoundingBoxDataPointsFilter:
@@ -20,10 +20,10 @@
 #    zMax: -1.8
 
 # for Chery, remove sensors
-- BoundingBoxDataPointsFilter:
-    xMin: -1.5
-    xMax: 1.5
-    yMin: -1.5
-    yMax: 1.5
-    zMin: 1.5
-    zMax: -1.5
+#- BoundingBoxDataPointsFilter:
+#    xMin: -1.5
+#    xMax: 1.5
+#    yMin: -1.5
+#    yMax: 1.5
+#    zMin: 1.5
+#    zMax: -1.5
