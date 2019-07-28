@@ -7,18 +7,17 @@
 	
 	<!--KITTI or YQ-->
 	<param name="isChery" value="false" />
-	<param name="isKITTI" value="true" />
+	<param name="isKITTI" value="false" />
 
-	<!--param name="wholeMapName" value="/home/yh/mapModel/2019/07.22/wholeMap_yq.ply"/> 
+	<param name="wholeMapName" value="/home/yh/mapModel/2019/07.22/wholeMap_yq.ply"/> 
 	<param name="velodyneDirName" value="/media/yh/YH/its/yq_0301/"/>
-
 	<param name="icpFileName" value="/home/yh/mapModel/2019/07.22/keep_0301.txt"/>
-	<param name="saveVTKname" value="/home/yh/mapModel/2019/07.22/wholeMap_yq_scored.ply"/-->
+	<param name="saveVTKname" value="/home/yh/mapModel/2019/07.22/wholeMap_yq_scored.ply"/>
 
-	<param name="wholeMapName" value="/home/yh/mapModel/2019/07.21/wholeMap_kitti.ply"/> 
+	<!--param name="wholeMapName" value="/home/yh/mapModel/2019/07.21/wholeMap_kitti.ply"/> 
 	<param name="velodyneDirName" value="/media/yh/YH/its/kitti_10/"/>
 	<param name="icpFileName" value="/home/yh/mapModel/2019/07.21/keep_kitti.txt"/>
-	<param name="saveVTKname" value="/home/yh/mapModel/2019/07.21/wholeMap_kitti_scored.ply"/>
+	<param name="saveVTKname" value="/home/yh/mapModel/2019/07.21/wholeMap_kitti_scored.ply"/-->
 
 	<!--param name="wholeMapName" value="/home/yh/mapModel/2019/01.10/wholeMap_park.ply"/>
 	<param name="icpFileName" value="/home/yh/mapModel/2019/01.10/park_pose.txt"/>

@@ -13,7 +13,6 @@ roslaunch map_compression mapCutterTraj_yq.launch loadMapName:="/home/yh/mapMode
 roslaunch map_compression mapCutterTraj_yq.launch loadMapName:="/home/yh/mapModel/2019/07.22/program/wholeMap_yq_b3000_compressed.ply" saveTestName:="/home/yh/mapModel/2019/07.22/loc/loc_yq_b3000_ILP.ply"
 roslaunch map_compression mapCutterTraj_yq.launch loadMapName:="/home/yh/mapModel/2019/07.22/program/wholeMap_yq_b4000_compressed.ply" saveTestName:="/home/yh/mapModel/2019/07.22/loc/loc_yq_b4000_ILP.ply"
 
-BLOCK
 
 
 
@@ -60,5 +59,9 @@ roslaunch map_compression mapCutterTraj_yq.launch loadMapName:="/home/yh/mapMode
 roslaunch map_compression mapCutterTraj_yq.launch loadMapName:="/home/yh/mapModel/2019/07.22/loc/loc_yq_b4000_random_4.ply" saveTestName:="/home/yh/mapModel/2019/07.22/loc/loc_yq_b4000_random_4.ply"
 roslaunch map_compression mapCutterTraj_yq.launch loadMapName:="/home/yh/mapModel/2019/07.22/loc/loc_yq_b4000_random_5.ply" saveTestName:="/home/yh/mapModel/2019/07.22/loc/loc_yq_b4000_random_5.ply"
 
+BLOCK
+
+
+roslaunch map_compression mapCutterTraj_yq.launch loadMapName:="/home/yh/mapModel/2019/07.22/wholeMap_yq.ply" saveTestName:="/home/yh/mapModel/2019/07.22/loc/loc_yq_all.ply"
 
 

@@ -1,0 +1,1 @@
+roslaunch map_compression mapCutterTraj_kitti.launch loadMapName:="/home/yh/mapModel/2019/07.21/07.27/test_kitti_b1000_predict_compressed.ply" saveTestName:="/home/yh/mapModel/2019/07.21/07.27/loc_kitti_b1000_learn.ply"

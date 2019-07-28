@@ -3,7 +3,7 @@
   <node pkg="map_compression" type="scanRegister" name="scanRegister" output="screen">
 	
 	<!--KITTI or YQ & actually SLAM in YQ, no registration from gt & add Chery-->
-	<param name="isChery" value="true" />	
+	<param name="isChery" value="false" />	
 	<param name="isKITTI" value="false" />	
 
     <param name="inputFilterName" value="$(find map_compression)/cfg/input_filters.yaml"/>
@@ -12,9 +12,9 @@
 
 	<!--There are dynamic objects in YQ dataset-->
 
-	<!--param name="icpFileName" value="/home/yh/mapModel/2019/07.22/keep_0301.txt"/> 
+	<param name="icpFileName" value="/home/yh/mapModel/2019/07.22/keep_0301.txt"/> 
 	<param name="velodyneDirName" value="/media/yh/YH/its/yq_0301/"/>
-	<param name="saveVTKname" value="/home/yh/mapModel/2019/07.22/wholeMap_yq_origin.ply"/-->
+	<param name="saveVTKname" value="/home/yh/mapModel/2019/07.22/wholeMap_yq_origin.ply"/>
 
 
 
@@ -26,9 +26,13 @@
 
 
 
-	<param name="icpFileName" value="/home/yh/mapModel/2019/07.23/keep_park.txt"/> 
+	<!--param name="icpFileName" value="/home/yh/mapModel/2019/07.23/keep_park.txt"/> 
 	<param name="velodyneDirName" value="/media/yh/YH/its/park/"/>
-	<param name="saveVTKname" value="/home/yh/mapModel/2019/07.23/wholeMap_park_origin.ply"/>
+	<param name="saveVTKname" value="/home/yh/mapModel/2019/07.23/wholeMap_park_origin.ply"/-->
+
+	<!--param name="icpFileName" value="/home/yh/mapModel/2019/07.27/keep_kitti.txt"/> 
+	<param name="velodyneDirName" value="/media/yh/YH/its/park/"/>
+	<param name="saveVTKname" value="/home/yh/mapModel/2019/07.27/wholeMap_park_origin.ply"/-->
 
 
 

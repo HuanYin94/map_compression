@@ -147,12 +147,12 @@ mapCheck::mapCheck(ros::NodeHandle& n):
 //    mapPathPub.publish(mapPath);
 //    pathCloudPub.publish(PointMatcher_ros::pointMatcherCloudToRosMsg<float>(pathCloud, "global", ros::Time(0)));
 
-//    if(ros::ok())
-//    {
+    if(ros::ok())
+    {
         mapCloudPub.publish(PointMatcher_ros::pointMatcherCloudToRosMsg<float>(mapCloud, "global", ros::Time(0)));
         staticCloudPub.publish(PointMatcher_ros::pointMatcherCloudToRosMsg<float>(staticCloud, "global", ros::Time(0)));
-//        ros::Duration(10).sleep();
-//    }
+        ros::Duration(10).sleep();
+    }
 }
 
 void mapCheck::process()

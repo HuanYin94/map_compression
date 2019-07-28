@@ -6,11 +6,11 @@
 	<param name="isChery" value="false" />	
 	<param name="isKITTI" value="false" />	
 
-	<param name="loadScanDir" value="/media/yh/YH/DataSet/YQ21/2017_03_09/2017_03_09_drive_0001_sync/velodyne_points/data/"/>
-	<param name="saveScanDir" value="/media/yh/YH/its/yq_0901/"/>
+	<!--param name="loadScanDir" value="/media/yh/YH/DataSet/YQ21/2017_03_09/2017_03_09_drive_0001_sync/velodyne_points/data/"/>
+	<param name="saveScanDir" value="/media/yh/YH/its/yq_0901/"/-->
 	
-	<!--param name="loadScanDir" value="/media/yh/YH/DataSet/kitti_benchmark_velodyne/dataset/sequences/10/velodyne/"/>
-	<param name="saveScanDir" value="/media/yh/YH/its/kitti_10/"/-->
+	<param name="loadScanDir" value="/media/yh/YH/DataSet/kitti_benchmark_velodyne/dataset/sequences/07/velodyne/"/>
+	<param name="saveScanDir" value="/media/yh/YH/its/kitti_07/"/>
 
 	<!--param name="loadScanDir" value="/media/yh/YH/DataSet/chery/scan/"/>
 	<param name="saveScanDir" value="/media/yh/YH/its/park/"/-->
