@@ -1,10 +1,10 @@
 % params
-totalNum = 5909536;
+totalNum = 2585222;
 bValue = 4000;
 lamda = 0.1;
 qFile = '/home/yinhuan/Data/mapModel/kitti_10/weightVector.txt';
 visFilesDir = '/home/yinhuan/Data/mapModel/kitti_10/visMatrix/';
-maxQ = 68;
+maxQ = 67;
 minQ = 1;
 
 splitLength_0 = 50;
