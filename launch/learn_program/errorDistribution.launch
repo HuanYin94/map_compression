@@ -11,8 +11,8 @@
 	<param name="saveDisName" value="/home/yh/mapModel/2019/07.11/learn/learned/predict_kitti_b4000_disError.txt"/-->
 
 
-	<param name="loadMapName" value="/home/yh/mapModel/2019/07.22/learn/test_yq_b3000_predict.ply"/>
-	<param name="saveDisName" value="/home/yh/mapModel/2019/07.22/learn/dis/predict_yq_b3000_disError.txt"/>
+	<param name="loadMapName" value="/home/yh/mapModel/2019/07.22/learn/test_yq_b1000_predict_from_b4000.ply"/>
+	<param name="saveDisName" value="/home/yh/mapModel/2019/07.22/learn/dis/predict_yq_b1000_disError_from_b4000.txt"/>
 
   </node>
 </launch>

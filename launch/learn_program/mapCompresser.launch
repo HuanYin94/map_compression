@@ -4,15 +4,20 @@
 	
 	<!--get the compressed map by the descwriptor name directly-->
 	
-	<param name="loadMapName" value="/home/yh/mapModel/2019/07.22/07.27/test_yq_b4000_predict.ply"/> 
+	<param name="loadMapName" value="/home/yh/mapModel/2019/07.22/learn/test_yq_b1000_predict_from_b4000.ply"/> 
 	　<param name="desName" value="salient_predicted"/> 
-	<param name="saveMapName" value="/home/yh/mapModel/2019/07.22/07.27/test_yq_b4000_predict_compressed.ply"/>
+	<param name="saveMapName" value="/home/yh/mapModel/2019/07.22/learn/test_yq_b1000_predict_from_b4000_compressed.ply"/>
 
 
-	<!--param name="loadMapName" value="/home/yh/mapModel/2019/07.21/07.27/test_kitti_b1000_predict.ply"/> 
-	<param name="desName" value="salient_predicted"/> 
-	<param name="saveMapName" value="/home/yh/mapModel/2019/07.21/07.27/test_kitti_b1000_predict_compressed.ply"/-->
+	<!--param name="loadMapName" value="/home/yh/mapModel/2019/07.21/program/OLD_LAMDA/wholeMap_kitti_b4000.ply"/> 
+	<param name="desName" value="salient"/> 
+	<param name="saveMapName" value="/home/yh/mapModel/2019/07.21/program/OLD_LAMDA/wholeMap_kitti_b4000_compressed.ply"/-->
 	
+	
+	<!--param name="loadMapName" value="/home/yh/mapModel/2019/07.23/learn/wholeMap_park_02.ply"/> 
+	　<param name="desName" value="salient_predicted"/> 
+	<param name="saveMapName" value="/home/yh/mapModel/2019/07.23/learn/wholeMap_park_02_compressed.ply"/-->	
+
 
   </node>
 </launch>

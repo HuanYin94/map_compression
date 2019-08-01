@@ -19,9 +19,9 @@
 	<param name="cutPoint3" value="632"/-->
 
 	<param name="cutPoint0" value="0"/>	
-	<param name="cutPoint1" value="350"/>	
-	<param name="cutPoint2" value="351"/>	
-	<param name="cutPoint3" value="632"/>
+	<param name="cutPoint1" value="629"/>	
+	<param name="cutPoint2" value="630"/>	
+	<param name="cutPoint3" value="1041"/>
 
 
 

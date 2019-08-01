@@ -4,7 +4,7 @@
 	
 	<!--KITTI or YQ & actually SLAM in YQ, no registration from gt & add Chery-->
 	<param name="isChery" value="false" />	
-	<param name="isKITTI" value="false" />	
+	<param name="isKITTI" value="true" />	
 
     <param name="inputFilterName" value="$(find map_compression)/cfg/input_filters.yaml"/>
 
@@ -12,16 +12,16 @@
 
 	<!--There are dynamic objects in YQ dataset-->
 
-	<param name="icpFileName" value="/home/yh/mapModel/2019/07.22/keep_0301.txt"/> 
+	<!--param name="icpFileName" value="/home/yh/mapModel/2019/07.22/keep_0301.txt"/> 
 	<param name="velodyneDirName" value="/media/yh/YH/its/yq_0301/"/>
-	<param name="saveVTKname" value="/home/yh/mapModel/2019/07.22/wholeMap_yq_origin.ply"/>
+	<param name="saveVTKname" value="/home/yh/mapModel/2019/07.22/wholeMap_yq_origin.ply"/-->
 
 
 
 
-	<!--param name="icpFileName" value="/home/yh/mapModel/2019/07.21/keep_kitti.txt"/> 
+	<param name="icpFileName" value="/home/yh/mapModel/2019/07.21/keep_kitti.txt"/> 
 	<param name="velodyneDirName" value="/media/yh/YH/its/kitti_10/"/> 
-	<param name="saveVTKname" value="/home/yh/mapModel/2019/07.21/wholeMap_kitti_origin.ply"/-->
+	<param name="saveVTKname" value="/home/yh/mapModel/2019/07.21/wholeMap_kitti_origin.ply"/>
 
 
 

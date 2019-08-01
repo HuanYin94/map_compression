@@ -10,13 +10,33 @@
     <!--param name="leafSize" value="1.02"/-->
     <!--param name="leafSize" value="0.83"/-->
 
-	<param name="loadMapName" value="/home/yh/mapModel/2019/07.21/wholeMap_kitti.ply"/>
-  	<param name="saveMapName" value="/home/yh/mapModel/2019/07.21/loc/loc_kitti_b4000_voxel.ply"/>
 
-    <param name="leafSize" value="1.05"/>
-    <!--param name="leafSize" value="1.24"/-->
-    <!--param name="leafSize" value="1.55"/-->
-    <!--param name="leafSize" value="2.4"/-->
+
+
+
+
+	<!--param name="loadMapName" value="/home/yh/mapModel/2019/07.21/wholeMap_kitti.ply"/>
+  	<param name="saveMapName" value="/home/yh/mapModel/2019/07.21/loc/loc_kitti_b4000_voxel.ply"/-->
+
+    <!--param name="leafSize" value="1.10"/-->
+    <!--param name="leafSize" value="1.63"/-->
+    <!--param name="leafSize" value="0.87"/-->
+    <!--param name="leafSize" value="0.73"/-->
+
+
+
+
+
+
+
+
+	<param name="loadMapName" value="/home/yh/mapModel/2019/07.23/wholeMap_park.ply"/>
+  	<param name="saveMapName" value="/home/yh/mapModel/2019/07.23/loc/loc_park_04_voxel.ply"/>
+
+    <param name="leafSize" value="1.04"/>
+    <!--param name="leafSize" value="1.2"/-->
+    <!--param name="leafSize" value="1.5"/-->
+    <!--param name="leafSize" value="2.1"/-->
 
   </node>
 </launch>
