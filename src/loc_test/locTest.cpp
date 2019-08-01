@@ -240,8 +240,8 @@ void locTest::process(int cnt)
     double t1 = ros::Time::now().toSec();
 
     this->deltaTime = t1-t0;
-//    this->iterCount = icp.maxIteration;
-    this->iterCount = 0;
+    this->iterCount = icp.maxIteration;
+//    this->iterCount = 0;
 
     cout<<"ICP...   "<<deltaTime<<endl;
 
@@ -252,6 +252,7 @@ void locTest::process(int cnt)
     // color for matching results, optional
     // need transformation, label the matched points
 
+    /*
     velodyneCloud.addDescriptor("matched", PM::Matrix::Zero(1, velodyneCloud.features.cols()));
     int rowLinemaMatched = velodyneCloud.getDescriptorStartingRow("matched");
 
@@ -269,6 +270,7 @@ void locTest::process(int cnt)
         if(sqrt(matches_velo.dists(0,p)) < 0.3)
             velodyneCloud.descriptors(rowLinemaMatched, p) = 1;
     }
+    */
 
 }
 

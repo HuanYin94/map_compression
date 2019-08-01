@@ -1,14 +1,12 @@
 matcher:
   KDTreeMatcher:
-    knn: 5
+    knn: 10
     maxDist: 2.0
     epsilon: 0
 
 outlierFilters:
-#  - TrimmedDistOutlierFilter:
-#     ratio: 0.8
   - MaxDistOutlierFilter:
-     maxDist: 1.0
+     maxDist: 1.5
   - SurfaceNormalOutlierFilter:
      maxAngle: 0.78
 

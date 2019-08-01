@@ -25,9 +25,9 @@
 	<param name="saveCloudName" value="/home/yh/mapModel/2019/07.21/wholeMap_kitti_tran_test.ply"/>
 	
 	<param name="cutPoint0" value="0"/>	
-	<param name="cutPoint1" value="211"/>	
-	<param name="cutPoint2" value="212"/>	
-	<param name="cutPoint3" value="632"/>
+	<param name="cutPoint1" value="599"/>	
+	<param name="cutPoint2" value="600"/>	
+	<param name="cutPoint3" value="1041"/>
 
 
 
