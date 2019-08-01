@@ -10,8 +10,8 @@
   	<node pkg="map_compression" type="locTest" name="locTest" output="screen" required="true">
 	
 	<!--KITTI or YQ # add Chery.vtk-->
-	<param name="isChery" value="false" />	
-	<param name="isKITTI" value="true" />	
+	<param name="isChery" value="true" />	
+	<param name="isKITTI" value="false" />	
 	
 
 	<!--YQ-->
@@ -22,15 +22,15 @@
 	<!--param name="wholeMapName" value="/home/yh/mapModel/2019/01.08/locTest/random/random_b500_1_locTest.ply"/--> 
 	<param name="wholeMapName" value="$(arg wholeMapName)"/> 
 
-	<param name="velodyneDirName" value="/home/yinhuan/Data/10/velodyne/"/>
-	<param name="icpFileName" value="/home/yinhuan/Data/mapModel/locTest/kitti_loc_pose.txt"/>
+	<param name="velodyneDirName" value="/home/yinhuan/Data/chery/"/>
+	<param name="icpFileName" value="/home/yinhuan/Data/mapModel/locTest/park_pose.txt"/>
 
-	<param name="startIndex" value="900"/>
-	<param name="endIndex" value="1200"/>
+	<param name="startIndex" value="1"/>
+	<param name="endIndex" value="400"/>
 	
-	<param name="inputFilterYaml" value="$(find map_compression)/cfg/loc_laser_filters_kitti.yaml"/>
-	<param name="mapFilterYaml" value="$(find map_compression)/cfg/loc_map_filters_kitti.yaml"/>
-	<param name="icpYaml" value="$(find map_compression)/cfg/loc_icp_kitti.yaml"/>
+	<param name="inputFilterYaml" value="$(find map_compression)/cfg/loc_laser_filters_park.yaml"/>
+	<param name="mapFilterYaml" value="$(find map_compression)/cfg/loc_map_filters_park.yaml"/>
+	<param name="icpYaml" value="$(find map_compression)/cfg/loc_icp_park.yaml"/>
 	
 	<param name="savePoseName" value="$(arg savePoseName)"/> 
 	<param name="saveTimeName" value="$(arg saveTimeName)"/> 

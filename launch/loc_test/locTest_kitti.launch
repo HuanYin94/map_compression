@@ -26,7 +26,7 @@
 	<param name="icpFileName" value="/home/yh/mapModel/2019/07.11/kitti_loc_pose.txt"/>
 
 	<param name="startIndex" value="700"/>
-	<param name="endIndex" value="1100"/>
+	<param name="endIndex" value="11z00"/>
 	
 	<param name="inputFilterYaml" value="$(find map_compression)/cfg/loc_laser_filters.yaml"/>
 	<param name="mapFilterYaml" value="$(find map_compression)/cfg/loc_map_filters.yaml"/>
