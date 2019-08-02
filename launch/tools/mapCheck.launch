@@ -10,17 +10,17 @@
 	<param name="showType" value="1"/>
 
 
-	<!--param name="loadMapName" value="/home/yh/mapModel/2019/07.21/wholeMap_kitti.ply"/>
-	<param name="loadTrajName" value="/home/yh/mapModel/2019/07.21/keep_kitti.txt"/-->
+	<param name="loadMapName" value="/home/yh/mapModel/2019/07.21/wholeMap_kitti_tran_test.ply"/>
+	<param name="loadTrajName" value="/home/yh/mapModel/2019/07.21/keep_kitti.txt"/>
 
 	<!--param name="loadMapName" value="/home/yh/mapModel/2019/07.22/program/wholeMap_yq_b1000_compressed.ply"/>
 	<param name="loadTrajName" value="/home/yh/mapModel/2019/07.22/keep_0301.txt"/-->
 
-	<param name="loadMapName" value="/home/yh/mapModel/2019/07.23/wholeMap_park.ply"/>
-	<param name="loadTrajName" value="/home/yh/mapModel/2019/07.23/keep_park.txt"/>
+	<!--param name="loadMapName" value="/home/yh/mapModel/2019/07.23/wholeMap_park.ply"/>
+	<param name="loadTrajName" value="/home/yh/mapModel/2019/07.23/keep_park.txt"/-->
 
   </node>
 <!--node pkg="rviz" type="rviz" name="rviz" args="-d $(find map_compression)/cfg/mapCheck_park.rviz" output="screen"/-->
 <!--node pkg="rviz" type="rviz" name="rviz" args="-d $(find map_compression)/cfg/mapCheck_yq.rviz" output="screen"/-->
-<!--node pkg="rviz" type="rviz" name="rviz" args="-d $(find map_compression)/cfg/mapCheck_kitti10_part.rviz" output="screen"/-->
+<node pkg="rviz" type="rviz" name="rviz" args="-d $(find map_compression)/cfg/mapCheck_kitti10_part.rviz" output="screen"/>
 </launch>

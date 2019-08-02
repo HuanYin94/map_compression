@@ -9,12 +9,12 @@
   	<param name="saveMapName" value="/home/yh/mapModel/2019/07.21/loc/loc_kitti_b1000_cluster.ply"/-->
 
 	<param name="loadMapName" value="/home/yh/mapModel/2019/07.23/wholeMap_park.ply"/>
-  	<param name="saveMapName" value="/home/yh/mapModel/2019/07.23/loc/loc_park_04_cluster.ply"/>
+  	<param name="saveMapName" value="/home/yh/mapModel/2019/07.23/loc/loc_park_03_cluster.ply"/>
 
     <param name="disThreshold" value="0.15"/>
     <param name="minNum" value="10"/>
     <param name="maxNum" value="200"/>
-    <param name="expectedNum" value="60114"/>
+    <param name="expectedNum" value="45086"/>
 
   </node>
 </launch>
