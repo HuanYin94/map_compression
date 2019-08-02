@@ -1,6 +1,6 @@
 matcher:
   KDTreeMatcher:
-    knn: 3
+    knn: 10
     maxDist: 1.0
     epsilon: 0
 
@@ -8,9 +8,9 @@ outlierFilters:
 #  - TrimmedDistOutlierFilter:
 #     ratio: 0.8
   - MaxDistOutlierFilter:
-     maxDist: 0.25
+     maxDist: 0.5
   - SurfaceNormalOutlierFilter:
-     maxAngle: 0.52
+     maxAngle: 0.78
 
 errorMinimizer:
   PointToPlaneErrorMinimizer

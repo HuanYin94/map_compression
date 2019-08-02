@@ -1,7 +1,7 @@
 
 
-
 :<<BLOCK
+
 
 
 roslaunch map_compression locTest_park_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/park/loc_park_04_learn.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/park_pose/pose_park_04_learn.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
@@ -106,13 +106,14 @@ roslaunch map_compression locTest_park_server.launch wholeMapName:="/home/yinhua
 
 
 
-BLOCK
 
 
 
 
 
 
+
+roslaunch map_compression locTest_park_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/park/loc_park_01_voxel.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/park_pose/pose_park_01_voxel.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
 
 
 roslaunch map_compression locTest_park_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/park/loc_park_01_learn.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/park_pose/pose_park_01_learn.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
@@ -134,6 +135,23 @@ roslaunch map_compression locTest_park_server.launch wholeMapName:="/home/yinhua
 roslaunch map_compression locTest_park_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/park/loc_park_01_random_4.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/park_pose/pose_park_01_random_4.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
 
 roslaunch map_compression locTest_park_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/park/loc_park_01_random_5.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/park_pose/pose_park_01_random_5.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
+
+BLOCK
+
+
+
+
+
+
+
+
+
+
+roslaunch map_compression locTest_park_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/park/loc_park_03_cluster.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/park_pose/pose_park_03_cluster.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
+
+
+
+
 
 
 
