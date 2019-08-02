@@ -1,18 +1,18 @@
 <launch>
 
+	<arg name="loadMapName"/> 
+	<arg name="saveTestName"/> 
 
-  <node pkg="map_compression" type="mapCutterTraj" name="mapCutterTraj" output="screen">
-
-
+  <node pkg="map_compression" type="mapCutterTraj" name="mapCutterTraj" output="screen" required="true">
 	
 	<!--For Localization Test-->
 
-	<param name="loadMapName" value="/home/yh/mapModel/2019/07.12/loc/loc_yq_b1000_random_5.ply"/>
-	<param name="loadTrajName" value="/home/yh/mapModel/2019/07.12/keep_0301.txt"/>
+	<param name="loadMapName" value="$(arg loadMapName)"/>
+	<param name="loadTrajName" value="/home/yh/mapModel/2019/07.22/keep_0301.txt"/>
 	<!--param name="saveTrainName" value="/home/yh/mapModel/2019/07.12/learn/train_yq_b1000.ply"/-->
-	<param name="saveTrainName" value="/home/yh/mapModel/2019/07.12/loc/no.ply"/>
-	<param name="saveTestName" value="/home/yh/mapModel/2019/07.12/loc/loc_yq_b1000_random_5.ply"/>
-	<param name="saveCloudName" value="/home/yh/mapModel/2019/07.12/loc/no.ply"/>
+	<param name="saveTrainName" value="/home/yh/mapModel/2019/07.22/loc/no.ply"/>
+	<param name="saveTestName" value="$(arg saveTestName)"/>
+	<param name="saveCloudName" value="/home/yh/mapModel/2019/07.22/wholeMap_yq_tran_test.ply"/>
 	
 	<!--param name="cutPoint0" value="0"/>	
 	<param name="cutPoint1" value="1640"/>	

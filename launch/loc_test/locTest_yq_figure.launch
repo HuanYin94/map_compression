@@ -7,23 +7,22 @@
 	<!--KITTI or YQ # add Chery.vtk-->
 	<param name="isChery" value="false" />	
 	<param name="isKITTI" value="false" />	
+
+	<param name="wholeMapName" value="/home/yh/mapModel/2019/07.12/loc/loc_yq_b1000_learn.ply"/> 
+
+	<param name="velodyneDirName" value="/media/yh/YH1/DataSet/YQ21/2017_03_09/2017_03_09_drive_0001_sync/velodyne_points/data/"/>
+	<param name="icpFileName" value="/media/yh/YH1/its/yq_loc_pose_0901.txt"/>
+
+	<!--param name="startIndex" value="9250"/>
+	<param name="endIndex" value="9252"/-->
+
+	<!--param name="startIndex" value="8350"/>
+	<param name="endIndex" value="8352"/-->
+
+	<param name="startIndex" value="7550"/>
+	<param name="endIndex" value="7551"/>
 	
-
-	<!--YQ-->
-	<!--Not close to the beginning and end of the cutted map-->
-	<!--Multi-session test, in Day three-->
-
-
-	<!--param name="wholeMapName" value="/home/yh/mapModel/2019/01.08/locTest/random/random_b500_1_locTest.ply"/--> 
-	<param name="wholeMapName" value=""/> 
-
-	<param name="velodyneDirName" value="/home/yinhuan/Data/0901/"/>
-	<param name="icpFileName" value="/home/yinhuan/Data/mapModel/locTest/yq_loc_pose_0901.txt"/>
-
-	<param name="startIndex" value="7500"/>
-	<param name="endIndex" value="9900"/>
-	
-	<param name="inputFilterYaml" value="$(find map_compression)/cfg/loc_laser_filters_yq.yaml"/>
+	<param name="inputFilterYaml" value="$(find map_compression)/cfg/loc_laser_filters_learn.yaml"/>
 	<param name="mapFilterYaml" value="$(find map_compression)/cfg/loc_map_filters_yq.yaml"/>
 	<param name="icpYaml" value="$(find map_compression)/cfg/loc_icp_yq.yaml"/>
 	

@@ -240,8 +240,8 @@ void locTest::process(int cnt)
     double t1 = ros::Time::now().toSec();
 
     this->deltaTime = t1-t0;
-//    this->iterCount = icp.maxIteration;
-    this->iterCount = 0;
+    this->iterCount = icp.maxIteration;
+//    this->iterCount = 0;
 
     cout<<"ICP...   "<<deltaTime<<endl;
 
@@ -252,6 +252,7 @@ void locTest::process(int cnt)
     // color for matching results, optional
     // need transformation, label the matched points
 
+    /*
     velodyneCloud.addDescriptor("matched", PM::Matrix::Zero(1, velodyneCloud.features.cols()));
     int rowLinemaMatched = velodyneCloud.getDescriptorStartingRow("matched");
 
@@ -259,16 +260,17 @@ void locTest::process(int cnt)
     DP velodyneCloud_ = transformation->compute(velodyneCloud, Ttemp);
 
     PM::Matches matches_velo(
-        Matches::Dists(1, velodyneCloud_.features.cols()),
-        Matches::Ids(1, velodyneCloud_.features.cols())
+        Matches::Dists(5, velodyneCloud_.features.cols()),
+        Matches::Ids(5, velodyneCloud_.features.cols())
     );
     NNSMap->knn(velodyneCloud_.features, matches_velo.ids, matches_velo.dists, 1, 0);
 
     for(int p=0; p<velodyneCloud_.features.cols(); p++)
     {
-        if(sqrt(matches_velo.dists(0,p)) < 0.5)
+        if(sqrt(matches_velo.dists(0,p)) < 0.3)
             velodyneCloud.descriptors(rowLinemaMatched, p) = 1;
     }
+    */
 
 }
 

@@ -7,14 +7,17 @@
 
 	<!--Score_0 or Salient_1 or prediction_2? Do not forget-->
 	<param name="staticInt" value="0"/> 	
-	<param name="showType" value="0"/>
+	<param name="showType" value="1"/>
 
 
-	<param name="loadMapName" value="/home/yh/mapModel/2019/07.11/loc/loc_kitti_b1000_learn.ply"/>
-	<param name="loadTrajName" value="/home/yh/mapModel/2019/07.11/kitti_loc_pose.txt"/>
+	<param name="loadMapName" value="/home/yh/mapModel/2019/07.21/wholeMap_kitti_tran_test.ply"/>
+	<param name="loadTrajName" value="/home/yh/mapModel/2019/07.21/keep_kitti.txt"/>
 
-	<!--param name="loadMapName" value="/home/yh/mapModel/2019/07.12/wholeMap_yq.ply"/>
-	<param name="loadTrajName" value="/home/yh/mapModel/2019/07.12/keep_0301.txt"/-->
+	<!--param name="loadMapName" value="/home/yh/mapModel/2019/07.22/program/wholeMap_yq_b1000_compressed.ply"/>
+	<param name="loadTrajName" value="/home/yh/mapModel/2019/07.22/keep_0301.txt"/-->
+
+	<!--param name="loadMapName" value="/home/yh/mapModel/2019/07.23/wholeMap_park.ply"/>
+	<param name="loadTrajName" value="/home/yh/mapModel/2019/07.23/keep_park.txt"/-->
 
   </node>
 <!--node pkg="rviz" type="rviz" name="rviz" args="-d $(find map_compression)/cfg/mapCheck_park.rviz" output="screen"/-->

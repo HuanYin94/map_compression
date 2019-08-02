@@ -12,5 +12,10 @@
     xMax: 1.5
     yMin: -1.5
     yMax: 1.5
+<<<<<<< HEAD
     zMin: -1.5
     zMax: 1.5
+=======
+    zMin: 1.5
+    zMax: -1.5
+>>>>>>> f24fa2446e32960e73e94e73a70405ca32cf6a7d

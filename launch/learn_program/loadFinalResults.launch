@@ -2,14 +2,18 @@
 
   <node pkg="map_compression" type="loadFinalResults" name="loadFinalResults" output="screen">
 	
-	<param name="loadResultName" value="/home/yh/mapModel/2019/07.11/learn/learned/predict_kitti_b4000.txt"/>
-	<param name="loadMapName" value="/home/yh/mapModel/2019/07.11/learn/train_test/test_kitti_b4000.ply"/>
-	<param name="saveCloudName" value="/home/yh/mapModel/2019/07.11/learn/test_kitti_b4000_predict.ply"/>
+	<!--param name="loadResultName" value="/home/yh/mapModel/2019/07.21/learn/predict/predict_kitti_b1000.txt"/>
+	<param name="loadMapName" value="/home/yh/mapModel/2019/07.21/learn/test_kitti_b1000.ply"/>
+	<param name="saveCloudName" value="/home/yh/mapModel/2019/07.21/learn/test_kitti_b1000_predict.ply"/-->
 
 
-	<!--param name="loadResultName" value="/home/yh/mapModel/2019/07.12/learn/learned/predict_yq_b1000_from_b4000.txt"/>
-	<param name="loadMapName" value="/home/yh/mapModel/2019/07.12/learn/test_yq_b1000.ply"/>
-	<param name="saveCloudName" value="/home/yh/mapModel/2019/07.12/learn/test_yq_b1000_predict_from_b4000.ply"/-->
+	<param name="loadResultName" value="/home/yh/mapModel/2019/07.22/learn/predict/predict_yq_b1000_from_b4000.txt"/>
+	<param name="loadMapName" value="/home/yh/mapModel/2019/07.22/learn/test_yq_b1000.ply"/>   
+	<param name="saveCloudName" value="/home/yh/mapModel/2019/07.22/learn/test_yq_b1000_predict_from_b4000.ply"/>
+
+	<!--param name="loadResultName" value="/home/yh/mapModel/2019/07.23/learn/predict/predict_yq_04.txt"/>
+	<param name="loadMapName" value="/home/yh/mapModel/2019/07.23/wholeMap_park.ply"/>   
+	<param name="saveCloudName" value="/home/yh/mapModel/2019/07.23/learn/wholeMap_park_04.ply"/-->
 
 	
   </node>
