@@ -9,7 +9,7 @@ If have some questions on this project, please contact [Huan Yin](https://yinhua
 <img src="https://github.com/ZJUYH/map_compression/blob/master/images/system.png" width= 1000>
 
 ## Examples
-After compression by RF, selected points are colored in red on the origin map
+After compression by RF, selected points are colored in red on the origin map  
 <img src="https://github.com/ZJUYH/map_compression/blob/master/images/learn_local_2.png" width= 300> <img src="https://github.com/ZJUYH/map_compression/blob/master/images/learn_local_3.png" width= 300>  
 
 
