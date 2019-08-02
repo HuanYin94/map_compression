@@ -3,11 +3,11 @@
 %%  min cost of each iteration
 
 
-iter = [1;2;3;4];
-min_cost_2000 = [min_cost_0_2000; min_cost_1_2000; min_cost_2_2000; min_cost_3_2000];
-min_cost_3000 = [min_cost_0_3000; min_cost_1_3000; min_cost_2_3000; min_cost_3_3000];
-min_cost_1000 = [min_cost_0_1000; min_cost_1_1000; min_cost_2_1000; min_cost_3_1000];
-min_cost_4000 = [min_cost_0_4000; min_cost_1_4000; min_cost_2_4000; min_cost_3_4000];
+iter = [1;2;3;4;5];
+min_cost_2000 = [min_cost_0_2000; min_cost_1_2000; min_cost_2_2000; min_cost_3_2000; min_cost_4_2000];
+min_cost_3000 = [min_cost_0_3000; min_cost_1_3000; min_cost_2_3000; min_cost_3_3000; min_cost_4_3000];
+min_cost_1000 = [min_cost_0_1000; min_cost_1_1000; min_cost_2_1000; min_cost_3_1000; min_cost_4_1000];
+min_cost_4000 = [min_cost_0_4000; min_cost_1_4000; min_cost_2_4000; min_cost_3_4000; min_cost_4_4000];
 
 ff = figure;
 plot(iter, min_cost_4000, '--bs', 'MarkerSize', 10,  'MarkerFaceColor', 'm'); hold on;
@@ -21,9 +21,9 @@ title(l, 'Cost after Progm');
 xlabel('Iteration', 'FontWeight', 'bold', 'FontSize', 14);
 ylabel('Cost', 'FontWeight', 'bold', 'FontSize', 14);
 set(ff, 'Renderer', 'painters');
-set(gca,'Xtick', 1:1:4);
+set(gca,'Xtick', 1:1:5);
 set(gca,'FontSize',11);
-set(gca,'Xticklabel',{'Iter 1','Iter 2', 'Iter 3', 'Iter 4'})
+set(gca,'Xticklabel',{'Iter 1','Iter 2', 'Iter 3', 'Iter 4', 'Iter 5'})
 
 
 
@@ -37,11 +37,11 @@ set(gca,'Xticklabel',{'Iter 1','Iter 2', 'Iter 3', 'Iter 4'})
 
 
 
-iter = [1;2;3;4];
-totalNum_4000 = [totalNum_0_4000; totalNum_1_4000; totalNum_2_4000; totalNum_3_4000 ];
-totalNum_3000 = [totalNum_0_3000; totalNum_1_3000; totalNum_2_3000; totalNum_3_3000];
-totalNum_2000 = [totalNum_0_2000; totalNum_1_2000; totalNum_2_2000; totalNum_3_2000 ];
-totalNum_1000 = [totalNum_0_1000; totalNum_1_1000; totalNum_2_1000; totalNum_3_1000 ];
+iter = [1;2;3;4;5];
+totalNum_4000 = [totalNum_0_4000; totalNum_1_4000; totalNum_2_4000; totalNum_3_4000; totalNum_4_4000 ];
+totalNum_3000 = [totalNum_0_3000; totalNum_1_3000; totalNum_2_3000; totalNum_3_3000; totalNum_4_3000];
+totalNum_2000 = [totalNum_0_2000; totalNum_1_2000; totalNum_2_2000; totalNum_3_2000; totalNum_4_2000 ];
+totalNum_1000 = [totalNum_0_1000; totalNum_1_1000; totalNum_2_1000; totalNum_3_1000; totalNum_4_1000 ];
 
 
 % ff = figure;
@@ -60,7 +60,7 @@ totalNum_1000 = [totalNum_0_1000; totalNum_1_1000; totalNum_2_1000; totalNum_3_1
 % set(gca,'Xticklabel',{'Iter 1','Iter 2', 'Iter 3', 'Iter 4', 'Iter 5', 'Iter 6', 'Iter 7', 'Iter 8'});
 % set(gca,'FontSize',12);
 
-iter = [1;2;3;4];
+iter = [1;2;3;4;5];
 ratio_2000 = totalNum_2000 / totalNum;
 ratio_3000 = totalNum_3000 / totalNum;
 ratio_1000 = totalNum_1000 / totalNum;
@@ -78,8 +78,8 @@ title(l, 'Ratio after Progm');
 xlabel('Iteration', 'FontWeight', 'bold', 'FontSize', 14);
 ylabel('Compression Ratio', 'FontWeight', 'bold', 'FontSize', 14);
 set(ff, 'Renderer', 'painters');
-set(gca,'Xtick', 1:1:4);
-set(gca,'Xticklabel',{'Iter 1','Iter 2', 'Iter 3', 'Iter 4'});
+set(gca,'Xtick', 1:1:5);
+set(gca,'Xticklabel',{'Iter 1','Iter 2', 'Iter 3', 'Iter 4', 'Iter 5'});
 set(gca,'FontSize',11);
 
 %%  Total time cost

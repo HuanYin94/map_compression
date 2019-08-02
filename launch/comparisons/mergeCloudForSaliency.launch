@@ -2,17 +2,24 @@
 
   <node pkg="map_compression" type="mergeCloudForSaliency" name="mergeCloudForSaliency" output="screen">
 
-	<param name="loadMapName" value="/home/yinhuan/Data/mapModel/saliency/wholeMap_kitti.ply"/>
+	<!--param name="loadMapName" value="/home/yinhuan/Data/mapModel/saliency/wholeMap_kitti.ply"/>
 	<param name="loadTrajName" value="/home/yinhuan/Data/mapModel/saliency/keep_kitti.txt"/>
 	<param name="loadSaliencyDir" value="/home/yinhuan/Data/mapModel/saliency/split_saliency_kitti/"/>
-	<param name="splitPathLength" value="10"/>
-	<param name="saveMapName" value="/home/yinhuan/Data/mapModel/saliency/wholeMap_kitti_saliency.ply"/>
+	<param name="splitPathLength" value="20"/>
+	<param name="saveMapName" value="/home/yinhuan/Data/mapModel/saliency/wholeMap_kitti_saliency.ply"/-->
 
 	<!--param name="loadMapName" value="/home/yinhuan/Data/mapModel/saliency/wholeMap_yq.ply"/>
 	<param name="loadTrajName" value="/home/yinhuan/Data/mapModel/saliency/keep_0301.txt"/>
 	<param name="loadSaliencyDir" value="/home/yinhuan/Data/mapModel/saliency/split_saliency_yq/"/>
 	<param name="splitPathLength" value="50"/>
 	<param name="saveMapName" value="/home/yinhuan/Data/mapModel/saliency/wholeMap_yq_saliency.ply"/-->
+
+
+	<param name="loadMapName" value="/home/yinhuan/Data/mapModel/saliency/wholeMap_park.ply"/>
+	<param name="loadTrajName" value="/home/yinhuan/Data/mapModel/saliency/keep_park.txt"/>
+	<param name="loadSaliencyDir" value="/home/yinhuan/Data/mapModel/saliency/split_saliency_park/"/>
+	<param name="splitPathLength" value="50"/>
+	<param name="saveMapName" value="/home/yinhuan/Data/mapModel/saliency/wholeMap_park_saliency.ply"/>
 
 	
   </node>
