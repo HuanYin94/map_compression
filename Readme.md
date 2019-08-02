@@ -8,8 +8,13 @@ If have some questions on this project, please contact [Huan Yin](https://yinhua
 ## System
 <img src="https://github.com/ZJUYH/map_compression/blob/master/images/system.png" width= 1000>
 
-## Results
-<img src="https://github.com/ZJUYH/map_compression/blob/master/images/yq_origin.png" width= 300> <img src="https://github.com/ZJUYH/map_compression/blob/master/images/yq_b4000_ILP_part.png" width= 300> <img src="https://github.com/ZJUYH/map_compression/blob/master/images/yq_b4000_learns_part.png" width= 300>
+## Examples
+After compression by RF, selected points are colored in red on the origin map
+
+<img src="https://github.com/ZJUYH/map_compression/blob/master/images/learn_local_2.png" width= 300>  
+<img src="https://github.com/ZJUYH/map_compression/blob/master/images/learn_local_3.png" width= 300>  
+
+
 
 ## Prepare to build
 
@@ -17,7 +22,7 @@ This project is compiled on `ros` and `Ubuntu`.
 And use `catkin_make` in your workspace to build this project.
 Some dependencies are needed to be prepared:
 * [pcl](http://pointclouds.org/) 
-* [libpointmatcher](https://github.com/ethz-asl/libpointmatcher)  (relies heavily)
+* [libpointmatcher](https://github.com/ethz-asl/libpointmatcher)  (an old version in 2018.09)
 * [Gurobi](http://www.gurobi.com/) 
 
 ## Introduction to all folders

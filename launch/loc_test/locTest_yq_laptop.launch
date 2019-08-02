@@ -11,7 +11,7 @@
 	
 	<!--KITTI or YQ # add Chery.vtk-->
 	<param name="isChery" value="false" />	
-	<param name="isKITTI" value="true" />	
+	<param name="isKITTI" value="false" />	
 	
 
 	<!--YQ-->
@@ -22,15 +22,20 @@
 	<!--param name="wholeMapName" value="/home/yh/mapModel/2019/01.08/locTest/random/random_b500_1_locTest.ply"/--> 
 	<param name="wholeMapName" value="$(arg wholeMapName)"/> 
 
-	<param name="velodyneDirName" value="/media/yh/YH/DataSet/kitti_benchmark_velodyne/dataset/sequences/10/velodyne/"/>
-	<param name="icpFileName" value="/home/yh/mapModel/2019/07.11/kitti_loc_pose.txt"/>
+	<param name="velodyneDirName" value="/media/yh/YH/DataSet/YQ21/2017_03_09/2017_03_09_drive_0001_sync/velodyne_points/data/"/>
+	<param name="icpFileName" value="/home/yh/mapModel/2019/07.22/yq_loc_pose_0901.txt"/>
 
+<<<<<<< HEAD:launch/loc_test/locTest_yq_laptop.launch
+	<param name="startIndex" value="7500"/>
+	<param name="endIndex" value="9900"/>
+=======
 	<param name="startIndex" value="700"/>
 	<param name="endIndex" value="11z00"/>
+>>>>>>> 250d35879a49a4fe478b88f100402698225c8784:launch/loc_test/locTest_kitti.launch
 	
-	<param name="inputFilterYaml" value="$(find map_compression)/cfg/loc_laser_filters.yaml"/>
-	<param name="mapFilterYaml" value="$(find map_compression)/cfg/loc_map_filters.yaml"/>
-	<param name="icpYaml" value="$(find map_compression)/cfg/loc_icp.yaml"/>
+	<param name="inputFilterYaml" value="$(find map_compression)/cfg/loc_laser_filters_yq.yaml"/>
+	<param name="mapFilterYaml" value="$(find map_compression)/cfg/loc_map_filters_yq.yaml"/>
+	<param name="icpYaml" value="$(find map_compression)/cfg/loc_icp_yq.yaml"/>
 	
 	<param name="savePoseName" value="$(arg savePoseName)"/> 
 	<param name="saveTimeName" value="$(arg saveTimeName)"/> 

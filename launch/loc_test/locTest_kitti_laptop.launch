@@ -1,13 +1,6 @@
 <launch>
-	
-	<!--node pkg="rviz" type="rviz" name="rviz" args="-d $(find map_compression)/cfg/locTest.rviz" output="screen"/-->
 
-	<arg name="wholeMapName"/> 
-	<arg name="savePoseName"/> 
-	<arg name="saveTimeName"/> 
-	<arg name="saveIterName"/> 
-
-  	<node pkg="map_compression" type="locTest" name="locTest" output="screen" required="true">
+  	<node pkg="map_compression" type="locTest" name="locTest" output="screen">
 	
 	<!--KITTI or YQ # add Chery.vtk-->
 	<param name="isChery" value="false" />	
@@ -20,7 +13,7 @@
 
 
 	<!--param name="wholeMapName" value="/home/yh/mapModel/2019/01.08/locTest/random/random_b500_1_locTest.ply"/--> 
-	<param name="wholeMapName" value="$(arg wholeMapName)"/> 
+	<param name="wholeMapName" value="/home/yh/mapModel/2019/07.21/loc/loc_kitti_b1000_ILP.ply"/> 
 
 	<param name="velodyneDirName" value="/media/yh/YH/DataSet/kitti_benchmark_velodyne/dataset/sequences/10/velodyne/"/>
 	<param name="icpFileName" value="/home/yh/mapModel/2019/07.21/kitti_loc_pose.txt"/>
@@ -32,10 +25,10 @@
 	<param name="mapFilterYaml" value="$(find map_compression)/cfg/loc_map_filters_kitti.yaml"/>
 	<param name="icpYaml" value="$(find map_compression)/cfg/loc_icp_kitti.yaml"/>
 	
-	<param name="savePoseName" value="$(arg savePoseName)"/> 
-	<param name="saveTimeName" value="$(arg saveTimeName)"/> 
-	<param name="saveIterName" value="$(arg saveIterName)"/> 
-
+	<param name="savePoseName" value="/home/yh/mapModel/2019/07.21/laptop/pose_kitti_b1000_ILP.txt"/> 
+	<param name="saveTimeName" value="/home/yh/mapModel/2019/07.21/laptop/time_kitti_b1000_ILP.txt"/> 
+	<param name="saveIterName" value="/home/yh/mapModel/2019/07.21/laptop/iter_kitti_b1000_ILP.txt"/> 
 
   </node>
+	<node pkg="rviz" type="rviz" name="rviz" args="-d $(find map_compression)/cfg/locTest.rviz" output="screen"/>
 </launch>

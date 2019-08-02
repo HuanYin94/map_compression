@@ -6,7 +6,11 @@ matcher:
 
 outlierFilters:
   - MaxDistOutlierFilter:
+<<<<<<< HEAD
+     maxDist: 1.5
+=======
      maxDist: 1.25
+>>>>>>> 250d35879a49a4fe478b88f100402698225c8784
   - SurfaceNormalOutlierFilter:
      maxAngle: 0.52
 

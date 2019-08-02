@@ -16,28 +16,18 @@
 
 
 
-	<param name="loadTrajName" value="/home/yh/mapModel/2019/07.11/keep_kitti.txt"/>
+	<param name="loadTrajName" value="/home/yh/mapModel/2019/07.21/keep_kitti.txt"/>
 	<!--param name="saveTrainName" value="/home/yh/mapModel/2019/01.08/learn/results/no.ply"/>
 	<param name="saveTestName" value="/home/yh/mapModel/2019/01.08/learn/results/predict_b2000_locTest.ply"/-->
 	<param name="saveTrainName" value="$(arg saveTrainName)"/>
-	<!--param name="saveTestName" value="/home/yh/mapModel/2019/01.08/locTest/predict_b500_locTest_.ply"/-->
-
 	<param name="saveTestName" value="$(arg saveTestName)"/>
+	<!--param name="saveTestName" value="/home/yh/mapModel/2019/01.08/locTest/predict_b500_locTest_.ply"/-->
+	<param name="saveCloudName" value="/home/yh/mapModel/2019/07.21/wholeMap_kitti_tran_test.ply"/>
 	
-	<!--all?-->
-
-	<!--Cut for loc Test-->
 	<param name="cutPoint0" value="0"/>	
-	<param name="cutPoint1" value="211"/>	
-	<param name="cutPoint2" value="212"/>	
-	<param name="cutPoint3" value="632"/>	
-
-	<!--Cut for training and test-->
-	<!--param name="cutPoint0" value="0"/>	
-	<param name="cutPoint1" value="3519"/>	
-	<param name="cutPoint2" value="3520"/>	
-	<param name="cutPoint3" value="10559"/-->	
-
+	<param name="cutPoint1" value="599"/>	
+	<param name="cutPoint2" value="600"/>	
+	<param name="cutPoint3" value="1041"/>
 
 
 

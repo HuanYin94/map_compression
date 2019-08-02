@@ -5,8 +5,6 @@ matcher:
     epsilon: 0
 
 outlierFilters:
-#  - TrimmedDistOutlierFilter:
-#     ratio: 0.8
   - MaxDistOutlierFilter:
      maxDist: 0.5
   - SurfaceNormalOutlierFilter:
