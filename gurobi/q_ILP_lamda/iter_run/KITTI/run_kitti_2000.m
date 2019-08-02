@@ -1,10 +1,10 @@
 % params
-totalNum = 2585222;
+totalNum = 7385291;
 bValue = 2000;
-lamda = 0.1;
+lamda = 0.5;
 qFile = '/home/yinhuan/Data/mapModel/kitti_10/weightVector.txt';
 visFilesDir = '/home/yinhuan/Data/mapModel/kitti_10/visMatrix/';
-maxQ = 67;
+maxQ =48;
 minQ = 1;
 
 splitLength_0 = 50;
@@ -26,6 +26,11 @@ splitLength_3 = 400;
 saveResultsDir_3 = '/home/yinhuan/Data/mapModel/kitti_10/iter_b_2000/3/';
 saveReIndexFile_3 = '/home/yinhuan/Data/mapModel/kitti_10/iter_b_2000/index/3.txt';
 saveNewQFile_3 = '/home/yinhuan/Data/mapModel/kitti_10/iter_b_2000/weight/3.txt';
+
+splitLength_4 = 800;
+saveResultsDir_4 = '/home/yinhuan/Data/mapModel/kitti_10/iter_b_2000/4/';
+saveReIndexFile_4 = '/home/yinhuan/Data/mapModel/kitti_10/iter_b_2000/index/4.txt';
+saveNewQFile_4 = '/home/yinhuan/Data/mapModel/kitti_10/iter_b_2000/weight/4.txt';
 
 %% iteration of optimization
 
@@ -52,6 +57,9 @@ min_cost_3 = get_min_cost(minQ, maxQ, saveResultsDir_3, saveNewQFile_2, lamda, e
 [totalNum_3, visCells_3] = deleteZeroPoints_Cells( saveNewQFile_2, visCells_2, saveResultsDir_3, saveReIndexFile_3, saveNewQFile_3 );
 
 
+[ epsilon_soft_4, time_sum_4  ] = Uniform_loopCompress_Cells( lamda, saveNewQFile_3, visCells_3, splitLength_4, totalNum_3, bValue, saveResultsDir_4 );
+min_cost_4 = get_min_cost(minQ, maxQ, saveResultsDir_4, saveNewQFile_3, lamda, epsilon_soft_4);
+[totalNum_4, visCells_4] = deleteZeroPoints_Cells( saveNewQFile_3, visCells_3, saveResultsDir_4, saveReIndexFile_4, saveNewQFile_4 );
 
 
 
@@ -59,7 +67,8 @@ min_cost_3 = get_min_cost(minQ, maxQ, saveResultsDir_3, saveNewQFile_2, lamda, e
 
 %% save the results
 
-compressIndex_2 = anal_reindex_last(saveResultsDir_3, saveReIndexFile_2);
+compressIndex_3 = anal_reindex_last(saveResultsDir_4, saveReIndexFile_3);
+compressIndex_2 = anal_reindex_middle(compressIndex_3, saveReIndexFile_2);
 compressIndex_1 = anal_reindex_middle(compressIndex_2, saveReIndexFile_1);
 compressIndex_0 = anal_reindex_middle(compressIndex_1, saveReIndexFile_0);
 

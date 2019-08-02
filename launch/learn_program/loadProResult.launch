@@ -1,4 +1,5 @@
 <launch>
+<<<<<<< HEAD
 	
 	<arg name="loadCompressIndex"/> 
 	<arg name="loadMapName"/> 	
@@ -9,6 +10,14 @@
 	<!--param name="loadCompressIndex" value="/home/yh/mapModel/2019/07.11/program/compressIndex_final_b3000.txt"/>
 	<param name="loadMapName" value="/home/yh/mapModel/2019/07.11/wholeMap_kitti_10.ply"/>
 	<param name="saveCloudName" value="/home/yh/mapModel/2019/07.11/program/wholeMap_kitti_b3000.ply"/-->
+=======
+
+  <node pkg="map_compression" type="loadProResult" name="loadProResult" output="screen" >
+
+	<param name="loadCompressIndex" value="/home/yh/mapModel/2019/07.12/program/compressIndex_final_b3000.txt"/>
+	<param name="loadMapName" value="/home/yh/mapModel/2019/07.21/wholeMap_kitti_10.ply"/>
+	<param name="saveCloudName" value="/home/yh/mapModel/2019/07.21/program/wholeMap_kitti_b3000.ply"/>
+>>>>>>> 250d35879a49a4fe478b88f100402698225c8784
 	
 	<param name="loadCompressIndex" value="$(arg loadCompressIndex)"/>
 	<param name="loadMapName" value="$(arg loadMapName)"/>

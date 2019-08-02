@@ -1,6 +1,12 @@
 
 
-:<<BLOCK
+
+
+
+
+
+
+
 
 roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b4000_ILP.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b4000_ILP.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
 
@@ -104,16 +110,19 @@ roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhu
 
 
 
-BLOCK
+
+:<<BLOCK
 
 
 
 
 
-roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b1000_learn.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b1000_learn.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
+
+
 
 roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b1000_ILP.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b1000_ILP.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
 
+roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b1000_learn.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b1000_learn.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
 
 roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhuan/Data/mapModel/locTest/kitti/loc_kitti_b1000_voxel.ply" savePoseName:="/home/yinhuan/Data/mapModel/locTest/kitti_pose/pose_kitti_b1000_voxel.txt" saveTimeName:="/home/yinhuan/Data/mapModel/locTest/time.txt" saveIterName:="/home/yinhuan/Data/mapModel/locTest/iter.txt"
 
@@ -139,8 +148,7 @@ roslaunch map_compression locTest_kitti_server.launch wholeMapName:="/home/yinhu
 
 
 
-
-
+BLOCK
 
 
 

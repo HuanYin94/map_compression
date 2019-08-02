@@ -1,36 +1,36 @@
 % params
-totalNum = 7385291;
-bValue = 1000;
-lamda = 0.5;
-qFile = '/home/yinhuan/Data/mapModel/kitti_10/weightVector.txt';
-visFilesDir = '/home/yinhuan/Data/mapModel/kitti_10/visMatrix/';
-maxQ = 48;
+totalNum = 1502861;
+bValue = 4000;
+lamda = 0.1;
+qFile = '/home/yinhuan/Data/mapModel/park/weightVector.txt';
+visFilesDir = '/home/yinhuan/Data/mapModel/park/visMatrix/';
+maxQ = 110;
 minQ = 1;
 
-splitLength_0 = 50;
-saveResultsDir_0 = '/home/yinhuan/Data/mapModel/kitti_10/iter_b_1000/0/';
-saveReIndexFile_0 = '/home/yinhuan/Data/mapModel/kitti_10/iter_b_1000/index/0.txt';
-saveNewQFile_0 = '/home/yinhuan/Data/mapModel/kitti_10/iter_b_1000/weight/0.txt';
+splitLength_0 = 100;
+saveResultsDir_0 = '/home/yinhuan/Data/mapModel/park/iter_b_4000/0/';
+saveReIndexFile_0 = '/home/yinhuan/Data/mapModel/park/iter_b_4000/index/0.txt';
+saveNewQFile_0 = '/home/yinhuan/Data/mapModel/park/iter_b_4000/weight/0.txt';
 
-splitLength_1 = 100;
-saveResultsDir_1 = '/home/yinhuan/Data/mapModel/kitti_10/iter_b_1000/1/';
-saveReIndexFile_1 = '/home/yinhuan/Data/mapModel/kitti_10/iter_b_1000/index/1.txt';
-saveNewQFile_1 = '/home/yinhuan/Data/mapModel/kitti_10/iter_b_1000/weight/1.txt';
+splitLength_1 = 200;
+saveResultsDir_1 = '/home/yinhuan/Data/mapModel/park/iter_b_4000/1/';
+saveReIndexFile_1 = '/home/yinhuan/Data/mapModel/park/iter_b_4000/index/1.txt';
+saveNewQFile_1 = '/home/yinhuan/Data/mapModel/park/iter_b_4000/weight/1.txt';
 
-splitLength_2 = 200;
-saveResultsDir_2 = '/home/yinhuan/Data/mapModel/kitti_10/iter_b_1000/2/';
-saveReIndexFile_2 = '/home/yinhuan/Data/mapModel/kitti_10/iter_b_1000/index/2.txt';
-saveNewQFile_2 = '/home/yinhuan/Data/mapModel/kitti_10/iter_b_1000/weight/2.txt';
+splitLength_2 = 400;
+saveResultsDir_2 = '/home/yinhuan/Data/mapModel/park/iter_b_4000/2/';
+saveReIndexFile_2 = '/home/yinhuan/Data/mapModel/park/iter_b_4000/index/2.txt';
+saveNewQFile_2 = '/home/yinhuan/Data/mapModel/park/iter_b_4000/weight/2.txt';
 
-splitLength_3 = 400;
-saveResultsDir_3 = '/home/yinhuan/Data/mapModel/kitti_10/iter_b_1000/3/';
-saveReIndexFile_3 = '/home/yinhuan/Data/mapModel/kitti_10/iter_b_1000/index/3.txt';
-saveNewQFile_3 = '/home/yinhuan/Data/mapModel/kitti_10/iter_b_1000/weight/3.txt';
+splitLength_3 = 800;
+saveResultsDir_3 = '/home/yinhuan/Data/mapModel/park/iter_b_4000/3/';
+saveReIndexFile_3 = '/home/yinhuan/Data/mapModel/park/iter_b_4000/index/3.txt';
+saveNewQFile_3 = '/home/yinhuan/Data/mapModel/park/iter_b_4000/weight/3.txt';
 
 splitLength_4 = 800;
-saveResultsDir_4 = '/home/yinhuan/Data/mapModel/kitti_10/iter_b_1000/4/';
-saveReIndexFile_4 = '/home/yinhuan/Data/mapModel/kitti_10/iter_b_1000/index/4.txt';
-saveNewQFile_4 = '/home/yinhuan/Data/mapModel/kitti_10/iter_b_1000/weight/4.txt';
+saveResultsDir_4 = '/home/yinhuan/Data/mapModel/park/iter_b_4000/4/';
+saveReIndexFile_4 = '/home/yinhuan/Data/mapModel/park/iter_b_4000/index/4.txt';
+saveNewQFile_4 = '/home/yinhuan/Data/mapModel/park/iter_b_4000/weight/4.txt';
 
 %% iteration of optimization
 
@@ -73,7 +73,7 @@ compressIndex_1 = anal_reindex_middle(compressIndex_2, saveReIndexFile_1);
 compressIndex_0 = anal_reindex_middle(compressIndex_1, saveReIndexFile_0);
 
 
-dlmwrite('/home/yinhuan/Data/mapModel/kitti_10/iter_b_1000/compressIndex_final.txt', compressIndex_0, 'precision', '%d');
+dlmwrite('/home/yinhuan/Data/mapModel/park/iter_b_4000/compressIndex_final.txt', compressIndex_0, 'precision', '%d');
 
 
 

@@ -14,10 +14,15 @@
     <param name="highSearchNum" value="100"/>
 
 	<param name="loadMapDir" value="/home/yinhuan/Data/mapModel/saliency/split_cloud_kitti/"/>
-	<param name="subMapCnt" value="64"/>
+	<param name="subMapCnt" value="53"/>
   	<param name="saveSaliencyDir" value="/home/yinhuan/Data/mapModel/saliency/split_saliency_kitti/"/-->
 
-	<param name="normalRadius" value="1.0"/>	
+
+
+
+
+
+	<!--param name="normalRadius" value="1.0"/>	
 	<param name="fpfhRadius" value="2.0"/>
     <param name="accKSearch" value="30"/>	
 
@@ -31,7 +36,31 @@
 
 	<param name="loadMapDir" value="/home/yinhuan/Data/mapModel/saliency/split_cloud_yq/"/>
 	<param name="subMapCnt" value="99"/>
-  	<param name="saveSaliencyDir" value="/home/yinhuan/Data/mapModel/saliency/split_saliency_yq/"/>
+  	<param name="saveSaliencyDir" value="/home/yinhuan/Data/mapModel/saliency/split_saliency_yq/"/-->
+
+
+
+
+
+
+	<param name="normalRadius" value="0.5"/>	
+	<param name="fpfhRadius" value="1.0"/>
+    <param name="accKSearch" value="10"/>	
+
+    <param name="highRatio_pointAssoc" value="0.3"/>	
+    <param name="sigma" value="0.5"/>	
+
+    <param name="highRatio_highDistinct" value="0.3"/>	
+    <param name="highRadius" value="1.0"/>
+    <param name="highSearchNum" value="50"/>
+
+
+	<param name="loadMapDir" value="/home/yinhuan/Data/mapModel/saliency/split_cloud_park/"/>
+	<param name="subMapCnt" value="18"/>
+  	<param name="saveSaliencyDir" value="/home/yinhuan/Data/mapModel/saliency/split_saliency_park/"/>
+
+
+
 
 
   </node>

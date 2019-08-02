@@ -25,8 +25,8 @@
 	<param name="velodyneDirName" value="/media/yh/YH/DataSet/kitti_benchmark_velodyne/dataset/sequences/10/velodyne/"/>
 	<param name="icpFileName" value="/home/yh/mapModel/2019/07.21/kitti_loc_pose.txt"/>
 
-	<param name="startIndex" value="700"/>
-	<param name="endIndex" value="1100"/>
+	<param name="startIndex" value="900"/>
+	<param name="endIndex" value="1200"/>
 	
 	<param name="inputFilterYaml" value="$(find map_compression)/cfg/loc_laser_filters_kitti.yaml"/>
 	<param name="mapFilterYaml" value="$(find map_compression)/cfg/loc_map_filters_kitti.yaml"/>

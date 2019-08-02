@@ -4,13 +4,18 @@
 
 	<!--param name="loadMapName" value="/home/yinhuan/Data/mapModel/saliency/wholeMap_kitti.ply"/>
 	<param name="loadTrajName" value="/home/yinhuan/Data/mapModel/saliency/keep_kitti.txt"/>
-	<param name="splitPathLength" value="10"/>
+	<param name="splitPathLength" value="20"/>
 	<param name="saveCloudDir" value="/home/yinhuan/Data/mapModel/saliency/split_cloud_kitti/"/-->
 
-	<param name="loadMapName" value="/home/yinhuan/Data/mapModel/saliency/wholeMap_yq.ply"/>
+	<!--param name="loadMapName" value="/home/yinhuan/Data/mapModel/saliency/wholeMap_yq.ply"/>
 	<param name="loadTrajName" value="/home/yinhuan/Data/mapModel/saliency/keep_0301.txt"/>
 	<param name="splitPathLength" value="50"/>
-	<param name="saveCloudDir" value="/home/yinhuan/Data/mapModel/saliency/split_cloud_yq/"/>
+	<param name="saveCloudDir" value="/home/yinhuan/Data/mapModel/saliency/split_cloud_yq/"/-->
+
+	<param name="loadMapName" value="/home/yinhuan/Data/mapModel/saliency/wholeMap_park.ply"/>
+	<param name="loadTrajName" value="/home/yinhuan/Data/mapModel/saliency/keep_park.txt"/>
+	<param name="splitPathLength" value="50"/>
+	<param name="saveCloudDir" value="/home/yinhuan/Data/mapModel/saliency/split_cloud_park/"/>
 	
 
   </node>
