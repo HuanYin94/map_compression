@@ -5,6 +5,13 @@ Code of a manuscript, submitted to IEEE Transactions on Intelligent Transportati
 
 If have some questions on this project, please contact [Huan Yin](https://yinhuan.site/) `zjuyinhuan@gmail.com` 
 
+	@article{yin20193d,
+	  title={3D LiDAR Map Compression for Efficient Localization on Resource Constrained Vehicles},
+	  author={Yin, Huan and Wang, Yue and Tang, Li and Ding, Xiaqing and Huang, Shoudong and Xiong, Rong},
+	  journal={IEEE Transactions on Intelligent Transportation Systems},
+	  status={submitted}
+	}
+
 ## System
 <img src="https://github.com/ZJUYH/map_compression/blob/master/images/system.png" width= 1000>
 
