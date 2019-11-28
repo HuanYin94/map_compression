@@ -86,6 +86,10 @@ __output:__ new format in this folder
 check the map in Rviz  
 __input:__map and poses (trajectory)  
 
+* `normalViewer`  
+show the generated surface normals  
+__input:__the map and some params  
+
 ### map_generation in src folder
 
 * `scanRegister`  
