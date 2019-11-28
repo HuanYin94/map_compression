@@ -1,0 +1,15 @@
+<launch>
+
+
+	<node pkg="map_compression" type="normalViewer" name="normalViewer" output="screen">
+
+	<!--param name="loadMapName" value="/home/yh/temp/octree_filtered.ply"/>
+    <param name="stepNum" value="200"/-->
+
+	<param name="loadMapName" value="/home/yh/temp/origin_filtered.ply"/>
+    <param name="stepNum" value="600"/>
+
+	<param name="arrowLength" value="1"/>
+  </node>
+<node pkg="rviz" type="rviz" name="rviz" args="-d $(find map_compression)/cfg/normalViewer.rviz" output="screen"/>
+</launch>

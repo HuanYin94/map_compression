@@ -23,6 +23,7 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
   ${EIGEN_INCLUDE_DIRS}
   ${libpointmatcher_INCLUDE_DIRS}
+  ${BULLET_INCLUDE_DIR}
 )
 
 add_executable(mapCheck src/tools/mapCheck.cpp)
@@ -164,3 +165,8 @@ ${catkin_LIBRARIES}
 ${libpointmatcher_LIBRARIES}
 )
 
+add_executable(normalViewer src/tools/normalViewer.cpp)
+target_link_libraries(normalViewer
+${catkin_LIBRARIES}
+${libpointmatcher_LIBRARIES}
+)
