@@ -9,7 +9,7 @@ If have some questions on this project, please contact [Huan Yin](https://yinhua
 	  title={3D LiDAR Map Compression for Efficient Localization on Resource Constrained Vehicles},
 	  author={Yin, Huan and Wang, Yue and Tang, Li and Ding, Xiaqing and Huang, Shoudong and Xiong, Rong},
 	  journal={IEEE Transactions on Intelligent Transportation Systems},
-	  status={submitted}
+	  status={Accept}
 	}
 
 ## System
