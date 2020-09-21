@@ -1,15 +1,16 @@
 # 3D LiDAR Map Compression for Efficient Localization on Resource Constrained Vehicles 
 
 ## Introduction
-Code of a manuscript, submitted to IEEE Transactions on Intelligent Transportation Systems. [video](https://youtu.be/sdETOor2Jck)
+Code of a manuscript, published on IEEE Transactions on Intelligent Transportation Systems. [video](https://youtu.be/sdETOor2Jck)
 
 If have some questions on this project, please contact [Huan Yin](https://yinhuan.site/) `zjuyinhuan@gmail.com` 
 
-	@article{yin20193d,
+	@article{yin20203d,
 	  title={3D LiDAR Map Compression for Efficient Localization on Resource Constrained Vehicles},
 	  author={Yin, Huan and Wang, Yue and Tang, Li and Ding, Xiaqing and Huang, Shoudong and Xiong, Rong},
 	  journal={IEEE Transactions on Intelligent Transportation Systems},
-	  status={Accept}
+	  year={2020},
+	  publisher={IEEE}
 	}
 
 ## System
