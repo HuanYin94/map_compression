@@ -7,7 +7,7 @@ For the video demonstration, please refer to [video](https://youtu.be/sdETOor2Jc
 
 If you have some questions on this project, please contact [Huan Yin](https://yinhuan.site/) `zjuyinhuan@gmail.com` .
 
-If you use our implementation in your work, please cite the following paper:
+If you use our code in an academic work,, please cite the following paper:
 
 	@article{yin20203d,
 	  title={3D LiDAR Map Compression for Efficient Localization on Resource Constrained Vehicles},
