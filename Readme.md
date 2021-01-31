@@ -3,9 +3,11 @@
 ## Introduction
 Code of a manuscript, published in IEEE Transactions on Intelligent Transportation Systems. 
 
-For the video demonstration, please refer to [video](https://youtu.be/sdETOor2Jck)
+For the video demonstration, please refer to [video](https://youtu.be/sdETOor2Jck).
 
-If you have some questions on this project, please contact [Huan Yin](https://yinhuan.site/) `zjuyinhuan@gmail.com` 
+If you have some questions on this project, please contact [Huan Yin](https://yinhuan.site/) `zjuyinhuan@gmail.com` .
+
+If you use our implementation in your work, please cite the following paper:
 
 	@article{yin20203d,
 	  title={3D LiDAR Map Compression for Efficient Localization on Resource Constrained Vehicles},
