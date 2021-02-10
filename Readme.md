@@ -32,7 +32,7 @@ This project is compiled on `ros` and `Ubuntu`.
 And use `catkin_make` in your workspace to build this project.
 Some dependencies are needed to be prepared:
 * [pcl](http://pointclouds.org/) 
-* [libpointmatcher](https://github.com/ethz-asl/libpointmatcher)  (an old version in 2018.09)
+* [libpointmatcher](https://github.com/ethz-asl/libpointmatcher)  (Please use an old version in 2018, V1.2.4)
 * [Gurobi](http://www.gurobi.com/) 
 
 ## Introduction to all folders
