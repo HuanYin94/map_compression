@@ -5,8 +5,6 @@ Code of a manuscript, published in IEEE Transactions on Intelligent Transportati
 
 For the video demonstration, please refer to [video](https://youtu.be/sdETOor2Jck).
 
-If you have some questions on this project, please contact [Huan Yin](https://yinhuan.site/) `zjuyinhuan@gmail.com` .
-
 If you use our code in an academic work, please cite the following paper:
 
 	@article{yin20203d,
